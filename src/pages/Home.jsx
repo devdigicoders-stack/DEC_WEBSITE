@@ -14,6 +14,7 @@ import {
   FiMapPin 
 } from 'react-icons/fi'
 import WhatWeDo from '../components/WhatWeDo.jsx'
+import ClientsSection from '../components/ClientsSection.jsx'
 
 function Home() {
   const disciplines = [
@@ -501,8 +502,14 @@ function Home() {
         </div>
       </section>
 
+      {/* ============================================================ */}
+      {/* 08 · CLIENTS & TRUSTED PARTNERS (90+ CLIENT LOGOS SHOWCASE) */}
+      {/* ============================================================ */}
+      <ClientsSection />
+
     </div>
   )
 }
+
 
 export default Home

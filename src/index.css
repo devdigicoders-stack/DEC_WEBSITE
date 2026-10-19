@@ -29,6 +29,16 @@ body, button, input, select, textarea {
   100% { transform: rotate(0deg); }
 }
 
+@keyframes marqueeLeft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
 .animate-gold-shimmer {
   animation: goldShimmer 1.8s infinite ease-in-out;
 }
@@ -43,4 +53,24 @@ body, button, input, select, textarea {
 
 .animate-pulse-glow {
   animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 38s linear infinite;
+}
+
+.animate-marquee-left:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 38s linear infinite;
+}
+
+.animate-marquee-right:hover {
+  animation-play-state: paused;
 }

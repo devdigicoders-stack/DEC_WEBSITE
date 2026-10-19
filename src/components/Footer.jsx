@@ -138,6 +138,12 @@ function Footer() {
                 </Link>
               </li>
               <li>
+                <a href="/#clients" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
+                  Our Clients (90+)
+                </a>
+              </li>
+
+              <li>
                 <Link to="/presence" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
                   Regional Presence
                 </Link>

@@ -8,6 +8,8 @@ import {
   FiLayers, 
   FiExternalLink 
 } from 'react-icons/fi'
+import ProjectGallerySection from '../components/ProjectGallerySection.jsx'
+
 
 function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All')
@@ -441,38 +443,13 @@ function Projects() {
       </section>
 
       {/* ============================================================ */}
-      {/* 5. CONSULTATION & RFP INQUIRY BANNER                         */}
+      {/* 5. VISUAL PHOTOGRAPHIC SITE GALLERY (84 RECORDS + LIGHTBOX)  */}
       {/* ============================================================ */}
-      <section className="bg-[#151515] py-20 px-6 sm:px-10 lg:px-14 xl:px-20 text-center">
-        <div className="max-w-4xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] block mb-3">
-            HAVE A LANDMARK PROJECT IN MIND?
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F5F0E7] tracking-tight mb-6">
-            Bring Your Vision to Life with Grade A Precision
-          </h2>
-          <p className="text-base sm:text-lg text-[#F5F0E7]/70 font-light mb-10 max-w-2xl mx-auto">
-            From initial architectural feasibility to turnkey MEP engineering and civil defense permits, DEC delivers certainty at every project milestone.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link 
-              to="/contact"
-              className="px-8 py-4 rounded-xl bg-[#B08D57] hover:bg-[#8F6F3E] text-[#151515] font-bold text-sm uppercase tracking-wider transition-all shadow-lg hover:shadow-[#B08D57]/20"
-            >
-              Submit RFP / Project Inquiry
-            </Link>
-            <Link 
-              to="/expertise"
-              className="px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/15 font-bold text-sm uppercase tracking-wider transition-all"
-            >
-              Explore Engineering Disciplines
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ProjectGallerySection />
 
     </div>
   )
 }
+
 
 export default Projects
