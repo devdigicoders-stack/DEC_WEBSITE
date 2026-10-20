@@ -169,11 +169,11 @@ function WhyDEC() {
       {/* 1. HERO SECTION (100VH IMMERSIVE STRATEGIC ADVANTAGE)        */}
       {/* ============================================================ */}
       <section className="relative w-full h-screen min-h-[100vh] flex items-center justify-center overflow-hidden bg-[#151515]">
-        {/* Background Image - Clean Natural Lighting */}
+        {/* Background Image - Full Natural Brightness Without Dark Overlay */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <img 
             src="/images/why_dec_hero.jpg" 
-            alt="DEC Executive Boardroom & Technical Leadership" 
+            alt="DEC Executive Boardroom & Lusail Skyline Strategic Headquarters" 
             className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
           />
         </div>
@@ -373,6 +373,81 @@ function WhyDEC() {
             )
           })}
 
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 3.5 VISUAL SPOTLIGHT: BIM LEVEL 2 ZERO-CLASH COORDINATION     */}
+      {/* ============================================================ */}
+      <section className="py-20 sm:py-24 px-6 sm:px-10 lg:px-14 xl:px-20 bg-[#0e0e0e] border-b border-white/10 text-white">
+        <div className="w-full mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            {/* Left 6 Cols: Technical Context */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                Digital Engineering Superiority
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.15]">
+                Virtual Construction Before <span className="text-[#B08D57]">Physical Groundbreaking</span>
+              </h2>
+
+              <p className="text-base text-[#F5F0E7]/80 leading-relaxed font-light">
+                At DEC, multidisciplinary coordination isn't an afterthought. We build every project twice — first as a millimeter-accurate federated 3D digital twin, resolving thousands of structural and MEP clashes digitally before any concrete is poured or ductwork hung.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+                  <div className="text-2xl font-bold text-[#B08D57]">100%</div>
+                  <div className="text-xs uppercase font-semibold text-white mt-1">First-Pass QCDD Approval</div>
+                  <p className="text-[11px] text-[#F5F0E7]/60 mt-1">Pre-tested fire & life safety digital egress models.</p>
+                </div>
+                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+                  <div className="text-2xl font-bold text-emerald-400">0</div>
+                  <div className="text-xs uppercase font-semibold text-white mt-1">Site Rework Variation Claims</div>
+                  <p className="text-[11px] text-[#F5F0E7]/60 mt-1">Guaranteed clash-free MEP and structural routing.</p>
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <Link
+                  to="/expertise"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs uppercase tracking-wider transition-all shadow-md"
+                >
+                  Explore BIM & Digital Twins <FiArrowRight />
+                </Link>
+              </div>
+            </div>
+
+            {/* Right 6 Cols: BIM Coordination Image Card */}
+            <div className="lg:col-span-6 relative">
+              <div className="relative rounded-3xl overflow-hidden border border-[#B08D57]/40 shadow-2xl shadow-black/90 group">
+                <img 
+                  src="/images/why_dec_bim_edge.jpg" 
+                  alt="DEC 3D BIM Level 2 Coordination and Clash Detection"
+                  className="w-full h-[360px] sm:h-[440px] lg:h-[480px] object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+
+                {/* Floating Bottom Card */}
+                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-black/80 backdrop-blur-md border border-white/15">
+                  <div className="flex items-center justify-between text-xs font-bold text-[#B08D57] uppercase tracking-wider mb-1">
+                    <span className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />
+                      Federated 3D Coordination
+                    </span>
+                    <span className="text-emerald-400 font-mono text-[11px]">BIM LEVEL 2 ACTIVE</span>
+                  </div>
+                  <p className="text-xs text-[#F5F0E7]/80">
+                    Synchronized Revit & Navisworks models across Architecture, Structure, HVAC & Electrical ELV.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 

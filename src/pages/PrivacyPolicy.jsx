@@ -161,7 +161,7 @@ function PrivacyPolicy() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
               <div className="p-4 rounded-xl bg-white/5 border border-white/10">
                 <span className="text-slate-400 block mb-1">Corporate HQ</span>
-                <strong className="text-white">Office 704, Manarat Lusail Tower, Lusail City, Qatar</strong>
+                <strong className="text-white">Office 704, Manarat Lusail Tower, Qatar</strong>
               </div>
               <div className="p-4 rounded-xl bg-white/5 border border-white/10">
                 <span className="text-slate-400 block mb-1">Privacy Officer Email</span>

@@ -694,8 +694,9 @@ function About() {
                 <div className="flex items-start gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/10">
                   <span className="text-xl">🇶🇦</span>
                   <div>
-                    <strong className="text-white block font-semibold">Qatar Headquarters (Lusail City)</strong>
-                    <p className="text-xs text-[#F5F0E7]/70 mt-0.5">
+                    <strong className="text-white block font-semibold">Qatar Headquarters</strong>
+                    <span className="text-xs text-[#B08D57] font-medium block">Office 704, Manarat Lusail Tower, Qatar</span>
+                    <p className="text-xs text-[#F5F0E7]/70 mt-1">
                       Executive management, client relations, municipality & civil defense permitting, site supervision, and statutory BCC handovers.
                     </p>
                   </div>
@@ -704,8 +705,9 @@ function About() {
                 <div className="flex items-start gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/10">
                   <span className="text-xl">🇪🇬</span>
                   <div>
-                    <strong className="text-white block font-semibold">Egypt Technical Center (Dokki, Giza)</strong>
-                    <p className="text-xs text-[#F5F0E7]/70 mt-0.5">
+                    <strong className="text-white block font-semibold">Egypt Technical Center</strong>
+                    <span className="text-xs text-[#B08D57] font-medium block">Flat 32, 3rd floor, Bldg 20, Ahmed Elzaiat St., Dokki, Giza</span>
+                    <p className="text-xs text-[#F5F0E7]/70 mt-1">
                       High-precision structural modeling, MEP detailed engineering, 3D clash resolution, and full BIM Level 2 production.
                     </p>
                   </div>

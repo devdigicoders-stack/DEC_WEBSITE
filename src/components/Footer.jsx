@@ -241,7 +241,7 @@ function Footer() {
               <div>
                 <strong className="text-white block font-semibold">🇶🇦 Qatar Headquarters</strong>
                 <p className="text-[#F5F0E7]/70 text-xs mt-0.5">
-                  Office 704, Manarat Lusail Tower, Lusail City, Qatar
+                  Office 704, Manarat Lusail Tower, Qatar
                 </p>
                 <div className="mt-1 space-y-0.5 text-xs">
                   <p><span className="text-slate-400">Tel:</span> <a href="tel:+97444554383" className="hover:text-[#B08D57] text-[#F5F0E7]">+974 4455 4383</a></p>
@@ -253,7 +253,7 @@ function Footer() {
               <div>
                 <strong className="text-white block font-semibold">🇪🇬 Egypt Technical Office</strong>
                 <p className="text-[#F5F0E7]/70 text-xs mt-0.5">
-                  Flat 32, 3rd Floor, Bldg 20, Ahmed Elzaiat St., Dokki, Giza
+                  Flat 32, 3rd floor, Bldg 20, Ahmed Elzaiat St., Dokki, Giza
                 </p>
                 <p className="text-xs mt-1">
                   <span className="text-slate-400">Tel:</span> <a href="tel:+201101083005" className="hover:text-[#B08D57] text-[#F5F0E7]">+20 110 108 3005</a>

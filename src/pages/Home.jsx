@@ -135,7 +135,8 @@ function Home() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/gemini_generated_video_8afc7a4e.mp4" type="video/mp4" />
+          <source src="/gemini_generated_video_8afc7a4e-clipwipe-4K (1).mp4" type="video/mp4" />
+          <source src="/gemini_generated_video_hero_4k.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </section>
@@ -196,8 +197,8 @@ function Home() {
             <div className="lg:col-span-5 relative">
               <div className="relative rounded-3xl overflow-hidden border border-[#B08D57]/30 shadow-2xl shadow-black/80 group">
                 <img 
-                  src="/images/dec_team_delivery.jpg" 
-                  alt="DEC Multidisciplinary Engineering Team in Doha"
+                  src="/images/dec_integrated_engineering.jpg" 
+                  alt="DEC Integrated Multi-Discipline Engineering and 3D BIM Delivery"
                   className="w-full h-[360px] sm:h-[420px] lg:h-[460px] object-cover transition-transform duration-700 group-hover:scale-105" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />

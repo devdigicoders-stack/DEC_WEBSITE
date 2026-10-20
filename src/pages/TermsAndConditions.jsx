@@ -136,7 +136,7 @@ function TermsAndConditions() {
                   <span className="text-[#B08D57]">1.</span> Corporate Identification & Standing
                 </h2>
                 <p>
-                  These Terms & Conditions (&quot;Terms&quot;) govern the professional consultancy engagements, preliminary proposals, digital platforms, and engineering services rendered by <strong>Desentral Engineering Consultancy</strong> (referred to herein as &quot;DEC&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;the Consultant&quot;), a Grade A multidisciplinary engineering firm organized and registered under the laws of the State of Qatar, operating with corporate headquarters at <strong>Manarat Lusail Tower, Office 204, Lusail City, Doha, Qatar</strong>.
+                  These Terms & Conditions (&quot;Terms&quot;) govern the professional consultancy engagements, preliminary proposals, digital platforms, and engineering services rendered by <strong>Desentral Engineering Consultancy</strong> (referred to herein as &quot;DEC&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;the Consultant&quot;), a Grade A multidisciplinary engineering firm organized and registered under the laws of the State of Qatar, operating with corporate headquarters at <strong>Office 704, Manarat Lusail Tower, Qatar</strong>.
                 </p>
                 <p>
                   By engaging DEC, executing an engineering consultancy agreement, issuing a letter of intent (LOI), or accepting a fee proposal, the Client acknowledges and agrees to be contractually bound by these Terms, in conjunction with any specific Conditions of Contract agreed upon in writing.
@@ -267,7 +267,7 @@ function TermsAndConditions() {
                   </div>
                   <div className="flex items-center gap-2 text-slate-600">
                     <FiMapPin className="text-[#B08D57] shrink-0" />
-                    <span>Office 204, 2nd Floor, Manarat Lusail Tower, Lusail City, Doha, Qatar</span>
+                    <span>Office 704, Manarat Lusail Tower, Qatar</span>
                   </div>
                   <div className="flex items-center gap-2 text-slate-600">
                     <FiMail className="text-[#B08D57] shrink-0" />

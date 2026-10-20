@@ -63,7 +63,7 @@ function Contact() {
   }
 
   const qatarMapUrl = "https://www.google.com/maps?cid=6957477369137263552&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF"
-  const egyptMapUrl = "https://www.google.com/maps/search/?api=1&query=Ahmed+Elzaiat+Street+Dokki+Giza+Egypt"
+  const egyptMapUrl = "https://www.google.com/maps/search/?api=1&query=Flat+32+3rd+floor+Bldg+20+Ahmed+Elzaiat+St+Dokki+Giza"
 
   const scrollToMap = (locationKey) => {
     setActiveMap(locationKey)
@@ -293,8 +293,8 @@ function Contact() {
                   <FiMapPin className="text-[#B08D57] text-lg shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-[#151515] block">Office Address:</strong>
-                    Flat 32, 3rd Floor, Building 20,<br />
-                    Ahmed Elzaiat Street, Dokki, Giza, Egypt
+                    Flat 32, 3rd floor, Bldg 20,<br />
+                    Ahmed Elzaiat St., Dokki, Giza
                   </div>
                 </div>
 
@@ -810,7 +810,7 @@ function Contact() {
           ) : (
             <iframe
               title="DEC Egypt Technical Center - Dokki Giza"
-              src="https://maps.google.com/maps?q=Ahmed%20Elzaiat%20St%20Dokki%20Giza%20Egypt&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Building%2020%2C%20Ahmed%20Elzaiat%20St%2C%20Dokki%2C%20Giza%2C%20Egypt&t=&z=16&ie=UTF8&iwloc=&output=embed"
               className="w-full h-full border-0"
               loading="lazy"
             />
@@ -835,7 +835,7 @@ function Contact() {
             <h4 className="font-bold text-base mt-1">
               {activeMap === 'qatar' 
                 ? 'Office 704, Manarat Lusail Tower, Qatar' 
-                : 'Flat 32, 3rd Floor, Building 20, Ahmed Elzaiat St.'}
+                : 'Flat 32, 3rd floor, Bldg 20, Ahmed Elzaiat St., Dokki, Giza'}
             </h4>
             <p className="text-xs text-slate-600 mt-1">
               {activeMap === 'qatar' 
