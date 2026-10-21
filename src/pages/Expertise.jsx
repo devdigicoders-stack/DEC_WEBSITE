@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { 
   FiCheckCircle, 
   FiLayers, 
@@ -13,12 +13,26 @@ import {
 } from 'react-icons/fi'
 
 function Expertise() {
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.hash) {
+      const elementId = location.hash.replace('#', '')
+      const timer = setTimeout(() => {
+        const el = document.getElementById(elementId)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 400)
+      return () => clearTimeout(timer)
+    }
+  }, [location.hash, location.pathname])
+
   const engineeringDisciplines = [
     {
       id: 'architecture',
       icon: <FiCompass className="text-3xl text-[#B08D57]" />,
       title: 'Architectural & Space Planning',
-      arabic: 'التصميم المعماري وتخطيط المساحات',
       description: 'Comprehensive architectural concepts, schematic designs, functional space planning, luxury interior fit-outs, and construction documentation complying with QCS and international codes.',
       capabilities: [
         'Concept & Detailed Architectural Design',
@@ -31,7 +45,6 @@ function Expertise() {
       id: 'structural',
       icon: <FiLayers className="text-3xl text-[#B08D57]" />,
       title: 'Civil & Structural Engineering',
-      arabic: 'الهندسة الإنشائية والمدنية',
       description: 'Rigorous structural analysis and design for reinforced concrete (RC), post-tensioned slabs, structural steel, PEB systems, and foundation engineering optimized for GCC geotechnical conditions.',
       capabilities: [
         'Seismic, Wind & Dynamic Structural Analysis',
@@ -44,7 +57,6 @@ function Expertise() {
       id: 'mechanical',
       icon: <FiTool className="text-3xl text-[#B08D57]" />,
       title: 'Mechanical & HVAC Engineering',
-      arabic: 'الهندسة الميكانيكية وأنظمة التكييف',
       description: 'High-performance heating, ventilation, and air conditioning (HVAC) systems, chilled water plant integrations, smoke management, and building drainage engineering designed for extreme gulf climates.',
       capabilities: [
         'Central Chilled Water & VRF Air Conditioning',
@@ -57,7 +69,6 @@ function Expertise() {
       id: 'electrical',
       icon: <FiZap className="text-3xl text-[#B08D57]" />,
       title: 'Electrical & Low Voltage (ELV)',
-      arabic: 'الهندسة الكهربائية والأنظمة الذكية',
       description: 'End-to-end power generation and distribution design, substation layouts, architectural lighting design, building management systems (BMS), and comprehensive ICT/ELV infrastructure.',
       capabilities: [
         'Medium & Low Voltage Power Distribution',
@@ -70,7 +81,6 @@ function Expertise() {
       id: 'regulatory',
       icon: <FiShield className="text-3xl text-[#B08D57]" />,
       title: 'Statutory Permitting & Grade A Approvals',
-      arabic: 'اعتمادات رخصة البناء والدفاع المدني',
       description: 'Expedited statutory permits through our certified Grade A MMUP / UPDA consulting status, covering Qatar Civil Defense (QCD), Municipalities (MME), Kahramaa, Ashghal, and Building Completion Certificates (BCC).',
       capabilities: [
         'Grade A MMUP / UPDA Licensed Endorsement',
@@ -83,7 +93,6 @@ function Expertise() {
       id: 'bim',
       icon: <FiCpu className="text-3xl text-[#B08D57]" />,
       title: 'BIM & Digital Twin Delivery',
-      arabic: 'نمذجة معلومات البناء والتحول الرقمي',
       description: 'End-to-end digital engineering utilizing Autodesk Revit and Navisworks for 3D multidisciplinary coordination, automated clash detection matrix, and seamless digital handovers.',
       capabilities: [
         'LOD 200 to LOD 500 Model Development',
@@ -189,19 +198,17 @@ function Expertise() {
             {engineeringDisciplines.map((item) => (
               <div 
                 key={item.id}
-                className="bg-white rounded-3xl p-8 border border-slate-200 hover:border-[#B08D57] hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group"
+                id={item.id}
+                className="bg-white rounded-3xl p-8 border border-slate-200 hover:border-[#B08D57] hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group scroll-mt-32"
               >
                 <div>
                   <div className="w-16 h-16 rounded-2xl bg-[#B08D57]/10 flex items-center justify-center mb-6 group-hover:bg-[#B08D57]/20 transition-colors">
                     {item.icon}
                   </div>
 
-                  <h3 className="text-2xl font-bold text-[#151515] mb-1 group-hover:text-[#B08D57] transition-colors">
+                  <h3 className="text-2xl font-bold text-[#151515] mb-4 group-hover:text-[#B08D57] transition-colors">
                     {item.title}
                   </h3>
-                  <div className="text-xs text-[#B08D57] font-medium mb-4">
-                    {item.arabic}
-                  </div>
 
                   <p className="text-sm text-black/70 leading-relaxed mb-6 font-light">
                     {item.description}

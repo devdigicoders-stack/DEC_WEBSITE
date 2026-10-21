@@ -5,6 +5,11 @@
   --font-sans: 'Roboto Variable', 'Roboto', sans-serif;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body, button, input, select, textarea {
   font-family: 'Roboto Variable', 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }

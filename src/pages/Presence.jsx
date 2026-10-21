@@ -24,6 +24,7 @@ function Presence() {
       flag: '🇶🇦',
       city: 'Lusail City, Qatar',
       address: 'Office 704, Manarat Lusail Tower, Qatar',
+      mapUrl: 'https://maps.google.com/?cid=6957477369137263552',
       phone: '+974 4455 4383 / +974 3160 1117',
       email: 'info@desentralqatar.com',
       scope: 'Executive Leadership, Multi-Discipline Engineering, Authority Submissions (MMUP Grade A, QCD, Kahramaa), Site Quality Supervision',
@@ -36,6 +37,7 @@ function Presence() {
       flag: '🇪🇬',
       city: 'Dokki, Giza',
       address: 'Flat 32, 3rd floor, Bldg 20, Ahmed Elzaiat St., Dokki, Giza',
+      mapUrl: 'https://www.google.com/maps/place/Desentral+engineering+services/@30.0294102,31.2048569,883m/data=!3m2!1e3!4b1!4m6!3m5!1s0x145847000dbc6525:0x3dcc37cac37a42d4!8m2!3d30.0294102!4d31.2048569!16s%2Fg%2F11y_ppbmtj?entry=ttu',
       phone: '+20 110 108 3005',
       email: 'info@desentralegypt.com',
       scope: 'Advanced Structural RC/Steel Calculations, High-Density MEP Thermal Modeling, BIM Level 2 Digital Modeling & Federated Clash Matrix',
@@ -208,7 +210,18 @@ function Presence() {
                   <div className="space-y-3 mb-6 p-4 rounded-2xl bg-slate-50 border border-slate-100 text-xs text-slate-700">
                     <div className="flex items-start gap-2.5">
                       <FiMapPin className="text-[#B08D57] mt-0.5 shrink-0 text-sm" />
-                      <span className="leading-relaxed">{hub.address}</span>
+                      {hub.mapUrl ? (
+                        <a 
+                          href={hub.mapUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="leading-relaxed hover:text-[#B08D57] hover:underline"
+                        >
+                          {hub.address} ↗
+                        </a>
+                      ) : (
+                        <span className="leading-relaxed">{hub.address}</span>
+                      )}
                     </div>
                     <div className="flex items-center gap-2.5">
                       <FiPhone className="text-[#B08D57] shrink-0 text-sm" />

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { 
   FiMapPin, 
   FiPhone, 
@@ -24,6 +25,7 @@ import {
 } from 'react-icons/fa6'
 
 function Contact() {
+  const location = useLocation()
   const [activeMap, setActiveMap] = useState('qatar') // 'qatar' | 'egypt'
   const [formData, setFormData] = useState({
     fullName: '',
@@ -39,8 +41,27 @@ function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [toast, setToast] = useState({ show: false, title: '', message: '', type: 'success' })
 
+  // Auto-scroll to inquiry form if requested via hash
+  useEffect(() => {
+    if (location.hash === '#inquiry-form' || window.location.hash === '#inquiry-form') {
+      const timer = setTimeout(() => {
+        const el = document.getElementById('inquiry-form')
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 400)
+      return () => clearTimeout(timer)
+    }
+  }, [location.hash, location.pathname])
+
   const handleInputChange = (e) => {
     const { name, value } = e.target
+    if (name === 'phone') {
+      // Allow only numbers, plus sign (+), spaces, and dashes
+      const numericValue = value.replace(/[^0-9+\s\-()]/g, '')
+      setFormData(prev => ({ ...prev, [name]: numericValue }))
+      return
+    }
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
@@ -63,7 +84,7 @@ function Contact() {
   }
 
   const qatarMapUrl = "https://www.google.com/maps?cid=6957477369137263552&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF"
-  const egyptMapUrl = "https://www.google.com/maps/search/?api=1&query=Flat+32+3rd+floor+Bldg+20+Ahmed+Elzaiat+St+Dokki+Giza"
+  const egyptMapUrl = "https://www.google.com/maps/place/Desentral+engineering+services/@30.0294102,31.2048569,883m/data=!3m2!1e3!4b1!4m6!3m5!1s0x145847000dbc6525:0x3dcc37cac37a42d4!8m2!3d30.0294102!4d31.2048569!16s%2Fg%2F11y_ppbmtj?entry=ttu"
 
   const scrollToMap = (locationKey) => {
     setActiveMap(locationKey)
@@ -123,7 +144,7 @@ function Contact() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 xl:px-20 pt-24 pb-12 text-center text-[#F5F0E7]">
+        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 xl:px-20 pt-36 sm:pt-44 lg:pt-48 pb-16 sm:pb-20 text-center text-[#F5F0E7]">
           {/* Top Pill Badge */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-6 shadow-xl shadow-black/50">
             <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />
@@ -134,9 +155,9 @@ function Contact() {
 
           {/* Main Hero Headings */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.1] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
-            Let’s Connect
+            Let’s Connect!
           </h1>
-          <p className="mt-4 text-xl sm:text-2xl font-semibold text-[#B08D57] tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+          <p className="mt-4 text-xl sm:text-2xl font-semibold text-white tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
             Engineering Starts With A Conversation
           </p>
           <p className="mt-4 text-base sm:text-lg text-[#F5F0E7] max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] font-medium">
@@ -145,20 +166,12 @@ function Contact() {
 
           {/* Quick Hub Badges */}
           <div className="mt-8 flex flex-wrap justify-center items-center gap-3 text-xs sm:text-sm">
-            <span className="px-3.5 py-1.5 rounded-md bg-white/10 backdrop-blur-sm border border-white/15 text-white/90">
+            <span className="px-4 py-2 rounded-lg bg-black/40 backdrop-blur-md border border-white/20 text-white/95 shadow-md">
               🇶🇦 <strong>Qatar HQ:</strong> Manarat Lusail Tower
             </span>
-            <span className="px-3.5 py-1.5 rounded-md bg-white/10 backdrop-blur-sm border border-white/15 text-white/90">
+            <span className="px-4 py-2 rounded-lg bg-black/40 backdrop-blur-md border border-white/20 text-white/95 shadow-md">
               🇪🇬 <strong>Egypt Center:</strong> Dokki, Giza
             </span>
-            <a 
-              href="http://www.desentralqatar.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-3.5 py-1.5 rounded-md bg-[#B08D57]/20 hover:bg-[#B08D57]/40 backdrop-blur-sm border border-[#B08D57]/50 text-[#F5F0E7] flex items-center gap-1.5 transition-colors"
-            >
-              <FiGlobe className="text-[#B08D57]" /> www.desentralqatar.com <FiArrowUpRight className="text-xs" />
-            </a>
           </div>
         </div>
       </section>
@@ -430,15 +443,16 @@ function Contact() {
               </div>
             </div>
 
-            <div className="mt-8 pt-5 border-t border-slate-100 flex items-center justify-between">
-              <span className="text-xs text-slate-500 flex items-center gap-1.5">
+            <div className="mt-8 pt-5 border-t border-slate-100 flex items-center justify-between gap-2">
+              <span className="text-xs text-slate-500 flex items-center gap-1.5 shrink-0">
                 <FiClock className="text-[#B08D57]" /> Response &lt; 15 mins
               </span>
               <a 
                 href="#inquiry-form"
-                className="text-xs font-semibold text-[#B08D57] hover:underline flex items-center gap-1"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-[#B08D57] hover:text-[#151515] font-bold text-xs tracking-wider uppercase transition-all duration-300 shadow-md hover:scale-105 border border-[#B08D57]/30"
               >
-                Inquiry Form <FiArrowUpRight />
+                <span>Inquiry Form</span>
+                <FiArrowUpRight className="text-sm" />
               </a>
             </div>
           </div>
@@ -657,6 +671,8 @@ function Contact() {
                         onChange={handleInputChange}
                         required
                         placeholder="+974 XXXX XXXX"
+                        inputMode="tel"
+                        pattern="[0-9+\s\-()]*"
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50"
                       />
                     </div>
@@ -694,10 +710,11 @@ function Contact() {
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50"
                       >
-                        <option>Qatar (Lusail / West Bay / Doha / Other)</option>
-                        <option>Egypt (Cairo / Giza / Alexandria / Other)</option>
-                        <option>Saudi Arabia (Riyadh / Jeddah / Dammam)</option>
-                        <option>Other GCC / International</option>
+                        <option value="Qatar">Qatar</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="Saudi Arabia (KSA)">Saudi Arabia (KSA)</option>
+                        <option value="United Arab Emirates (UAE)">United Arab Emirates (UAE)</option>
+                        <option value="Other GCC / International">Other GCC / International</option>
                       </select>
                     </div>
                   </div>
@@ -708,12 +725,12 @@ function Contact() {
                     </label>
                     <textarea 
                       name="message"
-                      rows={4}
+                      rows={7}
                       value={formData.message}
                       onChange={handleInputChange}
                       required
                       placeholder="Please share details such as approximate area, building type, required services, or any specific authority permitting deadlines..."
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50 resize-y"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50 resize-y min-h-[160px]"
                     />
                   </div>
 
@@ -809,8 +826,8 @@ function Contact() {
             />
           ) : (
             <iframe
-              title="DEC Egypt Technical Center - Dokki Giza"
-              src="https://maps.google.com/maps?q=Building%2020%2C%20Ahmed%20Elzaiat%20St%2C%20Dokki%2C%20Giza%2C%20Egypt&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              title="DEC Egypt Technical Center - Desentral Engineering Services"
+              src="https://maps.google.com/maps?q=30.0294102,31.2048569&hl=en&z=17&output=embed"
               className="w-full h-full border-0"
               loading="lazy"
             />

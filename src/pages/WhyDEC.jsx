@@ -168,18 +168,18 @@ function WhyDEC() {
       {/* ============================================================ */}
       {/* 1. HERO SECTION (100VH IMMERSIVE STRATEGIC ADVANTAGE)        */}
       {/* ============================================================ */}
-      <section className="relative w-full h-screen min-h-[100vh] flex items-center justify-center overflow-hidden bg-[#151515]">
-        {/* Background Image - Full Natural Brightness Without Dark Overlay */}
+      <section className="relative w-full min-h-[640px] lg:h-screen lg:min-h-[100vh] flex items-center justify-center overflow-hidden bg-[#151515]">
+        {/* Background Image - Full Natural Brightness */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <img 
             src="/images/why_dec_hero.jpg" 
-            alt="DEC Executive Boardroom & Lusail Skyline Strategic Headquarters" 
+            alt="DEC Grade A Engineering Headquarters Lusail Landmark" 
             className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
           />
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 xl:px-20 pt-24 pb-12 text-center text-[#F5F0E7]">
+        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 xl:px-20 pt-36 sm:pt-44 lg:pt-48 pb-16 sm:pb-20 text-center text-[#F5F0E7]">
           {/* Pill Badge */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-6 shadow-xl shadow-black/50">
             <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />

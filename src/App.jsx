@@ -43,12 +43,12 @@ function AppLayout() {
   }, [location.pathname])
 
   return (
-    <div className="min-h-screen bg-[#151515] text-[#F5F0E7] flex flex-col font-sans selection:bg-[#B08D57] selection:text-[#151515] relative">
+    <div className="min-h-screen bg-[#151515] text-[#F5F0E7] flex flex-col font-sans selection:bg-[#B08D57] selection:text-[#151515] relative overflow-x-hidden">
       {/* Route Transition Logo Loader */}
       <PageLoader isLoading={pageLoading} />
 
       <Navbar />
-      <main className={`flex-1 ${isFullHero ? 'pt-0' : 'pt-24'} ${pageLoading ? 'opacity-0 pointer-events-none' : 'opacity-100 transition-opacity duration-300 ease-out'}`}>
+      <main className={`flex-1 ${isFullHero ? 'pt-0' : 'pt-24 sm:pt-28'} ${pageLoading ? 'opacity-0 pointer-events-none' : 'opacity-100 transition-opacity duration-300 ease-out'}`}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

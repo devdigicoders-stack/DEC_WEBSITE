@@ -65,7 +65,7 @@ function SectorDetail() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#151515]/90 via-[#151515]/50 to-transparent" />
 
         {/* Hero Content */}
-        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-24 max-w-[1720px] mx-auto text-[#F5F0E7]">
+        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 xl:px-20 pt-36 sm:pt-44 lg:pt-48 pb-16 sm:pb-24 max-w-[1720px] mx-auto text-[#F5F0E7]">
           
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 text-xs sm:text-sm text-white/60 mb-6 font-medium">

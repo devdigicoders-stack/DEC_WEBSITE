@@ -1,10 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { 
   FiArrowUp, 
   FiArrowUpRight, 
   FiCheckCircle, 
-  FiShield
+  FiShield,
+  FiMapPin
 } from 'react-icons/fi'
 import { 
   FaWhatsapp, 
@@ -16,6 +17,21 @@ import {
 } from 'react-icons/fa6'
 
 function Footer() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const handleRequestConsultation = (e) => {
+    e.preventDefault()
+    if (location.pathname === '/contact') {
+      const el = document.getElementById('inquiry-form')
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        return
+      }
+    }
+    navigate('/contact#inquiry-form')
+  }
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -49,17 +65,18 @@ function Footer() {
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 shrink-0">
-              <Link
-                to="/contact"
-                className="px-6 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/20 hover:scale-105 flex items-center gap-2"
+              <button
+                type="button"
+                onClick={handleRequestConsultation}
+                className="px-6 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/20 hover:scale-105 flex items-center gap-2 cursor-pointer"
               >
                 Request Consultation <FiArrowUpRight className="text-base" />
-              </Link>
+              </button>
               <a
                 href="https://wa.me/97431601117"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/15 hover:border-emerald-500 shadow-md flex items-center gap-2 hover:scale-105"
+                className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/15 hover:border-emerald-500 shadow-md flex items-center gap-2 hover:scale-105 cursor-pointer"
               >
                 <FaWhatsapp className="text-lg text-emerald-400 group-hover:text-white" /> WhatsApp Direct
               </a>
@@ -80,15 +97,15 @@ function Footer() {
               <img 
                 src="/logo.png" 
                 alt="DEC - Desentral Engineering Consultancy" 
-                className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] mx-auto lg:mx-0"
+                className="w-[190px] sm:w-[220px] lg:w-[250px] h-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] mx-auto lg:mx-0"
               />
             </Link>
 
-            <div className="space-y-1">
-              <h4 className="text-base font-bold text-white tracking-wide">
+            <div className="space-y-1 text-center lg:text-left">
+              <h4 className="text-base sm:text-lg font-bold text-white tracking-wide">
                 Desentral Engineering Consultancy (DEC)
               </h4>
-              <p className="text-xs font-semibold text-[#B08D57] tracking-wider font-serif">
+              <p className="text-base sm:text-lg font-bold text-[#B08D57] tracking-wider font-serif">
                 دسنترال للاستشارات الهندسية
               </p>
             </div>
@@ -111,10 +128,10 @@ function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Navigation & Company (2 Cols) */}
+          {/* Column 2: Navigation & All Pages (2 Cols) */}
           <div className="lg:col-span-2 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start">
             <h5 className="text-xs font-bold uppercase tracking-widest text-[#B08D57] border-b border-white/10 pb-2 w-full text-center lg:text-left">
-              Company
+              All Pages
             </h5>
             <ul className="space-y-2.5 text-xs sm:text-sm flex flex-col items-center lg:items-start w-full">
               <li>
@@ -188,42 +205,42 @@ function Footer() {
             </h5>
             <ul className="space-y-2.5 text-xs sm:text-sm flex flex-col items-center lg:items-start w-full">
               <li>
-                <Link to="/expertise" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                <Link to="/expertise#architecture" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
                   Architecture & Interior Fit-Out
                 </Link>
               </li>
               <li>
-                <Link to="/expertise" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                <Link to="/expertise#structural" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
                   Civil & Structural Engineering
                 </Link>
               </li>
               <li>
-                <Link to="/expertise" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                <Link to="/expertise#mechanical" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
                   Mechanical, HVAC & Plumbing (MEP)
                 </Link>
               </li>
               <li>
-                <Link to="/expertise" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                <Link to="/expertise#electrical" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
                   Electrical & ELV Systems
                 </Link>
               </li>
               <li>
-                <Link to="/expertise" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                <Link to="/expertise#bim" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
                   BIM Level 2 & 3D Clash Detection
                 </Link>
               </li>
               <li>
-                <Link to="/expertise" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                <Link to="/expertise#regulatory" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
                   Fire & Life Safety (QCDD Permitting)
                 </Link>
               </li>
               <li>
-                <Link to="/projects" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                <Link to="/sector/offices" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
                   Commercial Offices & Workplace
                 </Link>
               </li>
               <li>
-                <Link to="/projects" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                <Link to="/sector/retail" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
                   Luxury Retail, Hospitality & F&B
                 </Link>
               </li>
@@ -243,6 +260,14 @@ function Footer() {
                 <p className="text-[#F5F0E7]/70 text-xs mt-0.5">
                   Office 704, Manarat Lusail Tower, Qatar
                 </p>
+                <a 
+                  href="https://maps.google.com/?q=Manarat+Lusail+Tower+Qatar" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#B08D57] hover:underline mt-1"
+                >
+                  <FiMapPin className="text-xs" /> View on Google Maps <FiArrowUpRight className="text-[10px]" />
+                </a>
                 <div className="mt-1 space-y-0.5 text-xs">
                   <p><span className="text-slate-400">Tel:</span> <a href="tel:+97444554383" className="hover:text-[#B08D57] text-[#F5F0E7]">+974 4455 4383</a></p>
                   <p><span className="text-slate-400">Mob:</span> <a href="tel:+97431601117" className="hover:text-[#B08D57] text-[#F5F0E7]">+974 3160 1117</a></p>
@@ -255,6 +280,14 @@ function Footer() {
                 <p className="text-[#F5F0E7]/70 text-xs mt-0.5">
                   Flat 32, 3rd floor, Bldg 20, Ahmed Elzaiat St., Dokki, Giza
                 </p>
+                <a 
+                  href="https://www.google.com/maps/place/Desentral+engineering+services/@30.0294102,31.2048569,883m/data=!3m2!1e3!4b1!4m6!3m5!1s0x145847000dbc6525:0x3dcc37cac37a42d4!8m2!3d30.0294102!4d31.2048569!16s%2Fg%2F11y_ppbmtj?entry=ttu" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#B08D57] hover:underline mt-1"
+                >
+                  <FiMapPin className="text-xs" /> View on Google Maps <FiArrowUpRight className="text-[10px]" />
+                </a>
                 <p className="text-xs mt-1">
                   <span className="text-slate-400">Tel:</span> <a href="tel:+201101083005" className="hover:text-[#B08D57] text-[#F5F0E7]">+20 110 108 3005</a>
                 </p>

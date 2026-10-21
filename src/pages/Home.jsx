@@ -21,7 +21,6 @@ function Home() {
     {
       id: 'architecture',
       title: 'Architectural & Space Planning',
-      arabic: 'التصميم المعماري وتخطيط المساحات',
       icon: FiCompass,
       desc: 'Comprehensive architectural concepts, functional space planning, luxury interior fit-outs, and construction documentation complying with QCS and international codes.',
       capabilities: [
@@ -33,7 +32,6 @@ function Home() {
     {
       id: 'structural',
       title: 'Civil & Structural Engineering',
-      arabic: 'الهندسة الإنشائية والمدنية',
       icon: FiLayers,
       desc: 'Rigorous structural analysis and design for reinforced concrete (RC), post-tensioned slabs, structural steel, and deep foundations optimized for GCC geotechnical conditions.',
       capabilities: [
@@ -45,7 +43,6 @@ function Home() {
     {
       id: 'mechanical',
       title: 'Mechanical & HVAC Engineering',
-      arabic: 'الهندسة الميكانيكية وأنظمة التكييف',
       icon: FiTool,
       desc: 'High-performance HVAC systems, chilled water plant integrations, smoke management, and drainage engineering engineered for extreme Gulf climates.',
       capabilities: [
@@ -57,7 +54,6 @@ function Home() {
     {
       id: 'electrical',
       title: 'Electrical & Smart Low Voltage (ELV)',
-      arabic: 'الهندسة الكهربائية والأنظمة الذكية',
       icon: FiZap,
       desc: 'End-to-end power distribution design, substation layouts, architectural lighting, building management systems (BMS), and security/ICT infrastructure.',
       capabilities: [
@@ -69,7 +65,6 @@ function Home() {
     {
       id: 'regulatory',
       title: 'Statutory Permitting & Grade A Approvals',
-      arabic: 'اعتمادات رخصة البناء والدفاع المدني',
       icon: FiShield,
       desc: 'Expedited statutory permits through our certified Grade A MMUP status covering QCDD Civil Defense, MME Municipalities, Kahramaa, and BCC handovers.',
       capabilities: [
@@ -81,7 +76,6 @@ function Home() {
     {
       id: 'bim',
       title: 'BIM Level 2 & Clash-Free Delivery',
-      arabic: 'نمذجة معلومات البناء والتحول الرقمي',
       icon: FiCpu,
       desc: 'End-to-end digital engineering utilizing Autodesk Revit and Navisworks for 3D multidisciplinary coordination, eliminating on-site clashes.',
       capabilities: [
@@ -318,7 +312,7 @@ function Home() {
                 DEC • Grade A Multidisciplinary Consultancy
               </span>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#151515] leading-[1.15]">
-                Grade A multidisciplinary engineering consultancy and designers
+                Grade A Multidisciplinary Engineering Consultancy
               </h2>
             </div>
 
@@ -390,14 +384,11 @@ function Home() {
                   <div className="absolute top-0 right-0 w-24 h-24 bg-[#B08D57]/5 rounded-bl-full pointer-events-none group-hover:scale-125 transition-transform" />
 
                   <div>
-                    {/* Icon + Arabic */}
+                    {/* Icon */}
                     <div className="flex items-center justify-between mb-5">
                       <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-[#B08D57] flex items-center justify-center text-xl group-hover:bg-[#B08D57] group-hover:text-[#151515] transition-all">
                         <Icon />
                       </div>
-                      <span className="text-[11px] font-semibold text-[#B08D57]/70 font-serif" dir="rtl">
-                        {item.arabic}
-                      </span>
                     </div>
 
                     <h3 className="text-xl font-bold text-white group-hover:text-[#B08D57] transition-colors mb-3 leading-snug">

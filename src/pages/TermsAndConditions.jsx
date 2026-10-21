@@ -43,7 +43,7 @@ function TermsAndConditions() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 xl:px-20 pt-24 pb-12 text-center text-[#F5F0E7]">
+        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 xl:px-20 pt-36 sm:pt-44 lg:pt-48 pb-16 sm:pb-20 text-center text-[#F5F0E7]">
           {/* Eyebrow Badge */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-6 shadow-xl shadow-black/50">
             <FaScaleBalanced className="text-[#B08D57] text-xs" />
