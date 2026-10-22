@@ -134,13 +134,15 @@ function Contact() {
       {/* 1. HERO SECTION (Custom Generated Architectural Imagery)    */}
       {/* ============================================================ */}
       <section className="relative w-full h-screen min-h-[100vh] flex items-center justify-center overflow-hidden bg-[#151515]">
-        {/* Background Image - Clean, Natural Colors without Color Overlay */}
+        {/* Background Image - Reduced Opacity for Text Readability */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <img 
             src="/images/contact_hero.jpg" 
             alt="DEC Manarat Lusail Tower Headquarters" 
-            className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
+            className="w-full h-full object-cover object-center scale-100 opacity-55 transition-transform duration-1000 ease-out"
           />
+          {/* Contrast Overlay for Crystal Clear Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/70 pointer-events-none" />
         </div>
 
         {/* Hero Content */}

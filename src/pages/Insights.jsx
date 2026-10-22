@@ -128,13 +128,15 @@ function Insights() {
       {/* 1. HERO SECTION (100VH IMMERSIVE ARCHITECTURAL KNOWLEDGE HUB) */}
       {/* ============================================================ */}
       <section className="relative w-full h-screen min-h-[100vh] flex items-center justify-center overflow-hidden bg-[#151515]">
-        {/* Natural Background Image - No Heavy Dark Overlay */}
+        {/* Background Image - Reduced Opacity for Text Readability */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <img 
             src="/images/insights_hero.jpg" 
             alt="DEC Engineering Knowledge & BIM Studio" 
-            className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
+            className="w-full h-full object-cover object-center scale-100 opacity-55 transition-transform duration-1000 ease-out"
           />
+          {/* Contrast Overlay for Crystal Clear Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/70 pointer-events-none" />
         </div>
 
         {/* Hero Content */}

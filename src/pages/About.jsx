@@ -181,15 +181,15 @@ function About() {
       {/* 1. HERO SECTION (IMMERSIVE ARCHITECTURAL LANDMARK)          */}
       {/* ============================================================ */}
       <section className="relative w-full min-h-[580px] sm:min-h-[640px] lg:h-screen lg:min-h-[100vh] flex items-center justify-center overflow-hidden bg-[#151515]">
-        {/* Background Image - Clean, Natural Colors */}
+        {/* Background Image - Clean with Controlled Opacity for Text Readability */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <img 
             src="/images/about_hero.jpg" 
             alt="DEC Lusail Landmark Architecture" 
-            className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
+            className="w-full h-full object-cover object-center scale-100 opacity-55 transition-transform duration-1000 ease-out"
           />
-          {/* Subtle Contrast Overlay for Clean Mobile Readability */}
-          <div className="absolute inset-0 bg-black/45 sm:bg-black/25 pointer-events-none" />
+          {/* Contrast Overlay for Crystal Clear Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/70 pointer-events-none" />
         </div>
 
         {/* Hero Content */}

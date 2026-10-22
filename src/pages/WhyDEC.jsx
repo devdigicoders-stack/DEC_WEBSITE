@@ -169,13 +169,15 @@ function WhyDEC() {
       {/* 1. HERO SECTION (100VH IMMERSIVE STRATEGIC ADVANTAGE)        */}
       {/* ============================================================ */}
       <section className="relative w-full min-h-[640px] lg:h-screen lg:min-h-[100vh] flex items-center justify-center overflow-hidden bg-[#151515]">
-        {/* Background Image - Full Natural Brightness */}
+        {/* Background Image - Balanced Opacity for Image Richness & Text Readability */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <img 
             src="/images/why_dec_hero.jpg" 
             alt="DEC Grade A Engineering Headquarters Lusail Landmark" 
-            className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
+            className="w-full h-full object-cover object-center scale-100 opacity-55 transition-transform duration-1000 ease-out"
           />
+          {/* Contrast Overlay for Crystal Clear Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/70 pointer-events-none" />
         </div>
 
         {/* Hero Content */}
