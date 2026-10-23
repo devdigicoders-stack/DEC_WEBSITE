@@ -4,7 +4,7 @@ export const sectorsData = {
     title: 'Corporate & Workplaces',
     badge: 'Offices & Commercial Headquarters',
     tagline: 'High-performance workspace engineering, executive fit-outs, and commercial headquarters across Qatar and the GCC.',
-    image: '/images/sectors/offices.jpg',
+    image: '/image copy 13.png',
     stats: [
       { label: 'Completed Engagements', value: '45+' },
       { label: 'Key Destinations', value: 'Lusail, Msheireb, Al Dafna' },
@@ -166,7 +166,7 @@ export const sectorsData = {
     title: 'Hotels & Hospitality',
     badge: 'Luxury Resorts, Hotels & Tourism Destinations',
     tagline: 'Comprehensive architectural, structural, and building services engineering for landmark hospitality projects.',
-    image: '/images/sectors/hospitality.jpg',
+    image: '/image copy 6.png',
     stats: [
       { label: 'Hospitality Engagements', value: '25+' },
       { label: 'Coverage', value: 'Qatar & Egypt (Marasi)' },
@@ -339,7 +339,7 @@ export const sectorsData = {
     title: 'Industrial & Manufacturing',
     badge: 'Factories, Workshops, Logistics & Healthcare Facilities',
     tagline: 'Heavy industrial engineering, petrochemical workshops, manufacturing plants, and pharmaceutical production facilities.',
-    image: '/images/sectors/industrial.jpg',
+    image: '/image copy 7.png',
     stats: [
       { label: 'Industrial Facilities', value: '30+' },
       { label: 'Key Zones', value: 'Manateq, Birkat Al Awamer, Industrial Area' },
@@ -405,6 +405,59 @@ export const sectorsData = {
         description: 'Pharmaceutical production and packaging facility meeting cleanroom GMP (Good Manufacturing Practice) standards.',
       },
     ],
-    clients: ['DOPET (Doha Petroleum)', 'Oxyflex', 'Manateq', 'Benha University', 'Egyptian Drug Authority', 'Nerhadou Pharma'],
+    clients: ['DOPET (Doha Petroleum)', 'Oxyflex', 'Manateq', 'Advance', 'Edition Motors'],
+  },
+  medical: {
+    slug: 'medical',
+    title: 'Medical & Healthcare',
+    badge: 'Pharmaceutical & Healthcare Facilities',
+    tagline: 'Specialized MEP engineering, cleanrooms, medical gas networks, and clinical infrastructure across Egypt and the MENA region.',
+    image: '/image copy 7.png',
+    stats: [
+      { label: 'Key Engagements', value: '4 Major Hubs' },
+      { label: 'Specializations', value: 'Medical Gas, Cleanroom MEP' },
+      { label: 'Standards', value: 'WHO & GMP Compliant' },
+      { label: 'Locations', value: 'Egypt & Regional' },
+    ],
+    overview: 'DEC provides specialized engineering services for healthcare institutions, university hospital wings, and pharmaceutical manufacturers. Our expertise covers critical hospital services, sterile laminar airflow, medical gas distributions, and full statutory authority approvals.',
+    scopeHighlights: [
+      'Medical Gas Piping (O2, Vacuum, N2O, Medical Air)',
+      'Cleanroom HVAC & Operating Theatre Laminar Airflow',
+      'Pharmaceutical GMP Compliance Engineering',
+      'Hospital Redundant Power & Isolated Electrical Systems',
+      'Authority Permitting & Technical Supervisions',
+    ],
+    projects: [
+      {
+        id: '73',
+        name: 'Surgery Building, Benha University',
+        location: 'Benha University, Egypt',
+        scope: 'Full MEP Design',
+        description: 'Multi-floor university hospital surgical wing engineered with medical gas piping, laminar airflow operating theatres, and backup power.',
+      },
+      {
+        id: '74',
+        name: 'Egyptian Drug Authority',
+        location: 'Giza, Egypt',
+        scope: 'Full MEP Shop Drawings',
+        description: 'National pharmaceutical testing and regulatory administration facility with precision laboratory MEP infrastructure.',
+      },
+      {
+        id: '75',
+        name: 'Nerhadou Pharma',
+        location: 'Giza, Egypt',
+        scope: 'Full MEP Shop Drawings',
+        description: 'Pharmaceutical production and packaging facility meeting cleanroom GMP (Good Manufacturing Practice) standards.',
+      },
+      {
+        id: '76',
+        name: 'Polygon Pharma',
+        location: 'Giza, Egypt',
+        scope: 'Full MEP Shop Drawings',
+        description: 'State-of-the-art pharmaceutical research and formulation laboratories with specialized ventilation and chemical exhaust.',
+      },
+    ],
+    clients: ['Benha University', 'Egyptian Drug Authority', 'Nerhadou Pharma', 'Polygon Pharma'],
   },
 }
+

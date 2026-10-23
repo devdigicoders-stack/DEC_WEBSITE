@@ -23,7 +23,7 @@ function AppLayout() {
   const location = useLocation()
   const [prevPath, setPrevPath] = useState(location.pathname)
   const [pageLoading, setPageLoading] = useState(false)
-  const isFullHero = location.pathname === '/' || location.pathname === '/contact' || location.pathname === '/about' || location.pathname === '/team' || location.pathname === '/our-team' || location.pathname === '/careers' || location.pathname === '/expertise' || location.pathname === '/projects' || location.pathname === '/why-dec' || location.pathname === '/presence' || location.pathname === '/insights' || location.pathname === '/privacy-policy' || location.pathname === '/privacy' || location.pathname === '/terms-and-conditions' || location.pathname === '/terms' || location.pathname.startsWith('/sector/')
+  const isFullHero = location.pathname === '/' || location.pathname === '/contact' || location.pathname === '/about' || location.pathname === '/team' || location.pathname === '/our-team' || location.pathname === '/careers' || location.pathname === '/expertise' || location.pathname === '/projects' || location.pathname === '/why-dec' || location.pathname === '/why-deca' || location.pathname === '/presence' || location.pathname === '/insights' || location.pathname === '/privacy-policy' || location.pathname === '/privacy' || location.pathname === '/terms-and-conditions' || location.pathname === '/terms' || location.pathname.startsWith('/sector/')
 
   // Synchronously activate loader on route change BEFORE DOM renders the new page
   if (location.pathname !== prevPath) {
@@ -37,7 +37,7 @@ function AppLayout() {
 
     const timer = setTimeout(() => {
       setPageLoading(false)
-    }, 1100)
+    }, 2000)
 
     return () => clearTimeout(timer)
   }, [location.pathname])
@@ -58,6 +58,7 @@ function AppLayout() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/presence" element={<Presence />} />
           <Route path="/why-dec" element={<WhyDEC />} />
+          <Route path="/why-deca" element={<WhyDEC />} />
           <Route path="/insights" element={<Insights />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />

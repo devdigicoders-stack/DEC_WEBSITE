@@ -4,11 +4,8 @@ import {
   FiMapPin, 
   FiPhone, 
   FiMail, 
-  FiGlobe, 
   FiCheckCircle, 
-  FiArrowRight, 
   FiLayers, 
-  FiCompass, 
   FiUsers, 
   FiShield 
 } from 'react-icons/fi'
@@ -131,7 +128,7 @@ function Presence() {
       {/* ============================================================ */}
       <section className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-[#151515]">
         <img 
-          src="/images/presence_hero.jpg" 
+          src="/image copy 8.png" 
           alt="DEC Regional Presence Qatar Egypt KSA" 
           className="w-full h-full object-cover object-center scale-100"
         />

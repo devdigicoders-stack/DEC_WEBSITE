@@ -119,9 +119,9 @@ function OurTeam() {
       {/* ============================================================ */}
       <section className="relative w-full h-[65vh] sm:h-[75vh] lg:h-screen overflow-hidden bg-[#151515] flex items-center justify-center">
         <img 
-          src="/images/team_hero.jpg" 
+          src="/image copy 5.png" 
           alt="DEC Engineering Leadership Team in Lusail" 
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-center transition-transform duration-1000 ease-out"
         />
       </section>
 

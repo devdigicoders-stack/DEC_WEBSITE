@@ -28,7 +28,7 @@ function PageLoader({ isLoading }) {
 
       // Smooth progress counter simulation from 0 to 100%
       const startTime = Date.now()
-      const duration = 800 // fills smoothly in 800ms
+      const duration = 1600 // fills smoothly in 1.6s of the 2s loader window
 
       progressTimer = setInterval(() => {
         const elapsed = Date.now() - startTime

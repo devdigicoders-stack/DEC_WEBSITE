@@ -15,7 +15,7 @@ const sectors = [
     id: 'offices',
     title: 'Corporate & Workplaces',
     subtitle: 'Amazon, Boeing, BlackRock, Snoonu HQ',
-    image: '/images/sectors/offices.jpg',
+    image: '/image copy 13.png',
     icon: FaRegBuilding,
     link: '/sector/offices',
   },
@@ -31,7 +31,7 @@ const sectors = [
     id: 'hospitality',
     title: 'Hotels & Hospitality',
     subtitle: 'Retaj Hotel, Sealine Center, Marasi Resort',
-    image: '/images/sectors/hospitality.jpg',
+    image: '/image copy 6.png',
     icon: FaHotel,
     link: '/sector/hospitality',
   },
@@ -55,7 +55,7 @@ const sectors = [
     id: 'industrial',
     title: 'Industrial & Manufacturing',
     subtitle: 'DOPET Factories, Workshops & Pharma Plants',
-    image: '/images/sectors/industrial.jpg',
+    image: '/image copy 7.png',
     icon: FaIndustry,
     link: '/sector/industrial',
   },
@@ -81,8 +81,14 @@ function WhatWeDo() {
         {/* Header Bar with Title & Carousel Arrows */}
         <div className="flex items-center justify-between mb-7 sm:mb-9">
           <div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#151515] border border-[#B08D57] shadow-sm mb-3">
+              <span className="w-2 h-2 rounded-full bg-[#B08D57]" />
+              <span className="text-xs uppercase tracking-widest font-semibold text-[#B08D57]">
+                CORE MARKET SECTORS
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#151515]">
-              What we do
+              What We Do
             </h2>
           </div>
 

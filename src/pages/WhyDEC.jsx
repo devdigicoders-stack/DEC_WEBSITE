@@ -5,18 +5,9 @@ import {
   FiCheckCircle, 
   FiShield, 
   FiLayers, 
-  FiCpu, 
-  FiTrendingUp, 
-  FiClock, 
-  FiAward, 
-  FiTarget,
   FiX
 } from 'react-icons/fi'
 import { 
-  FaBuilding, 
-  FaShieldHalved, 
-  FaHandshake, 
-  FaDiagramProject, 
   FaFileCircleCheck, 
   FaUsersGear 
 } from 'react-icons/fa6'
@@ -172,7 +163,7 @@ function WhyDEC() {
         {/* Background Image - Balanced Opacity for Image Richness & Text Readability */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <img 
-            src="/images/why_dec_hero.jpg" 
+            src="/image.png" 
             alt="DEC Grade A Engineering Headquarters Lusail Landmark" 
             className="w-full h-full object-cover object-center scale-100 opacity-55 transition-transform duration-1000 ease-out"
           />
@@ -512,35 +503,6 @@ function WhyDEC() {
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* 5. VALIDATED CLIENT ROSTER & TRACK RECORD STRIP             */}
-      {/* ============================================================ */}
-      <section className="py-20 px-6 sm:px-10 lg:px-14 xl:px-20 bg-[#151515] border-b border-white/10 text-white">
-        <div className="w-full mx-auto text-center">
-          
-          <span className="text-xs uppercase font-bold tracking-widest text-[#B08D57] bg-[#B08D57]/10 px-3 py-1 rounded-full">
-            Institutional Trust
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-3 mb-4">
-            Trusted by Industry Pioneers Across the GCC
-          </h2>
-          <p className="text-sm text-[#F5F0E7]/70 max-w-2xl mx-auto mb-10 font-light">
-            From multinational corporate headquarters and high-luxury retail flagships to industrial infrastructure and hospitality landmarks.
-          </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm font-bold tracking-wider">
-            {['AMAZON', 'BOEING', 'BLACKROCK', 'DIOR', 'ARMANI CASA', 'SNOONU', 'PICKL', "L'ETO CAFFE"].map((client) => (
-              <span 
-                key={client}
-                className="px-5 py-3 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#B08D57] text-[#F5F0E7]/80 hover:text-white transition-all duration-300"
-              >
-                {client}
-              </span>
-            ))}
-          </div>
-
-        </div>
-      </section>
 
     </div>
   )

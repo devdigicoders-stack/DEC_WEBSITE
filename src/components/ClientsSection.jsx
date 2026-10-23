@@ -32,22 +32,22 @@ export default function ClientsSection() {
           
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />
-            08 · Proven Track Record & Client Network
+            Proven Track Record & Client Network
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15]">
-            Trusted by Over <span className="text-[#B08D57]">90+ Regional Giants</span> & Global Leaders
+            Trusted by Over <span className="text-[#B08D57]">100+ Regional & Global Leaders</span>
           </h2>
 
           <p className="text-sm sm:text-base text-[#F5F0E7]/75 font-light leading-relaxed max-w-3xl mx-auto">
-            From Fortune 500 corporations, tech innovators, and royal/semi-government developers to premier luxury retailers across Qatar, Saudi Arabia, and Egypt — DEC delivers world-class engineering, design, and Grade A statutory clearances.
+            From Fortune 500 corporations, tech innovators, and royal/semi-government developers to premier luxury retailers across Qatar, Egypt, and Saudia Arabia — DEC delivers world-class engineering, design, and Grade A statutory clearances.
           </p>
 
           {/* Quick Stats Strip */}
           <div className="pt-6 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm text-[#F5F0E7]/90 font-medium">
             <div className="flex items-center gap-2">
               <FiCheckCircle className="text-[#B08D57] text-base" />
-              <span><strong>90+</strong> Verified Client Engagements</span>
+              <span><strong>100+</strong> Verified Client Engagements</span>
             </div>
             <div className="flex items-center gap-2">
               <FiCheckCircle className="text-[#B08D57] text-base" />

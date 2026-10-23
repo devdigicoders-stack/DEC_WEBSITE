@@ -2,26 +2,25 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { 
   FiArrowRight, 
-  FiArrowUpRight, 
-  FiCheckCircle, 
   FiCompass, 
   FiLayers, 
   FiTool, 
   FiZap, 
   FiShield, 
-  FiCpu, 
-  FiUsers, 
-  FiMapPin 
+  FiCpu 
 } from 'react-icons/fi'
 import WhatWeDo from '../components/WhatWeDo.jsx'
-import ClientsSection from '../components/ClientsSection.jsx'
+import ClientPartnersSection from '../components/ClientPartnersSection.jsx'
+import OurCertificatesSection from '../components/OurCertificatesSection.jsx'
+import { FaCompassDrafting } from 'react-icons/fa6'
 
 function Home() {
   const disciplines = [
     {
       id: 'architecture',
       title: 'Architectural & Space Planning',
-      icon: FiCompass,
+      arabic: 'التصميم المعماري وتخطيط المساحات',
+      icon: FaCompassDrafting,
       desc: 'Comprehensive architectural concepts, functional space planning, luxury interior fit-outs, and construction documentation complying with QCS and international codes.',
       capabilities: [
         'Corporate & Luxury Space Planning',
@@ -32,6 +31,7 @@ function Home() {
     {
       id: 'structural',
       title: 'Civil & Structural Engineering',
+      arabic: 'الهندسة الإنشائية والمدنية',
       icon: FiLayers,
       desc: 'Rigorous structural analysis and design for reinforced concrete (RC), post-tensioned slabs, structural steel, and deep foundations optimized for GCC geotechnical conditions.',
       capabilities: [
@@ -43,6 +43,7 @@ function Home() {
     {
       id: 'mechanical',
       title: 'Mechanical & HVAC Engineering',
+      arabic: 'الهندسة الميكانيكية وأنظمة التكييف',
       icon: FiTool,
       desc: 'High-performance HVAC systems, chilled water plant integrations, smoke management, and drainage engineering engineered for extreme Gulf climates.',
       capabilities: [
@@ -54,6 +55,7 @@ function Home() {
     {
       id: 'electrical',
       title: 'Electrical & Smart Low Voltage (ELV)',
+      arabic: 'الهندسة الكهربائية والأنظمة الذكية',
       icon: FiZap,
       desc: 'End-to-end power distribution design, substation layouts, architectural lighting, building management systems (BMS), and security/ICT infrastructure.',
       capabilities: [
@@ -64,7 +66,8 @@ function Home() {
     },
     {
       id: 'regulatory',
-      title: 'Statutory Permitting & Grade A Approvals',
+      title: 'Statutory Permitting Approvals',
+      arabic: 'اعتمادات التراخيص والموافقات الرسمية',
       icon: FiShield,
       desc: 'Expedited statutory permits through our certified Grade A MMUP status covering QCDD Civil Defense, MME Municipalities, Kahramaa, and BCC handovers.',
       capabilities: [
@@ -76,6 +79,7 @@ function Home() {
     {
       id: 'bim',
       title: 'BIM Level 2 & Clash-Free Delivery',
+      arabic: 'نمذجة معلومات البناء والتحول الرقمي',
       icon: FiCpu,
       desc: 'End-to-end digital engineering utilizing Autodesk Revit and Navisworks for 3D multidisciplinary coordination, eliminating on-site clashes.',
       capabilities: [
@@ -129,8 +133,7 @@ function Home() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/gemini_generated_video_8afc7a4e-clipwipe-4K (1).mp4" type="video/mp4" />
-          <source src="/gemini_generated_video_hero_4k.mp4" type="video/mp4" />
+          <source src="/videos/home.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </section>
@@ -263,7 +266,7 @@ function Home() {
                   Locations Across Qatar
                 </div>
                 <p className="text-[11px] text-[#F5F0E7]/60 mt-1">
-                  Lusail, West Bay, Msheireb, Rayyan & coastal hubs.
+                  Lusail, Msheireb, West Bay, The Pearl, Gewan Island, Major Hubs & Industrial Areas.
                 </p>
               </div>
 
@@ -308,9 +311,12 @@ function Home() {
             
             {/* Big Headline from DEC PDF */}
             <div className="max-w-5xl">
-              <span className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-[#B08D57] block mb-4">
-                DEC • Grade A Multidisciplinary Consultancy
-              </span>
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#151515] border border-[#B08D57] shadow-sm mb-5">
+                <span className="w-2 h-2 rounded-full bg-[#B08D57]" />
+                <span className="text-xs sm:text-sm uppercase tracking-widest font-semibold text-[#B08D57]">
+                  DESENTRAL ENGINEERING CONSULTANCY | GRADE A
+                </span>
+              </div>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#151515] leading-[1.15]">
                 Grade A Multidisciplinary Engineering Consultancy
               </h2>
@@ -379,48 +385,29 @@ function Home() {
               return (
                 <div
                   key={item.id}
-                  className="p-8 rounded-3xl bg-[#161616] border border-white/10 hover:border-[#B08D57]/60 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+                  className="p-7 sm:p-8 rounded-3xl bg-[#161616] border border-white/10 hover:border-[#B08D57]/60 hover:shadow-2xl transition-all duration-300 flex flex-col group relative overflow-hidden"
                 >
                   <div className="absolute top-0 right-0 w-24 h-24 bg-[#B08D57]/5 rounded-bl-full pointer-events-none group-hover:scale-125 transition-transform" />
 
-                  <div>
-                    {/* Icon */}
-                    <div className="flex items-center justify-between mb-5">
-                      <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-[#B08D57] flex items-center justify-center text-xl group-hover:bg-[#B08D57] group-hover:text-[#151515] transition-all">
-                        <Icon />
-                      </div>
+                  {/* Icon + Arabic Wording (Bigger and more readable) */}
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-[#B08D57] flex items-center justify-center text-xl group-hover:bg-[#B08D57] group-hover:text-[#151515] transition-all">
+                      <Icon />
                     </div>
-
-                    <h3 className="text-xl font-bold text-white group-hover:text-[#B08D57] transition-colors mb-3 leading-snug">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-[#F5F0E7]/75 leading-relaxed font-light mb-6">
-                      {item.desc}
-                    </p>
-
-                    {/* Capabilities list */}
-                    <div className="space-y-2 pt-4 border-t border-white/10">
-                      {item.capabilities.map((cap, idx) => (
-                        <div key={idx} className="flex items-start gap-2 text-xs text-[#F5F0E7]/90 font-medium">
-                          <FiCheckCircle className="text-emerald-400 text-sm shrink-0 mt-0.5" />
-                          <span>{cap}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs">
-                    <span className="text-[#B08D57] font-semibold uppercase tracking-wider text-[11px]">
-                      Grade A Verified
+                    <span className="text-sm sm:text-base font-semibold text-[#B08D57] tracking-normal" dir="rtl">
+                      {item.arabic}
                     </span>
-                    <Link
-                      to="/expertise"
-                      className="inline-flex items-center gap-1.5 font-bold text-white group-hover:text-[#B08D57] transition-colors"
-                    >
-                      Details <FiArrowUpRight />
-                    </Link>
                   </div>
+
+                  {/* General Header */}
+                  <h3 className="text-xl font-bold text-white group-hover:text-[#B08D57] transition-colors mb-3 leading-snug">
+                    {item.title}
+                  </h3>
+
+                  {/* Explanatory Text */}
+                  <p className="text-sm text-[#F5F0E7]/75 leading-relaxed font-light">
+                    {item.desc}
+                  </p>
                 </div>
               )
             })}
@@ -438,9 +425,7 @@ function Home() {
           {/* Section Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
             <div className="max-w-3xl space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B08D57]/15 border border-[#B08D57]/40 text-[#B08D57] text-xs font-semibold uppercase tracking-wider">
-                <FiUsers className="text-sm" /> 07 · Leadership & In-House Talent
-              </div>
+
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight leading-[1.15]">
                 The Leadership Driving DEC’s Excellence
               </h2>
@@ -481,12 +466,6 @@ function Home() {
                     {partner.focus}
                   </p>
                 </div>
-
-                <div className="pt-4 mt-5 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
-                  <span className="flex items-center gap-1">
-                    <FiMapPin className="text-[#B08D57]" /> {partner.location}
-                  </span>
-                </div>
               </div>
             ))}
           </div>
@@ -495,9 +474,14 @@ function Home() {
       </section>
 
       {/* ============================================================ */}
-      {/* 08 · CLIENTS & TRUSTED PARTNERS (90+ CLIENT LOGOS SHOWCASE) */}
+      {/* 08 · OFFICIAL ACCREDITATIONS & CERTIFICATES (4 SLIDING)      */}
       {/* ============================================================ */}
-      <ClientsSection />
+      <OurCertificatesSection />
+
+      {/* ============================================================ */}
+      {/* 09 · CLIENT PARTNERS DIRECTORY (FROM CLIENTS COPY)           */}
+      {/* ============================================================ */}
+      <ClientPartnersSection />
 
     </div>
   )

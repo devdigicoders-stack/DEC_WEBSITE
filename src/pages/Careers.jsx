@@ -82,9 +82,9 @@ function Careers() {
       {/* ============================================================ */}
       <section className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-[#151515]">
         <img 
-          src="/images/careers_hero.jpg" 
+          src="/image copy.png" 
           alt="DEC Engineering Studio Lusail Qatar" 
-          className="w-full h-full object-cover object-center scale-100"
+          className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
         />
       </section>
 

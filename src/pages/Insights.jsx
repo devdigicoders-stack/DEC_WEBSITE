@@ -131,8 +131,8 @@ function Insights() {
         {/* Background Image - Reduced Opacity for Text Readability */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <img 
-            src="/images/insights_hero.jpg" 
-            alt="DEC Engineering Knowledge & BIM Studio" 
+            src="/image copy 3.png" 
+            alt="DEC Engineering Knowledge & Industrial Excellence" 
             className="w-full h-full object-cover object-center scale-100 opacity-55 transition-transform duration-1000 ease-out"
           />
           {/* Contrast Overlay for Crystal Clear Text Readability */}

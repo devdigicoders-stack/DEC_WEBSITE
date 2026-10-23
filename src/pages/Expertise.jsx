@@ -8,7 +8,6 @@ import {
   FiZap, 
   FiTool, 
   FiCompass, 
-  FiFeather, 
   FiArrowRight 
 } from 'react-icons/fi'
 
@@ -18,12 +17,14 @@ function Expertise() {
   useEffect(() => {
     if (location.hash) {
       const elementId = location.hash.replace('#', '')
-      const timer = setTimeout(() => {
+      const scrollToEl = () => {
         const el = document.getElementById(elementId)
         if (el) {
           el.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }
-      }, 400)
+      }
+      scrollToEl()
+      const timer = setTimeout(scrollToEl, 200)
       return () => clearTimeout(timer)
     }
   }, [location.hash, location.pathname])
@@ -107,22 +108,66 @@ function Expertise() {
     {
       stat: 'Grade A',
       title: 'MMUP / UPDA Certified',
-      desc: 'The highest statutory licensing level in Qatar, empowering DEC to engineer projects of unlimited scale and height.'
+      desc: 'Multidisciplinary engineering consultancy licensed at the highest statutory grade in Qatar, enabling us to deliver projects of significant scale and complexity.',
+      image: '/image copy 9.png',
+      imgPosition: 'right-0 bottom-0 w-[72%] h-[78%] object-contain object-bottom-right',
+      icon: (
+        <svg className="w-9 h-9 text-[#B08D57]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="10" width="5" height="11" rx="0.5" />
+          <line x1="3" y1="13.5" x2="8" y2="13.5" />
+          <line x1="3" y1="17" x2="8" y2="17" />
+          <rect x="8" y="3" width="7" height="18" rx="0.5" />
+          <line x1="11.5" y1="6.5" x2="11.5" y2="7.5" />
+          <line x1="11.5" y1="10" x2="11.5" y2="11" />
+          <line x1="11.5" y1="13.5" x2="11.5" y2="14.5" />
+          <line x1="11.5" y1="17" x2="11.5" y2="18" />
+          <rect x="15" y="7" width="6" height="14" rx="0.5" />
+          <line x1="15" y1="11" x2="21" y2="11" />
+          <line x1="15" y1="15" x2="21" y2="15" />
+        </svg>
+      )
     },
     {
-      stat: '100%',
-      title: 'QCD Fire Safety Compliance',
-      desc: 'Deep familiarity with NFPA 101/5000 and Qatar Civil Defense mandates ensuring prompt, first-pass safety approvals.'
+      stat: 'QCDD',
+      title: 'Fire & Life Safety Expertise',
+      desc: 'In-depth knowledge of QCDD regulations, NFPA 101/5000 and Civil Defense requirements, ensuring compliant, safe and efficient design solutions.',
+      image: '/image copy 10.png',
+      imgPosition: 'right-0 -bottom-2 w-[60%] h-[68%] object-contain object-bottom-right',
+      icon: (
+        <svg className="w-9 h-9 text-[#B08D57]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <path d="M12 8c.5 1.5 2 2.5 2 4a2 2 0 1 1-4 0c0-1.5 1.5-2.5 2-4z" />
+        </svg>
+      )
     },
     {
       stat: 'GSAS',
-      title: 'Sustainability Credentials',
-      desc: 'Green building certified practitioners integrating energy-efficient and water-conservation strategies.'
+      title: 'Certified Sustainability Service Provider',
+      desc: 'Green building certified practitioners integrating energy-efficient and water-conservation strategies to deliver sustainable, high-performance buildings.',
+      image: '/image copy 11.png',
+      imgPosition: 'right-0 bottom-0 w-[74%] h-[80%] object-contain object-bottom-right',
+      icon: (
+        <svg className="w-9 h-9 text-[#B08D57]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M11 20A7 7 0 0 1 4 13C4 7 11 3 11 3s7 4 7 10a7 7 0 0 1-7 7Z" />
+          <path d="M11 20V9" />
+          <path d="M15 15c2-1 4-1 5 1s0 4-2 4-4 0-5-2" />
+        </svg>
+      )
     },
     {
-      stat: 'BIM L2',
-      title: 'Digital Delivery Protocol',
-      desc: 'Eliminating on-site construction clashes before breaking ground through coordinated 3D engineering models.'
+      stat: 'BIM',
+      title: 'Integrated Digital Delivery',
+      desc: 'Connecting architectural, structural and MEP disciplines through coordinated BIM models, early clash detection and efficient digital project delivery.',
+      image: '/image copy 12.png',
+      imgPosition: 'right-0 bottom-0 w-[68%] h-[92%] object-contain object-right-bottom',
+      icon: (
+        <svg className="w-9 h-9 text-[#B08D57]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 2l-7 4v6l7 4 7-4V6l-7-4z" />
+          <path d="M12 22V12" />
+          <path d="M5 12l7 4 7-4" />
+          <path d="M12 7l7-4M12 7L5 3M12 7v5" />
+        </svg>
+      )
     }
   ]
 
@@ -134,9 +179,9 @@ function Expertise() {
       {/* ============================================================ */}
       <section className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-[#151515]">
         <img 
-          src="/images/expertise_hero.jpg" 
+          src="/image copy 2.png" 
           alt="DEC Multidisciplinary Engineering Design Studio" 
-          className="w-full h-full object-cover object-center scale-100"
+          className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
         />
       </section>
 
@@ -146,7 +191,7 @@ function Expertise() {
       <section className="bg-white text-[#151515] py-20 sm:py-28 px-6 sm:px-10 lg:px-14 xl:px-20 border-b border-black/10">
         <div className="max-w-[1720px] mx-auto">
           
-          <div className="max-w-4xl mx-auto text-center mb-20">
+          <div className="max-w-4xl mx-auto text-center mb-16">
             <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] bg-[#B08D57]/10 px-3.5 py-1.5 rounded-full inline-block mb-4">
               GRADE A MULTIDISCIPLINARY PRACTICE
             </span>
@@ -159,21 +204,46 @@ function Expertise() {
           </div>
 
           {/* 4 Technical Capability Pillars */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-20">
             {technicalPillars.map((item, idx) => (
               <div 
                 key={idx}
-                className="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:border-[#B08D57] hover:shadow-xl transition-all duration-300 group"
+                className="relative bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#B08D57]/60 transition-all duration-300 flex flex-col justify-start min-h-[320px] sm:min-h-[340px] overflow-hidden group"
               >
-                <div className="text-3xl sm:text-4xl font-extrabold text-[#B08D57] mb-2 tracking-tight">
-                  {item.stat}
+                {/* Background Image behind text */}
+                <div className="absolute inset-0 pointer-events-none select-none overflow-hidden rounded-2xl z-0">
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className={`absolute ${item.imgPosition} opacity-40 sm:opacity-50 blur-[1px] group-hover:opacity-65 group-hover:blur-none group-hover:scale-105 transition-all duration-500`} 
+                  />
                 </div>
-                <h3 className="text-lg font-bold text-[#151515] mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-black/70 leading-relaxed font-light">
-                  {item.desc}
-                </p>
+
+                {/* Card Content (z-10 on top of background image) */}
+                <div className="relative z-10 flex-1 flex flex-col justify-start">
+                  {/* Icon */}
+                  <div className="w-10 h-10 flex items-center justify-start text-[#B08D57] mb-3 sm:mb-4">
+                    {item.icon}
+                  </div>
+
+                  {/* Stat / Header */}
+                  <div className="text-2xl sm:text-[28px] font-extrabold text-[#B08D57] tracking-tight leading-none mb-1.5">
+                    {item.stat}
+                  </div>
+
+                  {/* Subtitle */}
+                  <h3 className="text-sm sm:text-[15px] font-bold text-[#151515] leading-snug">
+                    {item.title}
+                  </h3>
+
+                  {/* Small Gold Divider Line */}
+                  <div className="w-7 h-[2px] bg-[#B08D57] my-3 rounded-full" />
+
+                  {/* Description text sitting over background graphic */}
+                  <p className="text-[11.5px] sm:text-xs text-slate-700 font-medium sm:font-normal leading-relaxed max-w-[92%] sm:max-w-none">
+                    {item.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -199,7 +269,7 @@ function Expertise() {
               <div 
                 key={item.id}
                 id={item.id}
-                className="bg-white rounded-3xl p-8 border border-slate-200 hover:border-[#B08D57] hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group scroll-mt-32"
+                className="bg-white rounded-3xl p-8 border border-slate-200 hover:border-[#B08D57] hover:shadow-2xl target:ring-2 target:ring-[#B08D57] target:border-[#B08D57] target:shadow-2xl transition-all duration-300 flex flex-col justify-between group scroll-mt-32"
               >
                 <div>
                   <div className="w-16 h-16 rounded-2xl bg-[#B08D57]/10 flex items-center justify-center mb-6 group-hover:bg-[#B08D57]/20 transition-colors">

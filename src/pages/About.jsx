@@ -17,6 +17,7 @@ import {
   FaSeedling, 
   FaGraduationCap 
 } from 'react-icons/fa6'
+import OurCertificatesSection from '../components/OurCertificatesSection.jsx'
 
 function About() {
   const values = [
@@ -184,12 +185,12 @@ function About() {
         {/* Background Image - Clean with Controlled Opacity for Text Readability */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <img 
-            src="/images/about_hero.jpg" 
-            alt="DEC Lusail Landmark Architecture" 
-            className="w-full h-full object-cover object-center scale-100 opacity-55 transition-transform duration-1000 ease-out"
+            src="/image.png" 
+            alt="DEC Executive Architectural Office" 
+            className="w-full h-full object-cover object-center scale-100 opacity-60 transition-transform duration-1000 ease-out"
           />
           {/* Contrast Overlay for Crystal Clear Text Readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/70 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-[#151515] pointer-events-none" />
         </div>
 
         {/* Hero Content */}
@@ -750,6 +751,11 @@ function About() {
 
         </div>
       </section>
+
+      {/* ============================================================ */}
+      {/* 9. OFFICIAL ACCREDITATIONS & CERTIFICATES (4 SLIDING)        */}
+      {/* ============================================================ */}
+      <OurCertificatesSection />
 
     </div>
   )

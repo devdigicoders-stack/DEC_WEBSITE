@@ -16,6 +16,8 @@ import {
   FaAward
 } from 'react-icons/fa6'
 
+const CURRENT_YEAR = new Date().getFullYear()
+
 function Footer() {
   const location = useLocation()
   const navigate = useNavigate()
@@ -36,7 +38,7 @@ function Footer() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const currentYear = new Date().getFullYear()
+  const currentYear = CURRENT_YEAR
 
   return (
     <footer className="w-full bg-[#0d0d0d] text-[#F5F0E7] border-t border-[#B08D57]/30 font-sans selection:bg-[#B08D57] selection:text-[#151515] relative overflow-hidden">
@@ -131,7 +133,7 @@ function Footer() {
           {/* Column 2: Navigation & All Pages (2 Cols) */}
           <div className="lg:col-span-2 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start">
             <h5 className="text-xs font-bold uppercase tracking-widest text-[#B08D57] border-b border-white/10 pb-2 w-full text-center lg:text-left">
-              All Pages
+              Contact
             </h5>
             <ul className="space-y-2.5 text-xs sm:text-sm flex flex-col items-center lg:items-start w-full">
               <li>
@@ -154,12 +156,6 @@ function Footer() {
                   Project Portfolio
                 </Link>
               </li>
-              <li>
-                <a href="/#clients" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
-                  Our Clients (90+)
-                </a>
-              </li>
-
               <li>
                 <Link to="/presence" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
                   Regional Presence
@@ -345,7 +341,7 @@ function Footer() {
           {/* Social Icons */}
           <div className="flex items-center gap-3">
             <a
-              href="https://www.linkedin.com"
+              href="https://www.linkedin.com/company/desentral-engineering-consultancy/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
