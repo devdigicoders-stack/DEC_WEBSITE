@@ -17,7 +17,6 @@ import {
   FaSeedling, 
   FaGraduationCap 
 } from 'react-icons/fa6'
-import OurCertificatesSection from '../components/OurCertificatesSection.jsx'
 
 function About() {
   const values = [
@@ -239,7 +238,7 @@ function About() {
             {/* Left Column: Big Philosophy Statement */}
             <div className="lg:col-span-7 space-y-5 sm:space-y-6">
               <span className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-[#B08D57] block">
-                Section 3.2 · About DEC
+                About DEC
               </span>
               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight leading-[1.15]">
                 Design + Centralization (DES / ENTRAL)
@@ -317,7 +316,7 @@ function About() {
           
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
             <span className="text-[10px] sm:text-xs uppercase font-bold tracking-wider text-[#B08D57] bg-[#B08D57]/10 px-3 py-1 rounded-full">
-              Section 3.2 · Corporate Purpose
+              Corporate Purpose
             </span>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mt-3">
               Mission & Vision
@@ -487,7 +486,7 @@ function About() {
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
             <span className="text-[10px] sm:text-xs uppercase font-bold tracking-wider text-[#B08D57] bg-[#B08D57]/10 px-3 py-1.5 rounded-full border border-[#B08D57]/30 inline-block max-w-full">
-              06 · Certifications and Credentials — Publication Register
+              Certifications & Statutory Credentials
             </span>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mt-3 sm:mt-4">
               Statutory Accreditations & Quality Standards
@@ -510,17 +509,12 @@ function About() {
                   <div className="absolute top-0 right-0 w-24 h-24 bg-[#B08D57]/5 rounded-bl-full pointer-events-none group-hover:scale-125 transition-transform" />
 
                   <div>
-                    {/* Top Header: ID Badge + Icon + Status */}
+                    {/* Top Header: Icon + Badge */}
                     <div className="flex items-center justify-between mb-4 sm:mb-5">
-                      <div className="flex items-center gap-2.5 sm:gap-3">
-                        <span className="text-xs font-mono font-bold text-[#B08D57]">
-                          #{cred.id}
-                        </span>
-                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 border border-white/10 text-[#B08D57] flex items-center justify-center text-base sm:text-lg group-hover:scale-110 group-hover:bg-[#B08D57] group-hover:text-[#151515] transition-all">
-                          <Icon />
-                        </div>
+                      <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-[#B08D57] flex items-center justify-center text-base sm:text-lg group-hover:scale-110 group-hover:bg-[#B08D57] group-hover:text-[#151515] transition-all">
+                        <Icon />
                       </div>
-                      <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-[#B08D57]/15 text-[#B08D57] border border-[#B08D57]/30">
+                      <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#B08D57]/15 text-[#B08D57] border border-[#B08D57]/30">
                         {cred.badge}
                       </span>
                     </div>
@@ -531,13 +525,8 @@ function About() {
                     </h3>
 
                     {/* Authority Issuer */}
-                    <div className="text-xs font-semibold text-[#B08D57] mt-1 mb-1">
+                    <div className="text-xs font-semibold text-[#B08D57] mt-1 mb-3">
                       {cred.issuer}
-                    </div>
-
-                    {/* Source Reference Tag */}
-                    <div className="text-[10px] sm:text-[11px] text-[#F5F0E7]/50 font-mono mb-3 sm:mb-4">
-                      Source: {cred.source}
                     </div>
 
                     {/* Summary Scope */}
@@ -598,7 +587,7 @@ function About() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16">
             <div className="max-w-2xl">
               <span className="text-[10px] sm:text-xs uppercase font-bold tracking-wider text-[#B08D57] bg-[#B08D57]/10 px-3 py-1.5 rounded-full border border-[#B08D57]/30 inline-block max-w-full">
-                07 · Leadership and Team — Source List
+                Leadership Team
               </span>
               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight mt-3">
                 Founding Partners
@@ -751,11 +740,6 @@ function About() {
 
         </div>
       </section>
-
-      {/* ============================================================ */}
-      {/* 9. OFFICIAL ACCREDITATIONS & CERTIFICATES (4 SLIDING)        */}
-      {/* ============================================================ */}
-      <OurCertificatesSection />
 
     </div>
   )

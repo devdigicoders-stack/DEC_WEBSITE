@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { FiMenu, FiX, FiChevronDown, FiArrowUpRight } from 'react-icons/fi'
+import { FaLinkedinIn, FaWhatsapp } from 'react-icons/fa6'
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -301,11 +302,36 @@ function Navbar() {
             </ul>
           </nav>
 
-          {/* 3. Right: Dedicated Contact Button */}
-          <div className="hidden lg:flex items-center flex-shrink-0">
+          {/* 3. Right: Social Quick Links & Dedicated Contact Button */}
+          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+            {/* LinkedIn Button */}
+            <a
+              href="https://www.linkedin.com/company/desentral-engineering-consultancy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="DEC Official LinkedIn"
+              title="DEC LinkedIn"
+              className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#0077B5] border border-white/10 hover:border-[#0077B5] text-[#F5F0E7]/80 hover:text-white flex items-center justify-center transition-all duration-300 shadow-md hover:scale-105 active:scale-95"
+            >
+              <FaLinkedinIn className="w-4 h-4" />
+            </a>
+
+            {/* WhatsApp Button */}
+            <a
+              href="https://wa.me/97431601117"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Direct WhatsApp Chat"
+              title="WhatsApp Direct"
+              className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#25D366] border border-white/10 hover:border-[#25D366] text-[#F5F0E7]/80 hover:text-white flex items-center justify-center transition-all duration-300 shadow-md hover:scale-105 active:scale-95"
+            >
+              <FaWhatsapp className="w-4 h-4" />
+            </a>
+
+            {/* Contact Button */}
             <Link
               to="/contact"
-              className={`group relative inline-flex items-center gap-2 px-7 py-2.5 rounded-xl font-bold text-xs tracking-widest uppercase transition-all duration-300 ${
+              className={`group relative inline-flex items-center gap-2 px-6 xl:px-7 py-2.5 rounded-xl font-bold text-xs tracking-widest uppercase transition-all duration-300 ${
                 isContactActive
                   ? 'bg-gradient-to-r from-[#DFBF82] via-[#F6E6CC] to-[#DFBF82] text-[#111111] ring-2 ring-[#B08D57] shadow-[0_4px_22px_rgba(176,141,87,0.55)] scale-[1.02]'
                   : 'bg-gradient-to-r from-[#B08D57] via-[#DFBF82] to-[#B08D57] text-[#111111] border border-[#F6E5CA]/40 shadow-[0_4px_20px_rgba(176,141,87,0.4)] hover:shadow-[0_6px_28px_rgba(176,141,87,0.65)] hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0'
@@ -500,7 +526,26 @@ function Navbar() {
             })}
           </ul>
 
-          <div className="pt-4 mt-4 border-t border-white/10">
+          <div className="pt-4 mt-4 border-t border-white/10 space-y-3">
+            <div className="flex items-center gap-2">
+              <a
+                href="https://www.linkedin.com/company/desentral-engineering-consultancy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 py-2.5 px-3 rounded-xl bg-white/5 hover:bg-[#0077B5] border border-white/10 text-white flex items-center justify-center gap-2 text-xs font-semibold transition-colors"
+              >
+                <FaLinkedinIn className="text-sm" /> LinkedIn
+              </a>
+              <a
+                href="https://wa.me/97431601117"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 py-2.5 px-3 rounded-xl bg-white/5 hover:bg-[#25D366] border border-white/10 text-white flex items-center justify-center gap-2 text-xs font-semibold transition-colors"
+              >
+                <FaWhatsapp className="text-sm text-emerald-400" /> WhatsApp
+              </a>
+            </div>
+
             <Link
               to="/contact"
               className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs tracking-widest uppercase transition-all duration-300 ${

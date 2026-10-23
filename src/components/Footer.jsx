@@ -10,9 +10,6 @@ import {
 import { 
   FaWhatsapp, 
   FaLinkedinIn, 
-  FaInstagram, 
-  FaFacebookF, 
-  FaXTwitter, 
   FaAward
 } from 'react-icons/fa6'
 
@@ -133,7 +130,7 @@ function Footer() {
           {/* Column 2: Navigation & All Pages (2 Cols) */}
           <div className="lg:col-span-2 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start">
             <h5 className="text-xs font-bold uppercase tracking-widest text-[#B08D57] border-b border-white/10 pb-2 w-full text-center lg:text-left">
-              Contact
+              Content
             </h5>
             <ul className="space-y-2.5 text-xs sm:text-sm flex flex-col items-center lg:items-start w-full">
               <li>
@@ -350,15 +347,6 @@ function Footer() {
               <FaLinkedinIn className="text-sm" />
             </a>
             <a
-              href="https://www.instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#B08D57] text-white hover:text-[#151515] flex items-center justify-center transition-all duration-300 border border-white/10 hover:scale-110"
-            >
-              <FaInstagram className="text-sm" />
-            </a>
-            <a
               href="https://wa.me/97431601117"
               target="_blank"
               rel="noopener noreferrer"
@@ -366,24 +354,6 @@ function Footer() {
               className="w-9 h-9 rounded-full bg-white/10 hover:bg-emerald-600 text-white flex items-center justify-center transition-all duration-300 border border-white/10 hover:scale-110"
             >
               <FaWhatsapp className="text-sm" />
-            </a>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#B08D57] text-white hover:text-[#151515] flex items-center justify-center transition-all duration-300 border border-white/10 hover:scale-110"
-            >
-              <FaFacebookF className="text-sm" />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter / X"
-              className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#B08D57] text-white hover:text-[#151515] flex items-center justify-center transition-all duration-300 border border-white/10 hover:scale-110"
-            >
-              <FaXTwitter className="text-sm" />
             </a>
           </div>
 
