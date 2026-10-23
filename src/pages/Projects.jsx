@@ -65,14 +65,6 @@ function Projects() {
 
         {/* Hero Content */}
         <div className="relative z-10 w-full px-5 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
-          {/* Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-5 shadow-xl shadow-black/50 max-w-[95%]">
-            <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse shrink-0" />
-            <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold text-[#B08D57] text-center">
-              Landmark Portfolio · 84+ Projects Across 7 Sectors
-            </span>
-          </div>
-
           {/* Headings */}
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.15] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
             Shaping the Architectural & Engineering Skyline

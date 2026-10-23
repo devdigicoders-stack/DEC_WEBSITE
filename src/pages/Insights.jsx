@@ -1,23 +1,10 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { 
   FiArrowRight, 
-  FiArrowUpRight, 
   FiClock, 
-  FiCalendar, 
-  FiBookOpen, 
   FiCheckCircle, 
-  FiSearch,
-  FiFilter,
-  FiDownload
+  FiSearch
 } from 'react-icons/fi'
-import { 
-  FaLightbulb, 
-  FaBuilding, 
-  FaShieldHalved, 
-  FaSeedling, 
-  FaLaptopCode 
-} from 'react-icons/fa6'
 
 function Insights() {
   const [activeCategory, setActiveCategory] = useState('All')
@@ -291,51 +278,12 @@ function Insights() {
                       <div className="text-xs font-bold text-[#151515]">{art.author}</div>
                       <div className="text-[11px] text-slate-500">{art.authorRole}</div>
                     </div>
-                    <div className="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[#151515] group-hover:bg-[#B08D57] group-hover:text-white group-hover:border-[#B08D57] transition-all">
-                      <FiArrowUpRight className="text-sm" />
-                    </div>
                   </div>
                 </article>
               ))}
             </div>
           )}
 
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* 4. TECHNICAL KNOWLEDGE ADVISORY BANNER                       */}
-      {/* ============================================================ */}
-      <section className="py-20 px-6 sm:px-10 lg:px-14 xl:px-20 bg-[#111111] text-[#F5F0E7]">
-        <div className="w-full mx-auto">
-          <div className="p-10 sm:p-14 rounded-3xl bg-[#161616] border border-[#B08D57]/30 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="space-y-3 max-w-2xl">
-              <span className="text-xs uppercase font-bold tracking-widest text-[#B08D57] block">
-                Direct Engineering Consultation
-              </span>
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
-                Require Authority Approval Guidance for Your GCC Asset?
-              </h3>
-              <p className="text-sm text-[#F5F0E7]/80 leading-relaxed font-light">
-                Consult with DEC’s Grade A engineers on municipality permits, QCDD compliance, GSAS green certification, and BIM clash elimination across Qatar, Egypt, and Saudi Arabia.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-4 shrink-0">
-              <Link
-                to="/contact"
-                className="px-8 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs uppercase tracking-wider transition-all shadow-lg flex items-center gap-2"
-              >
-                Schedule Consultation <FiArrowRight />
-              </Link>
-              <Link
-                to="/expertise"
-                className="px-8 py-4 rounded-xl border border-white/20 hover:border-[#B08D57] hover:text-[#B08D57] text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2"
-              >
-                Our Core Services <FiArrowUpRight />
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
 

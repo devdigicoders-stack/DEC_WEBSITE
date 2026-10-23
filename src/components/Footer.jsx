@@ -104,9 +104,6 @@ function Footer() {
               <h4 className="text-base sm:text-lg font-bold text-white tracking-wide">
                 Desentral Engineering Consultancy (DEC)
               </h4>
-              <p className="text-base sm:text-lg font-bold text-[#B08D57] tracking-wider font-serif">
-                دسنترال للاستشارات الهندسية
-              </p>
             </div>
 
             <p className="text-xs sm:text-sm text-[#F5F0E7]/70 leading-relaxed max-w-md lg:max-w-none">
