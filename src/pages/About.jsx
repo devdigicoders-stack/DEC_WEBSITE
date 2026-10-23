@@ -180,7 +180,7 @@ function About() {
       {/* ============================================================ */}
       {/* 1. HERO SECTION (IMMERSIVE ARCHITECTURAL LANDMARK)          */}
       {/* ============================================================ */}
-      <section className="relative w-full min-h-[580px] sm:min-h-[640px] lg:h-screen lg:min-h-[100vh] flex items-center justify-center overflow-hidden bg-[#151515]">
+      <section className="relative w-full min-h-[520px] lg:h-[calc(100vh-7rem)] flex items-center justify-center overflow-hidden bg-[#151515]">
         {/* Background Image - Clean with Controlled Opacity for Text Readability */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <img 
@@ -193,7 +193,7 @@ function About() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 w-full px-5 sm:px-10 lg:px-14 xl:px-20 pt-32 sm:pt-40 lg:pt-48 pb-14 sm:pb-20 text-center text-[#F5F0E7]">
+        <div className="relative z-10 w-full px-5 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
           {/* Pill Badge */}
           <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-5 shadow-xl shadow-black/50 max-w-[95%]">
             <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse shrink-0" />

@@ -6,8 +6,7 @@ import {
   FiArrowRight, 
   FiLayers, 
   FiCheckCircle,
-  FiCompass,
-  FiCamera
+  FiCompass
 } from 'react-icons/fi'
 import ProjectGallerySection from '../components/ProjectGallerySection.jsx'
 import { projectsData, projectCategories } from '../data/projectsData.js'
@@ -50,14 +49,41 @@ function Projects() {
     <div className="w-full bg-[#151515] text-[#F5F0E7] font-sans antialiased relative">
       
       {/* ============================================================ */}
-      {/* 1. HERO SECTION - PURE CLEAR ARCHITECTURAL SHOWCASE IMAGE    */}
+      {/* 1. HERO SECTION (IMMERSIVE LANDMARK PORTFOLIO SHOWCASE)     */}
       {/* ============================================================ */}
-      <section className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-[#151515]">
-        <img 
-          src="/image copy 4.png" 
-          alt="DEC Landmark Projects Portfolio Doha Qatar" 
-          className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
-        />
+      <section className="relative w-full min-h-[520px] lg:h-[calc(100vh-7rem)] flex items-center justify-center overflow-hidden bg-[#151515]">
+        {/* Background Image - Clean with Controlled Opacity */}
+        <div className="absolute inset-0 z-0 w-full h-full">
+          <img 
+            src="/image copy 4.png" 
+            alt="DEC Landmark Projects Portfolio Doha Qatar" 
+            className="w-full h-full object-cover object-center scale-100 opacity-60 transition-transform duration-1000 ease-out"
+          />
+          {/* Contrast Overlay for Crystal Clear Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-[#151515] pointer-events-none" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 w-full px-5 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
+          {/* Pill Badge */}
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-5 shadow-xl shadow-black/50 max-w-[95%]">
+            <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse shrink-0" />
+            <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold text-[#B08D57] text-center">
+              Landmark Portfolio · 84+ Projects Across 7 Sectors
+            </span>
+          </div>
+
+          {/* Headings */}
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.15] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+            Shaping the Architectural & Engineering Skyline
+          </h1>
+          <p className="mt-4 sm:mt-5 text-base sm:text-xl lg:text-2xl font-semibold text-[#B08D57] tracking-wide max-w-3xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            Commercial · Luxury Hospitality · Retail · Masterplans · Residential
+          </p>
+          <p className="mt-3 sm:mt-4 text-xs sm:text-base text-[#F5F0E7]/80 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] font-normal">
+            Explore our portfolio of iconic Grade A engineering achievements, delivered with design distinction and precision across Qatar and the GCC.
+          </p>
+        </div>
       </section>
 
       {/* ============================================================ */}
@@ -103,7 +129,7 @@ function Projects() {
                 DEC Projects Portfolio
               </h2>
               <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                Showing <span className="font-bold text-[#151515]">{filteredProjects.length}</span> of <span className="font-bold text-[#151515]">{projectsData.length}</span> official register projects
+                Official register of delivered engineering engagements across Qatar & regional delivery
               </p>
             </div>
 
@@ -140,18 +166,13 @@ function Projects() {
                 <button
                   key={cat.value}
                   onClick={() => handleCategorySelect(cat.value)}
-                  className={`px-4 py-2.5 rounded-xl text-xs font-bold tracking-wider transition-all duration-200 flex items-center gap-2 ${
+                  className={`px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider transition-all duration-200 ${
                     isSelected
                       ? 'bg-[#151515] text-[#F5F0E7] shadow-lg shadow-black/20 ring-1 ring-[#B08D57]'
                       : 'bg-white hover:bg-slate-200/80 text-slate-700 border border-slate-200 shadow-sm'
                   }`}
                 >
                   <span>{cat.label}</span>
-                  <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-extrabold ${
-                    isSelected ? 'bg-[#B08D57] text-[#151515]' : 'bg-slate-100 text-slate-600'
-                  }`}>
-                    {cat.count}
-                  </span>
                 </button>
               )
             })}
@@ -181,11 +202,12 @@ function Projects() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {filteredProjects.map((project) => (
-                <div 
+                <Link 
+                  to={`/sector/${project.sectorSlug}`}
                   key={project.id}
-                  className="relative bg-slate-50/90 rounded-3xl p-7 sm:p-8 border border-slate-200 hover:border-[#B08D57] hover:shadow-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden group min-h-[380px]"
+                  className="relative bg-slate-50/90 rounded-3xl p-7 sm:p-8 border border-slate-200 hover:border-[#B08D57] hover:shadow-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden group min-h-[380px] cursor-pointer block"
                 >
-                  {/* Real Project Photo Revealed on Hover - Ultra Sharp & Crystal Clear */}
+                  {/* Real Project Photo Revealed on Hover - Ultra Sharp, Full Brightness & Crystal Clear */}
                   {project.image && (
                     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <img 
@@ -194,51 +216,42 @@ function Projects() {
                         loading="lazy"
                         className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-500 ease-out" 
                       />
-                      {/* Crisp Clean Gradient: Clear in the center, dark at top/bottom for text contrast (No Blur) */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
                     </div>
                   )}
 
-                  {/* Card Content (z-10 on top of photo) */}
-                  <div className="relative z-10 flex flex-col justify-between h-full">
+                  {/* Card Content (z-10) - Disappears completely on hover so ONLY the photo shows */}
+                  <div className="relative z-10 flex flex-col justify-between h-full transition-opacity duration-300 group-hover:opacity-0">
                     <div>
-                      {/* Header: Sector Badge + Photo indicator + Project Code */}
+                      {/* Header: Sector Badge + Project Code */}
                       <div className="flex items-center justify-between gap-2 mb-4">
                         <div className="flex items-center gap-2">
-                          <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-[#B08D57]/15 text-[#8F6F3E] group-hover:bg-[#B08D57] group-hover:text-[#111111] transition-all">
+                          <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-[#B08D57]/15 text-[#8F6F3E]">
                             {project.sector}
                           </span>
                           {project.type && (
-                            <span className="text-[11px] font-medium text-slate-500 bg-white group-hover:bg-white/10 group-hover:text-white/80 group-hover:border-white/20 px-2 py-0.5 rounded-md border border-slate-200 capitalize transition-all">
+                            <span className="text-[11px] font-medium text-slate-500 bg-white px-2 py-0.5 rounded-md border border-slate-200 capitalize">
                               {project.type}
                             </span>
                           )}
                         </div>
-                        <div className="flex items-center gap-1.5">
-                          {project.image && (
-                            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] font-bold text-[#D8B478] bg-black/50 px-2 py-0.5 rounded-md flex items-center gap-1 border border-[#B08D57]/30">
-                              <FiCamera className="text-[11px]" /> Photo
-                            </span>
-                          )}
-                          <span className="text-[11px] font-mono font-bold text-slate-400 group-hover:text-[#D8B478] transition-colors">
-                            {project.code}
-                          </span>
-                        </div>
+                        <span className="text-[11px] font-mono font-bold text-slate-400">
+                          {project.code}
+                        </span>
                       </div>
 
                       {/* Project Title */}
-                      <h3 className="text-xl sm:text-2xl font-bold text-[#151515] group-hover:text-white transition-colors mb-2 leading-snug">
+                      <h3 className="text-xl sm:text-2xl font-bold text-[#151515] mb-2 leading-snug">
                         {project.name}
                       </h3>
 
                       {/* Location Pin */}
-                      <div className="flex items-center gap-1.5 text-xs text-slate-600 group-hover:text-white/80 font-medium mb-4 transition-colors">
+                      <div className="flex items-center gap-1.5 text-xs text-slate-600 font-medium mb-4">
                         <FiMapPin className="text-[#B08D57] shrink-0" />
                         <span>{project.location}</span>
                       </div>
 
                       {/* Scope Highlight */}
-                      <div className="p-3 rounded-xl bg-white group-hover:bg-white/10 border border-slate-200/90 group-hover:border-[#B08D57]/40 mb-4 text-xs font-semibold text-slate-700 group-hover:text-[#F5F0E7] flex items-start gap-2.5 shadow-xs transition-all">
+                      <div className="p-3 rounded-xl bg-white border border-slate-200/90 mb-4 text-xs font-semibold text-slate-700 flex items-start gap-2.5 shadow-xs">
                         <FiLayers className="text-[#B08D57] mt-0.5 shrink-0 text-sm" />
                         <span className="leading-relaxed">{project.scope}</span>
                       </div>
@@ -249,7 +262,7 @@ function Projects() {
                           {project.tags.map((tag, tIdx) => (
                             <span 
                               key={tIdx}
-                              className="px-2.5 py-1 rounded-lg text-[10px] font-medium bg-white group-hover:bg-white/10 text-slate-600 group-hover:text-white/90 border border-slate-200 group-hover:border-white/20 capitalize transition-all"
+                              className="px-2.5 py-1 rounded-lg text-[10px] font-medium bg-white text-slate-600 border border-slate-200 capitalize"
                             >
                               {tag}
                             </span>
@@ -259,22 +272,19 @@ function Projects() {
                     </div>
 
                     {/* Card Bottom: DEC Delivery & Link */}
-                    <div className="pt-5 border-t border-slate-200 group-hover:border-white/20 flex items-center justify-between mt-auto transition-colors">
-                      <span className="inline-flex items-center gap-1 text-[11px] text-slate-400 group-hover:text-[#D8B478] font-medium transition-colors">
+                    <div className="pt-5 border-t border-slate-200 flex items-center justify-between mt-auto">
+                      <span className="inline-flex items-center gap-1 text-[11px] text-slate-400 font-medium">
                         <FiCheckCircle className="text-[#B08D57]" />
                         <span>Grade A Compliance</span>
                       </span>
-                      <Link 
-                        to={`/sector/${project.sectorSlug}`}
-                        className="inline-flex items-center gap-1 text-xs font-bold text-[#B08D57] group-hover:text-white uppercase tracking-wider transition-all group-hover:translate-x-1"
-                      >
+                      <span className="inline-flex items-center gap-1 text-xs font-bold text-[#B08D57] uppercase tracking-wider">
                         <span>Sector Specs</span>
                         <FiArrowRight />
-                      </Link>
+                      </span>
                     </div>
 
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           )}

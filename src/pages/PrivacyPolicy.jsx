@@ -5,11 +5,8 @@ import {
   FiLock, 
   FiFileText, 
   FiCheckCircle, 
-  FiMail, 
-  FiPhone, 
-  FiMapPin, 
-  FiArrowRight,
-  FiAlertCircle
+  FiAlertCircle,
+  FiArrowRight
 } from 'react-icons/fi'
 
 function PrivacyPolicy() {
@@ -78,36 +75,52 @@ function PrivacyPolicy() {
       {/* ============================================================ */}
       {/* 1. HEADER BANNER                                             */}
       {/* ============================================================ */}
-      {/* 1. HERO SECTION - PURE CLEAR ARCHITECTURAL IMAGE             */}
+      {/* 1. HERO SECTION (IMMERSIVE STATUTORY & DATA GOVERNANCE)     */}
       {/* ============================================================ */}
-      <section className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-[#151515]">
-        <img 
-          src="/images/privacy_hero.jpg" 
-          alt="DEC Corporate Governance and Data Protection" 
-          className="w-full h-full object-cover object-center scale-100"
-        />
-      </section>
+      <section className="relative w-full min-h-[520px] lg:h-[calc(100vh-7rem)] flex items-center justify-center overflow-hidden bg-[#151515]">
+        {/* Background Image - Clean with Controlled Opacity */}
+        <div className="absolute inset-0 z-0 w-full h-full">
+          <img 
+            src="/images/privacy_hero.jpg" 
+            alt="DEC Corporate Governance and Data Protection" 
+            className="w-full h-full object-cover object-center scale-100 opacity-60 transition-transform duration-1000 ease-out"
+          />
+          {/* Contrast Overlay for Crystal Clear Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-[#151515] pointer-events-none" />
+        </div>
 
-      {/* ============================================================ */}
-      {/* 2. STATUTORY HEADER BANNER                                   */}
-      {/* ============================================================ */}
-      <section className="bg-gradient-to-b from-[#111111] to-[#181818] py-20 px-6 sm:px-10 lg:px-14 xl:px-20 border-b border-white/10">
-        <div className="max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B08D57]/15 border border-[#B08D57]/40 text-[#B08D57] text-xs font-semibold uppercase tracking-wider mb-4">
-            <FiShield /> Statutory Compliance · Qatar PDPPL Law No. 13 of 2016
+        {/* Hero Content */}
+        <div className="relative z-10 w-full px-5 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
+          {/* Eyebrow Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-5 shadow-xl shadow-black/50 max-w-[95%]">
+            <FiShield className="text-[#B08D57] text-xs shrink-0" />
+            <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold text-[#B08D57] text-center">
+              Statutory Compliance · Qatar PDPPL Law No. 13 of 2016
+            </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+
+          {/* Headings */}
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.15] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
             Privacy Policy & Data Governance
           </h1>
-          <p className="mt-4 text-base sm:text-lg text-[#F5F0E7]/70 font-light max-w-3xl leading-relaxed">
+          <p className="mt-4 sm:mt-5 text-base sm:text-xl lg:text-2xl font-semibold text-[#B08D57] tracking-wide max-w-3xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            Safeguarding Proprietary Specifications, IP & Confidentiality
+          </p>
+          <p className="mt-3 sm:mt-4 text-xs sm:text-base text-[#F5F0E7]/80 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] font-normal">
             How Desentral Engineering Consultancy (DEC) safeguards your proprietary project specifications, intellectual property, and personal records across our regional practices.
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-slate-400 font-medium">
-            <span>Effective Date: <strong>{lastUpdated}</strong></span>
-            <span>•</span>
-            <span>Corporate Jurisdiction: <strong>Lusail Marina, Qatar</strong></span>
-            <span>•</span>
-            <span>Entity: <strong>Grade A Consultancy</strong></span>
+
+          {/* Metadata Badges */}
+          <div className="mt-8 flex flex-wrap justify-center items-center gap-3 text-xs sm:text-sm">
+            <span className="px-3.5 py-1.5 rounded-md bg-black/50 backdrop-blur-md border border-white/20 text-white/95">
+              📅 <strong>Effective Date:</strong> {lastUpdated}
+            </span>
+            <span className="px-3.5 py-1.5 rounded-md bg-black/50 backdrop-blur-md border border-white/20 text-white/95">
+              📍 <strong>Corporate Jurisdiction:</strong> Lusail Marina, Qatar
+            </span>
+            <span className="px-3.5 py-1.5 rounded-md bg-black/50 backdrop-blur-md border border-white/20 text-white/95">
+              🏛️ <strong>Entity:</strong> Grade A Consultancy
+            </span>
           </div>
         </div>
       </section>

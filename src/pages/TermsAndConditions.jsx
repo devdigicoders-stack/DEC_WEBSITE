@@ -1,17 +1,14 @@
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { 
-  FiShield, 
-  FiFileText, 
-  FiCheckCircle, 
-  FiLock, 
-  FiGlobe, 
-  FiArrowRight, 
   FiMail, 
   FiPhone, 
-  FiMapPin 
+  FiMapPin,
+  FiCheckCircle,
+  FiArrowRight 
 } from 'react-icons/fi'
-import { FaBuilding, FaAward, FaScaleBalanced } from 'react-icons/fa6'
+import { FaAward, FaScaleBalanced } from 'react-icons/fa6'
 
 function TermsAndConditions() {
   const sections = [
@@ -32,18 +29,20 @@ function TermsAndConditions() {
       {/* ============================================================ */}
       {/* 1. HERO SECTION (100VH IMMERSIVE CONTRACTUAL & LEGAL HUB)   */}
       {/* ============================================================ */}
-      <section className="relative w-full h-screen min-h-[100vh] flex items-center justify-center overflow-hidden bg-[#151515]">
-        {/* Background Image - Clean, Natural Colors */}
+      <section className="relative w-full min-h-[520px] lg:h-[calc(100vh-7rem)] flex items-center justify-center overflow-hidden bg-[#151515]">
+        {/* Background Image - Controlled Opacity for Text Clarity */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <img 
             src="/images/terms_hero.jpg" 
             alt="DEC Engineering Studio & Governance Headquarters" 
-            className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
+            className="w-full h-full object-cover object-center scale-100 opacity-40 transition-transform duration-1000 ease-out"
           />
+          {/* Contrast Overlay for Crystal Clear Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/50 to-[#151515] pointer-events-none" />
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 xl:px-20 pt-36 sm:pt-44 lg:pt-48 pb-16 sm:pb-20 text-center text-[#F5F0E7]">
+        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
           {/* Eyebrow Badge */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-6 shadow-xl shadow-black/50">
             <FaScaleBalanced className="text-[#B08D57] text-xs" />

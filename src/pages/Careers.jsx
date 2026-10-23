@@ -1,7 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { 
-  FiBriefcase, 
   FiMapPin, 
   FiArrowRight, 
   FiAward, 
@@ -78,14 +76,41 @@ function Careers() {
     <div className="w-full bg-[#151515] text-[#F5F0E7] font-sans antialiased relative">
       
       {/* ============================================================ */}
-      {/* 1. HERO SECTION - PURE CLEAR ARCHITECTURAL IMAGE             */}
+      {/* 1. HERO SECTION (IMMERSIVE ENGINEERING CAREERS AT DEC)       */}
       {/* ============================================================ */}
-      <section className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-[#151515]">
-        <img 
-          src="/image copy.png" 
-          alt="DEC Engineering Studio Lusail Qatar" 
-          className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
-        />
+      <section className="relative w-full min-h-[520px] lg:h-[calc(100vh-7rem)] flex items-center justify-center overflow-hidden bg-[#151515]">
+        {/* Background Image - Clean with Controlled Opacity */}
+        <div className="absolute inset-0 z-0 w-full h-full">
+          <img 
+            src="/image copy.png" 
+            alt="DEC Engineering Studio Lusail Qatar" 
+            className="w-full h-full object-cover object-center scale-100 opacity-60 transition-transform duration-1000 ease-out"
+          />
+          {/* Contrast Overlay for Crystal Clear Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-[#151515] pointer-events-none" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 w-full px-5 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
+          {/* Pill Badge */}
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-5 shadow-xl shadow-black/50 max-w-[95%]">
+            <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse shrink-0" />
+            <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold text-[#B08D57] text-center">
+              Careers at DEC · Join Our Grade A Multidisciplinary Practice
+            </span>
+          </div>
+
+          {/* Headings */}
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.15] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+            Build Your Engineering Legacy with DEC
+          </h1>
+          <p className="mt-4 sm:mt-5 text-base sm:text-xl lg:text-2xl font-semibold text-[#B08D57] tracking-wide max-w-3xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            50+ In-House Specialists · Regional Impact Across Qatar & Egypt
+          </p>
+          <p className="mt-3 sm:mt-4 text-xs sm:text-base text-[#F5F0E7]/80 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] font-normal">
+            Join an elite engineering team shaping iconic commercial headquarters, luxury retail flagships, and critical regional infrastructure.
+          </p>
+        </div>
       </section>
 
       {/* ============================================================ */}

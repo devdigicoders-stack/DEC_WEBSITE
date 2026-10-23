@@ -124,8 +124,8 @@ function Home() {
   return (
     <div className="bg-[#151515] min-h-screen font-sans">
       
-      {/* HERO SECTION - PURE VIDEO FULL SCREEN UNDER TRANSPARENT NAVBAR */}
-      <section className="relative w-full h-screen overflow-hidden flex items-center justify-center">
+      {/* HERO SECTION - PURE VIDEO FULL SCREEN BELOW SEPARATE NAVBAR */}
+      <section className="relative w-full h-[calc(100vh-6rem)] sm:h-[calc(100vh-7rem)] overflow-hidden flex items-center justify-center">
         <video
           autoPlay
           loop

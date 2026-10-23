@@ -60,14 +60,14 @@ function Navbar() {
 
   // Submenu items under PROJECTS (7 Sectors + All Projects)
   const projectSubLinks = [
-    { name: 'All Projects', path: '/projects?category=All', count: 84, desc: 'Complete 84 delivered engagements' },
-    { name: 'Retail', path: '/projects?category=retail', count: 28, desc: 'Luxury boutiques & flagships' },
-    { name: 'F&B', path: '/projects?category=fnb', count: 28, desc: 'Fine dining & destination cafes' },
-    { name: 'Offices', path: '/projects?category=offices', count: 8, desc: 'Corporate headquarters' },
-    { name: 'Industrial', path: '/projects?category=industrial', count: 8, desc: 'Factories & workshops' },
-    { name: 'Residential', path: '/projects?category=residential', count: 4, desc: 'Private villas & palaces' },
-    { name: 'Hospitality', path: '/projects?category=hospitality', count: 4, desc: '5-star hotels & resorts' },
-    { name: 'Medical & Healthcare', path: '/projects?category=medical', count: 4, desc: 'Pharma & hospital wings' },
+    { name: 'All Projects', path: '/projects?category=All', desc: 'Complete delivered engagements' },
+    { name: 'Retail', path: '/projects?category=retail', desc: 'Luxury boutiques & flagships' },
+    { name: 'F&B', path: '/projects?category=fnb', desc: 'Fine dining & destination cafes' },
+    { name: 'Offices', path: '/projects?category=offices', desc: 'Corporate headquarters' },
+    { name: 'Industrial', path: '/projects?category=industrial', desc: 'Factories & workshops' },
+    { name: 'Residential', path: '/projects?category=residential', desc: 'Private villas & palaces' },
+    { name: 'Hospitality', path: '/projects?category=hospitality', desc: '5-star hotels & resorts' },
+    { name: 'Medical & Healthcare', path: '/projects?category=medical', desc: 'Pharma & hospital wings' },
   ]
 
   // Other Top-Level Navigation Links
@@ -96,8 +96,8 @@ function Navbar() {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 font-sans ${
         isScrolled
-          ? 'bg-[#151515] border-b border-[#B08D57]/30 shadow-2xl shadow-black/90'
-          : 'bg-[#0d0d0d]/80 backdrop-blur-md border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.6)]'
+          ? 'bg-[#151515] border-b border-[#B08D57]/40 shadow-2xl shadow-black/95'
+          : 'bg-[#0d0d0d] border-b border-[#B08D57]/30 shadow-xl shadow-black/80'
       }`}
     >
       <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20 mx-auto">
@@ -240,10 +240,10 @@ function Navbar() {
                   <div className="w-[440px] bg-[#141414]/98 border border-[#B08D57]/40 rounded-2xl p-3.5 shadow-2xl shadow-black/95 backdrop-blur-md">
                     <div className="px-3 py-1.5 mb-2.5 border-b border-white/10 flex items-center justify-between">
                       <span className="text-[10px] font-bold tracking-widest uppercase text-[#B08D57]">
-                        PORTFOLIO BY SECTOR (84 PROJECTS)
+                        PORTFOLIO BY SECTOR
                       </span>
                       <Link to="/projects" className="text-[10px] text-[#F5F0E7]/60 hover:text-white underline">
-                        Explore All (84)
+                        Explore All
                       </Link>
                     </div>
                     <div className="grid grid-cols-2 gap-1.5">
@@ -265,12 +265,7 @@ function Navbar() {
                                 : 'text-white/85 hover:text-white hover:bg-white/5'
                             }`}
                           >
-                            <div className="flex items-center justify-between gap-1.5">
-                              <span className="text-xs font-bold tracking-wide truncate">{sub.name}</span>
-                              <span className="text-[10px] font-extrabold px-1.5 py-0.2 rounded-full bg-[#B08D57]/20 text-[#B08D57]">
-                                {sub.count}
-                              </span>
-                            </div>
+                            <span className="text-xs font-bold tracking-wide truncate block">{sub.name}</span>
                             <div className="text-[10px] text-[#F5F0E7]/50 font-normal truncate mt-0.5">{sub.desc}</div>
                           </Link>
                         )
@@ -473,7 +468,7 @@ function Navbar() {
                     isProjectsActive ? 'text-[#B08D57]' : 'text-white hover:text-[#B08D57]'
                   }`}
                 >
-                  <span>PROJECTS (84)</span>
+                  <span>PROJECTS</span>
                   {isProjectsActive && (
                     <span className="w-2 h-2 rounded-full bg-[#B08D57] shadow-[0_0_6px_rgba(176,141,87,0.9)]" />
                   )}
@@ -497,7 +492,6 @@ function Navbar() {
                         className="flex items-center justify-between py-1 text-xs font-semibold tracking-wider text-[#F5F0E7]/70 hover:text-[#B08D57] transition-colors"
                       >
                         <span>{sub.name}</span>
-                        <span className="text-[10px] text-[#B08D57] font-bold">({sub.count})</span>
                       </Link>
                     </li>
                   ))}

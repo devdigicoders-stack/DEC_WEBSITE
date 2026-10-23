@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { 
-  FiAward, 
-  FiShield, 
   FiDownload, 
   FiExternalLink, 
   FiChevronLeft, 
@@ -9,12 +7,7 @@ import {
   FiX, 
   FiEye 
 } from 'react-icons/fi'
-import { 
-  FaStamp, 
-  FaCertificate, 
-  FaLeaf, 
-  FaHardHat 
-} from 'react-icons/fa'
+import { FaStamp } from 'react-icons/fa'
 import { certificatesData } from '../data/certificatesData.js'
 
 export default function OurCertificatesSection() {
@@ -24,13 +17,11 @@ export default function OurCertificatesSection() {
 
   const [modalTab, setModalTab] = useState('image') // 'image' or 'pdf'
 
-  // Infinite/Looping Cards or smooth scroll step
-  // 4 cards visible at a time on desktop (lg:w-[calc(25%-18px)])
+  // Widen card scroll step: 3 cards visible on desktop
   const scroll = (direction) => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current
-      // Calculate scroll width of 1 card + gap (~320-380px)
-      const scrollAmount = container.clientWidth / (window.innerWidth >= 1024 ? 4 : window.innerWidth >= 640 ? 2 : 1)
+      const scrollAmount = container.clientWidth / (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1)
       container.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -56,20 +47,6 @@ export default function OurCertificatesSection() {
 
     return () => clearInterval(timer)
   }, [isPaused, activeModalPdf])
-
-  // Get icon component based on type
-  const renderIcon = (type, color) => {
-    switch (type) {
-      case 'shield':
-        return <FiShield className="text-xl" style={{ color }} />
-      case 'leaf':
-        return <FaLeaf className="text-xl" style={{ color }} />
-      case 'safety':
-        return <FaHardHat className="text-xl" style={{ color }} />
-      default:
-        return <FaCertificate className="text-xl" style={{ color }} />
-    }
-  }
 
   return (
     <section 
@@ -130,56 +107,39 @@ export default function OurCertificatesSection() {
         </div>
 
         {/* ============================================================ */}
-        {/* 4-CARDS VISIBLE SLIDING CAROUSEL CONTAINER (IMAGE-FIRST)     */}
+        {/* WIDER CARDS SLIDING CAROUSEL CONTAINER                       */}
         {/* ============================================================ */}
         <div
           ref={scrollContainerRef}
-          className="flex gap-6 overflow-x-auto scrollbar-none scroll-smooth pb-6 -mx-6 px-6 sm:-mx-10 sm:px-10 lg:-mx-14 lg:px-14 xl:-mx-20 xl:px-20"
+          className="flex gap-7 overflow-x-auto scrollbar-none scroll-smooth pb-6 -mx-6 px-6 sm:-mx-10 sm:px-10 lg:-mx-14 lg:px-14 xl:-mx-20 xl:px-20"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {certificatesData.map((cert) => (
             <div
               key={cert.id}
-              className="group flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] bg-gradient-to-b from-[#1C1C1C] to-[#141414] rounded-2xl border border-white/10 hover:border-[#B08D57] hover:shadow-2xl hover:shadow-[#B08D57]/20 transition-all duration-500 flex flex-col justify-between overflow-hidden relative"
+              className="group flex-shrink-0 w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] xl:w-[410px] bg-[#181818] rounded-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative shadow-xl hover:shadow-2xl"
             >
-              {/* Top Accent Strip */}
-              <div 
-                className="h-1.5 w-full transition-all duration-500 group-hover:h-2"
-                style={{ backgroundColor: cert.accentColor }}
-              />
-
-              {/* Framed Certificate Image Container */}
+              {/* Framed Certificate Image Container (No dark overlay on hover) */}
               <div 
                 onClick={() => {
                   setActiveModalPdf(cert)
                   setModalTab('image')
                 }}
-                className="relative m-4 rounded-xl overflow-hidden bg-[#0a0a0a] border border-white/10 group-hover:border-[#B08D57]/60 shadow-lg cursor-pointer aspect-[1/1.32] flex items-center justify-center p-2.5"
+                className="relative m-4 sm:m-5 rounded-xl overflow-hidden bg-[#0c0c0c] cursor-pointer aspect-[1/1.32] flex items-center justify-center p-3 sm:p-4 transition-transform duration-300 group-hover:scale-[1.01]"
               >
                 {/* Real High-Resolution Certificate Document Image */}
                 <img 
                   src={cert.image} 
                   alt={cert.title}
-                  className="w-full h-full object-contain rounded-md transition-transform duration-500 group-hover:scale-[1.03] drop-shadow-md bg-white"
+                  className="w-full h-full object-contain rounded-lg drop-shadow-md bg-white"
                   loading="lazy"
                 />
 
-                {/* Hover Overlay with Inspect Action */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 backdrop-blur-[2px]">
-                  <span className="w-12 h-12 rounded-full bg-[#B08D57] text-[#151515] flex items-center justify-center shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <FiEye className="text-xl" />
-                  </span>
-                  <span className="text-[11px] font-bold text-white tracking-wider uppercase bg-[#151515]/90 px-3 py-1 rounded-full border border-[#B08D57]/40">
-                    Inspect Certificate
-                  </span>
-                </div>
-
                 {/* Top Badge Overlay */}
                 <span 
-                  className="absolute top-4 right-4 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border shadow-md backdrop-blur-md"
+                  className="absolute top-4 right-4 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-md backdrop-blur-md"
                   style={{ 
                     backgroundColor: `${cert.accentColor}25`, 
-                    borderColor: `${cert.accentColor}60`,
                     color: '#FFFFFF' 
                   }}
                 >
@@ -187,40 +147,30 @@ export default function OurCertificatesSection() {
                 </span>
               </div>
 
-              {/* Card Details Below Image */}
-              <div className="px-5 pb-5 pt-1 flex flex-col flex-1 justify-between">
+              {/* Minimal Clean Card Details Below Image */}
+              <div className="px-5 sm:px-6 pb-5 pt-1 flex flex-col flex-1 justify-between gap-3">
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#B08D57] truncate">
-                      {cert.category}
-                    </span>
-                    <div className="w-5 h-5 rounded-md flex items-center justify-center shrink-0" style={{ backgroundColor: `${cert.accentColor}20` }}>
-                      {renderIcon(cert.iconType, cert.accentColor)}
-                    </div>
-                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#B08D57] block mb-1">
+                    {cert.category}
+                  </span>
 
-                  <h3 className="text-base font-bold text-white group-hover:text-[#B08D57] transition-colors leading-snug mb-1.5 line-clamp-2">
+                  <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-[#B08D57] transition-colors leading-snug mb-1 line-clamp-1">
                     {cert.title}
                   </h3>
 
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg bg-white/5 text-[11px] font-mono text-[#F5F0E7]/80 border border-white/5 mb-3">
-                    <FiAward className="text-xs text-[#B08D57] shrink-0" />
-                    <span className="truncate">{cert.code}</span>
+                  <div className="text-xs font-mono text-[#F5F0E7]/60">
+                    {cert.code}
                   </div>
-
-                  <p className="text-xs text-white/60 leading-relaxed line-clamp-2 mb-4">
-                    {cert.description}
-                  </p>
                 </div>
 
-                {/* Action Buttons: Inspect & Download */}
+                {/* Action Buttons: View Certificate & Download */}
                 <div className="pt-3 border-t border-white/10 flex items-center gap-2">
                   <button
                     onClick={() => {
                       setActiveModalPdf(cert)
                       setModalTab('image')
                     }}
-                    className="flex-1 py-2 px-3 rounded-xl bg-white/5 hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs flex items-center justify-center gap-2 transition-all duration-300 border border-white/10 hover:border-[#B08D57] shadow-sm cursor-pointer"
+                    className="flex-1 py-2.5 px-4 rounded-xl bg-white/5 hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs flex items-center justify-center gap-2 transition-all duration-300 shadow-sm cursor-pointer"
                   >
                     <FiEye className="text-sm" />
                     <span>View Certificate</span>
@@ -229,7 +179,7 @@ export default function OurCertificatesSection() {
                   <a
                     href={cert.file}
                     download
-                    className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#B08D57] hover:text-[#151515] text-white/80 flex items-center justify-center transition-all duration-300 border border-white/10 shrink-0"
+                    className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#B08D57] hover:text-[#151515] text-white/80 flex items-center justify-center transition-all duration-300 shrink-0"
                     title="Download Official PDF"
                   >
                     <FiDownload className="text-sm" />

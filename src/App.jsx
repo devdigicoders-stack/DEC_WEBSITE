@@ -23,7 +23,6 @@ function AppLayout() {
   const location = useLocation()
   const [prevPath, setPrevPath] = useState(location.pathname)
   const [pageLoading, setPageLoading] = useState(false)
-  const isFullHero = location.pathname === '/' || location.pathname === '/contact' || location.pathname === '/about' || location.pathname === '/team' || location.pathname === '/our-team' || location.pathname === '/careers' || location.pathname === '/expertise' || location.pathname === '/projects' || location.pathname === '/why-dec' || location.pathname === '/why-deca' || location.pathname === '/presence' || location.pathname === '/insights' || location.pathname === '/privacy-policy' || location.pathname === '/privacy' || location.pathname === '/terms-and-conditions' || location.pathname === '/terms' || location.pathname.startsWith('/sector/')
 
   // Synchronously activate loader on route change BEFORE DOM renders the new page
   if (location.pathname !== prevPath) {
@@ -48,7 +47,7 @@ function AppLayout() {
       <PageLoader isLoading={pageLoading} />
 
       <Navbar />
-      <main className={`flex-1 ${isFullHero ? 'pt-0' : 'pt-24 sm:pt-28'} ${pageLoading ? 'opacity-0 pointer-events-none' : 'opacity-100 transition-opacity duration-300 ease-out'}`}>
+      <main className={`flex-1 pt-24 sm:pt-28 ${pageLoading ? 'opacity-0 pointer-events-none' : 'opacity-100 transition-opacity duration-300 ease-out'}`}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
