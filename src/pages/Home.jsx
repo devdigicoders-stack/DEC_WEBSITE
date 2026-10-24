@@ -127,7 +127,8 @@ function Home() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/videos/home.mp4" type="video/mp4" />
+          <source src="/videos/IMG_5427 (1).MP4" type="video/mp4" />
+          <source src="/IMG_5427 (1).MP4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </section>
