@@ -74,8 +74,9 @@ export default function OurCertificatesSection() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 sm:mb-16">
           <div className="max-w-3xl space-y-4">
             
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
-              <FaStamp className="text-sm" /> Official Statutory & Quality Standards
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
+              <FaStamp className="text-sm shrink-0" />
+              <span>Official Statutory & Quality Standards</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15]">
@@ -163,27 +164,18 @@ export default function OurCertificatesSection() {
                   </div>
                 </div>
 
-                {/* Action Buttons: View Certificate & Download */}
-                <div className="pt-3 border-t border-white/10 flex items-center gap-2">
+                {/* Action Button: View Certificate Only (No Download) */}
+                <div className="pt-3 border-t border-white/10">
                   <button
                     onClick={() => {
                       setActiveModalPdf(cert)
                       setModalTab('image')
                     }}
-                    className="flex-1 py-2.5 px-4 rounded-xl bg-white/5 hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs flex items-center justify-center gap-2 transition-all duration-300 shadow-sm cursor-pointer"
+                    className="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs flex items-center justify-center gap-2 transition-all duration-300 shadow-sm cursor-pointer"
                   >
                     <FiEye className="text-sm" />
                     <span>View Certificate</span>
                   </button>
-
-                  <a
-                    href={cert.file}
-                    download
-                    className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#B08D57] hover:text-[#151515] text-white/80 flex items-center justify-center transition-all duration-300 shrink-0"
-                    title="Download Official PDF"
-                  >
-                    <FiDownload className="text-sm" />
-                  </a>
                 </div>
               </div>
 
@@ -242,24 +234,6 @@ export default function OurCertificatesSection() {
                   </button>
                 </div>
 
-                <a
-                  href={activeModalPdf.file}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hidden sm:flex px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/15 text-xs font-semibold text-white items-center gap-1.5 transition-colors border border-white/10"
-                >
-                  <FiExternalLink />
-                  <span>Open PDF</span>
-                </a>
-
-                <a
-                  href={activeModalPdf.file}
-                  download
-                  className="px-3 py-1.5 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-xs font-bold text-[#151515] flex items-center gap-1.5 transition-colors"
-                >
-                  <FiDownload />
-                  <span className="hidden sm:inline">Download</span>
-                </a>
 
                 <button
                   onClick={() => setActiveModalPdf(null)}

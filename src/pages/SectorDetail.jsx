@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { sectorsData } from '../data/sectorsData.js'
+import { projectsData } from '../data/projectsData.js'
 import { 
   FiArrowLeft, 
   FiArrowRight, 
@@ -36,13 +37,13 @@ function SectorDetail() {
     )
   }
 
-  // Find next and previous sector for footer carousel
+  // Find next and previous sector for footer switcher (no wrap-around)
   const sectorKeys = Object.keys(sectorsData)
   const currentIndex = sectorKeys.indexOf(slug)
-  const prevKey = sectorKeys[(currentIndex - 1 + sectorKeys.length) % sectorKeys.length]
-  const nextKey = sectorKeys[(currentIndex + 1) % sectorKeys.length]
-  const prevSector = sectorsData[prevKey]
-  const nextSector = sectorsData[nextKey]
+  const hasPrev = currentIndex > 0
+  const hasNext = currentIndex >= 0 && currentIndex < sectorKeys.length - 1
+  const prevSector = hasPrev ? sectorsData[sectorKeys[currentIndex - 1]] : null
+  const nextSector = hasNext ? sectorsData[sectorKeys[currentIndex + 1]] : null
 
   return (
     <div className="bg-white text-[#151515] min-h-screen font-sans selection:bg-[#B08D57] selection:text-[#151515]">
@@ -81,8 +82,8 @@ function SectorDetail() {
           </div>
 
           {/* Top Sector Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#B08D57]/20 border border-[#B08D57]/40 text-[#B08D57] text-xs font-semibold uppercase tracking-wider mb-4 backdrop-blur-md">
-            <FiAward className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-4">
+            <FiAward className="text-sm shrink-0" />
             <span>{sector.badge}</span>
           </div>
 
@@ -100,17 +101,17 @@ function SectorDetail() {
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
               href="#projects-showcase"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm text-[#151515] bg-gradient-to-r from-[#B08D57] via-[#d4af72] to-[#B08D57] hover:brightness-110 shadow-lg shadow-[#B08D57]/20 transition-all"
+              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:scale-105 inline-flex items-center gap-2.5"
             >
-              <span>View Portfolio Projects</span>
-              <FiArrowRight className="w-4 h-4" />
+              <span>View Projects Portfolio</span>
+              <FiArrowRight className="text-base" />
             </a>
 
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white bg-white/10 border border-white/20 hover:bg-white/20 backdrop-blur-md transition-all"
+              className="px-7 py-4 rounded-xl bg-transparent hover:bg-white/10 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] inline-flex items-center gap-2.5"
             >
-              <FiPhoneCall className="w-4 h-4 text-[#B08D57]" />
+              <FiPhoneCall className="text-base text-[#B08D57]" />
               <span>Consult Our Specialists</span>
             </Link>
           </div>
@@ -140,19 +141,22 @@ function SectorDetail() {
       {/* 3. SECTOR OVERVIEW & TECHNICAL SCOPE HIGHLIGHTS              */}
       {/* ============================================================ */}
       <section className="py-20 sm:py-28 px-6 sm:px-10 lg:px-14 xl:px-20 border-b border-black/10">
-        <div className="max-w-[1720px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div className="max-w-[1720px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-stretch">
           
           {/* Left Column: Sector Narrative */}
-          <div className="lg:col-span-7">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] block mb-2">
-              Engineering Expertise
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#151515] tracking-tight leading-tight">
-              Delivering Integrated Excellence for {sector.title}
-            </h2>
-            <p className="mt-6 text-base sm:text-lg text-black/75 leading-relaxed">
-              {sector.overview}
-            </p>
+          <div className="lg:col-span-7 flex flex-col justify-between">
+            <div>
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-4">
+                <FiCheckCircle className="text-sm shrink-0" />
+                <span>ENGINEERING EXPERTISE</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-[#151515] tracking-tight leading-tight">
+                Delivering Integrated Excellence for {sector.title}
+              </h2>
+              <p className="mt-6 text-base sm:text-lg text-black/75 leading-relaxed">
+                {sector.overview}
+              </p>
+            </div>
 
             <div className="mt-8 p-6 rounded-2xl bg-slate-50 border border-slate-200">
               <h4 className="text-sm font-bold uppercase tracking-wider text-[#151515] mb-3 flex items-center gap-2">
@@ -165,25 +169,28 @@ function SectorDetail() {
           </div>
 
           {/* Right Column: Technical Scope Highlights */}
-          <div className="lg:col-span-5 bg-[#151515] text-[#F5F0E7] p-8 sm:p-10 rounded-3xl shadow-xl border border-black">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] block mb-2">
-              Scope of Deliverables
-            </span>
-            <h3 className="text-2xl font-bold text-white mb-6">
-              Core Engineering Scope
-            </h3>
-            <ul className="space-y-4">
-              {sector.scopeHighlights.map((scope, idx) => (
-                <li key={idx} className="flex items-start gap-3.5">
-                  <div className="mt-1 text-[#B08D57] flex-shrink-0">
-                    <FiCheckCircle className="w-5 h-5" />
-                  </div>
-                  <span className="text-sm sm:text-base text-white/85 leading-snug">
-                    {scope}
-                  </span>
-                </li>
-              ))}
-            </ul>
+          <div className="lg:col-span-5 bg-[#151515] text-[#F5F0E7] p-8 sm:p-10 rounded-3xl shadow-xl border border-black flex flex-col justify-between">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#B08D57] text-xs font-semibold uppercase tracking-wider mb-4">
+                <FiLayers className="text-sm shrink-0" />
+                <span>Scope of Deliverables</span>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Core Engineering Scope
+              </h3>
+              <ul className="space-y-4">
+                {sector.scopeHighlights.map((scope, idx) => (
+                  <li key={idx} className="flex items-start gap-3.5">
+                    <div className="mt-1 text-[#B08D57] flex-shrink-0">
+                      <FiCheckCircle className="w-5 h-5" />
+                    </div>
+                    <span className="text-sm sm:text-base text-white/85 leading-snug">
+                      {scope}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
               <div className="flex flex-col">
@@ -191,7 +198,7 @@ function SectorDetail() {
                 <span className="text-sm font-bold text-[#B08D57]">MMUP Grade A Consultancy</span>
               </div>
               <a
-                href="/DEC_Company_Profile_2026.pdf"
+                href="/DEC_Company_Profile_2026 copy.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs text-white/80 hover:text-[#B08D57] underline transition-colors"
@@ -211,125 +218,139 @@ function SectorDetail() {
       <section id="projects-showcase" className="py-20 sm:py-28 px-6 sm:px-10 lg:px-14 xl:px-20 bg-slate-50 border-b border-black/10">
         <div className="max-w-[1720px] mx-auto">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] block mb-2">
-                DEC Project Portfolio
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#151515] tracking-tight">
-                Featured {sector.title} Projects
-              </h2>
+          <div className="mb-12 sm:mb-16 max-w-3xl">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+              <FiLayers className="text-sm shrink-0" />
+              <span>DEC PROJECT PORTFOLIO</span>
             </div>
-            <p className="text-sm sm:text-base text-black/60 max-w-md">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#151515] tracking-tight">
+              Featured {sector.title} Projects
+            </h2>
+            <p className="text-sm sm:text-base text-black/65 mt-3 leading-relaxed">
               A curated selection of DEC’s completed and ongoing engagements from the official 2026 Company Profile.
             </p>
           </div>
 
-          {/* Projects Cards Grid */}
+          {/* Projects Cards Grid with Hover Photo Reveal */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {sector.projects.map((proj) => (
-              <div
-                key={proj.id}
-                className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 hover:border-[#B08D57]/50 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  {/* Location Tag */}
-                  <div className="inline-flex items-center gap-1.5 text-xs text-[#B08D57] font-semibold mb-3">
-                    <FiMapPin className="w-3.5 h-3.5" />
-                    <span>{proj.location}</span>
+            {sector.projects.map((proj) => {
+              const projImage = proj.image || projectsData.find(p => 
+                p.name.toLowerCase() === proj.name.toLowerCase() ||
+                p.name.toLowerCase().includes(proj.name.toLowerCase()) ||
+                proj.name.toLowerCase().includes(p.name.toLowerCase())
+              )?.image || '/image copy 4.png'
+
+              return (
+                <div
+                  key={proj.id}
+                  className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 hover:border-[#B08D57] shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group overflow-hidden relative"
+                >
+                  <div className="flex-1">
+                    {/* Location Tag */}
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="inline-flex items-center gap-1.5 text-xs text-[#B08D57] font-semibold">
+                        <FiMapPin className="w-3.5 h-3.5 shrink-0" />
+                        <span>{proj.location}</span>
+                      </div>
+                      <span className="text-[10px] uppercase tracking-wider text-black/40 font-semibold bg-slate-100 px-2 py-0.5 rounded group-hover:bg-[#B08D57]/10 group-hover:text-[#B08D57] transition-colors">
+                        DEC Portfolio
+                      </span>
+                    </div>
+
+                    {/* Project Title with Gold Hover */}
+                    <h3 className="text-xl font-bold text-[#151515] group-hover:text-[#B08D57] transition-colors leading-snug mb-3 cursor-pointer">
+                      {proj.name}
+                    </h3>
+
+                    {/* Interactive Hover Image: Appears smoothly when hovering over the project name / card */}
+                    <div className="relative overflow-hidden rounded-xl h-0 group-hover:h-44 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out border border-transparent group-hover:border-[#B08D57]/40 mb-3 bg-slate-900 shadow-inner">
+                      <img 
+                        src={projImage} 
+                        alt={proj.name} 
+                        className="w-full h-44 object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+                      <span className="absolute bottom-2.5 left-2.5 text-[10px] font-bold text-white bg-black/75 px-2.5 py-1 rounded backdrop-blur-sm border border-white/10 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#B08D57] animate-pulse" />
+                        <span>Site Engagement</span>
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Project Title */}
-                  <h3 className="text-xl font-bold text-[#151515] group-hover:text-[#B08D57] transition-colors leading-snug mb-3">
-                    {proj.name}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-xs sm:text-sm text-black/65 leading-relaxed mb-6">
-                    {proj.description}
-                  </p>
+                  {/* Scope Badge */}
+                  <div className="pt-4 border-t border-slate-100 mt-auto">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-black/40 block mb-1">
+                      Scope of Work
+                    </span>
+                    <span className="text-xs font-bold text-slate-800 leading-tight block">
+                      {proj.scope}
+                    </span>
+                  </div>
                 </div>
-
-                {/* Scope Badge */}
-                <div className="pt-4 border-t border-slate-100">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-black/40 block mb-1">
-                    Scope of Work
-                  </span>
-                  <span className="text-xs font-bold text-slate-800 leading-tight block">
-                    {proj.scope}
-                  </span>
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
 
         </div>
       </section>
 
       {/* ============================================================ */}
-      {/* 5. TRUSTED CLIENTS IN THIS SECTOR                            */}
-      {/* ============================================================ */}
-      {sector.clients && sector.clients.length > 0 && (
-        <section className="py-16 px-6 sm:px-10 lg:px-14 xl:px-20 bg-white border-b border-black/10">
-          <div className="max-w-[1720px] mx-auto text-center">
-            <span className="text-xs font-bold uppercase tracking-widest text-black/40 block mb-3">
-              Trusted Partnerships in {sector.title}
-            </span>
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6">
-              {sector.clients.map((client, idx) => (
-                <span 
-                  key={idx}
-                  className="px-5 py-2.5 rounded-full text-sm font-semibold bg-slate-100 text-[#151515] border border-slate-200 hover:border-[#B08D57] hover:bg-[#B08D57]/10 transition-colors"
-                >
-                  {client}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ============================================================ */}
-      {/* 6. NEXT & PREVIOUS SECTOR QUICK SWITCHER                     */}
+      {/* 5. NEXT & PREVIOUS SECTOR QUICK SWITCHER                     */}
       {/* ============================================================ */}
       <section className="py-16 px-6 sm:px-10 lg:px-14 xl:px-20 bg-[#151515] text-[#F5F0E7]">
-        <div className="max-w-[1720px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-3 items-center gap-6">
           
-          {/* Previous Sector */}
-          <Link
-            to={`/sector/${prevSector.slug}`}
-            className="group flex items-center gap-4 text-left p-4 rounded-xl hover:bg-white/5 transition-all w-full sm:w-auto"
-          >
-            <div className="w-11 h-11 rounded-full border border-white/20 group-hover:border-[#B08D57] group-hover:bg-[#B08D57] group-hover:text-[#151515] flex items-center justify-center text-white transition-all flex-shrink-0">
-              <FiArrowLeft className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-[11px] uppercase tracking-wider text-white/50 block">Previous Sector</span>
-              <span className="text-base font-bold text-white group-hover:text-[#B08D57] transition-colors">{prevSector.title}</span>
-            </div>
-          </Link>
+          {/* Previous Sector (Hidden on First Sector Page) */}
+          <div className="flex justify-start order-2 sm:order-1">
+            {hasPrev && prevSector ? (
+              <Link
+                to={`/sector/${prevSector.slug}`}
+                className="group flex items-center gap-4 text-left p-3.5 sm:p-4 rounded-xl hover:bg-white/5 transition-all w-full sm:w-auto"
+              >
+                <div className="w-11 h-11 rounded-full border border-white/20 group-hover:border-[#B08D57] group-hover:bg-[#B08D57] group-hover:text-[#151515] flex items-center justify-center text-white transition-all flex-shrink-0">
+                  <FiArrowLeft className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-[11px] uppercase tracking-wider text-white/50 block">Previous Sector</span>
+                  <span className="text-base font-bold text-white group-hover:text-[#B08D57] transition-colors">{prevSector.title}</span>
+                </div>
+              </Link>
+            ) : (
+              <div className="hidden sm:block" />
+            )}
+          </div>
 
           {/* Center Call to Action */}
-          <Link
-            to="/contact"
-            className="px-7 py-3 rounded-xl bg-gradient-to-r from-[#B08D57] via-[#d4af72] to-[#B08D57] text-[#151515] font-bold text-sm tracking-wide shadow-lg shadow-[#B08D57]/20 hover:brightness-110 transition-all flex-shrink-0"
-          >
-            Start Your Project With DEC
-          </Link>
+          <div className="flex justify-center order-1 sm:order-2">
+            <Link
+              to="/contact"
+              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:shadow-xl hover:shadow-[#B08D57]/35 hover:scale-105 active:scale-95 inline-flex items-center gap-2.5 flex-shrink-0 cursor-pointer text-center"
+            >
+              <span>Start Your Project With DEC</span>
+              <FiArrowRight className="text-base" />
+            </Link>
+          </div>
 
-          {/* Next Sector */}
-          <Link
-            to={`/sector/${nextSector.slug}`}
-            className="group flex items-center gap-4 text-right p-4 rounded-xl hover:bg-white/5 transition-all w-full sm:w-auto justify-end"
-          >
-            <div>
-              <span className="text-[11px] uppercase tracking-wider text-white/50 block">Next Sector</span>
-              <span className="text-base font-bold text-white group-hover:text-[#B08D57] transition-colors">{nextSector.title}</span>
-            </div>
-            <div className="w-11 h-11 rounded-full border border-white/20 group-hover:border-[#B08D57] group-hover:bg-[#B08D57] group-hover:text-[#151515] flex items-center justify-center text-white transition-all flex-shrink-0">
-              <FiArrowRight className="w-5 h-5" />
-            </div>
-          </Link>
+          {/* Next Sector (Hidden on Last Sector Page) */}
+          <div className="flex justify-end order-3">
+            {hasNext && nextSector ? (
+              <Link
+                to={`/sector/${nextSector.slug}`}
+                className="group flex items-center gap-4 text-right p-3.5 sm:p-4 rounded-xl hover:bg-white/5 transition-all w-full sm:w-auto justify-end"
+              >
+                <div>
+                  <span className="text-[11px] uppercase tracking-wider text-white/50 block">Next Sector</span>
+                  <span className="text-base font-bold text-white group-hover:text-[#B08D57] transition-colors">{nextSector.title}</span>
+                </div>
+                <div className="w-11 h-11 rounded-full border border-white/20 group-hover:border-[#B08D57] group-hover:bg-[#B08D57] group-hover:text-[#151515] flex items-center justify-center text-white transition-all flex-shrink-0">
+                  <FiArrowRight className="w-5 h-5" />
+                </div>
+              </Link>
+            ) : (
+              <div className="hidden sm:block" />
+            )}
+          </div>
 
         </div>
       </section>

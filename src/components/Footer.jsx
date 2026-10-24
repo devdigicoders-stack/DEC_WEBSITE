@@ -51,9 +51,9 @@ function Footer() {
         <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20 py-10 sm:py-12 mx-auto">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
             <div className="max-w-2xl flex flex-col items-center lg:items-start text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B08D57]/15 border border-[#B08D57]/40 text-[#B08D57] text-xs font-semibold uppercase tracking-wider mb-3">
-                <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />
-                Grade A Engineering Consultancy · Qatar & Regional Delivery
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+                <FiShield className="text-sm shrink-0" />
+                <span>Grade A Engineering Consultancy · Qatar & Regional Delivery</span>
               </div>
               <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
                 Ready to mobilize your next landmark project?
@@ -88,15 +88,15 @@ function Footer() {
       {/* 2. MAIN 5-COLUMN FOOTER CONTENT GRID                        */}
       {/* ============================================================ */}
       <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-6 xl:gap-8">
           
-          {/* Column 1: Brand & Identity (4 Cols) */}
-          <div className="lg:col-span-4 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+          {/* Column 1: Brand & Identity (3 Cols) */}
+          <div className="lg:col-span-3 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
             <Link to="/" className="inline-block group">
               <img 
                 src="/logo.png" 
                 alt="DEC - Desentral Engineering Consultancy" 
-                className="w-[190px] sm:w-[220px] lg:w-[250px] h-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] mx-auto lg:mx-0"
+                className="w-[190px] sm:w-[220px] lg:w-[240px] h-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] mx-auto lg:mx-0"
               />
             </Link>
 
@@ -116,87 +116,67 @@ function Footer() {
                 <FaAward className="text-[#B08D57]" /> MMUP / UPDA Grade A
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/5 border border-white/10">
-                <FiShield className="text-[#B08D57]" /> QCDD Civil Defense Approved
+                <FiShield className="text-[#B08D57]" /> QCDD Approved
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/5 border border-white/10">
-                <FiCheckCircle className="text-emerald-400" /> GSAS Certified Provider
+                <FiCheckCircle className="text-emerald-400" /> GSAS Certified
               </span>
             </div>
           </div>
 
-          {/* Column 2: Navigation & All Pages (2 Cols) */}
+          {/* Column 2: Navigation / Content Tabs (2 Cols) */}
           <div className="lg:col-span-2 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start">
             <h5 className="text-xs font-bold uppercase tracking-widest text-[#B08D57] border-b border-white/10 pb-2 w-full text-center lg:text-left">
               Content
             </h5>
             <ul className="space-y-2.5 text-xs sm:text-sm flex flex-col items-center lg:items-start w-full">
               <li>
+                <Link to="/" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
+                  Home
+                </Link>
+              </li>
+              <li>
                 <Link to="/about" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
                   About DEC
                 </Link>
               </li>
               <li>
-                <Link to="/team" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
-                  Leadership & Team
-                </Link>
-              </li>
-              <li>
                 <Link to="/expertise" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
-                  Our Expertise
+                  Expertise
                 </Link>
               </li>
               <li>
                 <Link to="/projects" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
-                  Project Portfolio
-                </Link>
-              </li>
-              <li>
-                <Link to="/presence" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
-                  Regional Presence
+                  Projects
                 </Link>
               </li>
               <li>
                 <Link to="/why-dec" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
-                  Why DEC (6-Stage Model)
+                  Why DEC
                 </Link>
               </li>
               <li>
                 <Link to="/insights" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
-                  Technical Insights
+                  Corporate Credentials
                 </Link>
               </li>
               <li>
                 <Link to="/careers" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
-                  Careers at DEC
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5 font-semibold text-[#B08D57]">
-                  Contact & Inquiries
-                </Link>
-              </li>
-              <li>
-                <Link to="/privacy-policy" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
-                  Privacy Policy & Data
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms-and-conditions" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
-                  Terms & Conditions
+                  Careers
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Core Disciplines & Services (3 Cols) */}
-          <div className="lg:col-span-3 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start">
+          {/* Column 3: The Six Engineering Disciplines (2 Cols) */}
+          <div className="lg:col-span-2 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start">
             <h5 className="text-xs font-bold uppercase tracking-widest text-[#B08D57] border-b border-white/10 pb-2 w-full text-center lg:text-left">
-              Disciplines & Sectors
+              Disciplines
             </h5>
             <ul className="space-y-2.5 text-xs sm:text-sm flex flex-col items-center lg:items-start w-full">
               <li>
                 <Link to="/expertise#architecture" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
-                  Architecture & Interior Fit-Out
+                  Architectural & Space Planning
                 </Link>
               </li>
               <li>
@@ -206,38 +186,72 @@ function Footer() {
               </li>
               <li>
                 <Link to="/expertise#mechanical" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
-                  Mechanical, HVAC & Plumbing (MEP)
+                  Mechanical & HVAC Engineering
                 </Link>
               </li>
               <li>
                 <Link to="/expertise#electrical" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
-                  Electrical & ELV Systems
-                </Link>
-              </li>
-              <li>
-                <Link to="/expertise#bim" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
-                  BIM Level 2 & 3D Clash Detection
+                  Electrical & Low Voltage (ELV)
                 </Link>
               </li>
               <li>
                 <Link to="/expertise#regulatory" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
-                  Fire & Life Safety (QCDD Permitting)
+                  Statutory Permitting Approvals
                 </Link>
               </li>
               <li>
-                <Link to="/sector/offices" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
-                  Commercial Offices & Workplace
-                </Link>
-              </li>
-              <li>
-                <Link to="/sector/retail" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
-                  Luxury Retail, Hospitality & F&B
+                <Link to="/expertise#bim" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                  BIM & Digital Twin Delivery
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Contact & Locations (3 Cols) */}
+          {/* Column 4: Dedicated Projects / Sectors Column (2 Cols) */}
+          <div className="lg:col-span-2 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <h5 className="text-xs font-bold uppercase tracking-widest text-[#B08D57] border-b border-white/10 pb-2 w-full text-center lg:text-left">
+              Projects
+            </h5>
+            <ul className="space-y-2.5 text-xs sm:text-sm flex flex-col items-center lg:items-start w-full">
+              <li>
+                <Link to="/sector/offices" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                  Offices – Corporate & Workplaces
+                </Link>
+              </li>
+              <li>
+                <Link to="/sector/retail" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                  Retail – Luxury & Commercial
+                </Link>
+              </li>
+              <li>
+                <Link to="/sector/hospitality" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                  Hospitality – Hotels & Resorts
+                </Link>
+              </li>
+              <li>
+                <Link to="/sector/fnb" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                  F&B – Food & Beverage
+                </Link>
+              </li>
+              <li>
+                <Link to="/sector/residential" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                  Residential – High-End Residential
+                </Link>
+              </li>
+              <li>
+                <Link to="/sector/industrial" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                  Industrial – Manufacturing & Logistics
+                </Link>
+              </li>
+              <li>
+                <Link to="/sector/medical" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors">
+                  Medical – Healthcare & Pharma
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 5: Contact & Locations (3 Cols) */}
           <div className="lg:col-span-3 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start">
             <h5 className="text-xs font-bold uppercase tracking-widest text-[#B08D57] border-b border-white/10 pb-2 w-full text-center lg:text-left">
               Headquarters & Offices

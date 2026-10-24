@@ -10,6 +10,7 @@ import {
   FiCompass, 
   FiArrowRight 
 } from 'react-icons/fi'
+import { FaCompassDrafting } from 'react-icons/fa6'
 
 function Expertise() {
   const location = useLocation()
@@ -32,7 +33,7 @@ function Expertise() {
   const engineeringDisciplines = [
     {
       id: 'architecture',
-      icon: <FiCompass className="text-3xl text-[#B08D57]" />,
+      icon: <FaCompassDrafting className="text-3xl text-[#B08D57]" />,
       title: 'Architectural & Space Planning',
       description: 'Comprehensive architectural concepts, schematic designs, functional space planning, luxury interior fit-outs, and construction documentation complying with QCS and international codes.',
       capabilities: [
@@ -81,7 +82,7 @@ function Expertise() {
     {
       id: 'regulatory',
       icon: <FiShield className="text-3xl text-[#B08D57]" />,
-      title: 'Statutory Permitting & Grade A Approvals',
+      title: 'Statutory Permitting Approvals',
       description: 'Expedited statutory permits through our certified Grade A MMUP / UPDA consulting status, covering Qatar Civil Defense (QCD), Municipalities (MME), Kahramaa, Ashghal, and Building Completion Certificates (BCC).',
       capabilities: [
         'Grade A MMUP / UPDA Licensed Endorsement',
@@ -192,11 +193,9 @@ function Expertise() {
         {/* Hero Content */}
         <div className="relative z-10 w-full px-5 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
           {/* Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-5 shadow-xl shadow-black/50 max-w-[95%]">
-            <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse shrink-0" />
-            <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold text-[#B08D57] text-center">
-              Comprehensive Engineering Capabilities · Grade A Certified
-            </span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-5">
+            <FiCompass className="text-sm shrink-0" />
+            <span>Comprehensive Engineering Capabilities · Grade A Certified</span>
           </div>
 
           {/* Headings */}
@@ -204,7 +203,7 @@ function Expertise() {
             Multidisciplinary Engineering Excellence
           </h1>
           <p className="mt-4 sm:mt-5 text-base sm:text-xl lg:text-2xl font-semibold text-[#B08D57] tracking-wide max-w-3xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-            Architecture · Structural · MEP · Fire Life Safety · BIM Level 2
+            Architecture · Structural · MEP · Fire Life Safety · BIM Modeling
           </p>
           <p className="mt-3 sm:mt-4 text-xs sm:text-base text-[#F5F0E7]/80 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] font-normal">
             Delivering unified, high-performance engineering solutions with statutory rigor and technical precision across Qatar and the GCC.
@@ -219,9 +218,10 @@ function Expertise() {
         <div className="max-w-[1720px] mx-auto">
           
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] bg-[#B08D57]/10 px-3.5 py-1.5 rounded-full inline-block mb-4">
-              GRADE A MULTIDISCIPLINARY PRACTICE
-            </span>
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-4">
+              <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />
+              <span>GRADE A MULTIDISCIPLINARY PRACTICE</span>
+            </div>
             <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight text-[#151515] leading-tight">
               Engineering Precision Across Every Built Discipline
             </h1>
@@ -342,9 +342,10 @@ function Expertise() {
       {/* ============================================================ */}
       <section className="bg-[#151515] py-20 px-6 sm:px-10 lg:px-14 xl:px-20 text-center">
         <div className="max-w-4xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] block mb-3">
-            NEED GRADE A ENGINEERING EXPERTISE?
-          </span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-5">
+            <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />
+            <span>NEED GRADE A ENGINEERING EXPERTISE?</span>
+          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F5F0E7] tracking-tight mb-6">
             Partner With Our Multidisciplinary Engineering Leads
           </h2>
@@ -354,15 +355,17 @@ function Expertise() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link 
               to="/contact"
-              className="px-8 py-4 rounded-xl bg-[#B08D57] hover:bg-[#8F6F3E] text-[#151515] font-bold text-sm uppercase tracking-wider transition-all shadow-lg hover:shadow-[#B08D57]/20"
+              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:scale-105 inline-flex items-center gap-2.5"
             >
-              Request Engineering Consultation
+              <span>Request Engineering Consultation</span>
+              <FiArrowRight className="text-base" />
             </Link>
             <Link 
               to="/projects"
-              className="px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/15 font-bold text-sm uppercase tracking-wider transition-all"
+              className="px-7 py-4 rounded-xl bg-transparent hover:bg-white/10 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] inline-flex items-center gap-2.5"
             >
-              Explore Our Projects
+              <span>Explore Our Projects</span>
+              <FiLayers className="text-base text-[#B08D57]" />
             </Link>
           </div>
         </div>

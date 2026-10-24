@@ -1,125 +1,88 @@
 import React, { useState } from 'react'
 import { 
-  FiArrowRight, 
-  FiClock, 
+  FiEye, 
+  FiShield, 
   FiCheckCircle, 
-  FiSearch
+  FiAward, 
+  FiLayers, 
+  FiX
 } from 'react-icons/fi'
+import { FaStamp } from 'react-icons/fa6'
+import { certificatesData } from '../data/certificatesData.js'
 
 function Insights() {
-  const [activeCategory, setActiveCategory] = useState('All')
-  const [searchQuery, setSearchQuery] = useState('')
+  const [activeModalDoc, setActiveModalDoc] = useState(null)
+  const [modalTab, setModalTab] = useState('image') // 'image' | 'pdf'
 
-  const categories = [
-    'All',
-    'Regulatory & Permitting',
-    'BIM & Digital Delivery',
-    'GSAS Sustainability',
-    'Structural & MEP',
-    'Corporate Updates'
-  ]
+  // Company Profile Document Object
+  const companyProfileDoc = {
+    id: 'company-profile-2026',
+    title: 'DEC Official Company Profile & Prequalification 2026',
+    code: 'Dossier Ref. DEC-PQ-2026-V1',
+    standard: 'Comprehensive Engineering Prequalification',
+    category: 'Corporate Prequalification Dossier',
+    authority: 'Desentral Engineering Consultancy Board of Directors',
+    description: 'The official 2026 prequalification profile covering DEC governance, Grade A MMUP licensure, 50+ in-house licensed engineers, 300+ delivered landmark engagements, BIM Level 2 execution workflows, and regional delivery hubs across Qatar, Egypt, and Saudi Arabia.',
+    file: '/DEC_Company_Profile_2026 copy.pdf',
+    image: '/images/dec_integrated_engineering.jpg',
+    badge: 'OFFICIAL 2026 RELEASE',
+    accentColor: '#B08D57',
+    isPdfOnly: true
+  }
 
-  const articles = [
+  const handleOpenCert = (cert) => {
+    setActiveModalDoc(cert)
+    setModalTab('image')
+  }
+
+  const handleOpenProfile = () => {
+    setActiveModalDoc(companyProfileDoc)
+    setModalTab('pdf')
+  }
+
+  const prequalificationPoints = [
     {
-      id: 1,
-      category: 'Regulatory & Permitting',
-      title: 'Navigating QCDD Fire & Life Safety Approvals in Qatar: A Grade A Roadmap',
-      excerpt: 'How centralized engineering coordination accelerates Civil Defense certifications, smoke control compliance, and statutory Building Completion Certificates (BCC).',
-      author: 'Mohamed Mokhtar',
-      authorRole: 'Technical Manager',
-      date: 'October 2026',
-      readTime: '6 min read',
-      featured: true,
-      tag: 'Qatar Regulations',
+      title: 'MMUP / UPDA Grade A Classification',
+      authority: 'Ministry of Municipality (Qatar)',
+      desc: 'Top-tier statutory engineering standing authorizing unrestricted building heights, unlimited developmental footprints, and complete multidisciplinary practice.',
+      icon: FiShield,
+      stat: 'Grade A Standing'
+    },
+    {
+      title: 'QCDD Fire & Life Safety Category A',
+      authority: 'General Directorate of Civil Defense',
+      desc: 'Fully certified life safety engineering, smoke management simulation, emergency egress calculations, and fast-track Building Completion Certificates (BCC).',
+      icon: FiAward,
       stat: '100% First-Pass Approvals'
     },
     {
-      id: 2,
-      category: 'BIM & Digital Delivery',
-      title: 'Eliminating Site Clashes: How BIM Level 2 Protects Asset Capital Expenditure',
-      excerpt: 'A deep dive into 3D multi-discipline clash resolution across architectural, structural, and MEP models before physical procurement begins.',
-      author: 'Mostafa Magdy',
-      authorRole: 'Design Manager',
-      date: 'September 2026',
-      readTime: '8 min read',
-      featured: true,
-      tag: 'Digital Engineering',
-      stat: '0 Site Reworks'
+      title: 'Kahramaa & Ashghal Certified Delivery',
+      authority: 'Statutory Utilities Authorities',
+      desc: 'Substation engineering, medium/low voltage distribution networks, sanitary/drainage designs, and road infrastructure coordination adhering to Qatar Construction Specifications (QCS).',
+      icon: FiLayers,
+      stat: 'Utility Registered'
     },
     {
-      id: 3,
-      category: 'GSAS Sustainability',
-      title: 'GSAS 3-Star & 4-Star Implementation for Commercial Fitouts & Developments',
-      excerpt: 'Practical engineering methodologies for energy reduction, indoor environmental quality, and water efficiency under Gulf Organization for Research & Development (GORD) standards.',
-      author: 'DEC Sustainability Cell',
-      authorRole: 'GSAS Certified Team',
-      date: 'August 2026',
-      readTime: '5 min read',
-      featured: false,
-      tag: 'Sustainability',
-      stat: 'GSAS Service Provider'
-    },
-    {
-      id: 4,
-      category: 'Structural & MEP',
-      title: 'High-Load Precision: Specialized Engineering for Regional Data & Logistics Hubs',
-      excerpt: 'Addressing vibration mitigation, redundant power architecture, and heavy slab load capacities for critical enterprise infrastructure in the GCC.',
-      author: 'Reda Mabrouk',
-      authorRole: 'Head of Structural Department',
-      date: 'July 2026',
-      readTime: '7 min read',
-      featured: false,
-      tag: 'Structural Rigor',
-      stat: 'Grade A Certified'
-    },
-    {
-      id: 5,
-      category: 'Corporate Updates',
-      title: 'DEC Regional Expansion: Scaling Dual-Hub Production across Qatar, Egypt & KSA',
-      excerpt: 'How our integrated engineering office model connects Lusail executive management with Dokki technical centers for round-the-clock delivery.',
-      author: 'Islam Farid',
-      authorRole: 'General Manager',
-      date: 'June 2026',
-      readTime: '4 min read',
-      featured: false,
-      tag: 'Regional Footprint',
-      stat: '3 Regional Hubs'
-    },
-    {
-      id: 6,
-      category: 'Regulatory & Permitting',
-      title: 'Municipal Building Permits (MMUP / UPDA): Fast-Tracking Commercial Approvals',
-      excerpt: 'Understanding municipality review thresholds in Doha, Al Rayyan, Al Daayen, and Al Wakrah to eliminate permitting bottlenecks.',
-      author: 'Mohammed Ashfin',
-      authorRole: 'Senior Architect & FLS Specialist',
-      date: 'May 2026',
-      readTime: '5 min read',
-      featured: false,
-      tag: 'MMUP / UPDA',
-      stat: '30+ Qatar Locations'
+      title: 'Tawteen & QatarEnergy Unified ICV',
+      authority: 'National In-Country Value Program',
+      desc: 'Officially certified contributor to Qatar domestic economic value creation, localized procurement, and regional engineering human capital enablement.',
+      icon: FiCheckCircle,
+      stat: 'ICV Certified Scorecard'
     }
   ]
 
-  const filteredArticles = articles.filter(art => {
-    const matchesCategory = activeCategory === 'All' || art.category === activeCategory
-    const matchesSearch = art.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          art.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          art.tag.toLowerCase().includes(searchQuery.toLowerCase())
-    return matchesCategory && matchesSearch
-  })
-
   return (
-    <div className="w-full bg-[#151515] text-[#F5F0E7] antialiased font-sans">
+    <div className="w-full bg-[#151515] text-[#F5F0E7] antialiased font-sans selection:bg-[#B08D57] selection:text-[#151515]">
       
       {/* ============================================================ */}
-      {/* 1. HERO SECTION (100VH IMMERSIVE ARCHITECTURAL KNOWLEDGE HUB) */}
+      {/* 1. HERO SECTION (MAINTAINS EXISTING HERO STYLING & IMAGE)    */}
       {/* ============================================================ */}
       <section className="relative w-full min-h-[520px] lg:h-[calc(100vh-7rem)] flex items-center justify-center overflow-hidden bg-[#151515]">
-        {/* Background Image - Reduced Opacity for Text Readability */}
+        {/* Background Image - Clean Opacity with Gradient Overlay */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <img 
             src="/image copy 3.png" 
-            alt="DEC Engineering Knowledge & Industrial Excellence" 
+            alt="DEC Corporate Credentials, Prequalification and Engineering Accreditations" 
             className="w-full h-full object-cover object-center scale-100 opacity-55 transition-transform duration-1000 ease-out"
           />
           {/* Contrast Overlay for Crystal Clear Text Readability */}
@@ -129,92 +92,306 @@ function Insights() {
         {/* Hero Content */}
         <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
           {/* Pill Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-6 shadow-xl shadow-black/50">
-            <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#B08D57]">
-              DEC Insights · Engineering Thought Leadership
-            </span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-6">
+            <FiShield className="text-sm shrink-0" />
+            <span>CORPORATE CREDENTIALS · STATUTORY LICENSES & PREQUALIFICATION</span>
           </div>
 
           {/* Main Title & Subtitle */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.1] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
-            Knowledge & Innovation
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.1] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+            Corporate Credentials & Prequalification
           </h1>
           <p className="mt-4 text-xl sm:text-2xl font-semibold text-[#B08D57] tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-            Technical Rigor. Regulatory Clarity. Sustainable GCC Impact.
+            MMUP Grade A Licensed · ISO Certified · GSAS Accredited · Tawteen ICV Approved
           </p>
           <p className="mt-4 text-base sm:text-lg text-[#F5F0E7] max-w-3xl mx-auto leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] font-medium">
-            Explore authoritative engineering whitepapers, regulatory roadmaps, BIM Level 2 case studies, and sustainable design insights from DEC specialists across Qatar, Egypt, and KSA.
+            Official statutory engineering standing, international ISO management systems, corporate prequalification dossiers, and verified accreditations authenticated for institutional inspection across Qatar, Egypt, and Saudi Arabia.
           </p>
 
           {/* Quick Metrics Bar */}
           <div className="mt-8 flex flex-wrap justify-center items-center gap-3 text-xs sm:text-sm">
             <span className="px-3.5 py-1.5 rounded-md bg-black/50 backdrop-blur-md border border-white/20 text-white/95">
-              📚 <strong>Technical Research:</strong> BIM, MEP & Civil Defense
+              🏛️ <strong>MMUP / UPDA:</strong> Grade A Multidisciplinary License
             </span>
             <span className="px-3.5 py-1.5 rounded-md bg-black/50 backdrop-blur-md border border-white/20 text-white/95">
-              🌱 <strong>Sustainability:</strong> GSAS & Green Building Standards
+              🏅 <strong>ISO Standards:</strong> 9001, 14001 & 45001 Certified
             </span>
             <span className="px-3.5 py-1.5 rounded-md bg-black/50 backdrop-blur-md border border-white/20 text-white/95">
-              🏛️ <strong>Regulatory:</strong> MMUP Grade A Permitting Roadmaps
+              🌱 <strong>Sustainability & Local Value:</strong> GSAS & Tawteen ICV
             </span>
-          </div>
-
-          {/* Jump to Filter */}
-          <div className="mt-10">
-            <a 
-              href="#articles-section"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-xl shadow-black/40 hover:scale-105"
-            >
-              Explore All Publications <FiArrowRight />
-            </a>
           </div>
         </div>
       </section>
 
       {/* ============================================================ */}
-      {/* 2. SEARCH & CATEGORY FILTER STRIP (LIGHT LUXURY CONTAINER)   */}
+      {/* 2. FEATURED DOCUMENT: DEC 2026 COMPANY PROFILE & PREQUALIFICATION */}
       {/* ============================================================ */}
-      <section id="articles-section" className="bg-white text-[#151515] py-12 px-6 sm:px-10 lg:px-14 xl:px-20 border-b border-slate-200">
+      <section className="py-20 sm:py-28 px-6 sm:px-10 lg:px-14 xl:px-20 bg-[#111111] border-b border-[#B08D57]/20 relative overflow-hidden">
+        {/* Subtle Ambient Gold Glow */}
+        <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#B08D57]/5 rounded-full blur-3xl pointer-events-none" />
+
         <div className="w-full mx-auto">
-          
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-8">
-            <div>
-              <span className="text-xs uppercase tracking-widest font-bold text-[#B08D57] block mb-1">
-                Library of Engineering Insights
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#151515] tracking-tight">
-                Authoritative Articles & Whitepapers
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            {/* Left 7 Columns: Text Content & View Action */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
+                <FiAward className="text-sm shrink-0" />
+                <span>OFFICIAL PREQUALIFICATION DOSSIER</span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
+                DEC Comprehensive Company Profile 2026
               </h2>
+
+              <p className="text-base sm:text-lg text-[#F5F0E7]/80 leading-relaxed font-light">
+                An authoritative presentation of Desentral Engineering Consultancy’s multidisciplinary organizational framework, statutory Grade A credentials, 50+ licensed in-house engineering team, and 300+ delivered landmark engagements across Qatar, Egypt, and Saudi Arabia.
+              </p>
+
+              {/* Key Features Checklist */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+                <div className="flex items-center gap-2.5 text-xs sm:text-sm text-white/90">
+                  <FiCheckCircle className="text-[#B08D57] shrink-0 text-base" />
+                  <span>Grade A Statutory Practice (Unlimited Height)</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-xs sm:text-sm text-white/90">
+                  <FiCheckCircle className="text-[#B08D57] shrink-0 text-base" />
+                  <span>Full Architectural, Structural & MEP Integration</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-xs sm:text-sm text-white/90">
+                  <FiCheckCircle className="text-[#B08D57] shrink-0 text-base" />
+                  <span>BIM Level 2 (LOD 200 - 500) Coordination Protocols</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-xs sm:text-sm text-white/90">
+                  <FiCheckCircle className="text-[#B08D57] shrink-0 text-base" />
+                  <span>Verified Project Portfolio (84 Registered Landmarks)</span>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="pt-4 flex flex-wrap items-center gap-4">
+                <button
+                  type="button"
+                  onClick={handleOpenProfile}
+                  className="px-8 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#B08D57]/20 hover:scale-105 flex items-center gap-2.5 cursor-pointer"
+                >
+                  <FiEye className="text-base" />
+                  <span>View Company Profile (PDF)</span>
+                </button>
+              </div>
             </div>
 
-            {/* Search Input */}
-            <div className="relative w-full lg:w-80">
-              <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-base" />
-              <input
-                type="text"
-                placeholder="Search articles, BIM, QCDD..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] bg-slate-50 text-sm text-slate-800"
-              />
+            {/* Right 5 Columns: Live Embedded PDF Viewer in Section */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-3xl overflow-hidden border border-[#B08D57]/40 shadow-2xl shadow-black/90 bg-[#181818] h-[520px] sm:h-[600px] flex flex-col group">
+                
+                {/* Embedded Viewer Top Bar */}
+                <div className="px-4 py-3 bg-[#1A1A1A] border-b border-white/10 flex items-center justify-between z-10 shrink-0">
+                  <div className="flex items-center gap-2 overflow-hidden">
+                    <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse shrink-0" />
+                    <span className="text-xs font-bold text-white truncate">
+                      DEC_Company_Profile_2026 copy.pdf
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleOpenProfile}
+                    className="px-3 py-1 rounded-lg bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs flex items-center gap-1.5 transition-all shadow cursor-pointer shrink-0"
+                    title="Open Fullscreen Viewer"
+                  >
+                    <FiEye className="text-xs" />
+                    <span>Fullscreen</span>
+                  </button>
+                </div>
+
+                {/* Live PDF Embedded Directly in Section Card */}
+                <div className="flex-1 w-full h-full relative bg-white">
+                  <object
+                    data={`${encodeURI(companyProfileDoc.file)}#toolbar=0&navpanes=0&view=FitH`}
+                    type="application/pdf"
+                    className="w-full h-full"
+                  >
+                    <iframe 
+                      src={`${encodeURI(companyProfileDoc.file)}#toolbar=0&navpanes=0&view=FitH`} 
+                      title="DEC Company Profile 2026 Live View"
+                      className="w-full h-full border-0"
+                    />
+                  </object>
+                </div>
+
+                {/* Footer Bar */}
+                <div className="px-4 py-2.5 bg-[#141414] border-t border-white/10 flex items-center justify-between text-[11px] text-[#F5F0E7]/70 shrink-0">
+                  <span className="flex items-center gap-1.5 text-emerald-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    Interactive PDF Document
+                  </span>
+                  <button 
+                    type="button"
+                    onClick={handleOpenProfile}
+                    className="text-[#B08D57] hover:underline font-bold cursor-pointer"
+                  >
+                    Expand Large View →
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 3. STATUTORY PREQUALIFICATION & AUTHORITY STANDING MATRIX   */}
+      {/* ============================================================ */}
+      <section className="py-20 sm:py-28 px-6 sm:px-10 lg:px-14 xl:px-20 bg-[#151515] border-b border-[#B08D57]/20 relative">
+        <div className="w-full mx-auto">
+          
+          <div className="max-w-3xl mb-14 space-y-3">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+              <FiCheckCircle className="text-sm shrink-0" />
+              <span>STATUTORY AUTHORIZATIONS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Prequalification Standing with Government & Institutional Bodies
+            </h2>
+            <p className="text-sm sm:text-base text-[#F5F0E7]/70">
+              DEC maintains the highest tiers of engineering licensure in the State of Qatar, authorized to engineer unrestricted high-rises, mission-critical infrastructure, and industrial developments.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {prequalificationPoints.map((item) => {
+              const Icon = item.icon
+              return (
+                <div 
+                  key={item.title}
+                  className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#B08D57]/60 hover:bg-[#B08D57]/[0.05] transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="w-12 h-12 rounded-xl bg-[#151515] border border-[#B08D57]/30 text-[#B08D57] flex items-center justify-center text-xl mb-4 shadow-md">
+                      <Icon />
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#B08D57] block mb-1">
+                      {item.authority}
+                    </span>
+                    <h3 className="text-lg font-bold text-white mb-2 leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-[#F5F0E7]/70 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-[#B08D57]">
+                    <span>{item.stat}</span>
+                    <FiCheckCircle className="text-emerald-400" />
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 4. ALL OFFICIAL ACCREDITATIONS & CERTIFICATES (VIEW ONLY)     */}
+      {/* ============================================================ */}
+      <section id="certificates-directory" className="py-20 sm:py-28 px-6 sm:px-10 lg:px-14 xl:px-20 bg-[#0E0E0E] relative overflow-hidden">
+        
+        {/* Ambient Glow */}
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-[#B08D57]/6 rounded-full blur-[140px] pointer-events-none" />
+
+        <div className="w-full mx-auto relative z-10">
+          
+          {/* Section Header */}
+          <div className="max-w-4xl mx-auto text-center space-y-4 mb-16 sm:mb-20">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
+              <FaStamp className="text-sm shrink-0" />
+              <span>OFFICIAL ACCREDITATIONS DIRECTORY</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15]">
+              Verified Institutional Certificates & Accreditations
+            </h2>
+
+            <p className="text-sm sm:text-base text-[#F5F0E7]/75 font-light leading-relaxed max-w-3xl mx-auto">
+              All credentials are authentic, audited, and strictly compliant with Qatar Ministry regulations and international UKAS/ISO bodies. Click any certificate to inspect the authenticated document.
+            </p>
+
+            <div className="pt-2 flex items-center justify-center gap-2 text-xs font-medium text-emerald-400">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              <span>All documents authenticated for online institutional inspection</span>
             </div>
           </div>
 
-          {/* Filter Chips */}
-          <div className="flex flex-wrap items-center gap-2 pt-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
-                  activeCategory === cat
-                    ? 'bg-[#151515] text-white shadow-md'
-                    : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
-                }`}
+          {/* 6 Certificate Cards Grid (Matching Client's Specification & Screenshot) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {certificatesData.map((cert) => (
+              <div
+                key={cert.id}
+                className="group bg-[#181818] border border-white/10 rounded-2xl overflow-hidden hover:border-[#B08D57]/60 hover:shadow-2xl hover:shadow-black/80 transition-all duration-300 flex flex-col justify-between"
               >
-                {cat}
-              </button>
+                
+                {/* Framed Certificate Document Preview */}
+                <div
+                  onClick={() => handleOpenCert(cert)}
+                  className="relative m-4 sm:m-5 rounded-xl overflow-hidden bg-[#0c0c0c] cursor-pointer aspect-[1/1.32] flex items-center justify-center p-3 sm:p-4 transition-transform duration-300 group-hover:scale-[1.01]"
+                >
+                  <img 
+                    src={cert.image} 
+                    alt={cert.title}
+                    className="w-full h-full object-contain rounded-lg drop-shadow-md bg-white"
+                    loading="lazy"
+                  />
+
+                  {/* Badge Overlay */}
+                  <span 
+                    className="absolute top-4 right-4 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-md backdrop-blur-md"
+                    style={{ 
+                      backgroundColor: `${cert.accentColor}25`, 
+                      color: '#FFFFFF' 
+                    }}
+                  >
+                    {cert.badge}
+                  </span>
+                </div>
+
+                {/* Card Details Below Image */}
+                <div className="px-5 sm:px-6 pb-5 pt-1 flex flex-col flex-1 justify-between gap-3">
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#B08D57] block mb-1">
+                      {cert.category}
+                    </span>
+
+                    <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-[#B08D57] transition-colors leading-snug mb-1">
+                      {cert.title}
+                    </h3>
+
+                    <div className="text-xs font-mono text-[#F5F0E7]/60">
+                      {cert.code}
+                    </div>
+
+                    <p className="text-xs text-[#F5F0E7]/70 mt-2 line-clamp-2">
+                      {cert.description}
+                    </p>
+                  </div>
+
+                  {/* Action Button: ONLY VIEW CERTIFICATE (STRICTLY NO DOWNLOAD) */}
+                  <div className="pt-3 border-t border-white/10">
+                    <button
+                      type="button"
+                      onClick={() => handleOpenCert(cert)}
+                      className="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs flex items-center justify-center gap-2 transition-all duration-300 shadow-sm cursor-pointer"
+                    >
+                      <FiEye className="text-sm" />
+                      <span>View Certificate</span>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
             ))}
           </div>
 
@@ -222,70 +399,106 @@ function Insights() {
       </section>
 
       {/* ============================================================ */}
-      {/* 3. ARTICLES GRID (FEATURED & STANDARD PUBLICATIONS)         */}
+      {/* 5. PROTECTED VIEW-ONLY DOCUMENT MODAL (NO DOWNLOAD)          */}
       {/* ============================================================ */}
-      <section className="py-20 px-6 sm:px-10 lg:px-14 xl:px-20 bg-slate-50 text-[#151515] border-b border-slate-200">
-        <div className="w-full mx-auto">
-          
-          {filteredArticles.length === 0 ? (
-            <div className="text-center py-20 bg-white rounded-3xl border border-slate-200 p-8">
-              <p className="text-slate-500 text-lg">No articles found matching your query.</p>
-              <button 
-                onClick={() => { setActiveCategory('All'); setSearchQuery('') }}
-                className="mt-4 px-5 py-2.5 rounded-xl bg-[#151515] text-white text-xs font-bold uppercase tracking-wider"
-              >
-                Reset Filters
-              </button>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredArticles.map((art) => (
-                <article
-                  key={art.id}
-                  className="bg-white rounded-3xl border border-slate-200 overflow-hidden hover:border-[#B08D57] hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group"
+      {activeModalDoc && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md animate-fadeIn"
+          onContextMenu={(e) => e.preventDefault()}
+        >
+          <div className="bg-[#1C1C1C] border border-[#B08D57]/40 w-full max-w-5xl h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col relative animate-scaleUp">
+            
+            {/* Modal Header */}
+            <div className="px-5 py-3.5 bg-[#151515] border-b border-white/10 flex items-center justify-between gap-4 flex-wrap">
+              <div className="flex items-center gap-3 overflow-hidden">
+                <div className="w-9 h-9 rounded-xl bg-[#B08D57]/20 text-[#B08D57] flex items-center justify-center shrink-0">
+                  <FaStamp className="text-base" />
+                </div>
+                <div className="overflow-hidden">
+                  <h4 className="text-sm sm:text-base font-bold text-white truncate">
+                    {activeModalDoc.title}
+                  </h4>
+                  <p className="text-[11px] text-white/60 truncate">
+                    {activeModalDoc.authority} • {activeModalDoc.code}
+                  </p>
+                </div>
+              </div>
+
+              {/* View Switcher Tabs & View Only Indicator */}
+              <div className="flex items-center gap-2 shrink-0">
+                {!activeModalDoc.isPdfOnly && (
+                  <div className="bg-white/5 p-1 rounded-xl border border-white/10 flex items-center gap-1 text-xs font-semibold">
+                    <button
+                      type="button"
+                      onClick={() => setModalTab('image')}
+                      className={`px-3 py-1.5 rounded-lg transition-all ${
+                        modalTab === 'image' 
+                          ? 'bg-[#B08D57] text-[#151515] font-bold shadow' 
+                          : 'text-white/70 hover:text-white'
+                      }`}
+                    >
+                      Image
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setModalTab('pdf')}
+                      className={`px-3 py-1.5 rounded-lg transition-all ${
+                        modalTab === 'pdf' 
+                          ? 'bg-[#B08D57] text-[#151515] font-bold shadow' 
+                          : 'text-white/70 hover:text-white'
+                      }`}
+                    >
+                      PDF
+                    </button>
+                  </div>
+                )}
+
+
+                <button
+                  type="button"
+                  onClick={() => setActiveModalDoc(null)}
+                  className="w-9 h-9 rounded-xl bg-white/5 hover:bg-rose-500 hover:text-white text-white/70 flex items-center justify-center transition-colors cursor-pointer ml-1"
+                  aria-label="Close Viewer"
                 >
-                  <div className="p-8">
-                    {/* Top Metadata */}
-                    <div className="flex items-center justify-between gap-2 mb-4">
-                      <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-amber-50 text-[#B08D57] border border-[#B08D57]/30">
-                        {art.tag}
-                      </span>
-                      <span className="text-xs text-slate-400 flex items-center gap-1">
-                        <FiClock /> {art.readTime}
-                      </span>
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-xl font-bold text-[#151515] group-hover:text-[#B08D57] transition-colors leading-snug mb-3">
-                      {art.title}
-                    </h3>
-
-                    {/* Excerpt */}
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light mb-6">
-                      {art.excerpt}
-                    </p>
-
-                    {/* Highlight Metric */}
-                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center gap-2 text-xs font-semibold text-slate-700">
-                      <FiCheckCircle className="text-emerald-500 text-sm shrink-0" />
-                      <span>{art.stat}</span>
-                    </div>
-                  </div>
-
-                  {/* Footer Author & CTA */}
-                  <div className="px-8 py-5 bg-slate-50/70 border-t border-slate-100 flex items-center justify-between">
-                    <div>
-                      <div className="text-xs font-bold text-[#151515]">{art.author}</div>
-                      <div className="text-[11px] text-slate-500">{art.authorRole}</div>
-                    </div>
-                  </div>
-                </article>
-              ))}
+                  <FiX className="text-lg" />
+                </button>
+              </div>
             </div>
-          )}
 
+            {/* Modal Body: High-Res Image View or Embedded View-Only PDF */}
+            <div className="flex-1 bg-[#0f0f0f] p-4 sm:p-6 overflow-auto flex items-center justify-center relative select-none">
+              {modalTab === 'image' && !activeModalDoc.isPdfOnly ? (
+                <div className="max-w-2xl w-full h-full flex items-center justify-center">
+                  <img 
+                    src={activeModalDoc.image} 
+                    alt={activeModalDoc.title}
+                    className="max-h-full max-w-full object-contain rounded-xl shadow-2xl drop-shadow-2xl border border-white/10 bg-white"
+                  />
+                </div>
+              ) : (
+                <object
+                  data={`${encodeURI(activeModalDoc.file)}#toolbar=0&navpanes=0`}
+                  type="application/pdf"
+                  className="w-full h-full rounded-xl bg-white shadow-inner"
+                >
+                  <iframe 
+                    src={`${encodeURI(activeModalDoc.file)}#toolbar=0&navpanes=0`} 
+                    title={activeModalDoc.title}
+                    className="w-full h-full border-0 rounded-xl bg-white shadow-inner"
+                  />
+                </object>
+              )}
+            </div>
+
+            {/* Modal Footer Note */}
+            <div className="px-5 py-2.5 bg-[#151515] border-t border-white/10 text-center text-[11px] text-white/50 flex items-center justify-between">
+              <span>Desentral Engineering Consultancy · Grade A Licensed</span>
+              <span className="text-[#B08D57]">Strictly for Institutional Verification • No Unauthorized Copying</span>
+            </div>
+
+          </div>
         </div>
-      </section>
+      )}
 
     </div>
   )

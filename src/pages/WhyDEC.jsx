@@ -93,7 +93,7 @@ function WhyDEC() {
       phase: 'Precision',
       desc: 'Perform 3D multi-discipline clash resolution, detailed specifications, BOQs, and complete tender documentation.',
       deliverables: [
-        'BIM Level 2 Clash-Free Models',
+        'BIM & Digital Twin Delivery Models',
         'Detailed Engineering Working Drawings',
         'Comprehensive Bills of Quantities (BOQ)',
         'Contractor Tender Specifications'
@@ -128,7 +128,7 @@ function WhyDEC() {
   const comparisonData = [
     {
       metric: 'Multidisciplinary Coordination',
-      dec: 'Unified under one centralized DEC technical umbrella with full BIM Level 2 synchronization.',
+      dec: 'Unified under one centralized DEC technical umbrella with full BIM & Digital Twin synchronization.',
       traditional: 'Fragmented between independent architects, separate MEP firms, and outsourced structural engineers.'
     },
     {
@@ -148,7 +148,7 @@ function WhyDEC() {
     },
     {
       metric: 'Sustainability (GSAS)',
-      dec: 'Native GSAS green building integration engineered into energy, lighting, and HVAC systems from Day 1.',
+      dec: 'Native GSAS green building integration engineered into energy, lighting, and HVAC systems from Day\u00A01.',
       traditional: 'Sustainability treated as an afterthought or expensive retrofitted add-on.'
     }
   ]
@@ -174,11 +174,9 @@ function WhyDEC() {
         {/* Hero Content */}
         <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
           {/* Pill Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-6 shadow-xl shadow-black/50">
-            <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#B08D57]">
-              The Strategic Engineering Advantage · Grade A
-            </span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-6">
+            <FiShield className="text-sm shrink-0" />
+            <span>The Strategic Engineering Advantage · Grade A</span>
           </div>
 
           {/* Headings */}
@@ -198,7 +196,7 @@ function WhyDEC() {
               🏆 <strong>Grade A Standing:</strong> Unlimited Scale & Height Authority
             </span>
             <span className="px-3.5 py-1.5 rounded-md bg-black/50 backdrop-blur-md border border-white/20 text-white/95">
-              📐 <strong>BIM Level 2:</strong> Zero Multidisciplinary Site Clashes
+              📐 <strong>BIM & Digital Twin Delivery:</strong> Zero Multidisciplinary Site Clashes
             </span>
             <span className="px-3.5 py-1.5 rounded-md bg-black/50 backdrop-blur-md border border-white/20 text-white/95">
               🏛️ <strong>300+ Projects:</strong> Delivered Across 30+ Qatar Locations
@@ -209,9 +207,10 @@ function WhyDEC() {
           <div className="mt-10">
             <a 
               href="#strategic-pillars"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-xl shadow-black/40 hover:scale-105"
+              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:scale-105 inline-flex items-center gap-2.5 cursor-pointer"
             >
-              Explore Our Core Pillars <FiArrowRight />
+              <span>Explore Our Core Pillars</span>
+              <FiArrowRight className="text-base" />
             </a>
           </div>
         </div>
@@ -224,12 +223,15 @@ function WhyDEC() {
         <div className="w-full mx-auto">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs uppercase font-bold tracking-widest text-[#B08D57] bg-[#B08D57]/10 px-3 py-1 rounded-full">
-              Foundational Pillars
-            </span>
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+              <FiShield className="text-sm shrink-0" />
+              <span>FOUNDATIONAL PILLARS</span>
+            </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight mt-3">
               The Four Pillars of the DEC Advantage
             </h2>
+            {/* Gold Band Accent */}
+            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#B08D57] to-transparent mx-auto mt-4 mb-2 rounded-full" />
             <p className="mt-3 text-sm sm:text-base text-slate-600">
               Why leading international corporations, developers, and asset owners select DEC as their trusted engineering partner.
             </p>
@@ -286,9 +288,10 @@ function WhyDEC() {
         <div className="w-full mx-auto">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs uppercase font-bold tracking-widest text-[#B08D57] bg-[#B08D57]/10 px-3 py-1 rounded-full">
-              Full-Lifecycle Governance · PDF Pages 44–45
-            </span>
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+              <FiLayers className="text-sm shrink-0" />
+              <span>FULL-LIFECYCLE GOVERNANCE</span>
+            </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mt-3">
               The DEC 6-Stage Delivery Model
             </h2>
@@ -297,25 +300,25 @@ function WhyDEC() {
             </p>
           </div>
 
-          {/* Interactive Stage Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {/* Interactive Stage Tabs (3 & 3 Stacked Grid with Hover Glow & Enlarge) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 mb-12 max-w-5xl mx-auto">
             {deliveryStages.map((st) => (
               <button
                 key={st.stage}
                 onClick={() => setActiveStage(st.stage)}
-                className={`px-4 sm:px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center gap-2 ${
+                className={`px-5 py-4 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-between border cursor-pointer hover:scale-105 ${
                   activeStage === st.stage
-                    ? 'bg-[#B08D57] text-[#151515] shadow-lg shadow-[#B08D57]/20 scale-105'
-                    : 'bg-white/5 hover:bg-white/10 text-white/80'
+                    ? 'bg-[#B08D57] text-[#151515] border-[#B08D57] shadow-xl shadow-[#B08D57]/30 scale-105'
+                    : 'bg-white/5 hover:bg-[#B08D57]/15 text-white/80 hover:text-white border-white/10 hover:border-[#B08D57]/60 hover:shadow-lg hover:shadow-[#B08D57]/25'
                 }`}
               >
-                <span>Stage 0{st.stage}</span>
-                <span className="hidden sm:inline">· {st.name}</span>
+                <span className="font-extrabold tracking-widest">Stage 0{st.stage}</span>
+                <span className="text-[11px] font-semibold opacity-90 truncate ml-2">· {st.name}</span>
               </button>
             ))}
           </div>
 
-          {/* Active Stage Details Card */}
+          {/* Active Stage Details Card - Flush Aligned Right with Left Side */}
           {deliveryStages.map((st) => {
             if (st.stage !== activeStage) return null
             return (
@@ -323,43 +326,50 @@ function WhyDEC() {
                 key={st.stage}
                 className="p-8 sm:p-12 rounded-3xl bg-[#161616] border border-[#B08D57]/40 shadow-2xl transition-all duration-300"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                  <div className="lg:col-span-7 space-y-4">
-                    <div className="flex items-center gap-3">
-                      <span className="px-3.5 py-1 rounded-full bg-[#B08D57]/20 text-[#B08D57] font-extrabold text-xs tracking-widest uppercase">
-                        Stage 0{st.stage} · {st.phase}
-                      </span>
-                      <span className="text-xs text-white/50">Comprehensive Phase Oversight</span>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                  <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <span className="px-3.5 py-1 rounded-full bg-[#B08D57]/20 text-[#B08D57] font-extrabold text-xs tracking-widest uppercase">
+                          Stage 0{st.stage} · {st.phase}
+                        </span>
+                        <span className="text-xs text-white/50">Comprehensive Phase Oversight</span>
+                      </div>
+
+                      <h3 className="text-3xl sm:text-4xl font-extrabold text-white">
+                        {st.name}
+                      </h3>
+                      <p className="text-base text-[#F5F0E7]/80 leading-relaxed font-light">
+                        {st.desc}
+                      </p>
                     </div>
 
-                    <h3 className="text-3xl sm:text-4xl font-extrabold text-white">
-                      {st.name}
-                    </h3>
-                    <p className="text-base text-[#F5F0E7]/80 leading-relaxed font-light">
-                      {st.desc}
-                    </p>
-
-                    <div className="pt-2">
+                    <div className="pt-4 border-t border-white/10">
                       <Link
                         to="/contact"
-                        className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#B08D57] hover:text-[#C7A673] transition-colors"
+                        className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#B08D57] hover:text-[#C7A673] transition-colors group"
                       >
-                        Inquire about Stage 0{st.stage} execution <FiArrowRight />
+                        <span>Inquire</span>
+                        <FiArrowRight className="transition-transform group-hover:translate-x-1" />
                       </Link>
                     </div>
                   </div>
 
                   {/* Right Column: Deliverables Box */}
-                  <div className="lg:col-span-5 p-6 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3">
-                    <h4 className="text-xs uppercase font-bold tracking-widest text-[#B08D57] mb-2">
-                      Key Deliverables & Milestones
-                    </h4>
-                    {st.deliverables.map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#F5F0E7]/90 font-medium">
-                        <FiCheckCircle className="text-emerald-400 text-base shrink-0 mt-0.5" />
-                        <span>{item}</span>
+                  <div className="lg:col-span-5 p-7 rounded-2xl bg-white/[0.04] border border-white/10 flex flex-col justify-between space-y-3">
+                    <div>
+                      <h4 className="text-xs uppercase font-bold tracking-widest text-[#B08D57] mb-4 pb-2 border-b border-white/10">
+                        Key Deliverables & Milestones
+                      </h4>
+                      <div className="space-y-3">
+                        {st.deliverables.map((item, idx) => (
+                          <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#F5F0E7]/90 font-medium">
+                            <FiCheckCircle className="text-emerald-400 text-base shrink-0 mt-0.5" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -378,9 +388,9 @@ function WhyDEC() {
             
             {/* Left 6 Cols: Technical Context */}
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                Digital Engineering Superiority
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
+                <FiLayers className="text-sm shrink-0" />
+                <span>Digital Engineering Superiority</span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.15]">
@@ -407,9 +417,10 @@ function WhyDEC() {
               <div className="pt-2">
                 <Link
                   to="/expertise"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs uppercase tracking-wider transition-all shadow-md"
+                  className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:scale-105 hover:shadow-2xl hover:shadow-[#B08D57]/50 inline-flex items-center gap-2.5 cursor-pointer"
                 >
-                  Explore BIM & Digital Twins <FiArrowRight />
+                  <span>Explore BIM & Digital Twins</span>
+                  <FiArrowRight className="text-base" />
                 </Link>
               </div>
             </div>
@@ -451,9 +462,10 @@ function WhyDEC() {
         <div className="w-full mx-auto">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs uppercase font-bold tracking-widest text-[#B08D57] bg-[#B08D57]/10 px-3 py-1 rounded-full">
-              Value Differentiator
-            </span>
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+              <FiShield className="text-sm shrink-0" />
+              <span>VALUE DIFFERENTIATOR</span>
+            </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight mt-3">
               DEC Centralized Model vs Traditional Consultancy
             </h2>

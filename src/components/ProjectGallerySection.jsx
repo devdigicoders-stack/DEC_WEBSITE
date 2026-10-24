@@ -87,8 +87,9 @@ export default function ProjectGallerySection() {
         {/* MINIMAL ELEGANT HEADER ON WHITE                              */}
         {/* ============================================================ */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B08D57]/15 border border-[#B08D57]/40 text-[#8F6F3E] text-xs font-bold uppercase tracking-wider mb-4">
-            <FiCamera className="text-sm" /> 84 Executed Site & Project Photographs
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-4">
+            <FiCamera className="text-sm shrink-0" />
+            <span>84 Executed Site & Project Photographs</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight leading-[1.15]">
             Visual Project Archives
@@ -114,19 +115,20 @@ export default function ProjectGallerySection() {
                 <div className={`w-full ${aspect} overflow-hidden bg-slate-200 relative`}>
                   <img
                     src={item.src}
-                    alt={`DEC Project Photography #${item.id}`}
+                    alt={item.name || item.title || `DEC Project Photography #${item.id}`}
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
                   />
 
-
                   {/* Sleek Dark Vignette on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  {/* Corner Badge on Hover */}
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md text-white text-[11px] font-bold tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    #{item.id < 10 ? `0${item.id}` : item.id}
+                  {/* Corner Badge on Hover - Showing Actual Project Name */}
+                  <div className="absolute top-3 left-3 right-3 flex items-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="px-3 py-1.5 rounded-lg bg-black/75 backdrop-blur-md text-white text-[11px] font-bold tracking-wide truncate border border-white/10 shadow-lg">
+                      {item.name || item.title}
+                    </span>
                   </div>
 
                   {/* Center Floating Zoom Indicator */}
@@ -196,9 +198,14 @@ export default function ProjectGallerySection() {
               <span className="px-3.5 py-1.5 rounded-lg bg-[#B08D57] text-[#151515] font-bold text-xs tracking-wider">
                 Photo {selectedIdx + 1} of {projectGalleryData.length}
               </span>
-              <span className="text-xs text-white/60 hidden sm:inline">
-                DEC Executed Site Record #{currentProject.id < 10 ? `0${currentProject.id}` : currentProject.id}
+              <span className="text-xs sm:text-sm font-bold text-white truncate max-w-[200px] sm:max-w-md">
+                {currentProject.name || currentProject.title}
               </span>
+              {currentProject.location && (
+                <span className="text-xs text-[#B08D57] hidden md:inline">
+                  · {currentProject.location}
+                </span>
+              )}
             </div>
 
             <button

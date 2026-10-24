@@ -5,7 +5,8 @@ import {
   FiAward, 
   FiUsers, 
   FiTrendingUp, 
-  FiShield 
+  FiShield,
+  FiBriefcase
 } from 'react-icons/fi'
 
 function Careers() {
@@ -14,7 +15,7 @@ function Careers() {
       id: '1',
       title: 'Senior Mechanical Engineer (HVAC & MEP)',
       department: 'Mechanical Engineering',
-      location: 'Lusail Headquarters, Qatar',
+      location: 'Qatar: Corporate Headquarters',
       type: 'Full-Time',
       experience: '7+ Years',
       description: 'Lead commercial HVAC design, hydraulic calculations, chilled water tie-ins, and coordination for luxury commercial, retail and hospitality developments.',
@@ -24,7 +25,7 @@ function Careers() {
       id: '2',
       title: 'Senior Civil & Structural Engineer',
       department: 'Civil & Structural Engineering',
-      location: 'Lusail Headquarters, Qatar',
+      location: 'Qatar: Corporate Headquarters',
       type: 'Full-Time',
       experience: '6+ Years',
       description: 'Perform reinforced concrete (RC) analysis, structural steel modeling, foundation design, and municipality authority submissions for landmark towers and villas.',
@@ -34,7 +35,7 @@ function Careers() {
       id: '3',
       title: 'Senior Architect & Fire Life Safety (FLS) Specialist',
       department: 'Architectural Engineering',
-      location: 'Doha, Qatar',
+      location: 'Qatar: Corporate Headquarters',
       type: 'Full-Time',
       experience: '5+ Years',
       description: 'Develop code-compliant architectural layouts, egress analysis, fire compartmentation, and direct Civil Defense (QCD) permit packages.',
@@ -44,7 +45,7 @@ function Careers() {
       id: '4',
       title: 'BIM Coordinator & Digital Delivery Lead',
       department: 'BIM & Technology',
-      location: 'Lusail HQ / Cairo Technical Office',
+      location: 'Qatar: Corporate Headquarters / Egypt: Technical Center',
       type: 'Full-Time',
       experience: '4+ Years',
       description: 'Oversee federated 3D multi-disciplinary models, automated clash detection matrix, and digital drawing production across Qatar and Egypt.',
@@ -54,7 +55,7 @@ function Careers() {
       id: '5',
       title: 'Senior Electrical Engineer (Power & Systems)',
       department: 'Electrical Engineering',
-      location: 'Egypt Technical Office (Giza) & Qatar',
+      location: 'Egypt: Technical Center',
       type: 'Full-Time',
       experience: '5+ Years',
       description: 'Design electrical distribution, substation layouts, low current / ELV infrastructure, and Kahramaa compliance documents.',
@@ -64,7 +65,7 @@ function Careers() {
       id: '6',
       title: 'Permits & Authority Approvals Coordinator',
       department: 'Regulatory Services',
-      location: 'Lusail Headquarters, Qatar',
+      location: 'Qatar: Corporate Headquarters',
       type: 'Full-Time',
       experience: '3+ Years',
       description: 'Manage building permit submissions, maintenance permits, and Building Completion Certificates (BCC) across Qatari Municipalities.',
@@ -93,11 +94,9 @@ function Careers() {
         {/* Hero Content */}
         <div className="relative z-10 w-full px-5 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
           {/* Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-5 shadow-xl shadow-black/50 max-w-[95%]">
-            <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse shrink-0" />
-            <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold text-[#B08D57] text-center">
-              Careers at DEC · Join Our Grade A Multidisciplinary Practice
-            </span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/15 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-5">
+            <FiBriefcase className="text-sm shrink-0" />
+            <span>Careers at DEC · Join Our Grade A Multidisciplinary Practice</span>
           </div>
 
           {/* Headings */}
@@ -120,9 +119,10 @@ function Careers() {
         <div className="max-w-[1720px] mx-auto">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] bg-[#B08D57]/10 px-3.5 py-1.5 rounded-full inline-block mb-3">
-              LIFE AT DESENTRAL
-            </span>
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+              <FiAward className="text-sm shrink-0" />
+              <span>LIFE AT DESENTRAL</span>
+            </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#151515] leading-tight">
               Why Engineers & Architects Thrive at DEC
             </h2>
@@ -196,17 +196,16 @@ function Careers() {
       <section id="open-roles" className="py-20 sm:py-28 px-6 sm:px-10 lg:px-14 xl:px-20 bg-slate-50 text-[#151515] border-b border-black/10">
         <div className="max-w-[1720px] mx-auto">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] block mb-2">
-                Join Our Roster
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#151515]">
-                Current Career Opportunities
-              </h2>
+          <div className="max-w-3xl mb-12 sm:mb-16">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+              <FiBriefcase className="text-sm shrink-0" />
+              <span>JOIN OUR TEAM</span>
             </div>
-            <p className="text-sm sm:text-base text-black/60 max-w-md font-normal">
-              Explore open positions across our architectural, engineering, BIM, and regulatory practices in Doha and Cairo.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#151515]">
+              Current Career Opportunities
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-black/70 font-light">
+              Explore open positions across our architectural, engineering, BIM, and regulatory practice in Doha and Cairo.
             </p>
           </div>
 

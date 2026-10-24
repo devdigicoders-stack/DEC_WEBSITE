@@ -7,7 +7,9 @@ import {
   FiTool, 
   FiZap, 
   FiShield, 
-  FiCpu 
+  FiCpu,
+  FiAward,
+  FiUsers
 } from 'react-icons/fi'
 import WhatWeDo from '../components/WhatWeDo.jsx'
 import ClientPartnersSection from '../components/ClientPartnersSection.jsx'
@@ -51,7 +53,7 @@ function Home() {
     },
     {
       id: 'electrical',
-      title: 'Electrical & Smart Low Voltage (ELV)',
+      title: 'Electrical & Low Voltage (ELV)',
       icon: FiZap,
       desc: 'End-to-end power distribution design, substation layouts, architectural lighting, building management systems (BMS), and security/ICT infrastructure.',
       capabilities: [
@@ -73,7 +75,7 @@ function Home() {
     },
     {
       id: 'bim',
-      title: 'BIM Level 2 & Clash-Free Delivery',
+      title: 'BIM & Digital Twin Delivery',
       icon: FiCpu,
       desc: 'End-to-end digital engineering utilizing Autodesk Revit and Navisworks for 3D multidisciplinary coordination, eliminating on-site clashes.',
       capabilities: [
@@ -90,42 +92,42 @@ function Home() {
       role: 'General Manager',
       initials: 'IF',
       focus: 'Regional Strategy & Governance',
-      location: 'Doha HQ & Regional Hubs'
+      location: 'Qatar Headquarters'
     },
     {
       name: 'Mohamed Mokhtar',
       role: 'Technical Manager',
       initials: 'MM',
       focus: 'Engineering QA/QC & BIM Level 2',
-      location: 'Qatar & Egypt Technical Hub'
+      location: 'Qatar Headquarters'
     },
     {
       name: 'Mohamed Maher',
       role: 'Operations Manager',
       initials: 'MM',
       focus: 'Cross-Border Pipelines & Site Delivery',
-      location: 'Qatar Operations (Lusail)'
+      location: 'Qatar Headquarters'
     },
     {
       name: 'Ahmed Bakry',
       role: 'Contracts Manager',
       initials: 'AB',
       focus: 'FIDIC Frameworks & Procurement',
-      location: 'Commercial & Statutory Office'
+      location: 'Qatar Headquarters'
     }
   ]
 
   return (
     <div className="bg-[#151515] min-h-screen font-sans">
       
-      {/* HERO SECTION - PURE VIDEO FULL SCREEN BELOW SEPARATE NAVBAR */}
-      <section className="relative w-full h-[calc(100vh-6rem)] sm:h-[calc(100vh-7rem)] overflow-hidden flex items-center justify-center">
+      {/* HERO SECTION - PURE VIDEO FULL SCREEN (RESPONSIVE NO CROPPING ON MOBILE) */}
+      <section className="relative w-full bg-[#151515] overflow-hidden flex items-center justify-center aspect-video sm:aspect-video lg:aspect-auto lg:h-[calc(100vh-7rem)] max-h-[calc(100vh-6rem)] lg:max-h-none">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain sm:object-cover lg:object-cover"
         >
           <source src="/videos/IMG_5427 (1).MP4" type="video/mp4" />
           <source src="/IMG_5427 (1).MP4" type="video/mp4" />
@@ -150,11 +152,9 @@ function Home() {
             <div className="lg:col-span-7 space-y-6">
               
               {/* Eyebrow */}
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-[#B08D57]/40 backdrop-blur-sm shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />
-                <span className="text-xs sm:text-sm uppercase tracking-widest font-semibold text-[#B08D57]">
-                  DESENTRAL ENGINEERING CONSULTANCY | GRADE A
-                </span>
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
+                <FiShield className="text-sm shrink-0" />
+                <span>DESENTRAL ENGINEERING CONSULTANCY | GRADE A</span>
               </div>
 
               {/* Headline */}
@@ -306,30 +306,28 @@ function Home() {
             
             {/* Big Headline from DEC PDF */}
             <div className="max-w-5xl">
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#151515] border border-[#B08D57] shadow-sm mb-5">
-                <span className="w-2 h-2 rounded-full bg-[#B08D57]" />
-                <span className="text-xs sm:text-sm uppercase tracking-widest font-semibold text-[#B08D57]">
-                  DESENTRAL ENGINEERING CONSULTANCY | GRADE A
-                </span>
-              </div>
+              <Link 
+                to="/about"
+                className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 hover:bg-[#B08D57] border border-[#B08D57]/40 hover:border-[#B08D57] text-[#B08D57] hover:text-[#151515] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-5 transition-all duration-300 group/pill cursor-pointer"
+                aria-label="About DEC - Who We Are"
+              >
+                <FiAward className="text-sm shrink-0 transition-colors" />
+                <span>ABOUT DEC · WHO WE ARE</span>
+              </Link>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#151515] leading-[1.15]">
                 Grade A Multidisciplinary Engineering Consultancy
               </h2>
             </div>
 
-            {/* Interactive Arrow Link */}
+            {/* Interactive Standardized CTA Button */}
             <div className="flex-shrink-0 pb-2">
               <Link 
                 to="/about"
-                className="group inline-flex items-center gap-4 text-[#151515] hover:text-[#B08D57] transition-all duration-300"
+                className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:scale-105 flex items-center gap-2.5"
                 aria-label="Learn more about DEC"
               >
-                <span className="text-sm sm:text-base font-medium hidden sm:inline-block tracking-wide">
-                  About DEC
-                </span>
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-black/20 group-hover:border-[#B08D57] group-hover:bg-[#B08D57] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md">
-                  <FiArrowRight className="w-6 h-6 sm:w-7 sm:h-7 transition-transform duration-300 group-hover:translate-x-1" />
-                </div>
+                <span>About DEC</span>
+                <FiArrowRight className="text-base" />
               </Link>
             </div>
 
@@ -354,8 +352,9 @@ function Home() {
           {/* Section Header with Split Text and CTA */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
             <div className="max-w-3xl space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B08D57]/15 border border-[#B08D57]/40 text-[#B08D57] text-xs font-semibold uppercase tracking-wider">
-                <FiCompass className="text-sm" /> Grade A Engineering Capabilities
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
+                <FiCompass className="text-sm shrink-0" />
+                <span>Grade A Engineering Capabilities</span>
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15]">
                 Our Core Engineering Disciplines
@@ -417,7 +416,10 @@ function Home() {
           {/* Section Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
             <div className="max-w-3xl space-y-3">
-
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
+                <FiUsers className="text-sm shrink-0" />
+                <span>EXECUTIVE GOVERNANCE & TALENT</span>
+              </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight leading-[1.15]">
                 The Leadership Driving DEC’s Excellence
               </h2>
@@ -428,9 +430,10 @@ function Home() {
 
             <Link
               to="/team"
-              className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-lg hover:scale-105 flex items-center gap-2 self-start lg:self-auto shrink-0"
+              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-lg shadow-[#B08D57]/20 hover:scale-105 flex items-center gap-2 self-start lg:self-auto shrink-0"
             >
-              Meet Full Leadership Team <FiArrowRight className="text-base" />
+              <span>Get to know our team</span>
+              <FiArrowRight className="text-base" />
             </Link>
           </div>
 
@@ -442,7 +445,7 @@ function Home() {
                 className="p-7 rounded-3xl bg-slate-50 border border-slate-200 hover:border-[#B08D57] hover:shadow-2xl transition-all duration-300 group flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-16 h-16 rounded-2xl bg-[#151515] text-[#B08D57] font-extrabold text-2xl flex items-center justify-center border border-[#B08D57]/30 mb-5 group-hover:scale-105 transition-transform shadow-md">
+                  <div className="w-16 h-16 rounded-2xl bg-[#151515]/75 backdrop-blur-md text-[#B08D57] font-extrabold text-2xl flex items-center justify-center border-2 border-[#B08D57] shadow-md shadow-[#B08D57]/20 mb-5 group-hover:scale-105 transition-all">
                     {partner.initials}
                   </div>
                   <span className="text-[11px] font-bold uppercase tracking-wider text-[#B08D57] block mb-1">

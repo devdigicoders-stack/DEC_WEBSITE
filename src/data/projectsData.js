@@ -1,12 +1,12 @@
 export const projectCategories = [
-  { label: "All Projects", value: "All", count: 84 },
-  { label: "Retail", value: "retail", count: 28, desc: "Luxury boutiques, shopping mall flagships & lifestyle outlets" },
-  { label: "F&B", value: "fnb", count: 28, desc: "Fine dining, destination cafes, food halls & specialty restaurants" },
-  { label: "Offices", value: "offices", count: 8, desc: "Corporate headquarters, executive C-suites & commercial tech workspaces" },
-  { label: "Industrial", value: "industrial", count: 8, desc: "Factories, engineering workshops, heavy logistics & storage facilities" },
-  { label: "Residential", value: "residential", count: 4, desc: "Luxury private villas, royal estates & premium residential compounds" },
-  { label: "Hospitality", value: "hospitality", count: 4, desc: "5-star hotels, luxury resort spas & tourism destinations" },
-  { label: "Medical & Healthcare", value: "medical", count: 4, desc: "Pharmaceutical facilities, clinical centers & hospital infrastructure" }
+  { label: "All Delivered Projects", value: "All", count: 84 },
+  { label: "Offices – Corporate & Workplaces", value: "offices", count: 8, desc: "Corporate headquarters, executive C-suites & commercial tech workspaces" },
+  { label: "Retail – Luxury & Commercial", value: "retail", count: 28, desc: "Luxury boutiques, shopping mall flagships & lifestyle outlets" },
+  { label: "F&B – Food & Beverage", value: "fnb", count: 28, desc: "Fine dining, destination cafes, food halls & specialty restaurants" },
+  { label: "Hospitality – Hotels & Resorts", value: "hospitality", count: 4, desc: "5-star hotels, luxury resort spas & tourism destinations" },
+  { label: "Residential – High-End Residential", value: "residential", count: 4, desc: "Luxury private villas, royal estates & premium residential compounds" },
+  { label: "Industrial – Manufacturing & Logistics", value: "industrial", count: 8, desc: "Factories, engineering workshops, heavy logistics & storage facilities" },
+  { label: "Medical – Healthcare & Pharma", value: "medical", count: 4, desc: "Pharmaceutical facilities, clinical centers & hospital infrastructure" }
 ];
 
 export const projectsData = [

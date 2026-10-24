@@ -92,11 +92,9 @@ function PrivacyPolicy() {
         {/* Hero Content */}
         <div className="relative z-10 w-full px-5 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-5 shadow-xl shadow-black/50 max-w-[95%]">
-            <FiShield className="text-[#B08D57] text-xs shrink-0" />
-            <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold text-[#B08D57] text-center">
-              Statutory Compliance · Qatar PDPPL Law No. 13 of 2016
-            </span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-5">
+            <FiShield className="text-sm shrink-0" />
+            <span>Statutory Compliance · Qatar PDPPL Law No. 13 of 2016</span>
           </div>
 
           {/* Headings */}

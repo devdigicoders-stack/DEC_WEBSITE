@@ -44,11 +44,9 @@ function TermsAndConditions() {
         {/* Hero Content */}
         <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-6 shadow-xl shadow-black/50">
-            <FaScaleBalanced className="text-[#B08D57] text-xs" />
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#B08D57]">
-              Legal Governance & Compliance · Qatar & GCC
-            </span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-6">
+            <FaScaleBalanced className="text-sm shrink-0" />
+            <span>Legal Governance & Compliance · Qatar & GCC</span>
           </div>
 
           {/* Headings */}

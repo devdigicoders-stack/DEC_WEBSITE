@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { FaHandshake } from 'react-icons/fa6'
 import { clientsCopyData } from '../data/clientsCopyData.js'
 
 export default function ClientPartnersSection() {
@@ -30,11 +31,9 @@ export default function ClientPartnersSection() {
         <div className="max-w-4xl mx-auto text-center space-y-4 mb-16 sm:mb-20">
           
           {/* Gold Band Pill Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#151515] border border-[#B08D57] shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />
-            <span className="text-xs sm:text-sm uppercase tracking-widest font-semibold text-[#B08D57]">
-              PROVEN TRACK RECORD & CLIENT NETWORK
-            </span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
+            <FaHandshake className="text-sm shrink-0" />
+            <span>PROVEN TRACK RECORD & CLIENT NETWORK</span>
           </div>
 
           {/* Headline */}

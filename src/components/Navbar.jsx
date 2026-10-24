@@ -54,26 +54,26 @@ function Navbar() {
     { name: 'Civil & Structural Engineering', path: '/expertise#structural', hash: '#structural', desc: 'RC, steel, PEB & foundation design' },
     { name: 'Mechanical & HVAC Engineering', path: '/expertise#mechanical', hash: '#mechanical', desc: 'HVAC, chilled water & smoke management' },
     { name: 'Electrical & Low Voltage (ELV)', path: '/expertise#electrical', hash: '#electrical', desc: 'Power, substation, lighting & BMS' },
-    { name: 'Statutory Permitting & Grade A', path: '/expertise#regulatory', hash: '#regulatory', desc: 'QCD, MME, Kahramaa & Ashghal' },
+    { name: 'Statutory Permitting Approvals', path: '/expertise#regulatory', hash: '#regulatory', desc: 'QCD, MME, Kahramaa & Ashghal' },
     { name: 'BIM & Digital Twin Delivery', path: '/expertise#bim', hash: '#bim', desc: '3D coordinated models & clash detection' },
   ]
 
-  // Submenu items under PROJECTS (7 Sectors + All Projects)
+  // Submenu items under PROJECTS (7 Sectors + All Projects) - Consistent Sector Naming
   const projectSubLinks = [
-    { name: 'All Projects', path: '/projects?category=All', desc: 'Complete delivered engagements' },
-    { name: 'Retail', path: '/projects?category=retail', desc: 'Luxury boutiques & flagships' },
-    { name: 'F&B', path: '/projects?category=fnb', desc: 'Fine dining & destination cafes' },
-    { name: 'Offices', path: '/projects?category=offices', desc: 'Corporate headquarters' },
-    { name: 'Industrial', path: '/projects?category=industrial', desc: 'Factories & workshops' },
-    { name: 'Residential', path: '/projects?category=residential', desc: 'Private villas & palaces' },
-    { name: 'Hospitality', path: '/projects?category=hospitality', desc: '5-star hotels & resorts' },
-    { name: 'Medical & Healthcare', path: '/projects?category=medical', desc: 'Pharma & hospital wings' },
+    { name: 'All Delivered Projects', path: '/projects?category=All' },
+    { name: 'Offices – Corporate & Workplaces', path: '/projects?category=offices' },
+    { name: 'Retail – Luxury & Commercial', path: '/projects?category=retail' },
+    { name: 'F&B – Food & Beverage', path: '/projects?category=fnb' },
+    { name: 'Hospitality – Hotels & Resorts', path: '/projects?category=hospitality' },
+    { name: 'Residential – High-End Residential', path: '/projects?category=residential' },
+    { name: 'Industrial – Manufacturing & Logistics', path: '/projects?category=industrial' },
+    { name: 'Medical – Healthcare & Pharma', path: '/projects?category=medical' },
   ]
 
   // Other Top-Level Navigation Links
   const otherNavLinks = [
     { name: 'WHY DEC', path: '/why-dec' },
-    { name: 'INSIGHTS', path: '/insights' },
+    { name: 'CORPORATE CREDENTIALS', path: '/insights' },
     { name: 'CAREERS', path: '/careers' },
   ]
 
@@ -191,8 +191,17 @@ function Navbar() {
                       <span className="text-[10px] font-bold tracking-widest uppercase text-[#B08D57]">
                         OUR ENGINEERING DISCIPLINES
                       </span>
-                      <Link to="/expertise" className="text-[10px] text-[#F5F0E7]/60 hover:text-white underline">
-                        All Capabilities
+                      <Link 
+                        to="/expertise" 
+                        onClick={() => {
+                          if (location.pathname === '/expertise') {
+                            window.scrollTo({ top: 0, behavior: 'smooth' })
+                          }
+                        }}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#B08D57]/20 hover:bg-[#B08D57] text-[#B08D57] hover:text-[#151515] border border-[#B08D57]/40 text-[11px] font-bold tracking-wide transition-all duration-200 cursor-pointer shadow-sm group/all"
+                      >
+                        <span>All Capabilities</span>
+                        <FiArrowUpRight className="text-xs transition-transform duration-200 group-hover/all:translate-x-0.5 group-hover/all:-translate-y-0.5" />
                       </Link>
                     </div>
                     <div className="grid grid-cols-2 gap-1.5">
@@ -237,13 +246,13 @@ function Navbar() {
 
                 {/* Projects Dropdown Floating Menu (2-Column Rich Grid) */}
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto">
-                  <div className="w-[440px] bg-[#141414]/98 border border-[#B08D57]/40 rounded-2xl p-3.5 shadow-2xl shadow-black/95 backdrop-blur-md">
+                  <div className="w-[560px] bg-[#141414]/98 border border-[#B08D57]/40 rounded-2xl p-3.5 shadow-2xl shadow-black/95 backdrop-blur-md">
                     <div className="px-3 py-1.5 mb-2.5 border-b border-white/10 flex items-center justify-between">
                       <span className="text-[10px] font-bold tracking-widest uppercase text-[#B08D57]">
                         PORTFOLIO BY SECTOR
                       </span>
                       <Link to="/projects" className="text-[10px] text-[#F5F0E7]/60 hover:text-white underline">
-                        Explore All
+                        Explore All Projects
                       </Link>
                     </div>
                     <div className="grid grid-cols-2 gap-1.5">
@@ -259,14 +268,13 @@ function Navbar() {
                           <Link
                             key={sub.name}
                             to={sub.path}
-                            className={`block px-3 py-2 rounded-xl transition-all ${
+                            className={`block px-3 py-2.5 rounded-xl transition-all ${
                               isSubActive
                                 ? 'bg-[#B08D57]/20 text-[#B08D57] ring-1 ring-[#B08D57]/40'
                                 : 'text-white/85 hover:text-white hover:bg-white/5'
                             }`}
                           >
                             <span className="text-xs font-bold tracking-wide truncate block">{sub.name}</span>
-                            <div className="text-[10px] text-[#F5F0E7]/50 font-normal truncate mt-0.5">{sub.desc}</div>
                           </Link>
                         )
                       })}
@@ -444,6 +452,19 @@ function Navbar() {
 
               {mobileExpertiseOpen && (
                 <ul className="pl-4 mt-2 space-y-2 border-l border-[#B08D57]/30 ml-2 max-h-60 overflow-y-auto pr-1">
+                  <li>
+                    <Link
+                      to="/expertise"
+                      onClick={() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                        setMobileOpen(false)
+                      }}
+                      className="flex items-center justify-between py-1 text-xs font-bold text-[#B08D57] hover:underline"
+                    >
+                      <span>All Capabilities</span>
+                      <FiArrowUpRight className="text-xs" />
+                    </Link>
+                  </li>
                   {expertiseSubLinks.map((sub) => (
                     <li key={sub.name}>
                       <Link

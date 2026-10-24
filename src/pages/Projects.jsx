@@ -65,12 +65,18 @@ function Projects() {
 
         {/* Hero Content */}
         <div className="relative z-10 w-full px-5 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
+          {/* Eyebrow Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-5">
+            <FiLayers className="text-sm shrink-0" />
+            <span>Landmark Project Portfolio · 84+ Engagements</span>
+          </div>
+
           {/* Headings */}
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.15] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
             Shaping the Architectural & Engineering Skyline
           </h1>
-          <p className="mt-4 sm:mt-5 text-base sm:text-xl lg:text-2xl font-semibold text-[#B08D57] tracking-wide max-w-3xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-            Commercial · Luxury Hospitality · Retail · Masterplans · Residential
+          <p className="mt-4 sm:mt-5 text-base sm:text-xl lg:text-2xl font-semibold text-[#B08D57] tracking-wide max-w-4xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            Offices · Retail · Hospitality · F&B · Residential · Industrial · Medical & Healthcare
           </p>
           <p className="mt-3 sm:mt-4 text-xs sm:text-base text-[#F5F0E7]/80 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] font-normal">
             Explore our portfolio of iconic Grade A engineering achievements, delivered with design distinction and precision across Qatar and the GCC.
@@ -214,7 +220,7 @@ function Projects() {
                   {/* Card Content (z-10) - Disappears completely on hover so ONLY the photo shows */}
                   <div className="relative z-10 flex flex-col justify-between h-full transition-opacity duration-300 group-hover:opacity-0">
                     <div>
-                      {/* Header: Sector Badge + Project Code */}
+                      {/* Header: Sector Badge */}
                       <div className="flex items-center justify-between gap-2 mb-4">
                         <div className="flex items-center gap-2">
                           <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-[#B08D57]/15 text-[#8F6F3E]">
@@ -226,9 +232,6 @@ function Projects() {
                             </span>
                           )}
                         </div>
-                        <span className="text-[11px] font-mono font-bold text-slate-400">
-                          {project.code}
-                        </span>
                       </div>
 
                       {/* Project Title */}

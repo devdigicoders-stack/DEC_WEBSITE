@@ -8,7 +8,9 @@ import {
   FiEye, 
   FiCheckCircle, 
   FiAward, 
-  FiLayers
+  FiLayers,
+  FiUsers,
+  FiChevronRight
 } from 'react-icons/fi'
 import { 
   FaAward, 
@@ -80,8 +82,8 @@ function About() {
   ]
 
   const leadershipTeam = [
-    { name: 'Said Gamal', role: 'Technical Offices Manager' },
-    { name: 'Mostafa Magdy', role: 'Design Manager' },
+    { name: 'Said Gamal', role: 'Technical Office Manager' },
+    { name: 'Ghadah Magdy', role: 'Senior Architect' },
     { name: 'Reda Mabrouk', role: 'Head of Structural Department' },
     { name: 'Aya Saleh', role: 'Senior Architect' },
     { name: 'Mohammed Ashfin', role: 'Senior Architect & FLS Specialist' },
@@ -195,11 +197,9 @@ function About() {
         {/* Hero Content */}
         <div className="relative z-10 w-full px-5 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
           {/* Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-5 shadow-xl shadow-black/50 max-w-[95%]">
-            <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse shrink-0" />
-            <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold text-[#B08D57] text-center">
-              Desentral Engineering Consultancy · Grade A
-            </span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-5">
+            <FiShield className="text-sm shrink-0" />
+            <span>Desentral Engineering Consultancy · Grade A</span>
           </div>
 
           {/* Headings */}
@@ -222,7 +222,7 @@ function About() {
               🇪🇬 <strong>Egypt Center:</strong> Dokki, Giza
             </span>
             <span className="px-3 py-1.5 rounded-md bg-black/60 backdrop-blur-md border border-white/20 text-white/95 text-[11px] sm:text-xs">
-              🇸🇦 <strong>KSA:</strong> Riyadh Hub
+              🇸🇦 <strong>KSA:</strong> Regional Expansion
             </span>
           </div>
         </div>
@@ -233,46 +233,51 @@ function About() {
       {/* ============================================================ */}
       <section className="bg-white text-[#151515] py-14 sm:py-20 lg:py-28 px-5 sm:px-10 lg:px-14 xl:px-20 border-b border-slate-200 overflow-hidden">
         <div className="w-full mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-stretch">
             
             {/* Left Column: Big Philosophy Statement */}
-            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
-              <span className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-[#B08D57] block">
-                About DEC
-              </span>
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight leading-[1.15]">
-                Design + Centralization (DES / ENTRAL)
-              </h2>
-              <p className="text-sm sm:text-base lg:text-lg text-slate-800 leading-relaxed font-medium">
-                <strong>Desentral Engineering Consultancy (DEC)</strong> is a Grade A multidisciplinary engineering and design consultancy delivering integrated solutions across architecture, civil, structural, mechanical and electrical engineering.
-              </p>
-              <p className="text-xs sm:text-base text-slate-600 leading-relaxed">
-                Working across Qatar, Egypt and KSA, we combine technical expertise, regulatory knowledge and sustainable design to deliver coordinated solutions from concept through construction.
-              </p>
-              <div className="p-4 rounded-2xl bg-amber-50/60 border border-[#B08D57]/30 text-xs sm:text-sm text-slate-700 leading-relaxed">
-                <span className="font-bold text-[#B08D57] block mb-1">Name Origin (Source-Based):</span>
-                <strong>DES / ENTRAL — Design / Centralization.</strong> The name reflects DEC’s approach of bringing architecture, engineering and specialist disciplines together through centralized technical coordination.
+            <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
+              <div className="space-y-4 sm:space-y-5">
+                <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
+                  <FiAward className="text-sm shrink-0" />
+                  <span>ABOUT DEC</span>
+                </div>
+                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight leading-[1.15]">
+                  Design + Centralization (DES / ENTRAL)
+                </h2>
+                <p className="text-sm sm:text-base lg:text-lg text-slate-800 leading-relaxed font-medium">
+                  <strong>Desentral Engineering Consultancy (DEC)</strong> is a Grade A multidisciplinary engineering and design consultancy delivering integrated solutions across architecture, civil, structural, mechanical and electrical engineering.
+                </p>
+                <p className="text-xs sm:text-base text-slate-600 leading-relaxed">
+                  Working across Qatar, Egypt and KSA, we combine technical expertise, regulatory knowledge and sustainable design to deliver coordinated solutions from concept through construction.
+                </p>
+                <div className="p-4 sm:p-5 rounded-2xl bg-amber-50/60 border border-[#B08D57]/30 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  <span className="font-bold text-[#B08D57] block mb-1">Name Origin (Source-Based):</span>
+                  <strong>DES / ENTRAL — Design / Centralization.</strong> The name reflects DEC’s approach of bringing architecture, engineering and specialist disciplines together through centralized technical coordination.
+                </div>
               </div>
 
               <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link
                   to="/expertise"
-                  className="px-6 py-3.5 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+                  className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/20 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  Explore Our Expertise <FiArrowRight />
+                  <span>Explore Our Expertise</span>
+                  <FiArrowRight className="text-base" />
                 </Link>
                 <Link
                   to="/contact"
-                  className="px-6 py-3.5 rounded-xl border border-slate-300 hover:border-[#B08D57] hover:text-[#B08D57] text-[#151515] font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+                  className="px-7 py-4 rounded-xl bg-transparent hover:bg-slate-100 text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-slate-300 hover:border-[#B08D57] hover:text-[#B08D57] flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  Contact Leadership <FiArrowUpRight />
+                  <span>Contact Leadership</span>
+                  <FiArrowUpRight className="text-base text-[#B08D57]" />
                 </Link>
               </div>
             </div>
 
             {/* Right Column: Visual Breakdown Card */}
-            <div className="lg:col-span-5 space-y-4">
-              <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#151515] text-white border border-[#B08D57]/40 shadow-2xl space-y-5 sm:space-y-6">
+            <div className="lg:col-span-5 flex flex-col">
+              <div className="p-6 sm:p-8 lg:p-9 rounded-2xl sm:rounded-3xl bg-[#151515] text-white border border-[#B08D57]/40 shadow-2xl h-full flex flex-col justify-between space-y-6">
                 <div>
                   <div className="text-[11px] sm:text-xs uppercase font-bold tracking-widest text-[#B08D57] mb-1">
                     Design Foundation
@@ -280,24 +285,24 @@ function About() {
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white flex flex-wrap items-center gap-2">
                     DES <span className="text-[#B08D57]">/</span> DESIGN
                   </h3>
-                  <p className="text-xs text-[#F5F0E7]/70 mt-2 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#F5F0E7]/70 mt-2 leading-relaxed font-light">
                     Creative ingenuity, spatial intelligence, aesthetic elevation, and functional excellence tailored to corporate, retail, residential, and hospitality requirements.
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-white/10">
+                <div className="pt-6 border-t border-white/10">
                   <div className="text-[11px] sm:text-xs uppercase font-bold tracking-widest text-[#B08D57] mb-1">
                     Centralized Delivery
                   </div>
                   <h3 className="text-lg sm:text-2xl lg:text-3xl font-extrabold text-white flex flex-wrap items-center gap-1.5 sm:gap-2 break-words">
                     <span>ENTRAL</span> <span className="text-[#B08D57]">/</span> <span>CENTRALIZATION</span>
                   </h3>
-                  <p className="text-xs text-[#F5F0E7]/70 mt-2 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#F5F0E7]/70 mt-2 leading-relaxed font-light">
                     Unifying Architecture, Civil, Structural, MEP, QCDD Fire Life Safety, and BIM models under one single source of accountability and regulatory compliance.
                   </p>
                 </div>
 
-                <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-xs text-[#B08D57] font-semibold flex items-center gap-2.5">
+                <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-xs sm:text-sm text-[#B08D57] font-semibold flex items-center gap-2.5">
                   <FiCheckCircle className="text-base text-emerald-400 shrink-0" />
                   <span>Centralized technical coordination eliminating multidisciplinary site reworks.</span>
                 </div>
@@ -315,9 +320,10 @@ function About() {
         <div className="w-full mx-auto">
           
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <span className="text-[10px] sm:text-xs uppercase font-bold tracking-wider text-[#B08D57] bg-[#B08D57]/10 px-3 py-1 rounded-full">
-              Corporate Purpose
-            </span>
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+              <FiTarget className="text-sm shrink-0" />
+              <span>CORPORATE PURPOSE</span>
+            </div>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mt-3">
               Mission & Vision
             </h2>
@@ -386,9 +392,10 @@ function About() {
         <div className="w-full mx-auto">
           
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <span className="text-[10px] sm:text-xs uppercase font-bold tracking-wider text-[#B08D57] bg-[#B08D57]/10 px-3 py-1 rounded-full">
-              Our Principles
-            </span>
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+              <FiAward className="text-sm shrink-0" />
+              <span>OUR PRINCIPLES</span>
+            </div>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight mt-3">
               Our Core Values
             </h2>
@@ -434,9 +441,10 @@ function About() {
         <div className="w-full mx-auto">
           
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <span className="text-[10px] sm:text-xs uppercase font-bold tracking-wider text-[#B08D57] bg-[#B08D57]/10 px-3 py-1 rounded-full">
-              Structured Methodology
-            </span>
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+              <FiLayers className="text-sm shrink-0" />
+              <span>STRUCTURED METHODOLOGY</span>
+            </div>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mt-3">
               Our 5-Step Approach
             </h2>
@@ -464,7 +472,7 @@ function About() {
                 </div>
                 <div className="pt-3.5 mt-3.5 border-t border-white/10 flex items-center justify-between text-[11px] text-[#B08D57] font-semibold">
                   <span>Stage {idx + 1}</span>
-                  <FiArrowRight />
+                  {idx < steps.length - 1 && <FiArrowRight />}
                 </div>
               </div>
             ))}
@@ -485,9 +493,10 @@ function About() {
           
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <span className="text-[10px] sm:text-xs uppercase font-bold tracking-wider text-[#B08D57] bg-[#B08D57]/10 px-3 py-1.5 rounded-full border border-[#B08D57]/30 inline-block max-w-full">
-              Certifications & Statutory Credentials
-            </span>
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+              <FiShield className="text-sm shrink-0" />
+              <span>CERTIFICATIONS & STATUTORY CREDENTIALS</span>
+            </div>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mt-3 sm:mt-4">
               Statutory Accreditations & Quality Standards
             </h2>
@@ -535,40 +544,56 @@ function About() {
                     </p>
                   </div>
 
-                  {/* Treatment / Approval Tag */}
+                  {/* Treatment / Approval Tag without Verified Register */}
                   <div className="pt-3.5 sm:pt-4 mt-5 sm:mt-6 border-t border-white/10 flex items-center justify-between text-xs">
                     <span className="inline-flex items-center gap-1.5 text-emerald-400 font-semibold text-[11px] sm:text-xs">
                       <FiCheckCircle className="text-sm shrink-0" /> {cred.status}
-                    </span>
-                    <span className="text-[10px] sm:text-[11px] text-[#F5F0E7]/50 font-medium">
-                      Verified Register
                     </span>
                   </div>
                 </div>
               )
             })}
 
-            {/* Verification / Governance Summary Card (6th Card filling the 3x2 grid) */}
-            <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#201d18] via-[#1a1815] to-[#151515] border border-[#B08D57]/40 shadow-2xl flex flex-col justify-between">
+            {/* Verification / Governance Summary Card (6th Card with Verified Credentials badge, green footer and View link) */}
+            <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#1b1b1b] border border-white/10 hover:border-[#B08D57]/60 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+              {/* Gold Glow Accent on Card Top */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#B08D57]/5 rounded-bl-full pointer-events-none group-hover:scale-125 transition-transform" />
+
               <div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#B08D57]/20 border border-[#B08D57]/50 text-[#B08D57] flex items-center justify-center text-lg sm:text-xl mb-4 sm:mb-5">
-                  <FiShield />
+                {/* Top Header: Icon + Badge (Verified credentials) */}
+                <div className="flex items-center justify-between mb-4 sm:mb-5">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-[#B08D57] flex items-center justify-center text-base sm:text-lg group-hover:scale-110 group-hover:bg-[#B08D57] group-hover:text-[#151515] transition-all">
+                    <FiShield />
+                  </div>
+                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#B08D57]/15 text-[#B08D57] border border-[#B08D57]/30">
+                    Verified Credentials
+                  </span>
                 </div>
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-[#B08D57] block mb-1">
-                  Compliance Register
-                </span>
-                <h4 className="text-lg sm:text-xl font-extrabold text-white mb-2.5 sm:mb-3">
+
+                {/* Credential Name (White heading with gold hover) */}
+                <h3 className="text-base sm:text-xl font-bold text-white group-hover:text-[#B08D57] transition-colors leading-snug">
                   Publication Governance & Redacted Records
-                </h4>
-                <p className="text-xs sm:text-sm text-[#F5F0E7]/80 leading-relaxed font-light">
+                </h3>
+
+                {/* Authority Issuer / Category (Gold subtitle) */}
+                <div className="text-xs font-semibold text-[#B08D57] mt-1 mb-3">
+                  Compliance Register
+                </div>
+
+                {/* Summary Scope */}
+                <p className="text-xs sm:text-sm text-[#F5F0E7]/80 leading-relaxed font-light border-t border-white/10 pt-3 sm:pt-4">
                   All company prequalifications, Grade A statutory classifications, and ISO surveillance audits are actively maintained with ministry registers. Public profiles display aggregated staff competence in accordance with institutional data disclosure standards.
                 </p>
               </div>
 
-              <div className="pt-4 mt-5 sm:mt-6 border-t border-white/15 flex items-center justify-between text-xs">
-                <span className="text-[#B08D57] font-semibold text-[11px] sm:text-xs">MMUP / UPDA Grade A Licensed</span>
-                <Link to="/contact" className="text-white hover:text-[#B08D57] font-bold inline-flex items-center gap-1">
-                  Inquire <FiArrowRight />
+              {/* Treatment / Approval Tag (Green text + View button pointing to Corporate Credentials page) */}
+              <div className="pt-3.5 sm:pt-4 mt-5 sm:mt-6 border-t border-white/15 flex items-center justify-between text-xs">
+                <span className="inline-flex items-center gap-1.5 text-emerald-400 font-semibold text-[11px] sm:text-xs">
+                  <FiCheckCircle className="text-sm shrink-0" /> MMUP / UPDA Grade A Licensed
+                </span>
+                <Link to="/insights" className="text-white hover:text-[#B08D57] font-bold inline-flex items-center gap-1 group/btn">
+                  <span>View</span>
+                  <FiArrowRight className="transition-transform group-hover/btn:translate-x-1" />
                 </Link>
               </div>
             </div>
@@ -586,9 +611,10 @@ function About() {
           
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16">
             <div className="max-w-2xl">
-              <span className="text-[10px] sm:text-xs uppercase font-bold tracking-wider text-[#B08D57] bg-[#B08D57]/10 px-3 py-1.5 rounded-full border border-[#B08D57]/30 inline-block max-w-full">
-                Leadership Team
-              </span>
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+                <FiUsers className="text-sm shrink-0" />
+                <span>LEADERSHIP TEAM</span>
+              </div>
               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight mt-3">
                 Founding Partners
               </h2>
@@ -599,9 +625,10 @@ function About() {
 
             <Link
               to="/team"
-              className="px-6 py-3 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md flex items-center justify-center gap-2 self-start lg:self-auto"
+              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-lg shadow-[#B08D57]/20 hover:scale-105 flex items-center justify-center gap-2 self-start lg:self-auto shrink-0"
             >
-              Explore Dedicated Our Team Page <FiArrowRight />
+              <span>Get to know our team</span>
+              <FiArrowRight className="text-base" />
             </Link>
           </div>
 
@@ -613,7 +640,7 @@ function About() {
                 className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-50 border border-slate-200 hover:border-[#B08D57] hover:shadow-2xl transition-all duration-300 group flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#151515] text-[#B08D57] font-extrabold text-lg sm:text-xl flex items-center justify-center border border-[#B08D57]/30 mb-4 sm:mb-5 group-hover:scale-105 transition-transform shadow-md">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#151515]/75 backdrop-blur-md text-[#B08D57] font-extrabold text-lg sm:text-xl flex items-center justify-center border-2 border-[#B08D57] shadow-md shadow-[#B08D57]/20 mb-4 sm:mb-5 group-hover:scale-105 transition-all">
                     {partner.initials}
                   </div>
                   <h3 className="text-lg sm:text-xl font-bold text-[#151515] group-hover:text-[#B08D57] transition-colors">
@@ -654,7 +681,7 @@ function About() {
                     <h5 className="font-bold text-white text-xs sm:text-sm">{lead.name}</h5>
                     <p className="text-[11px] sm:text-xs text-[#B08D57] mt-0.5">{lead.role}</p>
                   </div>
-                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#B08D57] shrink-0" />
+                  <FiChevronRight className="text-[#B08D57]/70 text-sm shrink-0" />
                 </div>
               ))}
             </div>
@@ -669,18 +696,21 @@ function About() {
       <section className="py-14 sm:py-20 lg:py-28 px-5 sm:px-10 lg:px-14 xl:px-20 bg-[#111111] overflow-hidden">
         <div className="w-full mx-auto">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
             
-            <div className="lg:col-span-6 space-y-5 sm:space-y-6">
-              <span className="text-[10px] sm:text-xs uppercase font-bold tracking-wider text-[#B08D57] bg-[#B08D57]/10 px-3 py-1 rounded-full">
-                Operational Framework
-              </span>
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15]">
-                Integrated Dual-Hub Delivery Model
-              </h2>
-              <p className="text-xs sm:text-base text-[#F5F0E7]/80 leading-relaxed font-light">
-                Our structure integrates local client interface and authority permitting in Qatar with high-capacity digital engineering and BIM production centers in Egypt.
-              </p>
+            <div className="lg:col-span-6 flex flex-col justify-between space-y-5 sm:space-y-6">
+              <div>
+                <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+                  <FiLayers className="text-sm shrink-0" />
+                  <span>OPERATIONAL FRAMEWORK</span>
+                </div>
+                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15] mt-3">
+                  Integrated Dual-Hub Delivery Model
+                </h2>
+                <p className="mt-2 sm:mt-3 text-xs sm:text-base text-[#F5F0E7]/80 leading-relaxed font-light">
+                  Our structure integrates local client interface and authority permitting in Qatar with high-capacity digital engineering and BIM production centers in Egypt.
+                </p>
+              </div>
 
               <div className="space-y-3.5 sm:space-y-4 text-xs sm:text-sm text-[#F5F0E7]/80">
                 <div className="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10">
@@ -700,7 +730,7 @@ function About() {
                     <strong className="text-white block font-semibold text-xs sm:text-sm">Egypt Technical Center</strong>
                     <span className="text-[11px] sm:text-xs text-[#B08D57] font-medium block">Flat 32, 3rd floor, Bldg 20, Ahmed Elzaiat St., Dokki, Giza</span>
                     <p className="text-[11px] sm:text-xs text-[#F5F0E7]/70 mt-1 leading-relaxed">
-                      High-precision structural modeling, MEP detailed engineering, 3D clash resolution, and full BIM Level 2 production.
+                      High-precision structural modeling, MEP detailed engineering, 3D clash resolution, and coordinated BIM project delivery.
                     </p>
                   </div>
                 </div>
@@ -709,20 +739,23 @@ function About() {
               <div className="pt-2">
                 <Link
                   to="/presence"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs uppercase tracking-wider transition-all shadow-md w-full sm:w-auto"
+                  className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/20 hover:scale-105 inline-flex items-center justify-center gap-2.5 cursor-pointer w-full sm:w-auto"
                 >
-                  View Regional Footprint <FiArrowRight />
+                  <span>View Regional Footprint</span>
+                  <FiArrowRight className="text-base" />
                 </Link>
               </div>
             </div>
 
-            <div className="lg:col-span-6">
-              <div className="p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl bg-[#161616] border border-[#B08D57]/30 shadow-2xl space-y-5 sm:space-y-6">
-                <h4 className="text-lg sm:text-xl font-bold text-white">Why Centralization Matters</h4>
-                <p className="text-xs sm:text-sm text-[#F5F0E7]/70 leading-relaxed">
-                  Traditional engineering often suffers from miscommunication between independent architectural firms, separate MEP consultants, and disconnected structural designers. 
-                </p>
-                <div className="p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm text-[#F5F0E7] space-y-2.5 sm:space-y-3">
+            <div className="lg:col-span-6 flex flex-col">
+              <div className="h-full p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl bg-[#161616] border border-[#B08D57]/30 shadow-2xl flex flex-col justify-between">
+                <div className="space-y-5 sm:space-y-6">
+                  <h4 className="text-lg sm:text-xl font-bold text-white">Why Centralization Matters</h4>
+                  <p className="text-xs sm:text-sm text-[#F5F0E7]/70 leading-relaxed">
+                    Traditional engineering often suffers from miscommunication between independent architectural firms, separate MEP consultants, and disconnected structural designers. 
+                  </p>
+                </div>
+                <div className="p-4 sm:p-5 mt-6 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm text-[#F5F0E7] space-y-2.5 sm:space-y-3">
                   <div className="flex items-center gap-2.5 text-[#B08D57] font-bold">
                     <FiCheckCircle className="text-emerald-400 text-sm sm:text-base shrink-0" /> One Single Accountability Source
                   </div>

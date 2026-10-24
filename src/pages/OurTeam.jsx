@@ -20,7 +20,7 @@ function OurTeam() {
       category: 'partners',
       initials: 'IF',
       experience: '20+ Years Industry Leadership',
-      location: 'Doha HQ & Regional Operations',
+      location: 'Qatar Headquarters',
       focus: ['Strategic Expansion', 'Executive Governance', 'Institutional Partnerships', 'Grade A Compliance'],
       summary: 'Steering the strategic regional expansion, governance, and institutional client partnerships for DEC across Qatar, Egypt, and Saudi Arabia. With over two decades of engineering leadership, Islam leads high-value commercial, hospitality, and residential masterplans while overseeing Grade A statutory compliance and corporate decision-making across all GCC jurisdictions.'
     },
@@ -30,7 +30,7 @@ function OurTeam() {
       category: 'partners',
       initials: 'MM',
       experience: '18+ Years Multidisciplinary Oversight',
-      location: 'Qatar & Egypt Technical Hub',
+      location: 'Qatar Headquarters',
       focus: ['BIM Level 2 Protocols', 'Multidisciplinary QA/QC', 'QCDD Fire Life Safety', 'Structural & MEP Integration'],
       summary: 'Directing DEC’s multidisciplinary engineering excellence, quality management frameworks, and BIM Level 2 protocols. Mohamed ensures every architectural, structural, and MEP deliverable meets rigorous statutory standards, zero-clash coordination, and seamless MMUP / QCDD authority approval across the GCC region.'
     },
@@ -40,7 +40,7 @@ function OurTeam() {
       category: 'partners',
       initials: 'MM',
       experience: '16+ Years Project Delivery',
-      location: 'Qatar Headquarters (Lusail)',
+      location: 'Qatar Headquarters',
       focus: ['Cross-Border Pipelines', 'Site Supervision', 'Resource Allocation', 'Milestone Assurance'],
       summary: 'Orchestrating cross-border operational delivery between the Qatar headquarters, Egypt design hub, and KSA project sites. Mohamed streamlines project lifecycle timelines, technical resource deployment, and rigorous on-site construction supervision, ensuring on-budget execution without schedule slippage.'
     },
@@ -50,7 +50,7 @@ function OurTeam() {
       category: 'partners',
       initials: 'AB',
       experience: '17+ Years Commercial Governance',
-      location: 'Commercial & Statutory Office',
+      location: 'Qatar Headquarters',
       focus: ['FIDIC Contracts', 'Commercial Risk Mitigation', 'Procurement Strategy', 'Statutory Agreements'],
       summary: 'Managing commercial frameworks, FIDIC contractual compliance, risk mitigation, and institutional procurement strategy. Ahmed safeguards client investments, establishes robust contractor coordination, and oversees institutional contract administration across all developmental and construction phases.'
     }
@@ -59,12 +59,21 @@ function OurTeam() {
   const leadershipTeam = [
     {
       name: 'Said Gamal',
-      role: 'Technical Offices Manager',
+      role: 'Technical Office Manager',
       department: 'Technical Coordination & Production',
       category: 'leadership',
       badge: 'Technical Office',
       initials: 'SG',
       desc: 'Supervising multidisciplinary engineering documentation, detailed shop drawing production, cross-departmental reviews, and site technical query resolutions.'
+    },
+    {
+      name: 'Ghadah Magdy',
+      role: 'Senior Architect',
+      department: 'Architectural Design & Space Planning',
+      category: 'leadership',
+      badge: 'Senior Architect',
+      initials: 'GM',
+      desc: 'Specializing in concept space planning, architectural drafting, luxury interior coordination, and GSAS-compliant building envelope documentation.'
     },
     {
       name: 'Reda Mabrouk',
@@ -132,11 +141,9 @@ function OurTeam() {
         {/* Hero Content */}
         <div className="relative z-10 w-full px-5 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
           {/* Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-5 shadow-xl shadow-black/50 max-w-[95%]">
-            <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse shrink-0" />
-            <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold text-[#B08D57] text-center">
-              DEC Leadership & Technical Minds · Grade A Excellence
-            </span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-5">
+            <FiShield className="text-sm shrink-0" />
+            <span>DEC Leadership & Technical Minds · Grade A Excellence</span>
           </div>
 
           {/* Headings */}
@@ -161,8 +168,9 @@ function OurTeam() {
           {/* Section Header & Stats Bar */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B08D57]/15 border border-[#B08D57]/40 text-[#B08D57] text-xs font-semibold uppercase tracking-wider mb-3">
-                <FiShield className="text-sm" /> Primary Executive Leadership
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
+                <FiShield className="text-sm shrink-0" />
+                <span>Primary Executive Leadership</span>
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight">
                 Founding Partners
@@ -197,7 +205,7 @@ function OurTeam() {
                 <div>
                   {/* Header Row: Initials Badge + Name & Role */}
                   <div className="flex items-start gap-5 mb-6">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#151515] text-[#B08D57] font-extrabold text-2xl sm:text-3xl flex items-center justify-center border border-[#B08D57]/40 shadow-lg shrink-0 group-hover:scale-105 transition-transform">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#151515]/75 backdrop-blur-md text-[#B08D57] font-extrabold text-2xl sm:text-3xl flex items-center justify-center border-2 border-[#B08D57] shadow-lg shadow-[#B08D57]/20 shrink-0 group-hover:scale-105 transition-all">
                       {partner.initials}
                     </div>
                     <div>
@@ -217,12 +225,12 @@ function OurTeam() {
                   </div>
 
                   {/* Professional Summary (60-100 Words) */}
-                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal mb-6 pt-2 border-t border-slate-200">
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal mb-6 pt-2 border-t border-slate-200 min-h-[140px] sm:min-h-[130px] lg:min-h-[155px]">
                     {partner.summary}
                   </p>
 
                   {/* Core Focus Badges */}
-                  <div className="space-y-2 mb-6">
+                  <div className="space-y-2 mb-6 min-h-[85px] sm:min-h-[75px]">
                     <span className="text-xs uppercase font-bold tracking-wider text-slate-500 block">
                       Core Areas of Responsibility:
                     </span>
@@ -286,7 +294,7 @@ function OurTeam() {
                 <div>
                   {/* Top Bar with Initials & Badge */}
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-xl bg-white/5 border border-[#B08D57]/30 text-[#B08D57] font-bold text-lg flex items-center justify-center group-hover:bg-[#B08D57] group-hover:text-[#151515] transition-all">
+                    <div className="w-12 h-12 rounded-xl bg-[#151515]/75 backdrop-blur-md border-2 border-[#B08D57] text-[#B08D57] font-bold text-lg flex items-center justify-center group-hover:bg-[#B08D57] group-hover:text-[#151515] transition-all">
                       {lead.initials}
                     </div>
                     <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#B08D57]/10 text-[#B08D57] border border-[#B08D57]/30">
@@ -352,19 +360,22 @@ function OurTeam() {
       <section className="py-20 sm:py-28 px-6 sm:px-10 lg:px-14 xl:px-20 bg-white text-[#151515] border-b border-slate-200">
         <div className="w-full mx-auto">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
             
             {/* Left 6 Columns */}
-            <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs uppercase font-bold tracking-widest text-[#B08D57] block">
-                How We Operate
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight leading-[1.15]">
-                One Team. Multiple Disciplines. Zero Fragmentation.
-              </h2>
-              <p className="text-base text-slate-700 leading-relaxed">
-                In standard construction frameworks, architectural vision, MEP calculations, and structural designs are often divided among disparate firms. At DEC, our leadership team ensures unified coordination from the first concept sketch to final permit approval.
-              </p>
+            <div className="lg:col-span-6 flex flex-col justify-between space-y-6">
+              <div>
+                <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-4">
+                  <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />
+                  <span>HOW WE OPERATE</span>
+                </div>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight leading-[1.15]">
+                  One Team. Multiple Disciplines. Zero Fragmentation.
+                </h2>
+                <p className="mt-4 text-base text-slate-700 leading-relaxed">
+                  In standard construction frameworks, architectural vision, MEP calculations, and structural designs are often divided among disparate firms. At DEC, our leadership team ensures unified coordination from the first concept sketch to final permit approval.
+                </p>
+              </div>
 
               <div className="space-y-3 pt-2">
                 <div className="flex items-start gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200">
@@ -393,31 +404,36 @@ function OurTeam() {
               </div>
             </div>
 
-            {/* Right 6 Columns: Interactive Callout Card */}
-            <div className="lg:col-span-6">
-              <div className="p-8 sm:p-12 rounded-3xl bg-[#151515] text-white border border-[#B08D57]/40 shadow-2xl space-y-6">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#B08D57]/20 text-[#B08D57] text-xs font-bold uppercase tracking-wider">
-                  <FaHandshake /> Executive Direct Access
+            {/* Right 6 Columns: Interactive Callout Card Aligned Perfectly with Left */}
+            <div className="lg:col-span-6 flex flex-col">
+              <div className="h-full p-8 sm:p-12 rounded-3xl bg-[#151515] text-white border border-[#B08D57]/40 shadow-2xl flex flex-col justify-between">
+                <div className="space-y-6">
+                  <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
+                    <FaHandshake className="text-sm shrink-0" />
+                    <span>Executive Direct Access</span>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight">
+                    Connect Directly with DEC Founding Leadership
+                  </h3>
+                  <p className="text-sm sm:text-base text-[#F5F0E7]/80 leading-relaxed font-light">
+                    Whether you are planning a high-rise commercial headquarters, luxury retail flagship, industrial facility, or hospitality complex, our partners are accessible to review your project brief.
+                  </p>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
-                  Connect Directly with DEC Founding Leadership
-                </h3>
-                <p className="text-sm text-[#F5F0E7]/80 leading-relaxed font-light">
-                  Whether you are planning a high-rise commercial headquarters, luxury retail flagship, industrial facility, or hospitality complex, our partners are accessible to review your project brief.
-                </p>
 
-                <div className="pt-4 flex flex-wrap gap-4">
+                <div className="pt-8 mt-6 border-t border-white/10 flex flex-wrap gap-4">
                   <Link
                     to="/contact"
-                    className="px-7 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs uppercase tracking-wider transition-all shadow-lg flex items-center gap-2"
+                    className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-lg shadow-[#B08D57]/20 hover:scale-105 flex items-center gap-2"
                   >
-                    Schedule Leadership Briefing <FiArrowRight />
+                    <span>Schedule Leadership Briefing</span>
+                    <FiArrowRight className="text-base" />
                   </Link>
                   <Link
                     to="/projects"
-                    className="px-7 py-3.5 rounded-xl border border-white/20 hover:border-[#B08D57] text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2"
+                    className="px-7 py-4 rounded-xl bg-transparent hover:bg-white/10 text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 border border-white/20 hover:border-[#B08D57] flex items-center gap-2"
                   >
-                    View Completed Works <FiLayers />
+                    <span>View Completed Works</span>
+                    <FiLayers className="text-base text-[#B08D57]" />
                   </Link>
                 </div>
               </div>

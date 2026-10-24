@@ -7,7 +7,8 @@ import {
   FiCheckCircle, 
   FiLayers, 
   FiUsers, 
-  FiShield 
+  FiShield,
+  FiArrowRight 
 } from 'react-icons/fi'
 
 function Presence() {
@@ -29,7 +30,7 @@ function Presence() {
     },
     {
       id: 'egypt',
-      country: 'Egypt (Engineering & BIM Hub)',
+      country: 'Egypt (Engineering & Technical Hub)',
       badge: 'Technical Production Center',
       flag: '🇪🇬',
       city: 'Dokki, Giza',
@@ -37,8 +38,8 @@ function Presence() {
       mapUrl: 'https://www.google.com/maps/place/Desentral+engineering+services/@30.0294102,31.2048569,883m/data=!3m2!1e3!4b1!4m6!3m5!1s0x145847000dbc6525:0x3dcc37cac37a42d4!8m2!3d30.0294102!4d31.2048569!16s%2Fg%2F11y_ppbmtj?entry=ttu',
       phone: '+20 110 108 3005',
       email: 'info@desentralegypt.com',
-      scope: 'Advanced Structural RC/Steel Calculations, High-Density MEP Thermal Modeling, BIM Level 2 Digital Modeling & Federated Clash Matrix',
-      stats: ['50+ Engineers & Architects', 'BIM Level 2 Coordination', '24/7 Delivery Synergy']
+      scope: 'Advanced Structural RC/Steel Calculations, High-Density MEP Thermal Modeling, BIM Modeling & Federated Clash Matrix',
+      stats: ['50+ Engineers & Architects', 'Coordinated BIM Project Delivery', '24/7 Delivery Synergy']
     },
     {
       id: 'ksa',
@@ -47,7 +48,7 @@ function Presence() {
       flag: '🇸🇦',
       city: 'Riyadh & Eastern Province',
       address: 'Strategic Project Delivery & Regional Consulting Partner',
-      phone: '+974 4000 0000',
+      phone: '+974 4455 4383 / +974 3160 1117',
       email: 'ksa@desentralqatar.com',
       scope: 'Commercial Workplaces, Retail Rollouts, Hospitality Advisory, and GCC Cross-Border Engineering Compliance',
       stats: ['Regional Project Scale', 'Fast-Track Fitout', 'GCC Standards (SBC)']
@@ -61,10 +62,7 @@ function Presence() {
       landmarks: [
         { name: 'Manarat Lusail Tower', type: 'DEC Corporate Headquarters & Commercial Suites' },
         { name: 'Snoonu Corporate HQ', type: 'Technology & Corporate Workspace' },
-        { name: 'BlackRock Financial Office', type: 'Global Financial Services Workplace' },
-        { name: 'Place Vendôme Mall Boutiques', type: 'Luxury High-Fashion & Retail Fitouts' },
-        { name: 'Al Maha Island Dining Destinations', type: 'High-Capacity Hospitality & Restaurant MEP' },
-        { name: 'Waldorf Astoria Lusail Suites', type: 'Ultra-Luxury Hospitality Engineering' }
+        { name: 'BlackRock Financial Office', type: 'Global Financial Services Workplace' }
       ]
     },
     Msheireb: {
@@ -72,50 +70,44 @@ function Presence() {
       description: 'The world’s leading sustainable downtown regeneration district. DEC delivers GSAS and LEED compliant engineering for international corporate offices and design showrooms.',
       landmarks: [
         { name: 'Amazon Ads Corporate Office', type: 'Acoustic & Sustainable Workplace MEP' },
-        { name: 'Armani Casa Flagship Showroom', type: 'Luxury Home Furnishing & Architectural Lighting' },
-        { name: 'Sovereign Wealth Executive Offices', type: 'C-Suite Secure Workplaces' },
-        { name: 'Heritage Zone Boutique Retail', type: 'Preservation-Compliant Building Services' }
+        { name: 'Armani Casa', type: 'Luxury Home Furnishing & Architectural Lighting' }
       ]
     },
     WestBay: {
       title: 'West Bay & Al Dafna Financial District',
       description: 'Doha’s iconic skyscraper skyline and diplomatic precinct. DEC provides high-rise structural reviews, fire life safety retrofits, and multinational tenant improvements.',
       landmarks: [
-        { name: 'Boeing Regional Aerospace Office', type: 'High-Security Life Safety & QCD Approvals' },
-        { name: 'International Embassy Fitouts', type: 'Specialized MEP & Redundant Power' },
-        { name: 'Al Dafna Commercial Towers', type: 'Full Floor Office Remodeling (ARCH R&M)' },
-        { name: 'West Bay Lagoon Waterfront Mansions', type: 'Dedicated Substations & Smart Infrastructure' }
+        { name: 'Boeing Regional Aerospace Office', type: 'High-Security Life Safety & QCD Approvals' }
       ]
     },
     ThePearl: {
-      title: 'The Pearl Qatar & Porto Arabia',
-      description: 'Qatar’s premier luxury island development. DEC executes luxury residential modifications, waterfront dining establishments, and high-end boutique retail.',
+      title: 'The Pearl Qatar & Luxury Islands',
+      description: 'Qatar’s premier luxury island developments including The Pearl, Gewan Island, and Qetaifan Island. DEC executes specialized engineering, premium dining venues, waterfront cafes, and high-end boutique outlets.',
       landmarks: [
-        { name: 'Porto Arabia Penthouse Duplexes', type: 'Structural Slab Openings & Luxury Fitout' },
-        { name: 'Medina Centrale Retail Units', type: 'Baladiya Building Permits & Chilled Water Tie-Ins' },
-        { name: 'Qanat Quartier Canal Boutiques', type: 'Ventilation & Public Health Engineering' },
-        { name: 'Viva Bahriya Beachfront Residences', type: 'Architectural Renovation & Life Safety' }
+        { name: 'Forge Restaurant', type: 'Gewan Island · Fine Dining & Commercial Kitchen MEP' },
+        { name: 'Pyramids Tea Bar', type: 'Gewan Island · Artisan Lounge & Life Safety Approvals' },
+        { name: 'Cappucino Cafe', type: 'Qetaifan Island · Waterfront F&B & Civil Defense Clearance' }
       ]
     },
     MallsAndRetail: {
       title: 'Premier Malls & Commercial Centers',
       description: 'Unmatched footprint across Qatar’s most prestigious retail centers, coordinating seamlessly with landlords and mall management for fast approvals.',
       landmarks: [
-        { name: 'Doha Festival City (DFC)', type: 'DIOR, NARS, L’Occitane, Xiaomi Tech Hub' },
-        { name: 'Place Vendôme Mall', type: 'Hibobi Flagship & Luxury Boutiques' },
-        { name: 'Mall of Qatar', type: 'TFK Perfumery & High-Footfall Retail' },
-        { name: 'WestWalk Commercial Avenue', type: 'Signor Sassi Fine Dining & Commercial Suites' },
-        { name: 'Al Hazm Mall', type: 'Artisan Culinary Concepts & Classical Interiors' }
+        { name: 'Doha Festival City (DFC)', type: 'DIOR, NARS, L’Occitane, Xiaomi & Sacoor Brothers' },
+        { name: 'Place Vendôme Mall', type: 'Hibobi & Juno Restaurant' },
+        { name: 'Mall of Qatar', type: 'TFK, One Diamond & L’ETO Caffe' },
+        { name: 'WestWalk Commercial Avenue', type: 'ORG, Romano, HRD by BRD, White Sugar & Retaj Hotel' },
+        { name: 'Al Hazm Mall', type: 'Clothivia, Leopard Salon, Roasters & Oblo Cafe' }
       ]
     },
     Industrial: {
-      title: 'Logistics, Free Zones & Infrastructure',
-      description: 'Mission-critical industrial engineering covering logistics distribution centers, cold-storage pharmaceuticals, and light manufacturing plants.',
+      title: 'Logistics, Free Zones & Industrial Area',
+      description: 'Mission-critical industrial engineering covering heavy manufacturing plants, fabrication workshops, logistics distribution centers, and specialized facilities across Qatar.',
       landmarks: [
-        { name: 'Barwa Logistics Distribution Park', type: 'PEB Steel Structures & ESFR Fire Suppression' },
-        { name: 'Ras Bufontas Free Zone Hub', type: 'Cold-Chain Pharmaceutical Storage & GMP' },
-        { name: 'Mesaieed Industrial Infrastructure', type: 'Heavy Industrial Equipment Foundations' },
-        { name: 'Doha Industrial Area Workshops', type: 'Civil Defense Upgrades & Building Completion' }
+        { name: 'DOPET Factory (Street 1 & 12)', type: 'Manateq Economic Zone · Manufacturing Plant, STR & MEP' },
+        { name: 'Oxyflex Workshop (Street 21)', type: 'Small & Medium Industries · Assembly Workshop & MEP' },
+        { name: 'Workshop in Birkat Al Awamer', type: 'Birkat Al Awamer Logistics Park · Facility & QCD Approvals' },
+        { name: 'DOPET & Advance Workshops', type: 'Doha Industrial Area (St 25 & 546) · STR, MEP & Supervision' }
       ]
     }
   }
@@ -141,11 +133,9 @@ function Presence() {
         {/* Hero Content */}
         <div className="relative z-10 w-full px-5 sm:px-10 lg:px-14 xl:px-20 py-16 sm:py-20 lg:py-24 text-center text-[#F5F0E7]">
           {/* Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/60 border border-[#B08D57]/70 backdrop-blur-md mb-5 shadow-xl shadow-black/50 max-w-[95%]">
-            <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse shrink-0" />
-            <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold text-[#B08D57] text-center">
-              Regional Footprint · Qatar · Egypt · Saudi Arabia
-            </span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-5">
+            <FiMapPin className="text-sm shrink-0" />
+            <span>Regional Footprint · Qatar · Egypt · Saudi Arabia</span>
           </div>
 
           {/* Headings */}
@@ -154,9 +144,6 @@ function Presence() {
           </h1>
           <p className="mt-4 sm:mt-5 text-base sm:text-xl lg:text-2xl font-semibold text-[#B08D57] tracking-wide max-w-3xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
             Qatar Executive HQ · Egypt Technical Hub · KSA Project Delivery
-          </p>
-          <p className="mt-3 sm:mt-4 text-xs sm:text-base text-[#F5F0E7]/80 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] font-normal">
-            Delivering Grade A engineering excellence across 30+ landmark districts including Lusail Marina, West Bay, Msheireb, Cairo, and Riyadh.
           </p>
         </div>
       </section>
@@ -308,9 +295,9 @@ function Presence() {
                 Lusail: 'Lusail City & Marina',
                 Msheireb: 'Msheireb Downtown',
                 WestBay: 'West Bay & Al Dafna',
-                ThePearl: 'The Pearl Qatar',
+                ThePearl: 'The Pearl & Islands',
                 MallsAndRetail: 'Major Malls & Venues',
-                Industrial: 'Logistics & Free Zones'
+                Industrial: 'Logistics & Industrial Area'
               }
               return (
                 <button
@@ -429,9 +416,10 @@ function Presence() {
       {/* ============================================================ */}
       <section className="bg-[#151515] py-20 px-6 sm:px-10 lg:px-14 xl:px-20 text-center">
         <div className="max-w-4xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] block mb-3">
-            COLLABORATE ACROSS THE REGION
-          </span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-5">
+            <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />
+            <span>COLLABORATE ACROSS THE REGION</span>
+          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F5F0E7] tracking-tight mb-6">
             Connect With Our Lusail HQ or Regional Technical Offices
           </h2>
@@ -441,15 +429,17 @@ function Presence() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link 
               to="/contact"
-              className="px-8 py-4 rounded-xl bg-[#B08D57] hover:bg-[#8F6F3E] text-[#151515] font-bold text-sm uppercase tracking-wider transition-all shadow-lg hover:shadow-[#B08D57]/20"
+              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:scale-105 inline-flex items-center gap-2.5"
             >
-              Contact Our Lusail Headquarters
+              <span>Contact Our Lusail Headquarters</span>
+              <FiArrowRight className="text-base" />
             </Link>
             <Link 
               to="/projects"
-              className="px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/15 font-bold text-sm uppercase tracking-wider transition-all"
+              className="px-7 py-4 rounded-xl bg-transparent hover:bg-white/10 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] inline-flex items-center gap-2.5"
             >
-              View Delivered Projects
+              <span>View Delivered Projects</span>
+              <FiLayers className="text-base text-[#B08D57]" />
             </Link>
           </div>
         </div>
