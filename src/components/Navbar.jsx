@@ -100,7 +100,7 @@ function Navbar() {
           : 'bg-[#0d0d0d] border-b border-[#B08D57]/30 shadow-xl shadow-black/80'
       }`}
     >
-      <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20 mx-auto">
+      <div className="w-full px-5 sm:px-8 lg:px-8 xl:px-10 2xl:px-14 mx-auto">
         <div className="flex items-center justify-between h-24 sm:h-28">
           
           {/* 1. Left: Brand Logo */}
@@ -108,18 +108,18 @@ function Navbar() {
             <img 
               src="/logo.png" 
               alt="DEC - Desentral Engineering Consultancy" 
-              className="w-[140px] sm:w-[160px] md:w-[170px] lg:w-[185px] h-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
+              className="w-[130px] sm:w-[150px] lg:w-[155px] xl:w-[170px] 2xl:w-[185px] h-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
             />
           </Link>
 
           {/* 2. Center: Semantic UL & LI Navigation Links with Dropdowns & Active Gold Indicator */}
-          <nav className="hidden lg:flex items-center justify-center flex-1 px-4 xl:px-8">
-            <ul className="flex items-center gap-3 xl:gap-5 2xl:gap-7">
+          <nav className="hidden lg:flex items-center justify-center flex-1 px-2 xl:px-4 2xl:px-6 min-w-0">
+            <ul className="flex items-center gap-2 lg:gap-2.5 xl:gap-3.5 2xl:gap-6">
               {/* HOME LINK */}
               <li>
                 <Link
                   to="/"
-                  className={`relative py-1.5 text-[11px] xl:text-xs 2xl:text-sm font-bold tracking-wider transition-colors duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] whitespace-nowrap inline-flex flex-col items-center group/nav ${
+                  className={`relative py-1.5 text-[11px] xl:text-xs 2xl:text-sm font-bold tracking-wide xl:tracking-wider transition-colors duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] whitespace-nowrap inline-flex flex-col items-center group/nav ${
                     isActive('/') ? 'text-[#B08D57]' : 'text-white hover:text-[#B08D57]'
                   }`}
                 >
@@ -134,12 +134,12 @@ function Navbar() {
               <li className="relative group py-2">
                 <Link
                   to="/about"
-                  className={`relative py-1.5 inline-flex items-center gap-1.5 text-[11px] xl:text-xs 2xl:text-sm font-bold tracking-wider transition-colors duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] whitespace-nowrap ${
+                  className={`relative py-1.5 inline-flex items-center gap-1 xl:gap-1.5 text-[11px] xl:text-xs 2xl:text-sm font-bold tracking-wide xl:tracking-wider transition-colors duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] whitespace-nowrap ${
                     isAboutActive ? 'text-[#B08D57]' : 'text-white hover:text-[#B08D57]'
                   }`}
                 >
                   <span>ABOUT DEC</span>
-                  <FiChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 text-[#B08D57]" />
+                  <FiChevronDown className="w-3 h-3 xl:w-3.5 xl:h-3.5 transition-transform duration-200 group-hover:rotate-180 text-[#B08D57] shrink-0" />
                   {isAboutActive && (
                     <span className="absolute -bottom-0.5 left-0 right-0 h-[2px] bg-gradient-to-r from-[#B08D57] via-[#D8B478] to-[#B08D57] rounded-full shadow-[0_0_8px_rgba(176,141,87,0.8)]" />
                   )}
@@ -173,12 +173,12 @@ function Navbar() {
               <li className="relative group py-2">
                 <Link
                   to="/expertise"
-                  className={`relative py-1.5 inline-flex items-center gap-1.5 text-[11px] xl:text-xs 2xl:text-sm font-bold tracking-wider transition-colors duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] whitespace-nowrap ${
+                  className={`relative py-1.5 inline-flex items-center gap-1 xl:gap-1.5 text-[11px] xl:text-xs 2xl:text-sm font-bold tracking-wide xl:tracking-wider transition-colors duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] whitespace-nowrap ${
                     isExpertiseActive ? 'text-[#B08D57]' : 'text-white hover:text-[#B08D57]'
                   }`}
                 >
                   <span>EXPERTISE</span>
-                  <FiChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 text-[#B08D57]" />
+                  <FiChevronDown className="w-3 h-3 xl:w-3.5 xl:h-3.5 transition-transform duration-200 group-hover:rotate-180 text-[#B08D57] shrink-0" />
                   {isExpertiseActive && (
                     <span className="absolute -bottom-0.5 left-0 right-0 h-[2px] bg-gradient-to-r from-[#B08D57] via-[#D8B478] to-[#B08D57] rounded-full shadow-[0_0_8px_rgba(176,141,87,0.8)]" />
                   )}
@@ -233,12 +233,12 @@ function Navbar() {
               <li className="relative group py-2">
                 <Link
                   to="/projects"
-                  className={`relative py-1.5 inline-flex items-center gap-1.5 text-[11px] xl:text-xs 2xl:text-sm font-bold tracking-wider transition-colors duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] whitespace-nowrap ${
+                  className={`relative py-1.5 inline-flex items-center gap-1 xl:gap-1.5 text-[11px] xl:text-xs 2xl:text-sm font-bold tracking-wide xl:tracking-wider transition-colors duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] whitespace-nowrap ${
                     isProjectsActive ? 'text-[#B08D57]' : 'text-white hover:text-[#B08D57]'
                   }`}
                 >
                   <span>PROJECTS</span>
-                  <FiChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 text-[#B08D57]" />
+                  <FiChevronDown className="w-3 h-3 xl:w-3.5 xl:h-3.5 transition-transform duration-200 group-hover:rotate-180 text-[#B08D57] shrink-0" />
                   {isProjectsActive && (
                     <span className="absolute -bottom-0.5 left-0 right-0 h-[2px] bg-gradient-to-r from-[#B08D57] via-[#D8B478] to-[#B08D57] rounded-full shadow-[0_0_8px_rgba(176,141,87,0.8)]" />
                   )}
@@ -290,11 +290,17 @@ function Navbar() {
                   <li key={item.name}>
                     <Link
                       to={item.path}
-                      className={`relative py-1.5 text-[11px] xl:text-xs 2xl:text-sm font-bold tracking-wider transition-colors duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] whitespace-nowrap inline-flex flex-col items-center ${
+                      className={`relative py-1.5 text-[11px] xl:text-xs 2xl:text-sm font-bold tracking-wide xl:tracking-wider transition-colors duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] whitespace-nowrap inline-flex flex-col items-center ${
                         active ? 'text-[#B08D57]' : 'text-white hover:text-[#B08D57]'
                       }`}
                     >
-                      <span>{item.name}</span>
+                      {item.path === '/insights' ? (
+                        <span>
+                          <span className="hidden xl:inline">CORPORATE </span>CREDENTIALS
+                        </span>
+                      ) : (
+                        <span>{item.name}</span>
+                      )}
                       {active && (
                         <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-[#B08D57] via-[#D8B478] to-[#B08D57] rounded-full shadow-[0_0_8px_rgba(176,141,87,0.8)]" />
                       )}
@@ -306,7 +312,7 @@ function Navbar() {
           </nav>
 
           {/* 3. Right: Social Quick Links & Dedicated Contact Button */}
-          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+          <div className="hidden lg:flex items-center gap-2 xl:gap-2.5 2xl:gap-3 flex-shrink-0">
             {/* LinkedIn Button */}
             <a
               href="https://www.linkedin.com/company/desentral-engineering-consultancy/"
@@ -314,9 +320,9 @@ function Navbar() {
               rel="noopener noreferrer"
               aria-label="DEC Official LinkedIn"
               title="DEC LinkedIn"
-              className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#0077B5] border border-white/10 hover:border-[#0077B5] text-[#F5F0E7]/80 hover:text-white flex items-center justify-center transition-all duration-300 shadow-md hover:scale-105 active:scale-95"
+              className="hidden xl:flex w-9 h-9 2xl:w-10 2xl:h-10 rounded-xl bg-white/5 hover:bg-[#0077B5] border border-white/10 hover:border-[#0077B5] text-[#F5F0E7]/80 hover:text-white items-center justify-center transition-all duration-300 shadow-md hover:scale-105 active:scale-95"
             >
-              <FaLinkedinIn className="w-4 h-4" />
+              <FaLinkedinIn className="w-3.5 h-3.5 2xl:w-4 2xl:h-4" />
             </a>
 
             {/* WhatsApp Button */}
@@ -326,15 +332,15 @@ function Navbar() {
               rel="noopener noreferrer"
               aria-label="Direct WhatsApp Chat"
               title="WhatsApp Direct"
-              className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#25D366] border border-white/10 hover:border-[#25D366] text-[#F5F0E7]/80 hover:text-white flex items-center justify-center transition-all duration-300 shadow-md hover:scale-105 active:scale-95"
+              className="hidden xl:flex w-9 h-9 2xl:w-10 2xl:h-10 rounded-xl bg-white/5 hover:bg-[#25D366] border border-white/10 hover:border-[#25D366] text-[#F5F0E7]/80 hover:text-white items-center justify-center transition-all duration-300 shadow-md hover:scale-105 active:scale-95"
             >
-              <FaWhatsapp className="w-4 h-4" />
+              <FaWhatsapp className="w-3.5 h-3.5 2xl:w-4 2xl:h-4" />
             </a>
 
             {/* Contact Button */}
             <Link
               to="/contact"
-              className={`group relative inline-flex items-center gap-2 px-6 xl:px-7 py-2.5 rounded-xl font-bold text-xs tracking-widest uppercase transition-all duration-300 ${
+              className={`group relative inline-flex items-center gap-1.5 xl:gap-2 px-4 xl:px-5 2xl:px-6 py-2.5 rounded-xl font-bold text-xs tracking-wider xl:tracking-widest uppercase transition-all duration-300 whitespace-nowrap ${
                 isContactActive
                   ? 'bg-gradient-to-r from-[#DFBF82] via-[#F6E6CC] to-[#DFBF82] text-[#111111] ring-2 ring-[#B08D57] shadow-[0_4px_22px_rgba(176,141,87,0.55)] scale-[1.02]'
                   : 'bg-gradient-to-r from-[#B08D57] via-[#DFBF82] to-[#B08D57] text-[#111111] border border-[#F6E5CA]/40 shadow-[0_4px_20px_rgba(176,141,87,0.4)] hover:shadow-[0_6px_28px_rgba(176,141,87,0.65)] hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0'
