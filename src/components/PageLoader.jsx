@@ -69,7 +69,7 @@ function PageLoader({ isLoading }) {
     <aside 
       aria-label="Loading page"
       role="status"
-      className={`fixed inset-0 z-[99999] bg-[#07090e] flex flex-col items-center justify-center select-none overflow-hidden ${
+      className={`fixed inset-0 z-[99999] bg-[#07090e] flex flex-col items-center justify-center select-none overflow-y-auto py-4 sm:py-6 ${
         fadeAnim 
           ? 'opacity-100' 
           : 'opacity-0 pointer-events-none transition-opacity duration-400 ease-out'
@@ -87,43 +87,43 @@ function PageLoader({ isLoading }) {
           }}
         />
         {/* Soft Golden Ambient Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#B08D57]/15 rounded-full blur-[140px] pointer-events-none animate-pulse-glow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#B08D57]/15 rounded-full blur-[120px] pointer-events-none animate-pulse-glow" />
       </div>
 
       {/* ============================================================== */}
       {/* 2. MAIN CENTER HERO CONTENT CONTAINER                          */}
       {/* ============================================================== */}
-      <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-lg w-full select-none">
+      <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-lg w-full select-none my-auto">
         
         {/* Stage Container: Orbits, DEC Square Box & Perimeter Moving Dots */}
-        <div className="relative flex items-center justify-center w-72 h-72 sm:w-84 sm:h-84 md:w-92 md:h-92 mb-6 sm:mb-8 shrink-0">
+        <div className="relative flex items-center justify-center w-60 h-60 sm:w-68 sm:h-68 md:w-76 md:h-76 mb-4 sm:mb-5 shrink-0">
           
           {/* Subtle Ambient Backlight */}
-          <div className="absolute w-56 h-56 sm:w-68 sm:h-68 md:w-76 md:h-76 bg-[#B08D57]/20 rounded-full blur-[70px] pointer-events-none" />
+          <div className="absolute w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 bg-[#B08D57]/20 rounded-full blur-[60px] pointer-events-none" />
 
           {/* Outer Golden Compass Orbit Ring */}
-          <div className="absolute w-72 h-72 sm:w-84 sm:h-84 md:w-92 md:h-92 rounded-full border border-[#B08D57]/20 pointer-events-none">
+          <div className="absolute w-60 h-60 sm:w-68 sm:h-68 md:w-76 md:h-76 rounded-full border border-[#B08D57]/20 pointer-events-none">
             {/* 4 Coordinate Tick Dots on the Orbit */}
-            <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#DFBF82]/70 shadow-[0_0_8px_#DFBF82]" />
-            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 rounded-full bg-[#DFBF82]/70 shadow-[0_0_8px_#DFBF82]" />
-            <span className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#DFBF82]/70 shadow-[0_0_8px_#DFBF82]" />
-            <span className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#DFBF82]/70 shadow-[0_0_8px_#DFBF82]" />
+            <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#DFBF82]/70 shadow-[0_0_8px_#DFBF82]" />
+            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#DFBF82]/70 shadow-[0_0_8px_#DFBF82]" />
+            <span className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#DFBF82]/70 shadow-[0_0_8px_#DFBF82]" />
+            <span className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#DFBF82]/70 shadow-[0_0_8px_#DFBF82]" />
           </div>
 
           {/* Middle Rotating Dashed Architectural Compass Orbit (Encloses Square & Dots) */}
           <div 
-            className="absolute w-64 h-64 sm:w-74 sm:h-74 md:w-82 md:h-82 rounded-full border border-dashed border-[#B08D57]/30 pointer-events-none animate-spin-slow"
+            className="absolute w-52 h-52 sm:w-60 sm:h-60 md:w-66 md:h-66 rounded-full border border-dashed border-[#B08D57]/30 pointer-events-none animate-spin-slow"
           />
 
           {/* Inner Golden Arc Orbit (Counter-Rotating, Encloses Square & Dots) */}
           <div 
-            className="absolute w-56 h-56 sm:w-66 sm:h-66 md:w-72 md:h-72 rounded-full border border-transparent border-t-[#DFBF82]/40 border-r-[#DFBF82]/20 pointer-events-none animate-spin-reverse"
+            className="absolute w-44 h-44 sm:w-50 sm:h-50 md:w-56 md:h-56 rounded-full border border-transparent border-t-[#DFBF82]/40 border-r-[#DFBF82]/20 pointer-events-none animate-spin-reverse"
           />
 
           {/* ============================================================== */}
           {/* THE DEC SQUARE BOX (COMPLETELY INSIDE ALL ORBIT CIRCLES)      */}
           {/* ============================================================== */}
-          <div className="relative z-10 w-32 h-32 sm:w-38 sm:h-38 md:w-42 md:h-42 rounded-[1.6rem] sm:rounded-[2rem] overflow-hidden border border-[#B08D57]/70 shadow-[0_12px_40px_rgba(0,0,0,0.95),0_0_30px_rgba(176,141,87,0.3)] flex items-center justify-center transition-transform duration-300">
+          <div className="relative z-10 w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-[1.3rem] sm:rounded-[1.5rem] md:rounded-[1.7rem] overflow-hidden border border-[#B08D57]/70 shadow-[0_12px_40px_rgba(0,0,0,0.95),0_0_30px_rgba(176,141,87,0.3)] flex items-center justify-center transition-transform duration-300">
             {/* Authentic DEC Square Artwork */}
             <img 
               src="/dec-exact-square.png" 
@@ -136,7 +136,7 @@ function PageLoader({ isLoading }) {
           {/* LOADING DOTS MOVING AROUND THE SQUARE (CLOCKWISE PERIMETER)   */}
           {/* Matches Client's Red Arrows: Top (→), Right (↓), Bottom (←), Left (↑) */}
           {/* ============================================================== */}
-          <div className="absolute z-20 w-[138px] h-[138px] sm:w-[162px] sm:h-[162px] md:w-[178px] md:h-[178px] pointer-events-none">
+          <div className="absolute z-20 w-[122px] h-[122px] sm:w-[139px] sm:h-[139px] md:w-[157px] md:h-[157px] pointer-events-none">
             <svg className="w-full h-full overflow-visible" viewBox="0 0 240 240">
               <defs>
                 {/* Glow Filter for Moving Golden Dots */}
@@ -261,28 +261,28 @@ function PageLoader({ isLoading }) {
         {/* ============================================================== */}
         {/* 3. BRAND IDENTITY TYPOGRAPHY & SKYLINE SILHOUETTE              */}
         {/* ============================================================== */}
-        <div className="space-y-1.5 mb-3 pt-2 sm:pt-3">
-          <h2 className="text-base sm:text-lg md:text-xl font-extrabold tracking-[0.22em] text-white uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+        <div className="space-y-1 mb-2 pt-1">
+          <h2 className="text-sm sm:text-base md:text-lg font-extrabold tracking-[0.2em] text-white uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
             DESENTRAL ENGINEERING CONSULTANCY
           </h2>
-          <p className="text-xs sm:text-sm font-bold text-[#DFBF82] tracking-[0.24em] uppercase">
+          <p className="text-[11px] sm:text-xs font-bold text-[#DFBF82] tracking-[0.22em] uppercase">
             Grade A | Multidisciplinary Engineering Consultancy
           </p>
         </div>
 
         {/* Golden Architectural Skyline Graphic */}
-        <div className="w-full flex items-center justify-center my-1.5 opacity-90">
+        <div className="w-full flex items-center justify-center my-1 opacity-90">
           <img 
             src="/dec-splash-skyline.png" 
             alt="DEC Architecture Skyline" 
-            className="h-9 sm:h-11 w-auto object-contain filter drop-shadow-[0_2px_12px_rgba(223,191,130,0.45)]"
+            className="h-7 sm:h-8 w-auto object-contain filter drop-shadow-[0_2px_12px_rgba(223,191,130,0.45)]"
           />
         </div>
 
         {/* ============================================================== */}
         {/* 4. LUXURY HIGH-PRECISION PROGRESS BAR & METRICS                */}
         {/* ============================================================== */}
-        <div className="w-64 sm:w-72 md:w-80 h-[3px] bg-white/10 rounded-full overflow-hidden relative shadow-inner mt-2">
+        <div className="w-60 sm:w-68 md:w-76 h-[3px] bg-white/10 rounded-full overflow-hidden relative shadow-inner mt-2">
           <div 
             className="h-full bg-gradient-to-r from-[#B08D57] via-[#F6E6CC] to-[#B08D57] rounded-full transition-all duration-100 ease-out relative"
             style={{ width: `${progress}%` }}
@@ -293,7 +293,7 @@ function PageLoader({ isLoading }) {
         </div>
 
         {/* Progress Percentage & Status Indicator */}
-        <div className="mt-3 flex items-center justify-between w-64 sm:w-72 md:w-80 text-[10px] tracking-wider text-[#F5F0E7]/60 font-mono">
+        <div className="mt-2.5 flex items-center justify-between w-60 sm:w-68 md:w-76 text-[10px] tracking-wider text-[#F5F0E7]/60 font-mono">
           <span className="flex items-center gap-1.5 text-[#DFBF82] font-semibold font-sans">
             <span className="w-1.5 h-1.5 rounded-full bg-[#DFBF82] animate-ping" />
             {getStatusText()}
@@ -302,7 +302,7 @@ function PageLoader({ isLoading }) {
         </div>
 
         {/* Regional Footprint Note */}
-        <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-center gap-3 text-[11px] text-[#DFBF82]/80 font-semibold tracking-[0.25em] uppercase">
+        <div className="mt-3 pt-2 border-t border-white/10 flex items-center justify-center gap-3 text-[10px] sm:text-[11px] text-[#DFBF82]/80 font-semibold tracking-[0.22em] uppercase">
           <span>Qatar</span>
           <span className="text-[#DFBF82]/40">•</span>
           <span>Egypt</span>
