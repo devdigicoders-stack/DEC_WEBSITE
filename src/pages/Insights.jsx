@@ -123,117 +123,56 @@ function Insights() {
       {/* ============================================================ */}
       {/* 2. FEATURED DOCUMENT: DEC 2026 COMPANY PROFILE & PREQUALIFICATION */}
       {/* ============================================================ */}
-      <section className="py-20 sm:py-28 px-6 sm:px-10 lg:px-14 xl:px-20 bg-[#111111] border-b border-[#B08D57]/20 relative overflow-hidden">
+      <section className="py-20 sm:py-24 px-6 sm:px-10 lg:px-14 xl:px-20 bg-[#111111] border-b border-[#B08D57]/20 relative overflow-hidden">
         {/* Subtle Ambient Gold Glow */}
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#B08D57]/5 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="w-full mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            
-            {/* Left 7 Columns: Text Content & View Action */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
-                <FiAward className="text-sm shrink-0" />
-                <span>OFFICIAL PREQUALIFICATION DOSSIER</span>
+        <div className="w-full max-w-6xl mx-auto relative z-10">
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
+              <FiAward className="text-sm shrink-0" />
+              <span>OFFICIAL PREQUALIFICATION DOSSIER</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
+              DEC Comprehensive Company Profile 2026
+            </h2>
+
+            <p className="text-base sm:text-lg text-[#F5F0E7]/80 leading-relaxed font-light max-w-4xl">
+              An authoritative presentation of Desentral Engineering Consultancy’s multidisciplinary organizational framework, statutory Grade A credentials, 50+ licensed in-house engineering team, and 300+ delivered landmark engagements across Qatar, Egypt, and Saudi Arabia.
+            </p>
+
+            {/* Key Features Checklist */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+              <div className="flex items-center gap-2.5 text-xs sm:text-sm text-white/90 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                <FiCheckCircle className="text-[#B08D57] shrink-0 text-base" />
+                <span>Grade A Statutory Practice (Unlimited Height)</span>
               </div>
-
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
-                DEC Comprehensive Company Profile 2026
-              </h2>
-
-              <p className="text-base sm:text-lg text-[#F5F0E7]/80 leading-relaxed font-light">
-                An authoritative presentation of Desentral Engineering Consultancy’s multidisciplinary organizational framework, statutory Grade A credentials, 50+ licensed in-house engineering team, and 300+ delivered landmark engagements across Qatar, Egypt, and Saudi Arabia.
-              </p>
-
-              {/* Key Features Checklist */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm text-white/90">
-                  <FiCheckCircle className="text-[#B08D57] shrink-0 text-base" />
-                  <span>Grade A Statutory Practice (Unlimited Height)</span>
-                </div>
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm text-white/90">
-                  <FiCheckCircle className="text-[#B08D57] shrink-0 text-base" />
-                  <span>Full Architectural, Structural & MEP Integration</span>
-                </div>
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm text-white/90">
-                  <FiCheckCircle className="text-[#B08D57] shrink-0 text-base" />
-                  <span>BIM Level 2 (LOD 200 - 500) Coordination Protocols</span>
-                </div>
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm text-white/90">
-                  <FiCheckCircle className="text-[#B08D57] shrink-0 text-base" />
-                  <span>Verified Project Portfolio (84 Registered Landmarks)</span>
-                </div>
+              <div className="flex items-center gap-2.5 text-xs sm:text-sm text-white/90 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                <FiCheckCircle className="text-[#B08D57] shrink-0 text-base" />
+                <span>Full Architectural, Structural & MEP Integration</span>
               </div>
-
-              {/* Action Button */}
-              <div className="pt-4 flex flex-wrap items-center gap-4">
-                <button
-                  type="button"
-                  onClick={handleOpenProfile}
-                  className="px-8 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-xl hover:scale-105 flex items-center gap-2.5 cursor-pointer"
-                >
-                  <FiEye className="text-base" />
-                  <span>View Company Profile (PDF)</span>
-                </button>
+              <div className="flex items-center gap-2.5 text-xs sm:text-sm text-white/90 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                <FiCheckCircle className="text-[#B08D57] shrink-0 text-base" />
+                <span>BIM Level 2 (LOD 200 - 500) Coordination Protocols</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-xs sm:text-sm text-white/90 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                <FiCheckCircle className="text-[#B08D57] shrink-0 text-base" />
+                <span>Verified Project Portfolio (84 Registered Landmarks)</span>
               </div>
             </div>
 
-            {/* Right 5 Columns: Live Embedded PDF Viewer in Section */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-3xl overflow-hidden border border-[#B08D57]/40 shadow-2xl shadow-black/90 bg-[#181818] h-[520px] sm:h-[600px] flex flex-col group">
-                
-                {/* Embedded Viewer Top Bar */}
-                <div className="px-4 py-3 bg-[#1A1A1A] border-b border-white/10 flex items-center justify-between z-10 shrink-0">
-                  <div className="flex items-center gap-2 overflow-hidden">
-                    <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse shrink-0" />
-                    <span className="text-xs font-bold text-white truncate">
-                      DEC_Company_Profile_2026 copy.pdf
-                    </span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={handleOpenProfile}
-                    className="px-3 py-1 rounded-lg bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs flex items-center gap-1.5 transition-all shadow cursor-pointer shrink-0"
-                    title="Open Fullscreen Viewer"
-                  >
-                    <FiEye className="text-xs" />
-                    <span>Fullscreen</span>
-                  </button>
-                </div>
-
-                {/* Live PDF Embedded Directly in Section Card */}
-                <div className="flex-1 w-full h-full relative bg-white">
-                  <object
-                    data={`${encodeURI(companyProfileDoc.file)}#toolbar=0&navpanes=0&view=FitH`}
-                    type="application/pdf"
-                    className="w-full h-full"
-                  >
-                    <iframe 
-                      src={`${encodeURI(companyProfileDoc.file)}#toolbar=0&navpanes=0&view=FitH`} 
-                      title="DEC Company Profile 2026 Live View"
-                      className="w-full h-full border-0"
-                    />
-                  </object>
-                </div>
-
-                {/* Footer Bar */}
-                <div className="px-4 py-2.5 bg-[#141414] border-t border-white/10 flex items-center justify-between text-[11px] text-[#F5F0E7]/70 shrink-0">
-                  <span className="flex items-center gap-1.5 text-emerald-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                    Interactive PDF Document
-                  </span>
-                  <button 
-                    type="button"
-                    onClick={handleOpenProfile}
-                    className="text-[#B08D57] hover:underline font-bold cursor-pointer"
-                  >
-                    Expand Large View →
-                  </button>
-                </div>
-
-              </div>
+            {/* Action Button */}
+            <div className="pt-4 flex flex-wrap items-center gap-4">
+              <button
+                type="button"
+                onClick={handleOpenProfile}
+                className="px-8 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-xl hover:scale-105 flex items-center gap-2.5 cursor-pointer"
+              >
+                <FiEye className="text-base" />
+                <span>View Company Profile (PDF)</span>
+              </button>
             </div>
-
           </div>
         </div>
       </section>
