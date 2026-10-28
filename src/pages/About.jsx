@@ -83,7 +83,7 @@ function About() {
 
   const leadershipTeam = [
     { name: 'Said Gamal', role: 'Technical Office Manager' },
-    { name: 'Ghadah Magdy', role: 'Senior Architect' },
+    { name: 'Mostafa Magdy', role: 'Design Manager' },
     { name: 'Reda Mabrouk', role: 'Head of Structural Department' },
     { name: 'Aya Saleh', role: 'Senior Architect' },
     { name: 'Mohammed Ashfin', role: 'Senior Architect & FLS Specialist' },
@@ -260,17 +260,17 @@ function About() {
               <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link
                   to="/expertise"
-                  className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/20 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
+                  className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2.5 cursor-pointer"
                 >
                   <span>Explore Our Expertise</span>
                   <FiArrowRight className="text-base" />
                 </Link>
                 <Link
                   to="/contact"
-                  className="px-7 py-4 rounded-xl bg-transparent hover:bg-slate-100 text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-slate-300 hover:border-[#B08D57] hover:text-[#B08D57] flex items-center justify-center gap-2 cursor-pointer"
+                  className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2.5 cursor-pointer group"
                 >
                   <span>Contact Leadership</span>
-                  <FiArrowUpRight className="text-base text-[#B08D57]" />
+                  <FiArrowUpRight className="text-base text-[#B08D57] group-hover:text-[#151515] transition-colors" />
                 </Link>
               </div>
             </div>
@@ -625,7 +625,7 @@ function About() {
 
             <Link
               to="/team"
-              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-lg shadow-[#B08D57]/20 hover:scale-105 flex items-center justify-center gap-2 self-start lg:self-auto shrink-0"
+              className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 flex items-center justify-center gap-2 self-start lg:self-auto shrink-0"
             >
               <span>Get to know our team</span>
               <FiArrowRight className="text-base" />
@@ -739,7 +739,7 @@ function About() {
               <div className="pt-2">
                 <Link
                   to="/presence"
-                  className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/20 hover:scale-105 inline-flex items-center justify-center gap-2.5 cursor-pointer w-full sm:w-auto"
+                  className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 inline-flex items-center justify-center gap-2.5 cursor-pointer w-full sm:w-auto"
                 >
                   <span>View Regional Footprint</span>
                   <FiArrowRight className="text-base" />

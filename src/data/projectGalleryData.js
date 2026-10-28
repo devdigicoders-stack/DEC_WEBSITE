@@ -176,7 +176,7 @@ export const projectGalleryData = [
     "src": "/projects-gallery/18.jpg",
     "sector": "Retail",
     "location": "Doha Festival City, Qatar",
-    "scope": "MAINTENANCE PERMIT",
+    "scope": "ARCH R&M, MEP & QCD Design & Supervision",
     "name": "Al Makki Jewelry"
   },
   {

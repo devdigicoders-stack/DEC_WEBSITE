@@ -77,7 +77,7 @@ function TermsAndConditions() {
           <div className="mt-10">
             <a 
               href="#legal-clauses"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-xl shadow-black/40 hover:scale-105"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs uppercase tracking-wider transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-xl hover:scale-105"
             >
               Review Terms & Clauses <FiArrowRight />
             </a>

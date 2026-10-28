@@ -321,13 +321,15 @@ export const projectsData = [
     "sector": "Retail",
     "sectorSlug": "retail",
     "location": "Doha Festival City, Qatar",
-    "scope": "MAINTENANCE PERMIT",
+    "scope": "ARCH R&M, MEP & QCD Design & Supervision",
     "type": "jewellery store",
     "image": "/Projects Images/Projects Images/18.jpg",
     "keywords": "jewellery store fit-out engineering in Doha Festival City, Qatar",
     "tags": [
       "jewellery store",
-      "DFC"
+      "DFC",
+      "QCD Approved",
+      "MEP Engineering"
     ]
   },
   {
@@ -1190,7 +1192,7 @@ export const projectsData = [
     "sector": "Residential",
     "sectorSlug": "residential",
     "location": "Al Riyadh, KSA",
-    "scope": "FULL MEP SHOP RAWINGS",
+    "scope": "FULL MEP SHOP DRAWINGS",
     "type": "resthouse",
     "image": "/Projects Images/Projects Images/66.jpg",
     "keywords": "resthouse engineering design in Riyadh, Saudi Arabia",

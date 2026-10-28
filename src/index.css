@@ -79,3 +79,12 @@ body, button, input, select, textarea {
 .animate-marquee-right:hover {
   animation-play-state: paused;
 }
+
+@keyframes goldTrace {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -780; }
+}
+
+.animate-gold-trace {
+  animation: goldTrace 4s linear infinite;
+}

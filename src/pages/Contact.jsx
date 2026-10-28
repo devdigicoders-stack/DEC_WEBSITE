@@ -17,6 +17,7 @@ import {
   FaWhatsapp, 
   FaAward
 } from 'react-icons/fa6'
+import { API_BASE_URL } from '../services/api'
 
 function Contact() {
   const location = useLocation()
@@ -59,10 +60,32 @@ function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-    setTimeout(() => {
+
+    try {
+      const payload = {
+        type: 'contact',
+        fullName: formData.fullName,
+        organization: formData.organization,
+        email: formData.email,
+        phone: formData.phone,
+        discipline: formData.discipline,
+        location: formData.location,
+        stage: formData.stage,
+        message: formData.message,
+        source: 'Website Contact Page'
+      }
+
+      await fetch(`${API_BASE_URL}/inquiries`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+    } catch (err) {
+      console.warn('Backend inquiry submission note:', err)
+    } finally {
       setIsSubmitting(false)
       setIsSubmitted(true)
       setToast({
@@ -74,7 +97,7 @@ function Contact() {
       setTimeout(() => {
         setToast(prev => ({ ...prev, show: false }))
       }, 6000)
-    }, 700)
+    }
   }
 
   const qatarMapUrl = "https://www.google.com/maps?cid=6957477369137263552&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF"
@@ -131,7 +154,7 @@ function Contact() {
         {/* Background Image - Clean without brand name */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <img 
-            src="/images/contact_hero.jpg" 
+            src="/images/contact_hero.png" 
             alt="DEC Manarat Lusail Tower Headquarters" 
             className="w-full h-full object-cover object-center scale-100 opacity-60 transition-transform duration-1000 ease-out"
           />
@@ -179,14 +202,13 @@ function Contact() {
       {/* ============================================================ */}
       <section className="py-20 px-6 sm:px-10 lg:px-14 xl:px-20 w-full">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#B08D57]/10 border-2 border-[#B08D57] text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-md shadow-[#B08D57]/10 mb-3">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-3">
             <FiGlobe className="text-sm shrink-0 text-[#B08D57]" />
             <span>Global Delivery Network</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-[#151515] tracking-tight">
             Our Headquarters & Technical Centers
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#B08D57] to-transparent mx-auto mt-3 mb-2 rounded-full" />
           <p className="mt-3 text-slate-600 text-base sm:text-lg">
             Direct access to DEC’s executive leadership and multidisciplinary engineering teams.
           </p>
@@ -289,7 +311,7 @@ function Contact() {
           <div className="bg-white rounded-2xl border border-slate-200 shadow-xl shadow-slate-100 hover:shadow-2xl hover:border-[#B08D57] transition-all duration-300 p-8 flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between mb-5">
-                <span className="text-xs font-bold tracking-widest text-[#B08D57] uppercase bg-[#B08D57]/10 px-3 py-1 rounded-full">
+                <span className="text-xs font-bold tracking-widest text-[#B08D57] uppercase bg-[#B08D57]/10 border border-[#B08D57]/30 px-3 py-1 rounded-full">
                   Technical Center
                 </span>
                 <span className="text-2xl">🇪🇬</span>
@@ -368,15 +390,15 @@ function Contact() {
           </div>
 
           {/* Card 3: WHATSAPP CONTACTS & DIRECT INQUIRY DESK */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-xl shadow-slate-100 hover:shadow-2xl hover:border-emerald-500 transition-all duration-300 p-8 flex flex-col justify-between group">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-xl shadow-slate-100 hover:shadow-2xl hover:border-[#B08D57] transition-all duration-300 p-8 flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between mb-5">
-                <span className="text-xs font-bold tracking-widest text-emerald-700 uppercase bg-emerald-50 px-3 py-1 rounded-full">
+                <span className="text-xs font-bold tracking-widest text-[#B08D57] uppercase bg-[#B08D57]/10 border border-[#B08D57]/30 px-3 py-1 rounded-full">
                   Instant Messaging
                 </span>
                 <span className="text-2xl">💬</span>
               </div>
-              <h3 className="text-2xl font-bold text-[#151515] group-hover:text-emerald-600 transition-colors">
+              <h3 className="text-2xl font-bold text-[#151515] group-hover:text-[#B08D57] transition-colors">
                 WHATSAPP CONTACTS
               </h3>
               <p className="text-xs text-slate-500 font-medium mt-1 mb-6">
@@ -387,8 +409,8 @@ function Contact() {
                 <div className="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-100">
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-xs font-semibold text-emerald-800 uppercase tracking-wider block">
-                        WhatsApp Contact 1
+                      <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block">
+                        Islam Farid
                       </span>
                       <strong className="text-sm font-bold text-[#151515]">
                         +974 3160 1117
@@ -408,8 +430,8 @@ function Contact() {
                 <div className="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-100">
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-xs font-semibold text-emerald-800 uppercase tracking-wider block">
-                        WhatsApp Contact 2
+                      <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block">
+                        Ahmed Bakry
                       </span>
                       <strong className="text-sm font-bold text-[#151515]">
                         +974 7117 1289
@@ -449,7 +471,7 @@ function Contact() {
               </span>
               <a 
                 href="#inquiry-form"
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs tracking-wider uppercase transition-all duration-300 shadow-md shadow-[#B08D57]/20 hover:scale-105 border border-[#B08D57]"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-md hover:scale-105"
               >
                 <span>Inquiry Form</span>
                 <FiArrowUpRight className="text-sm" />
@@ -468,7 +490,7 @@ function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             
             {/* Left Column: Form Details & Value Assurance - Matching Luxury White Card */}
-            <div className="lg:col-span-5 bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-xl shadow-slate-200/50 flex flex-col justify-between h-full space-y-8">
+            <div className="lg:col-span-5 bg-white rounded-3xl p-8 sm:p-10 sm:pb-8 lg:pb-8 border border-slate-200 shadow-xl shadow-slate-200/50 flex flex-col justify-between">
               <div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] bg-[#B08D57]/10 border border-[#B08D57]/30 px-3.5 py-1.5 rounded-full inline-block">
                   Fast-Track Consultation
@@ -478,12 +500,12 @@ function Contact() {
                 </h2>
                 
                 {/* Specific Direction Note - Gold-tinted card matching site palette */}
-                <div className="mt-5 p-4 rounded-2xl bg-[#B08D57]/10 border border-[#B08D57]/30 text-[#151515] text-sm">
+                <div className="mt-4 p-3.5 rounded-2xl bg-[#B08D57]/10 border border-[#B08D57]/30 text-[#151515] text-sm">
                   <strong className="block text-[#151515] font-bold mb-1">
                     Direct Contact Routing:
                   </strong>
                   All general enquiries and project enquiries should be directed to:
-                  <div className="mt-2.5 flex flex-wrap gap-2 text-xs font-semibold">
+                  <div className="mt-2 flex flex-wrap gap-2 text-xs font-semibold">
                     <a href="mailto:info@desentralqatar.com" className="px-3 py-1.5 rounded-lg bg-white border border-[#B08D57]/40 text-[#151515] hover:text-[#B08D57] hover:border-[#B08D57] transition-colors shadow-xs">
                       info@desentralqatar.com
                     </a>
@@ -493,16 +515,16 @@ function Contact() {
                   </div>
                 </div>
 
-                <p className="mt-4 text-slate-600 leading-relaxed text-sm">
+                <p className="mt-3.5 text-slate-600 leading-relaxed text-sm">
                   Whether you are planning a Grade A commercial tower, retail rollout, luxury F&B concept, or need urgent statutory approvals from MMUP / Civil Defense, DEC provides swift and coordinated delivery.
                 </p>
               </div>
 
               {/* Trust Badges - Consistent Light Styling */}
-              <div className="space-y-3.5">
-                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
-                  <div className="p-2.5 rounded-xl bg-[#B08D57]/15 text-[#B08D57] shrink-0 mt-0.5">
-                    <FaAward className="text-lg" />
+              <div className="space-y-3 my-5">
+                <div className="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <div className="p-2 rounded-xl bg-[#B08D57]/15 text-[#B08D57] shrink-0 mt-0.5">
+                    <FaAward className="text-base" />
                   </div>
                   <div>
                     <h4 className="font-bold text-[#151515] text-sm">Grade A Certified Consultancy</h4>
@@ -512,9 +534,9 @@ function Contact() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
-                  <div className="p-2.5 rounded-xl bg-[#B08D57]/15 text-[#B08D57] shrink-0 mt-0.5">
-                    <FiShield className="text-lg" />
+                <div className="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <div className="p-2 rounded-xl bg-[#B08D57]/15 text-[#B08D57] shrink-0 mt-0.5">
+                    <FiShield className="text-base" />
                   </div>
                   <div>
                     <h4 className="font-bold text-[#151515] text-sm">Statutory Permitting & QCDD Fast-Track</h4>
@@ -524,9 +546,9 @@ function Contact() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
-                  <div className="p-2.5 rounded-xl bg-[#B08D57]/15 text-[#B08D57] shrink-0 mt-0.5">
-                    <FiClock className="text-lg" />
+                <div className="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <div className="p-2 rounded-xl bg-[#B08D57]/15 text-[#B08D57] shrink-0 mt-0.5">
+                    <FiClock className="text-base" />
                   </div>
                   <div>
                     <h4 className="font-bold text-[#151515] text-sm">24-Hour Review Turnaround</h4>
@@ -538,7 +560,7 @@ function Contact() {
               </div>
 
               {/* Dual WhatsApp Quick Contact Box - Clean Cohesive Box */}
-              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+              <div className="p-4 sm:p-5 sm:pb-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5 mt-auto">
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="font-bold text-[#151515] text-sm">Direct WhatsApp Lines:</h4>
@@ -553,7 +575,7 @@ function Contact() {
                     href="https://wa.me/97431601117" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs tracking-wide transition-all shadow-sm hover:scale-105"
+                    className="flex items-center justify-center gap-2 h-12 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs tracking-wide transition-all shadow-sm hover:scale-105"
                   >
                     <FaWhatsapp className="text-base" /> +974 3160 1117
                   </a>
@@ -561,7 +583,7 @@ function Contact() {
                     href="https://wa.me/97471171289" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs tracking-wide transition-all shadow-sm hover:scale-105"
+                    className="flex items-center justify-center gap-2 h-12 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs tracking-wide transition-all shadow-sm hover:scale-105"
                   >
                     <FaWhatsapp className="text-base" /> +974 7117 1289
                   </a>
@@ -570,7 +592,7 @@ function Contact() {
             </div>
 
             {/* Right Column: Actual Clean Form - Perfectly Aligned at Beginning and End */}
-            <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-xl shadow-slate-200/50 flex flex-col justify-between h-full">
+            <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 sm:pb-6 lg:pb-6 border border-slate-200 shadow-xl shadow-slate-200/50 flex flex-col justify-between">
               {isSubmitted ? (
                 <div className="py-16 text-center space-y-4 animate-fade-in my-auto">
                   <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
@@ -603,9 +625,9 @@ function Contact() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6 flex flex-col justify-between h-full">
+                <form onSubmit={handleSubmit} className="flex-1 flex flex-col justify-between">
                   <div>
-                    <div className="border-b border-slate-100 pb-4 mb-6">
+                    <div className="border-b border-slate-100 pb-3 mb-4">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                         <h3 className="text-xl sm:text-2xl font-bold text-[#151515]">Client Inquiry Form</h3>
                         <span className="text-xs text-slate-500 font-medium">
@@ -617,10 +639,10 @@ function Contact() {
                       </p>
                     </div>
 
-                    <div className="space-y-5">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div className="space-y-3.5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                             Full Name <span className="text-red-500">*</span>
                           </label>
                           <input 
@@ -630,12 +652,12 @@ function Contact() {
                             onChange={handleInputChange}
                             required
                             placeholder="e.g. Eng. Fahad Al-Kuwari"
-                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50"
+                            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50"
                           />
                         </div>
 
                         <div>
-                          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                             Company / Organization
                           </label>
                           <input 
@@ -644,14 +666,14 @@ function Contact() {
                             value={formData.organization}
                             onChange={handleInputChange}
                             placeholder="e.g. Real Estate Development / Retail Group"
-                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50"
+                            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50"
                           />
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                             Work Email <span className="text-red-500">*</span>
                           </label>
                           <input 
@@ -661,12 +683,12 @@ function Contact() {
                             onChange={handleInputChange}
                             required
                             placeholder="you@company.com"
-                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50"
+                            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50"
                           />
                         </div>
 
                         <div>
-                          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                             Phone Number <span className="text-red-500">*</span>
                           </label>
                           <input 
@@ -678,21 +700,21 @@ function Contact() {
                             placeholder="+974 XXXX XXXX"
                             inputMode="tel"
                             pattern="[0-9+\s\-()]*"
-                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50"
+                            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50"
                           />
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                             Service Discipline Required
                           </label>
                           <select 
                             name="discipline"
                             value={formData.discipline}
                             onChange={handleInputChange}
-                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50"
+                            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50"
                           >
                             <option>Multidisciplinary (Architecture + MEP + Structure)</option>
                             <option>Architecture & Interior Fit-Out</option>
@@ -706,14 +728,14 @@ function Contact() {
                         </div>
 
                         <div>
-                          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                             Project Location
                           </label>
                           <select 
                             name="location"
                             value={formData.location}
                             onChange={handleInputChange}
-                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50"
+                            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50"
                           >
                             <option value="Qatar">Qatar</option>
                             <option value="Egypt">Egypt</option>
@@ -725,27 +747,27 @@ function Contact() {
                       </div>
 
                       <div>
-                        <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                           Project Details & Scope of Work <span className="text-red-500">*</span>
                         </label>
                         <textarea 
                           name="message"
-                          rows={6}
+                          rows={3}
                           value={formData.message}
                           onChange={handleInputChange}
                           required
                           placeholder="Please share details such as approximate area, building type, required services, or any specific authority permitting deadlines..."
-                          className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50 resize-y min-h-[140px]"
+                          className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 text-sm text-[#151515] bg-slate-50/50 resize-y min-h-[85px]"
                         />
                       </div>
                     </div>
                   </div>
 
-                  <div className="pt-4 space-y-3">
+                  <div className="mt-auto pt-3">
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-4 px-6 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-sm tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-[#B08D57]/25 hover:scale-[1.01] cursor-pointer disabled:opacity-60 border border-[#B08D57]"
+                      className="w-full py-3.5 px-6 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-sm tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-[1.01] cursor-pointer disabled:opacity-60"
                     >
                       {isSubmitting ? (
                         <>Processing Submission...</>
@@ -756,7 +778,7 @@ function Contact() {
                       )}
                     </button>
 
-                    <p className="text-center text-xs text-slate-500">
+                    <p className="text-center text-[11px] sm:text-xs text-slate-500 mt-2">
                       🔒 All inquiries are securely routed to <a href="mailto:info@desentralqatar.com" className="text-slate-700 underline font-medium">info@desentralqatar.com</a> & <a href="mailto:bd@desentralqatar.com" className="text-slate-700 underline font-medium">bd@desentralqatar.com</a> under strict non-disclosure compliance.
                     </p>
                   </div>
@@ -822,7 +844,7 @@ function Contact() {
               href={activeMap === 'qatar' ? qatarMapUrl : egyptMapUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] text-xs sm:text-sm font-bold tracking-wider uppercase transition-all shadow-md shadow-[#B08D57]/20 hover:scale-105 border border-[#B08D57] cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] text-xs sm:text-sm font-bold tracking-wider uppercase transition-all border border-white/20 hover:border-[#B08D57] shadow-md hover:scale-105 cursor-pointer"
             >
               <span>Open in Google Maps</span>
               <FiExternalLink className="text-base" />

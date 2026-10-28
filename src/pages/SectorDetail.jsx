@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import React, { useState, useEffect, useMemo } from 'react'
+import { useParams, Link, useLocation } from 'react-router-dom'
 import { sectorsData } from '../data/sectorsData.js'
 import { projectsData } from '../data/projectsData.js'
+import { fetchProjects, getImageUrl } from '../services/api'
 import { 
   FiArrowLeft, 
   FiArrowRight, 
@@ -9,13 +10,48 @@ import {
   FiMapPin, 
   FiAward, 
   FiLayers, 
-  FiPhoneCall, 
-  FiFileText 
+  FiPhoneCall 
 } from 'react-icons/fi'
 
 function SectorDetail() {
   const { slug } = useParams()
+  const location = useLocation()
   const sector = sectorsData[slug]
+  const heroImage = location.state?.image || sector?.image
+
+  // Live dynamic projects from MongoDB Backend API with fallback to projectsData
+  const [liveProjects, setLiveProjects] = useState(projectsData)
+
+  useEffect(() => {
+    let isMounted = true
+    const load = async () => {
+      try {
+        const live = await fetchProjects({ limit: 200 })
+        if (isMounted && Array.isArray(live) && live.length > 0) {
+          setLiveProjects(live)
+        }
+      } catch (err) {
+        console.error('API load error in SectorDetail:', err)
+      }
+    }
+    load()
+    return () => { isMounted = false }
+  }, [])
+
+  // Sector projects filtered by slug or sector name from the official register
+  const sectorProjects = useMemo(() => {
+    if (!slug) return []
+    const target = slug.toLowerCase()
+    const list = liveProjects.filter(p => {
+      const sSlug = (p.sectorSlug || '').toLowerCase()
+      const sName = (p.sector || '').toLowerCase()
+      if (target === 'fnb') return sSlug === 'fnb' || sSlug === 'f&b' || sName.includes('f&b') || sName.includes('food')
+      if (target === 'medical') return sSlug === 'medical' || sName.includes('medical') || sName.includes('health')
+      if (target === 'industrial') return sSlug === 'industrial' || sName.includes('industrial')
+      return sSlug === target || sName === target
+    })
+    return list.length > 0 ? list : (sector?.projects || [])
+  }, [liveProjects, slug, sector])
 
   // Scroll to top on slug change
   useEffect(() => {
@@ -55,7 +91,7 @@ function SectorDetail() {
         
         {/* Dynamic Sector Background Image */}
         <img
-          src={sector.image}
+          src={heroImage}
           alt={sector.title}
           className="absolute inset-0 w-full h-full object-cover scale-105 filter brightness-90 contrast-105"
         />
@@ -101,7 +137,7 @@ function SectorDetail() {
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
               href="#projects-showcase"
-              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:scale-105 inline-flex items-center gap-2.5"
+              className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2.5 cursor-pointer"
             >
               <span>View Projects Portfolio</span>
               <FiArrowRight className="text-base" />
@@ -109,9 +145,9 @@ function SectorDetail() {
 
             <Link
               to="/contact"
-              className="px-7 py-4 rounded-xl bg-transparent hover:bg-white/10 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] inline-flex items-center gap-2.5"
+              className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2.5 cursor-pointer group"
             >
-              <FiPhoneCall className="text-base text-[#B08D57]" />
+              <FiPhoneCall className="text-base text-[#B08D57] group-hover:text-[#151515] transition-colors" />
               <span>Consult Our Specialists</span>
             </Link>
           </div>
@@ -197,15 +233,6 @@ function SectorDetail() {
                 <span className="text-[11px] uppercase tracking-wider text-white/50">Classification</span>
                 <span className="text-sm font-bold text-[#B08D57]">MMUP Grade A Consultancy</span>
               </div>
-              <a
-                href="/DEC_Company_Profile_2026 copy.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-white/80 hover:text-[#B08D57] underline transition-colors"
-              >
-                <FiFileText className="w-4 h-4 text-[#B08D57]" />
-                <span>DEC Profile (PDF)</span>
-              </a>
             </div>
           </div>
 
@@ -233,16 +260,12 @@ function SectorDetail() {
 
           {/* Projects Cards Grid with Hover Photo Reveal */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {sector.projects.map((proj) => {
-              const projImage = proj.image || projectsData.find(p => 
-                p.name.toLowerCase() === proj.name.toLowerCase() ||
-                p.name.toLowerCase().includes(proj.name.toLowerCase()) ||
-                proj.name.toLowerCase().includes(p.name.toLowerCase())
-              )?.image || '/image copy 4.png'
+            {sectorProjects.map((proj) => {
+              const projImage = proj.image || '/image copy 4.png'
 
               return (
                 <div
-                  key={proj.id}
+                  key={proj._id || proj.id || proj.code}
                   className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 hover:border-[#B08D57] shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group overflow-hidden relative"
                 >
                   <div className="flex-1">
@@ -252,9 +275,6 @@ function SectorDetail() {
                         <FiMapPin className="w-3.5 h-3.5 shrink-0" />
                         <span>{proj.location}</span>
                       </div>
-                      <span className="text-[10px] uppercase tracking-wider text-black/40 font-semibold bg-slate-100 px-2 py-0.5 rounded group-hover:bg-[#B08D57]/10 group-hover:text-[#B08D57] transition-colors">
-                        DEC Portfolio
-                      </span>
                     </div>
 
                     {/* Project Title with Gold Hover */}
@@ -265,10 +285,13 @@ function SectorDetail() {
                     {/* Interactive Hover Image: Appears smoothly when hovering over the project name / card */}
                     <div className="relative overflow-hidden rounded-xl h-0 group-hover:h-44 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out border border-transparent group-hover:border-[#B08D57]/40 mb-3 bg-slate-900 shadow-inner">
                       <img 
-                        src={projImage} 
+                        src={getImageUrl(projImage)} 
                         alt={proj.name} 
                         className="w-full h-44 object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
                         loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.src = '/image copy 4.png'
+                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
                       <span className="absolute bottom-2.5 left-2.5 text-[10px] font-bold text-white bg-black/75 px-2.5 py-1 rounded backdrop-blur-sm border border-white/10 flex items-center gap-1.5">
@@ -306,6 +329,7 @@ function SectorDetail() {
             {hasPrev && prevSector ? (
               <Link
                 to={`/sector/${prevSector.slug}`}
+                state={{ image: prevSector.image }}
                 className="group flex items-center gap-4 text-left p-3.5 sm:p-4 rounded-xl hover:bg-white/5 transition-all w-full sm:w-auto"
               >
                 <div className="w-11 h-11 rounded-full border border-white/20 group-hover:border-[#B08D57] group-hover:bg-[#B08D57] group-hover:text-[#151515] flex items-center justify-center text-white transition-all flex-shrink-0">
@@ -325,7 +349,7 @@ function SectorDetail() {
           <div className="flex justify-center order-1 sm:order-2">
             <Link
               to="/contact"
-              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:shadow-xl hover:shadow-[#B08D57]/35 hover:scale-105 active:scale-95 inline-flex items-center gap-2.5 flex-shrink-0 cursor-pointer text-center"
+              className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:shadow-xl hover:shadow-[#B08D57]/35 hover:scale-105 active:scale-95 inline-flex items-center gap-2.5 flex-shrink-0 cursor-pointer text-center"
             >
               <span>Start Your Project With DEC</span>
               <FiArrowRight className="text-base" />
@@ -337,6 +361,7 @@ function SectorDetail() {
             {hasNext && nextSector ? (
               <Link
                 to={`/sector/${nextSector.slug}`}
+                state={{ image: nextSector.image }}
                 className="group flex items-center gap-4 text-right p-3.5 sm:p-4 rounded-xl hover:bg-white/5 transition-all w-full sm:w-auto justify-end"
               >
                 <div>

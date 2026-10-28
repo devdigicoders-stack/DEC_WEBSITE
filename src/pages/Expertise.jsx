@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { 
   FiCheckCircle, 
@@ -11,10 +11,62 @@ import {
   FiArrowRight 
 } from 'react-icons/fi'
 import { FaCompassDrafting } from 'react-icons/fa6'
+import { Building2 } from 'lucide-react'
+import { fetchServices } from '../services/api'
+
+// Helper to render matching icon dynamically based on icon name or service slug
+const renderServiceIcon = (iconName, slug) => {
+  const iconProps = { className: "text-3xl text-[#B08D57]" }
+  
+  if (iconName === 'FaCompassDrafting') return <FaCompassDrafting {...iconProps} />
+  if (iconName === 'FiLayers') return <FiLayers {...iconProps} />
+  if (iconName === 'FiTool') return <FiTool {...iconProps} />
+  if (iconName === 'FiZap') return <FiZap {...iconProps} />
+  if (iconName === 'FiShield') return <FiShield {...iconProps} />
+  if (iconName === 'FiCpu') return <FiCpu {...iconProps} />
+  if (iconName === 'Building2') return <Building2 className="w-8 h-8 text-[#B08D57]" />
+
+  // Semantic slug fallbacks
+  if (slug === 'architecture') return <FaCompassDrafting {...iconProps} />
+  if (slug === 'structural') return <FiLayers {...iconProps} />
+  if (slug === 'mechanical') return <FiTool {...iconProps} />
+  if (slug === 'electrical') return <FiZap {...iconProps} />
+  if (slug === 'regulatory') return <FiShield {...iconProps} />
+  if (slug === 'bim') return <FiCpu {...iconProps} />
+
+  return <FiCompass {...iconProps} />
+}
 
 function Expertise() {
   const location = useLocation()
+  const [disciplines, setDisciplines] = useState([])
+  const [loadingDisciplines, setLoadingDisciplines] = useState(true)
 
+  // Fetch active engineering disciplines dynamically from MongoDB Backend
+  useEffect(() => {
+    let isMounted = true
+
+    const loadDisciplines = async () => {
+      try {
+        const data = await fetchServices()
+        if (isMounted && Array.isArray(data) && data.length > 0) {
+          const sorted = [...data].sort((a, b) => (a.order || 0) - (b.order || 0))
+          setDisciplines(sorted)
+        }
+      } catch (err) {
+        console.error('Failed to load services dynamically:', err)
+      } finally {
+        if (isMounted) setLoadingDisciplines(false)
+      }
+    }
+
+    loadDisciplines()
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  // Smooth scroll to target anchor once loaded or on hash change
   useEffect(() => {
     if (location.hash) {
       const elementId = location.hash.replace('#', '')
@@ -25,93 +77,18 @@ function Expertise() {
         }
       }
       scrollToEl()
-      const timer = setTimeout(scrollToEl, 200)
+      const timer = setTimeout(scrollToEl, 250)
       return () => clearTimeout(timer)
     }
-  }, [location.hash, location.pathname])
-
-  const engineeringDisciplines = [
-    {
-      id: 'architecture',
-      icon: <FaCompassDrafting className="text-3xl text-[#B08D57]" />,
-      title: 'Architectural & Space Planning',
-      description: 'Comprehensive architectural concepts, schematic designs, functional space planning, luxury interior fit-outs, and construction documentation complying with QCS and international codes.',
-      capabilities: [
-        'Concept & Detailed Architectural Design',
-        'Luxury Corporate & Retail Space Planning',
-        'Life Safety & NFPA Egress Strategies',
-        'Exterior Facade & Envelope Engineering'
-      ]
-    },
-    {
-      id: 'structural',
-      icon: <FiLayers className="text-3xl text-[#B08D57]" />,
-      title: 'Civil & Structural Engineering',
-      description: 'Rigorous structural analysis and design for reinforced concrete (RC), post-tensioned slabs, structural steel, PEB systems, and foundation engineering optimized for GCC geotechnical conditions.',
-      capabilities: [
-        'Seismic, Wind & Dynamic Structural Analysis',
-        'High-Rise, Commercial & Industrial Structures',
-        'Foundation Design & Soil-Structure Interaction',
-        'Structural Peer Review & Value Engineering'
-      ]
-    },
-    {
-      id: 'mechanical',
-      icon: <FiTool className="text-3xl text-[#B08D57]" />,
-      title: 'Mechanical & HVAC Engineering',
-      description: 'High-performance heating, ventilation, and air conditioning (HVAC) systems, chilled water plant integrations, smoke management, and building drainage engineering designed for extreme gulf climates.',
-      capabilities: [
-        'Central Chilled Water & VRF Air Conditioning',
-        'HAP Thermal Load & Energy Modeling',
-        'Plumbing, Public Health & Drainage Systems',
-        'Smoke Evacuation & Pressurization Systems'
-      ]
-    },
-    {
-      id: 'electrical',
-      icon: <FiZap className="text-3xl text-[#B08D57]" />,
-      title: 'Electrical & Low Voltage (ELV)',
-      description: 'End-to-end power generation and distribution design, substation layouts, architectural lighting design, building management systems (BMS), and comprehensive ICT/ELV infrastructure.',
-      capabilities: [
-        'Medium & Low Voltage Power Distribution',
-        'Kahramaa Substation Approvals & Compliance',
-        'Dialux Architectural & Exterior Lighting',
-        'ELV, CCTV, Access Control & BMS Integration'
-      ]
-    },
-    {
-      id: 'regulatory',
-      icon: <FiShield className="text-3xl text-[#B08D57]" />,
-      title: 'Statutory Permitting Approvals',
-      description: 'Expedited statutory permits through our certified Grade A MMUP / UPDA consulting status, covering Qatar Civil Defense (QCD), Municipalities (MME), Kahramaa, Ashghal, and Building Completion Certificates (BCC).',
-      capabilities: [
-        'Grade A MMUP / UPDA Licensed Endorsement',
-        'Qatar Civil Defense (QCD) Fire Life Safety Permits',
-        'Ministry of Municipality (MME) Building Permits',
-        'Building Completion Certificates (BCC) Clearance'
-      ]
-    },
-    {
-      id: 'bim',
-      icon: <FiCpu className="text-3xl text-[#B08D57]" />,
-      title: 'BIM & Digital Twin Delivery',
-      description: 'End-to-end digital engineering utilizing Autodesk Revit and Navisworks for 3D multidisciplinary coordination, automated clash detection matrix, and seamless digital handovers.',
-      capabilities: [
-        'LOD 200 to LOD 500 Model Development',
-        'Clash Detection & Inter-Disciplinary Coordination',
-        'Automated Quantity Take-off (QTO)',
-        'As-Built Asset Modeling for Facility Operations'
-      ]
-    }
-  ]
+  }, [location.hash, location.pathname, disciplines])
 
   const technicalPillars = [
     {
       stat: 'Grade A',
       title: 'MMUP / UPDA Certified',
       desc: 'Multidisciplinary engineering consultancy licensed at the highest statutory grade in Qatar, enabling us to deliver projects of significant scale and complexity.',
-      image: '/image copy 9.png',
-      imgPosition: 'right-0 bottom-0 w-[72%] h-[78%] object-contain object-bottom-right',
+      image: '/Expertise/Minimalist Modern Cityscape in White Space.png',
+      imgPosition: 'inset-0 w-full h-full object-cover object-bottom-right',
       icon: (
         <svg className="w-9 h-9 text-[#B08D57]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
           <rect x="3" y="10" width="5" height="11" rx="0.5" />
@@ -132,8 +109,8 @@ function Expertise() {
       stat: 'QCDD',
       title: 'Fire & Life Safety Expertise',
       desc: 'In-depth knowledge of QCDD regulations, NFPA 101/5000 and Civil Defense requirements, ensuring compliant, safe and efficient design solutions.',
-      image: '/image copy 10.png',
-      imgPosition: 'right-0 -bottom-2 w-[60%] h-[68%] object-contain object-bottom-right',
+      image: '/Expertise/Minimalist Chrome Fire Sprinkler on White Ceiling.png',
+      imgPosition: 'inset-0 w-full h-full object-cover object-bottom-right',
       icon: (
         <svg className="w-9 h-9 text-[#B08D57]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -145,8 +122,8 @@ function Expertise() {
       stat: 'GSAS',
       title: 'Certified Sustainability Service Provider',
       desc: 'Green building certified practitioners integrating energy-efficient and water-conservation strategies to deliver sustainable, high-performance buildings.',
-      image: '/image copy 11.png',
-      imgPosition: 'right-0 bottom-0 w-[74%] h-[80%] object-contain object-bottom-right',
+      image: '/Expertise/Minimalist Glass Facade in Mist.png',
+      imgPosition: 'inset-0 w-full h-full object-cover object-bottom-right',
       icon: (
         <svg className="w-9 h-9 text-[#B08D57]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
           <path d="M11 20A7 7 0 0 1 4 13C4 7 11 3 11 3s7 4 7 10a7 7 0 0 1-7 7Z" />
@@ -159,8 +136,8 @@ function Expertise() {
       stat: 'BIM',
       title: 'Integrated Digital Delivery',
       desc: 'Connecting architectural, structural and MEP disciplines through coordinated BIM models, early clash detection and efficient digital project delivery.',
-      image: '/image copy 12.png',
-      imgPosition: 'right-0 bottom-0 w-[68%] h-[92%] object-contain object-right-bottom',
+      image: '/Expertise/Minimalist BIM Wireframe Building.png',
+      imgPosition: 'inset-0 w-full h-full object-cover object-bottom-right',
       icon: (
         <svg className="w-9 h-9 text-[#B08D57]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 2l-7 4v6l7 4 7-4V6l-7-4z" />
@@ -242,7 +219,7 @@ function Expertise() {
                   <img 
                     src={item.image} 
                     alt={item.title} 
-                    className={`absolute ${item.imgPosition} opacity-40 sm:opacity-50 blur-[1px] group-hover:opacity-65 group-hover:blur-none group-hover:scale-105 transition-all duration-500`} 
+                    className={`absolute ${item.imgPosition} opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500`} 
                   />
                 </div>
 
@@ -292,46 +269,75 @@ function Expertise() {
 
           {/* 6 Disciplines Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {engineeringDisciplines.map((item) => (
-              <div 
-                key={item.id}
-                id={item.id}
-                className="bg-white rounded-3xl p-8 border border-slate-200 hover:border-[#B08D57] hover:shadow-2xl target:ring-2 target:ring-[#B08D57] target:border-[#B08D57] target:shadow-2xl transition-all duration-300 flex flex-col justify-between group scroll-mt-32"
-              >
-                <div>
-                  <div className="w-16 h-16 rounded-2xl bg-[#B08D57]/10 flex items-center justify-center mb-6 group-hover:bg-[#B08D57]/20 transition-colors">
-                    {item.icon}
+            {loadingDisciplines && disciplines.length === 0 ? (
+              Array.from({ length: 6 }).map((_, idx) => (
+                <div 
+                  key={idx}
+                  className="bg-white rounded-3xl p-8 border border-slate-200 animate-pulse flex flex-col justify-between min-h-[460px]"
+                >
+                  <div>
+                    <div className="w-16 h-16 rounded-2xl bg-slate-100 mb-6" />
+                    <div className="h-7 bg-slate-200 rounded-lg w-3/4 mb-4" />
+                    <div className="space-y-2 mb-6">
+                      <div className="h-4 bg-slate-100 rounded w-full" />
+                      <div className="h-4 bg-slate-100 rounded w-11/12" />
+                      <div className="h-4 bg-slate-100 rounded w-4/5" />
+                    </div>
+                    <div className="space-y-2.5 pt-4 border-t border-slate-100">
+                      {[1, 2, 3, 4].map((i) => (
+                        <div key={i} className="flex items-center gap-2.5">
+                          <div className="w-4 h-4 rounded-full bg-slate-200 shrink-0" />
+                          <div className="h-3.5 bg-slate-100 rounded w-3/4" />
+                        </div>
+                      ))}
+                    </div>
                   </div>
-
-                  <h3 className="text-2xl font-bold text-[#151515] mb-4 group-hover:text-[#B08D57] transition-colors">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-sm text-black/70 leading-relaxed mb-6 font-light">
-                    {item.description}
-                  </p>
-
-                  <div className="space-y-2.5 pt-4 border-t border-slate-100">
-                    {item.capabilities.map((cap, cIdx) => (
-                      <div key={cIdx} className="flex items-start gap-2.5 text-xs text-black/80 font-medium">
-                        <FiCheckCircle className="text-[#B08D57] mt-0.5 shrink-0" />
-                        <span>{cap}</span>
-                      </div>
-                    ))}
+                  <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-end">
+                    <div className="h-3.5 bg-slate-200 rounded w-24" />
                   </div>
                 </div>
+              ))
+            ) : (
+              disciplines.map((item) => (
+                <div 
+                  key={item._id || item.slug || item.id}
+                  id={item.slug || item.id}
+                  className="bg-white rounded-3xl p-8 border border-slate-200 hover:border-[#B08D57] hover:shadow-2xl target:ring-2 target:ring-[#B08D57] target:border-[#B08D57] target:shadow-2xl transition-all duration-300 flex flex-col justify-between group scroll-mt-32"
+                >
+                  <div>
+                    <div className="w-16 h-16 rounded-2xl bg-[#B08D57]/10 flex items-center justify-center mb-6 group-hover:bg-[#B08D57]/20 transition-colors">
+                      {renderServiceIcon(item.icon, item.slug)}
+                    </div>
 
-                <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs text-slate-400 font-medium">DEC Integrated Delivery</span>
-                  <Link 
-                    to="/contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#B08D57] hover:text-[#151515] uppercase tracking-wider transition-colors"
-                  >
-                    Consult Engineers <FiArrowRight />
-                  </Link>
+                    <h3 className="text-2xl font-bold text-[#151515] mb-4 group-hover:text-[#B08D57] transition-colors">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-sm text-black/70 leading-relaxed mb-6 font-light">
+                      {item.description || item.shortDescription}
+                    </p>
+
+                    <div className="space-y-2.5 pt-4 border-t border-slate-100">
+                      {(Array.isArray(item.capabilities) ? item.capabilities : []).map((cap, cIdx) => (
+                        <div key={cIdx} className="flex items-start gap-2.5 text-xs text-black/80 font-medium">
+                          <FiCheckCircle className="text-[#B08D57] mt-0.5 shrink-0" />
+                          <span>{cap}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-end">
+                    <Link 
+                      to={item.ctaLink || "/contact"}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#B08D57] hover:text-[#151515] uppercase tracking-wider transition-colors"
+                    >
+                      {item.ctaText || "Consult Engineers"} <FiArrowRight />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
 
         </div>
@@ -355,17 +361,17 @@ function Expertise() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link 
               to="/contact"
-              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:scale-105 inline-flex items-center gap-2.5"
+              className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2.5 cursor-pointer"
             >
               <span>Request Engineering Consultation</span>
               <FiArrowRight className="text-base" />
             </Link>
             <Link 
               to="/projects"
-              className="px-7 py-4 rounded-xl bg-transparent hover:bg-white/10 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] inline-flex items-center gap-2.5"
+              className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2.5 cursor-pointer group"
             >
               <span>Explore Our Projects</span>
-              <FiLayers className="text-base text-[#B08D57]" />
+              <FiLayers className="text-base text-[#B08D57] group-hover:text-[#151515] transition-colors" />
             </Link>
           </div>
         </div>

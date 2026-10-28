@@ -58,35 +58,38 @@ function Presence() {
   const qatarClusters = {
     Lusail: {
       title: 'Lusail Marina & Entertainment District',
-      description: 'The futuristic heart of Qatar where DEC maintains its corporate headquarters. We have engineered flagship corporate towers, retail flagships, and luxury island developments across the city.',
+      description: 'The futuristic heart of Qatar where DEC delivers flagship corporate headquarters, executive suites, and premium destinations across the city.',
       landmarks: [
-        { name: 'Manarat Lusail Tower', type: 'DEC Corporate Headquarters & Commercial Suites' },
-        { name: 'Snoonu Corporate HQ', type: 'Technology & Corporate Workspace' },
-        { name: 'BlackRock Financial Office', type: 'Global Financial Services Workplace' }
+        { name: 'Snoonu HQ Offices', type: 'Lusail Boulevard · Corporate Headquarters & Workplace MEP' },
+        { name: 'BlackRock Office', type: 'Lusail · Global Financial Services Corporate Workspace' },
+        { name: 'Maalomatia CEO Office', type: 'Lusail · Executive C-Suite & Engineering Supervision' }
       ]
     },
     Msheireb: {
       title: 'Msheireb Downtown Doha',
       description: 'The world’s leading sustainable downtown regeneration district. DEC delivers GSAS and LEED compliant engineering for international corporate offices and design showrooms.',
       landmarks: [
-        { name: 'Amazon Ads Corporate Office', type: 'Acoustic & Sustainable Workplace MEP' },
-        { name: 'Armani Casa', type: 'Luxury Home Furnishing & Architectural Lighting' }
+        { name: 'Amazon Ads Office', type: 'Msheireb Downtown · Acoustic & Sustainable Workplace MEP' },
+        { name: 'Armani Casa', type: 'Msheireb Downtown · Luxury Home Furnishing & Architectural Lighting' },
+        { name: 'TEC', type: 'Msheireb Downtown · F&B Destination & Permitting Approvals' }
       ]
     },
     WestBay: {
       title: 'West Bay & Al Dafna Financial District',
       description: 'Doha’s iconic skyscraper skyline and diplomatic precinct. DEC provides high-rise structural reviews, fire life safety retrofits, and multinational tenant improvements.',
       landmarks: [
-        { name: 'Boeing Regional Aerospace Office', type: 'High-Security Life Safety & QCD Approvals' }
+        { name: 'Boeing Office', type: 'Al Dafna · High-Security Life Safety & QCD Approvals' },
+        { name: 'Harlienz', type: 'West Bay · Luxury Retail Boutique & Interior Architecture' },
+        { name: 'Cranbury', type: 'West Bay · Destination F&B & Civil Defense Clearance' }
       ]
     },
     ThePearl: {
       title: 'The Pearl Qatar & Luxury Islands',
       description: 'Qatar’s premier luxury island developments including The Pearl, Gewan Island, and Qetaifan Island. DEC executes specialized engineering, premium dining venues, waterfront cafes, and high-end boutique outlets.',
       landmarks: [
-        { name: 'Forge Restaurant', type: 'Gewan Island · Fine Dining & Commercial Kitchen MEP' },
+        { name: 'Forge', type: 'Gewan Island · Fine Dining & Commercial Kitchen MEP' },
         { name: 'Pyramids Tea Bar', type: 'Gewan Island · Artisan Lounge & Life Safety Approvals' },
-        { name: 'Cappucino Cafe', type: 'Qetaifan Island · Waterfront F&B & Civil Defense Clearance' }
+        { name: 'Cappucino', type: 'Qetaifan Island · Waterfront F&B & Civil Defense Clearance' }
       ]
     },
     MallsAndRetail: {
@@ -183,7 +186,7 @@ function Presence() {
         <div className="max-w-[1720px] mx-auto">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] bg-[#B08D57]/10 px-3.5 py-1.5 rounded-full inline-block mb-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] bg-[#B08D57]/10 border border-[#B08D57]/40 px-3.5 py-1.5 rounded-full inline-block mb-3 shadow-sm">
               CROSS-BORDER CAPABILITY
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#151515]">
@@ -198,14 +201,17 @@ function Presence() {
             {regionalHubs.map((hub) => (
               <div 
                 key={hub.id}
-                className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 hover:border-[#B08D57] hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group"
+                className="relative bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 hover:border-[#B08D57] hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group overflow-hidden"
               >
+                {/* Decorative Top Gold Band Accent */}
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#B08D57] via-[#DFBF82] to-[#B08D57]" />
+
                 <div>
                   
-                  {/* Top Flag & Badge */}
-                  <div className="flex items-center justify-between gap-3 mb-6">
+                  {/* Top Flag & Gold Band Badge */}
+                  <div className="flex items-center justify-between gap-3 mb-6 pt-1">
                     <span className="text-3xl">{hub.flag}</span>
-                    <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#B08D57]/15 text-[#8F6F3E]">
+                    <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#B08D57] via-[#C7A673] to-[#B08D57] text-[#151515] border border-[#DFBF82]/70 shadow-md shadow-[#B08D57]/20 shrink-0">
                       {hub.badge}
                     </span>
                   </div>
@@ -273,17 +279,14 @@ function Presence() {
       {/* ============================================================ */}
       <section className="py-20 sm:py-28 px-6 sm:px-10 lg:px-14 xl:px-20 bg-white text-[#151515] border-b border-slate-200">
         <div className="max-w-[1720px] mx-auto">
-          
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] block mb-2">
-                NATIONWIDE QATAR PENETRATION
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#151515]">
-                30+ Key Locations Across Qatar
-              </h2>
-            </div>
-            <p className="text-sm sm:text-base text-black/60 max-w-md font-normal">
+          <div className="max-w-4xl mb-12">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] bg-[#B08D57]/10 border border-[#B08D57]/40 px-3.5 py-1.5 rounded-full inline-block mb-3 shadow-sm">
+              NATIONWIDE QATAR PENETRATION
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#151515]">
+              30+ Key Locations Across Qatar
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-black/70 font-light leading-relaxed">
               Select a cluster to explore DEC’s delivered landmark engineering engagements in Qatar’s primary commercial, retail, and hospitality corridors.
             </p>
           </div>
@@ -318,7 +321,7 @@ function Presence() {
           {/* Active Cluster Details */}
           <div className="bg-slate-50 rounded-3xl p-8 sm:p-12 border border-slate-200">
             <div className="max-w-3xl mb-8">
-              <span className="text-xs font-bold text-[#B08D57] uppercase tracking-widest block mb-1">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] bg-[#B08D57]/10 border border-[#B08D57]/40 px-3.5 py-1.5 rounded-full inline-block mb-3 shadow-sm">
                 CLUSTER OVERVIEW
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-[#151515] mb-3">
@@ -359,7 +362,7 @@ function Presence() {
         <div className="max-w-[1720px] mx-auto">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] bg-[#B08D57]/10 px-3.5 py-1.5 rounded-full inline-block mb-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#B08D57] bg-[#B08D57]/10 border border-[#B08D57]/40 px-3.5 py-1.5 rounded-full inline-block mb-3 shadow-sm">
               THE DUAL-HUB PRODUCTION ADVANTAGE
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#151515]">
@@ -429,17 +432,17 @@ function Presence() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link 
               to="/contact"
-              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:scale-105 inline-flex items-center gap-2.5"
+              className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2.5 cursor-pointer"
             >
               <span>Contact Our Lusail Headquarters</span>
               <FiArrowRight className="text-base" />
             </Link>
             <Link 
               to="/projects"
-              className="px-7 py-4 rounded-xl bg-transparent hover:bg-white/10 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] inline-flex items-center gap-2.5"
+              className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2.5 cursor-pointer group"
             >
               <span>View Delivered Projects</span>
-              <FiLayers className="text-base text-[#B08D57]" />
+              <FiLayers className="text-base text-[#B08D57] group-hover:text-[#151515] transition-colors" />
             </Link>
           </div>
         </div>

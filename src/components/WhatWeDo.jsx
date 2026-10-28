@@ -23,7 +23,7 @@ const sectors = [
     id: 'retail',
     title: 'Retail – Luxury & Commercial',
     subtitle: 'DIOR, Armani Casa, Place Vendome, DFC',
-    image: '/images/sectors/retail.jpg',
+    image: '/images/sectors/retail.png',
     icon: FaBagShopping,
     link: '/sector/retail',
   },
@@ -63,7 +63,7 @@ const sectors = [
     id: 'medical',
     title: 'Medical – Healthcare & Pharma',
     subtitle: 'Benha University Surgical Wing, Pharma Labs',
-    image: '/image copy 7.png',
+    image: '/images/sectors/medical.jpg',
     icon: FaRegBuilding,
     link: '/sector/medical',
   },
@@ -129,6 +129,7 @@ function WhatWeDo() {
               <Link
                 key={sector.id}
                 to={sector.link}
+                state={{ image: sector.image }}
                 className="group relative flex-shrink-0 w-[270px] sm:w-[310px] md:w-[330px] h-[400px] sm:h-[460px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer block"
               >
                 {/* Background Architectural Image */}
@@ -142,17 +143,19 @@ function WhatWeDo() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent group-hover:from-black/95 group-hover:via-black/55 transition-colors duration-500" />
 
                 {/* Content Overlay Positioned at Darker Bottom Area */}
-                <div className="relative z-10 w-full h-full p-6 sm:p-8 flex flex-col items-center justify-end text-center pb-8 sm:pb-10">
+                <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8 flex flex-col items-center text-center pb-8 sm:pb-10">
                   
-                  {/* Sector Icon */}
-                  <div className="w-13 h-13 sm:w-15 sm:h-15 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white mb-3.5 transition-transform duration-500 group-hover:scale-110 group-hover:bg-[#B08D57] group-hover:border-[#B08D57] shadow-lg">
+                  {/* Sector Icon (100% horizontally aligned across all cards) */}
+                  <div className="w-13 h-13 sm:w-15 sm:h-15 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white mb-3.5 transition-transform duration-500 group-hover:scale-110 group-hover:bg-[#B08D57] group-hover:border-[#B08D57] shadow-lg shrink-0">
                     <Icon className="w-6 h-6 sm:w-6.5 sm:h-6.5" />
                   </div>
 
-                  {/* Sector Title (Project Type) */}
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white tracking-tight leading-snug drop-shadow-md group-hover:text-[#F5F0E7] transition-colors">
-                    {sector.title}
-                  </h3>
+                  {/* Sector Title Container (Equal height guarantees all icons stay on the exact same horizontal line) */}
+                  <div className="h-14 sm:h-16 flex items-start justify-center w-full">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white tracking-tight leading-snug drop-shadow-md group-hover:text-[#F5F0E7] transition-colors">
+                      {sector.title}
+                    </h3>
+                  </div>
 
                 </div>
 

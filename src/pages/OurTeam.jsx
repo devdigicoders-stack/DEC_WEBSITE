@@ -67,12 +67,12 @@ function OurTeam() {
       desc: 'Supervising multidisciplinary engineering documentation, detailed shop drawing production, cross-departmental reviews, and site technical query resolutions.'
     },
     {
-      name: 'Ghadah Magdy',
-      role: 'Senior Architect',
+      name: 'Mostafa Magdy',
+      role: 'Design Manager',
       department: 'Architectural Design & Space Planning',
       category: 'leadership',
-      badge: 'Senior Architect',
-      initials: 'GM',
+      badge: 'Design Manager',
+      initials: 'MM',
       desc: 'Specializing in concept space planning, architectural drafting, luxury interior coordination, and GSAS-compliant building envelope documentation.'
     },
     {
@@ -224,13 +224,8 @@ function OurTeam() {
                     </div>
                   </div>
 
-                  {/* Professional Summary (60-100 Words) */}
-                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal mb-6 pt-2 border-t border-slate-200 min-h-[140px] sm:min-h-[130px] lg:min-h-[155px]">
-                    {partner.summary}
-                  </p>
-
                   {/* Core Focus Badges */}
-                  <div className="space-y-2 mb-6 min-h-[85px] sm:min-h-[75px]">
+                  <div className="pt-5 border-t border-slate-200 space-y-2.5 mb-6">
                     <span className="text-xs uppercase font-bold tracking-wider text-slate-500 block">
                       Core Areas of Responsibility:
                     </span>
@@ -319,10 +314,7 @@ function OurTeam() {
                   </p>
                 </div>
 
-                <div className="pt-5 mt-6 border-t border-white/10 flex items-center justify-between text-xs text-[#B08D57]">
-                  <span className="flex items-center gap-1.5 font-medium">
-                    <FiCheckCircle className="text-emerald-400" /> Active Lead
-                  </span>
+                <div className="pt-5 mt-6 border-t border-white/10 flex items-center justify-end text-xs">
                   <span className="text-white/40">DEC Senior Staff</span>
                 </div>
 
@@ -345,7 +337,7 @@ function OurTeam() {
             </div>
             <Link
               to="/careers"
-              className="px-6 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs uppercase tracking-wider transition-all shadow-md shrink-0 flex items-center gap-2"
+              className="px-6 py-3.5 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs uppercase tracking-wider transition-all border border-white/20 hover:border-[#B08D57] shadow-md shrink-0 flex items-center gap-2"
             >
               Explore Engineering Careers <FiArrowRight />
             </Link>
@@ -423,17 +415,17 @@ function OurTeam() {
                 <div className="pt-8 mt-6 border-t border-white/10 flex flex-wrap gap-4">
                   <Link
                     to="/contact"
-                    className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-lg shadow-[#B08D57]/20 hover:scale-105 flex items-center gap-2"
+                    className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 flex items-center gap-2"
                   >
                     <span>Schedule Leadership Briefing</span>
                     <FiArrowRight className="text-base" />
                   </Link>
                   <Link
                     to="/projects"
-                    className="px-7 py-4 rounded-xl bg-transparent hover:bg-white/10 text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 border border-white/20 hover:border-[#B08D57] flex items-center gap-2"
+                    className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 flex items-center gap-2 group"
                   >
                     <span>View Completed Works</span>
-                    <FiLayers className="text-base text-[#B08D57]" />
+                    <FiLayers className="text-base text-[#B08D57] group-hover:text-[#151515] transition-colors" />
                   </Link>
                 </div>
               </div>

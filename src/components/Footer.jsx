@@ -67,7 +67,7 @@ function Footer() {
               <button
                 type="button"
                 onClick={handleRequestConsultation}
-                className="px-6 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/20 hover:scale-105 flex items-center gap-2 cursor-pointer"
+                className="px-6 py-3.5 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 flex items-center gap-2 cursor-pointer"
               >
                 Request Consultation <FiArrowUpRight className="text-base" />
               </button>
@@ -158,6 +158,11 @@ function Footer() {
               <li>
                 <Link to="/insights" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
                   Corporate Credentials
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5 font-medium">
+                  Blog & Insights
                 </Link>
               </li>
               <li>

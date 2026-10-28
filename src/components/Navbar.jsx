@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { FiMenu, FiX, FiChevronDown, FiArrowUpRight } from 'react-icons/fi'
 import { FaLinkedinIn, FaWhatsapp } from 'react-icons/fa6'
+import { fetchServices, fetchProjectStats } from '../services/api'
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -10,6 +11,34 @@ function Navbar() {
   const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const location = useLocation()
+
+  // Dynamic state loaded from live MongoDB API
+  const [liveServices, setLiveServices] = useState(null)
+  const [liveSectors, setLiveSectors] = useState(null)
+
+  useEffect(() => {
+    let isMounted = true
+
+    fetchServices()
+      .then((data) => {
+        if (isMounted && Array.isArray(data) && data.length > 0) {
+          setLiveServices(data)
+        }
+      })
+      .catch((err) => console.warn('Navbar fetchServices fallback:', err))
+
+    fetchProjectStats()
+      .then((res) => {
+        if (isMounted && res?.sectors && Array.isArray(res.sectors) && res.sectors.length > 0) {
+          setLiveSectors(res.sectors)
+        }
+      })
+      .catch((err) => console.warn('Navbar fetchProjectStats fallback:', err))
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   // Track scroll position for sticky header styling
   useEffect(() => {
@@ -48,8 +77,8 @@ function Navbar() {
     { name: 'Regional Presence', path: '/presence', desc: 'Qatar HQ, Egypt Hub & KSA Delivery' },
   ]
 
-  // Submenu items under EXPERTISE (6 Core Engineering Disciplines)
-  const expertiseSubLinks = [
+  // Default fallback disciplines
+  const defaultExpertiseSubLinks = [
     { name: 'Architectural & Space Planning', path: '/expertise#architecture', hash: '#architecture', desc: 'Concepts, space planning & fit-outs' },
     { name: 'Civil & Structural Engineering', path: '/expertise#structural', hash: '#structural', desc: 'RC, steel, PEB & foundation design' },
     { name: 'Mechanical & HVAC Engineering', path: '/expertise#mechanical', hash: '#mechanical', desc: 'HVAC, chilled water & smoke management' },
@@ -58,17 +87,75 @@ function Navbar() {
     { name: 'BIM & Digital Twin Delivery', path: '/expertise#bim', hash: '#bim', desc: '3D coordinated models & clash detection' },
   ]
 
-  // Submenu items under PROJECTS (7 Sectors + All Projects) - Consistent Sector Naming
-  const projectSubLinks = [
-    { name: 'All Delivered Projects', path: '/projects?category=All' },
-    { name: 'Offices – Corporate & Workplaces', path: '/projects?category=offices' },
-    { name: 'Retail – Luxury & Commercial', path: '/projects?category=retail' },
-    { name: 'F&B – Food & Beverage', path: '/projects?category=fnb' },
-    { name: 'Hospitality – Hotels & Resorts', path: '/projects?category=hospitality' },
-    { name: 'Residential – High-End Residential', path: '/projects?category=residential' },
-    { name: 'Industrial – Manufacturing & Logistics', path: '/projects?category=industrial' },
-    { name: 'Medical – Healthcare & Pharma', path: '/projects?category=medical' },
+  // Submenu items under EXPERTISE (Dynamic from live MongoDB with robust fallback)
+  const expertiseSubLinks = useMemo(() => {
+    if (!liveServices || liveServices.length === 0) return defaultExpertiseSubLinks
+    return liveServices.map((srv) => ({
+      name: srv.title,
+      path: `/expertise#${srv.slug || ''}`,
+      hash: `#${srv.slug || ''}`,
+      desc: srv.shortDesc || srv.subtitle || 'Grade A Engineering Discipline'
+    }))
+  }, [liveServices])
+
+  // Default fallback sectors
+  const defaultProjectSubLinks = [
+    { name: 'All Delivered Projects', path: '/projects' },
+    { name: 'Offices – Corporate & Workplaces', path: '/sector/offices' },
+    { name: 'Retail – Luxury & Commercial', path: '/sector/retail' },
+    { name: 'F&B – Food & Beverage', path: '/sector/fnb' },
+    { name: 'Hospitality – Hotels & Resorts', path: '/sector/hospitality' },
+    { name: 'Residential – High-End Residential', path: '/sector/residential' },
+    { name: 'Industrial – Manufacturing & Logistics', path: '/sector/industrial' },
+    { name: 'Medical – Healthcare & Pharma', path: '/sector/medical' },
   ]
+
+  // Submenu items under PROJECTS (Dynamic from live MongoDB with robust fallback)
+  const projectSubLinks = useMemo(() => {
+    const sectorSlugMap = {
+      'offices': 'offices',
+      'retail': 'retail',
+      'f&b': 'fnb',
+      'fnb': 'fnb',
+      'food & beverage': 'fnb',
+      'hospitality': 'hospitality',
+      'residential': 'residential',
+      'residential & high-end': 'residential',
+      'industrial': 'industrial',
+      'medical': 'medical',
+      'medical & healthcare': 'medical',
+    }
+
+    const sectorLabelMap = {
+      'f&b': 'F&B – Food & Beverage',
+      'fnb': 'F&B – Food & Beverage',
+      'retail': 'Retail – Luxury & Commercial',
+      'offices': 'Offices – Corporate & Workplaces',
+      'industrial': 'Industrial – Manufacturing & Logistics',
+      'medical': 'Medical – Healthcare & Pharma',
+      'medical & healthcare': 'Medical – Healthcare & Pharma',
+      'residential': 'Residential – High-End Residential',
+      'hospitality': 'Hospitality – Hotels & Resorts',
+    }
+
+    if (!liveSectors || liveSectors.length === 0) return defaultProjectSubLinks
+
+    const items = [
+      { name: 'All Delivered Projects', path: '/projects' }
+    ]
+
+    liveSectors.forEach((s) => {
+      const secKey = (s.sector || s.slug || '').toLowerCase()
+      const label = sectorLabelMap[secKey] || s.title || `${s.sector}`
+      const targetSlug = sectorSlugMap[secKey] || s.slug || secKey
+      items.push({
+        name: label,
+        path: `/sector/${targetSlug}`
+      })
+    })
+
+    return items
+  }, [liveSectors])
 
   // Other Top-Level Navigation Links
   const otherNavLinks = [
@@ -89,7 +176,7 @@ function Navbar() {
     location.pathname.startsWith('/presence')
 
   const isExpertiseActive = location.pathname.startsWith('/expertise')
-  const isProjectsActive = location.pathname.startsWith('/projects')
+  const isProjectsActive = location.pathname.startsWith('/projects') || location.pathname.startsWith('/sector')
   const isContactActive = location.pathname.startsWith('/contact')
 
   return (
@@ -251,18 +338,24 @@ function Navbar() {
                       <span className="text-[10px] font-bold tracking-widest uppercase text-[#B08D57]">
                         PORTFOLIO BY SECTOR
                       </span>
-                      <Link to="/projects" className="text-[10px] text-[#F5F0E7]/60 hover:text-white underline">
-                        Explore All Projects
+                      <Link 
+                        to="/projects" 
+                        onClick={() => {
+                          if (location.pathname === '/projects') {
+                            window.scrollTo({ top: 0, behavior: 'smooth' })
+                          }
+                        }}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#B08D57]/20 hover:bg-[#B08D57] text-[#B08D57] hover:text-[#151515] border border-[#B08D57]/40 text-[11px] font-bold tracking-wide transition-all duration-200 cursor-pointer shadow-sm group/all"
+                      >
+                        <span>Explore All Projects</span>
+                        <FiArrowUpRight className="text-xs transition-transform duration-200 group-hover/all:translate-x-0.5 group-hover/all:-translate-y-0.5" />
                       </Link>
                     </div>
                     <div className="grid grid-cols-2 gap-1.5">
                       {projectSubLinks.map((sub) => {
-                        const currentCat = new URLSearchParams(location.search).get('category')
-                        const subCat = new URLSearchParams(sub.path.split('?')[1] || '').get('category')
-                        const isSubActive = location.pathname === '/projects' && (
-                          (subCat === 'All' && (!currentCat || currentCat === 'All')) ||
-                          (subCat && currentCat === subCat)
-                        )
+                        const isSubActive = sub.path === '/projects'
+                          ? location.pathname === '/projects'
+                          : location.pathname === sub.path
 
                         return (
                           <Link
@@ -512,16 +605,40 @@ function Navbar() {
 
               {mobileProjectsOpen && (
                 <ul className="pl-4 mt-2 space-y-2 border-l border-[#B08D57]/30 ml-2 max-h-60 overflow-y-auto pr-1">
-                  {projectSubLinks.map((sub) => (
-                    <li key={sub.name}>
-                      <Link
-                        to={sub.path}
-                        className="flex items-center justify-between py-1 text-xs font-semibold tracking-wider text-[#F5F0E7]/70 hover:text-[#B08D57] transition-colors"
-                      >
-                        <span>{sub.name}</span>
-                      </Link>
-                    </li>
-                  ))}
+                  <li>
+                    <Link
+                      to="/projects"
+                      onClick={() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                        setMobileOpen(false)
+                      }}
+                      className="flex items-center justify-between py-1 text-xs font-bold text-[#B08D57] hover:underline"
+                    >
+                      <span>Explore All Projects</span>
+                      <FiArrowUpRight className="text-xs" />
+                    </Link>
+                  </li>
+                  {projectSubLinks.map((sub) => {
+                    const isSubActive = sub.path === '/projects'
+                      ? location.pathname === '/projects'
+                      : location.pathname === sub.path
+                    return (
+                      <li key={sub.name}>
+                        <Link
+                          to={sub.path}
+                          onClick={() => setMobileOpen(false)}
+                          className={`flex items-center justify-between py-1 text-xs font-semibold tracking-wider transition-colors ${
+                            isSubActive ? 'text-[#B08D57]' : 'text-[#F5F0E7]/70 hover:text-[#B08D57]'
+                          }`}
+                        >
+                          <span>{sub.name}</span>
+                          {isSubActive && (
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#B08D57]" />
+                          )}
+                        </Link>
+                      </li>
+                    )
+                  })}
                 </ul>
               )}
             </li>

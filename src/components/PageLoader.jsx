@@ -28,7 +28,7 @@ function PageLoader({ isLoading }) {
 
       // Smooth progress counter simulation from 0 to 100%
       const startTime = Date.now()
-      const duration = 1600 // fills smoothly in 1.6s of the 2s loader window
+      const duration = 1800 // fills smoothly in 1.8s of the 2.4s loader window
 
       progressTimer = setInterval(() => {
         const elapsed = Date.now() - startTime
@@ -69,72 +69,222 @@ function PageLoader({ isLoading }) {
     <aside 
       aria-label="Loading page"
       role="status"
-      className={`fixed inset-0 z-[99999] bg-[#0c0c0c] flex flex-col items-center justify-center select-none ${
+      className={`fixed inset-0 z-[99999] bg-[#07090e] flex flex-col items-center justify-center select-none overflow-hidden ${
         fadeAnim 
           ? 'opacity-100' 
           : 'opacity-0 pointer-events-none transition-opacity duration-400 ease-out'
       }`}
     >
-      {/* Background Ambient Radial Glow */}
-      <div className="absolute w-[450px] h-[450px] bg-[#B08D57]/15 rounded-full blur-[120px] pointer-events-none animate-pulse-glow" />
+      {/* ============================================================== */}
+      {/* 1. CLEAN LUXURY DARK BACKGROUND WITH AMBIENT GOLD GLOW         */}
+      {/* ============================================================== */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Deep luxury radial dark gradient */}
+        <div 
+          className="absolute inset-0 bg-[#07090e]"
+          style={{
+            background: 'radial-gradient(circle at center, #0d1322 0%, #080c16 55%, #04060a 100%)'
+          }}
+        />
+        {/* Soft Golden Ambient Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#B08D57]/15 rounded-full blur-[140px] pointer-events-none animate-pulse-glow" />
+      </div>
 
-      {/* Grid Pattern Watermark (Architectural Blueprint Feel) */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: 'radial-gradient(circle, #B08D57 1px, transparent 1px)',
-          backgroundSize: '24px 24px'
-        }}
-      />
-
-      {/* Main Loader Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-sm select-none">
+      {/* ============================================================== */}
+      {/* 2. MAIN CENTER HERO CONTENT CONTAINER                          */}
+      {/* ============================================================== */}
+      <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-lg w-full select-none">
         
-        {/* Animated Architectural Rings & DEC Logo */}
-        <div className="relative flex items-center justify-center mb-8">
+        {/* Stage Container: Orbits, DEC Square Box & Perimeter Moving Dots */}
+        <div className="relative flex items-center justify-center w-72 h-72 sm:w-84 sm:h-84 md:w-92 md:h-92 mb-6 sm:mb-8 shrink-0">
           
-          {/* Outer Rotating Architectural Compass Ring */}
-          <div className="absolute w-40 h-40 sm:w-48 sm:h-48 rounded-full border border-dashed border-[#B08D57]/30 animate-spin-slow">
-            {/* 4 Coordinate Tick Dots */}
-            <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#B08D57]" />
-            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#B08D57]" />
-            <span className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#B08D57]" />
-            <span className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#B08D57]" />
+          {/* Subtle Ambient Backlight */}
+          <div className="absolute w-56 h-56 sm:w-68 sm:h-68 md:w-76 md:h-76 bg-[#B08D57]/20 rounded-full blur-[70px] pointer-events-none" />
+
+          {/* Outer Golden Compass Orbit Ring */}
+          <div className="absolute w-72 h-72 sm:w-84 sm:h-84 md:w-92 md:h-92 rounded-full border border-[#B08D57]/20 pointer-events-none">
+            {/* 4 Coordinate Tick Dots on the Orbit */}
+            <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#DFBF82]/70 shadow-[0_0_8px_#DFBF82]" />
+            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 rounded-full bg-[#DFBF82]/70 shadow-[0_0_8px_#DFBF82]" />
+            <span className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#DFBF82]/70 shadow-[0_0_8px_#DFBF82]" />
+            <span className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#DFBF82]/70 shadow-[0_0_8px_#DFBF82]" />
           </div>
 
-          {/* Middle Smooth Arc Ring */}
+          {/* Middle Rotating Dashed Architectural Compass Orbit (Encloses Square & Dots) */}
           <div 
-            className="absolute w-32 h-32 sm:w-40 sm:h-40 rounded-full border-2 border-transparent border-t-[#B08D57] border-l-[#B08D57]/40 animate-spin" 
-            style={{ animationDuration: '2s' }} 
+            className="absolute w-64 h-64 sm:w-74 sm:h-74 md:w-82 md:h-82 rounded-full border border-dashed border-[#B08D57]/30 pointer-events-none animate-spin-slow"
           />
-          
-          {/* Inner Counter-Rotating Orbit */}
-          <div className="absolute w-28 h-28 sm:w-34 sm:h-34 rounded-full border border-dotted border-[#B08D57]/50 animate-spin-reverse" />
 
-          {/* Center Logo Showcase Box */}
-          <div className="relative z-10 w-24 sm:w-28 h-24 sm:h-28 rounded-2xl bg-[#121212]/90 border border-[#B08D57]/50 shadow-[0_8px_32px_rgba(0,0,0,0.8)] backdrop-blur-md flex items-center justify-center p-3.5 transition-transform duration-300 hover:scale-105">
+          {/* Inner Golden Arc Orbit (Counter-Rotating, Encloses Square & Dots) */}
+          <div 
+            className="absolute w-56 h-56 sm:w-66 sm:h-66 md:w-72 md:h-72 rounded-full border border-transparent border-t-[#DFBF82]/40 border-r-[#DFBF82]/20 pointer-events-none animate-spin-reverse"
+          />
+
+          {/* ============================================================== */}
+          {/* THE DEC SQUARE BOX (COMPLETELY INSIDE ALL ORBIT CIRCLES)      */}
+          {/* ============================================================== */}
+          <div className="relative z-10 w-32 h-32 sm:w-38 sm:h-38 md:w-42 md:h-42 rounded-[1.6rem] sm:rounded-[2rem] overflow-hidden border border-[#B08D57]/70 shadow-[0_12px_40px_rgba(0,0,0,0.95),0_0_30px_rgba(176,141,87,0.3)] flex items-center justify-center transition-transform duration-300">
+            {/* Authentic DEC Square Artwork */}
             <img 
-              src="/logo.png" 
-              alt="DEC Logo" 
-              className="w-full h-auto object-contain drop-shadow-[0_2px_14px_rgba(176,141,87,0.5)]"
+              src="/dec-exact-square.png" 
+              alt="DEC Logo Box" 
+              className="w-full h-full object-cover scale-[1.03]"
             />
+          </div>
+
+          {/* ============================================================== */}
+          {/* LOADING DOTS MOVING AROUND THE SQUARE (CLOCKWISE PERIMETER)   */}
+          {/* Matches Client's Red Arrows: Top (→), Right (↓), Bottom (←), Left (↑) */}
+          {/* ============================================================== */}
+          <div className="absolute z-20 w-[138px] h-[138px] sm:w-[162px] sm:h-[162px] md:w-[178px] md:h-[178px] pointer-events-none">
+            <svg className="w-full h-full overflow-visible" viewBox="0 0 240 240">
+              <defs>
+                {/* Glow Filter for Moving Golden Dots */}
+                <filter id="goldDotGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+
+                {/* Linear Gradient for Perimeter Tracer Line */}
+                <linearGradient id="tracerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#DFBF82" stopOpacity="0" />
+                  <stop offset="50%" stopColor="#DFBF82" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#FFFFFF" stopOpacity="1" />
+                </linearGradient>
+              </defs>
+
+              {/* Perimeter Square Guide Track (Subtle Dashed Gold) */}
+              <path 
+                d="M 44 10 H 196 A 34 34 0 0 1 230 44 V 196 A 34 34 0 0 1 196 230 H 44 A 34 34 0 0 1 10 196 V 44 A 34 34 0 0 1 44 10 Z"
+                fill="none" 
+                stroke="rgba(176,141,87,0.35)" 
+                strokeWidth="1.5"
+                strokeDasharray="4 4"
+              />
+
+              {/* Clockwise Perimeter Tracer Light Beam */}
+              <path 
+                d="M 44 10 H 196 A 34 34 0 0 1 230 44 V 196 A 34 34 0 0 1 196 230 H 44 A 34 34 0 0 1 10 196 V 44 A 34 34 0 0 1 44 10 Z"
+                fill="none" 
+                stroke="url(#tracerGradient)" 
+                strokeWidth="2.5" 
+                strokeLinecap="round"
+                strokeDasharray="70 710"
+                className="animate-gold-trace"
+              />
+
+              {/* 4 Glowing Golden Dots Moving Around the Square (Clockwise Loop) */}
+              {/* Dot 1: Moves along Top Edge Rightward (→) */}
+              <g>
+                <circle r="5" fill="#DFBF82" filter="url(#goldDotGlow)">
+                  <animateMotion 
+                    dur="4s" 
+                    repeatCount="indefinite" 
+                    path="M 44 10 H 196 A 34 34 0 0 1 230 44 V 196 A 34 34 0 0 1 196 230 H 44 A 34 34 0 0 1 10 196 V 44 A 34 34 0 0 1 44 10 Z" 
+                  />
+                </circle>
+                <circle r="2.5" fill="#FFFFFF">
+                  <animateMotion 
+                    dur="4s" 
+                    repeatCount="indefinite" 
+                    path="M 44 10 H 196 A 34 34 0 0 1 230 44 V 196 A 34 34 0 0 1 196 230 H 44 A 34 34 0 0 1 10 196 V 44 A 34 34 0 0 1 44 10 Z" 
+                  />
+                </circle>
+              </g>
+
+              {/* Dot 2: Moves along Right Edge Downward (↓) */}
+              <g>
+                <circle r="5" fill="#DFBF82" filter="url(#goldDotGlow)">
+                  <animateMotion 
+                    dur="4s" 
+                    begin="-1s" 
+                    repeatCount="indefinite" 
+                    path="M 44 10 H 196 A 34 34 0 0 1 230 44 V 196 A 34 34 0 0 1 196 230 H 44 A 34 34 0 0 1 10 196 V 44 A 34 34 0 0 1 44 10 Z" 
+                  />
+                </circle>
+                <circle r="2.5" fill="#FFFFFF">
+                  <animateMotion 
+                    dur="4s" 
+                    begin="-1s" 
+                    repeatCount="indefinite" 
+                    path="M 44 10 H 196 A 34 34 0 0 1 230 44 V 196 A 34 34 0 0 1 196 230 H 44 A 34 34 0 0 1 10 196 V 44 A 34 34 0 0 1 44 10 Z" 
+                  />
+                </circle>
+              </g>
+
+              {/* Dot 3: Moves along Bottom Edge Leftward (←) */}
+              <g>
+                <circle r="5" fill="#DFBF82" filter="url(#goldDotGlow)">
+                  <animateMotion 
+                    dur="4s" 
+                    begin="-2s" 
+                    repeatCount="indefinite" 
+                    path="M 44 10 H 196 A 34 34 0 0 1 230 44 V 196 A 34 34 0 0 1 196 230 H 44 A 34 34 0 0 1 10 196 V 44 A 34 34 0 0 1 44 10 Z" 
+                  />
+                </circle>
+                <circle r="2.5" fill="#FFFFFF">
+                  <animateMotion 
+                    dur="4s" 
+                    begin="-2s" 
+                    repeatCount="indefinite" 
+                    path="M 44 10 H 196 A 34 34 0 0 1 230 44 V 196 A 34 34 0 0 1 196 230 H 44 A 34 34 0 0 1 10 196 V 44 A 34 34 0 0 1 44 10 Z" 
+                  />
+                </circle>
+              </g>
+
+              {/* Dot 4: Moves along Left Edge Upward (↑) */}
+              <g>
+                <circle r="5" fill="#DFBF82" filter="url(#goldDotGlow)">
+                  <animateMotion 
+                    dur="4s" 
+                    begin="-3s" 
+                    repeatCount="indefinite" 
+                    path="M 44 10 H 196 A 34 34 0 0 1 230 44 V 196 A 34 34 0 0 1 196 230 H 44 A 34 34 0 0 1 10 196 V 44 A 34 34 0 0 1 44 10 Z" 
+                  />
+                </circle>
+                <circle r="2.5" fill="#FFFFFF">
+                  <animateMotion 
+                    dur="4s" 
+                    begin="-3s" 
+                    repeatCount="indefinite" 
+                    path="M 44 10 H 196 A 34 34 0 0 1 230 44 V 196 A 34 34 0 0 1 196 230 H 44 A 34 34 0 0 1 10 196 V 44 A 34 34 0 0 1 44 10 Z" 
+                  />
+                </circle>
+              </g>
+            </svg>
           </div>
         </div>
 
-        {/* Brand Identity Typography */}
-        <div className="space-y-1 mb-6">
-          <h2 className="text-sm sm:text-base font-extrabold tracking-[0.2em] text-white uppercase">
-            DESENTRAL ENGINEERING
+        {/* ============================================================== */}
+        {/* 3. BRAND IDENTITY TYPOGRAPHY & SKYLINE SILHOUETTE              */}
+        {/* ============================================================== */}
+        <div className="space-y-1.5 mb-3 pt-2 sm:pt-3">
+          <h2 className="text-base sm:text-lg md:text-xl font-extrabold tracking-[0.22em] text-white uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+            DESENTRAL ENGINEERING CONSULTANCY
           </h2>
-          <p className="text-[11px] font-bold text-[#B08D57] tracking-[0.25em] uppercase">
-            Consultancy · Grade A
+          <p className="text-xs sm:text-sm font-bold text-[#DFBF82] tracking-[0.24em] uppercase">
+            Grade A | Multidisciplinary Engineering Consultancy
           </p>
         </div>
 
-        {/* High-Precision Luxury Progress Bar */}
-        <div className="w-52 sm:w-60 h-[3px] bg-white/10 rounded-full overflow-hidden relative shadow-inner">
+        {/* Golden Architectural Skyline Graphic */}
+        <div className="w-full flex items-center justify-center my-1.5 opacity-90">
+          <img 
+            src="/dec-splash-skyline.png" 
+            alt="DEC Architecture Skyline" 
+            className="h-9 sm:h-11 w-auto object-contain filter drop-shadow-[0_2px_12px_rgba(223,191,130,0.45)]"
+          />
+        </div>
+
+        {/* ============================================================== */}
+        {/* 4. LUXURY HIGH-PRECISION PROGRESS BAR & METRICS                */}
+        {/* ============================================================== */}
+        <div className="w-64 sm:w-72 md:w-80 h-[3px] bg-white/10 rounded-full overflow-hidden relative shadow-inner mt-2">
           <div 
-            className="h-full bg-gradient-to-r from-[#B08D57] via-[#D8B478] to-[#B08D57] rounded-full transition-all duration-100 ease-out relative"
+            className="h-full bg-gradient-to-r from-[#B08D57] via-[#F6E6CC] to-[#B08D57] rounded-full transition-all duration-100 ease-out relative"
             style={{ width: `${progress}%` }}
           >
             {/* Shimmer Light Flare */}
@@ -142,21 +292,21 @@ function PageLoader({ isLoading }) {
           </div>
         </div>
 
-        {/* Progress Percentage & Status */}
-        <div className="mt-4 flex items-center justify-between w-52 sm:w-60 text-[10px] tracking-wider text-[#F5F0E7]/60 font-mono">
-          <span className="flex items-center gap-1.5 text-[#B08D57] font-semibold font-sans">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B08D57] animate-ping" />
+        {/* Progress Percentage & Status Indicator */}
+        <div className="mt-3 flex items-center justify-between w-64 sm:w-72 md:w-80 text-[10px] tracking-wider text-[#F5F0E7]/60 font-mono">
+          <span className="flex items-center gap-1.5 text-[#DFBF82] font-semibold font-sans">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#DFBF82] animate-ping" />
             {getStatusText()}
           </span>
           <span className="text-white font-bold">{progress}%</span>
         </div>
 
-        {/* Regional Hubs Footprint Note */}
-        <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-center gap-3 text-[10px] text-[#F5F0E7]/40 tracking-widest uppercase">
+        {/* Regional Footprint Note */}
+        <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-center gap-3 text-[11px] text-[#DFBF82]/80 font-semibold tracking-[0.25em] uppercase">
           <span>Qatar</span>
-          <span>•</span>
+          <span className="text-[#DFBF82]/40">•</span>
           <span>Egypt</span>
-          <span>•</span>
+          <span className="text-[#DFBF82]/40">•</span>
           <span>KSA</span>
         </div>
 

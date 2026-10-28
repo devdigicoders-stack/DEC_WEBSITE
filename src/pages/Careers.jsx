@@ -19,8 +19,10 @@ import {
   FiMail,
   FiPhone,
   FiGlobe,
-  FiLoader
+  FiLoader,
+  FiArrowUpRight
 } from 'react-icons/fi'
+import { API_BASE_URL } from '../services/api'
 
 function Careers() {
   const openPositions = [
@@ -190,6 +192,57 @@ function Careers() {
         }
       }
 
+      // 1. Upload physical resume file directly to Backend /uploads/resumes
+      let uploadedResumeUrl = ''
+      try {
+        const resumeFormData = new FormData()
+        resumeFormData.append('resume', selectedFile)
+        const uploadRes = await fetch(`${API_BASE_URL}/inquiries/upload-resume`, {
+          method: 'POST',
+          body: resumeFormData,
+        })
+        const uploadJson = await uploadRes.json()
+        if (uploadJson.success && uploadJson.data?.url) {
+          uploadedResumeUrl = uploadJson.data.url
+        }
+      } catch (uploadErr) {
+        console.warn('Direct resume upload note:', uploadErr)
+      }
+
+      // 2. Submit application to Backend MongoDB so it appears in DEC Admin Panel
+      try {
+        await fetch(`${API_BASE_URL}/inquiries`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            type: 'career',
+            fullName: formData.fullName,
+            email: formData.email,
+            phone: formData.phone,
+            position: formData.position,
+            location: formData.location,
+            experience: formData.experience,
+            currentRole: formData.currentRole,
+            noticePeriod: formData.noticePeriod,
+            portfolioUrl: formData.portfolioUrl,
+            message: formData.message,
+            discipline: `Career: ${formData.position}`,
+            cv: {
+              filename: selectedFile.name,
+              contentType: selectedFile.type || 'application/octet-stream',
+              url: uploadedResumeUrl,
+              base64: fileBase64
+            },
+            source: 'Website Career Page'
+          })
+        })
+      } catch (backendErr) {
+        console.warn('Backend career save note:', backendErr)
+      }
+
+      // 2. Continue with existing mailer system
       const res = await fetch('/api/apply', {
         method: 'POST',
         headers: {
@@ -298,15 +351,17 @@ function Careers() {
               onClick={() => {
                 if (formRef.current) formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
               }}
-              className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#B08D57] via-[#DFBF82] to-[#B08D57] text-[#111111] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/30 hover:scale-105 active:scale-95 cursor-pointer"
+              className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#111111] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2.5 cursor-pointer"
             >
-              Submit Application & CV
+              <span>Submit Application & CV</span>
+              <FiArrowRight className="text-base" />
             </button>
             <a
               href="#open-roles"
-              className="px-8 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57]"
+              className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#111111] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2.5 cursor-pointer group"
             >
-              View Open Roles
+              <span>View Open Roles</span>
+              <FiArrowUpRight className="text-base text-[#B08D57] group-hover:text-[#111111] transition-colors" />
             </a>
           </div>
         </div>
@@ -817,7 +872,7 @@ function Careers() {
                   <p className="text-xs text-[#F5F0E7]/60 max-w-md mx-auto">
                     Supported: PDF, DOC, DOCX, JPG, PNG, WEBP, or TXT (up to 15 MB).
                   </p>
-                  <span className="inline-block mt-4 px-4 py-2 rounded-xl bg-white/5 group-hover:bg-[#B08D57]/20 border border-white/10 text-xs font-semibold text-[#DFBF82] transition-colors">
+                  <span className="inline-block mt-4 px-5 py-2.5 rounded-xl bg-[#151515] group-hover:bg-[#B08D57] group-hover:text-[#111111] border border-white/20 group-hover:border-[#B08D57] text-xs font-bold uppercase tracking-wider text-white transition-all shadow-md">
                     Browse File from Device
                   </span>
                 </div>
@@ -889,7 +944,7 @@ function Careers() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-[#B08D57] via-[#DFBF82] to-[#B08D57] hover:brightness-110 active:scale-95 text-[#111111] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#B08D57]/30 flex items-center justify-center gap-2.5 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+                className="w-full sm:w-auto px-10 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] active:scale-95 text-white hover:text-[#111111] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-xl flex items-center justify-center gap-2.5 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
               >
                 {isSubmitting ? (
                   <>

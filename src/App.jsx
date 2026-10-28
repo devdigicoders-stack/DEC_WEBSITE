@@ -18,11 +18,12 @@ import Contact from './pages/Contact.jsx'
 import SectorDetail from './pages/SectorDetail.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import TermsAndConditions from './pages/TermsAndConditions.jsx'
+import Blog from './pages/Blog.jsx'
 
 function AppLayout() {
   const location = useLocation()
   const [prevPath, setPrevPath] = useState(location.pathname)
-  const [pageLoading, setPageLoading] = useState(false)
+  const [pageLoading, setPageLoading] = useState(true)
 
   // Synchronously activate loader on route change BEFORE DOM renders the new page
   if (location.pathname !== prevPath) {
@@ -30,13 +31,13 @@ function AppLayout() {
     setPageLoading(true)
   }
 
-  // Trigger Logo Loader on Route Change
+  // Trigger Logo Loader on Initial Load and Route Change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
 
     const timer = setTimeout(() => {
       setPageLoading(false)
-    }, 2000)
+    }, 2400)
 
     return () => clearTimeout(timer)
   }, [location.pathname])
@@ -59,6 +60,8 @@ function AppLayout() {
           <Route path="/why-dec" element={<WhyDEC />} />
           <Route path="/why-deca" element={<WhyDEC />} />
           <Route path="/insights" element={<Insights />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<Blog />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />

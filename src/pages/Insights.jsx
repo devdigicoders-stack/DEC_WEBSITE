@@ -12,7 +12,6 @@ import { certificatesData } from '../data/certificatesData.js'
 
 function Insights() {
   const [activeModalDoc, setActiveModalDoc] = useState(null)
-  const [modalTab, setModalTab] = useState('image') // 'image' | 'pdf'
 
   // Company Profile Document Object
   const companyProfileDoc = {
@@ -32,12 +31,10 @@ function Insights() {
 
   const handleOpenCert = (cert) => {
     setActiveModalDoc(cert)
-    setModalTab('image')
   }
 
   const handleOpenProfile = () => {
     setActiveModalDoc(companyProfileDoc)
-    setModalTab('pdf')
   }
 
   const prequalificationPoints = [
@@ -173,7 +170,7 @@ function Insights() {
                 <button
                   type="button"
                   onClick={handleOpenProfile}
-                  className="px-8 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#B08D57]/20 hover:scale-105 flex items-center gap-2.5 cursor-pointer"
+                  className="px-8 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-xl hover:scale-105 flex items-center gap-2.5 cursor-pointer"
                 >
                   <FiEye className="text-base" />
                   <span>View Company Profile (PDF)</span>
@@ -342,16 +339,16 @@ function Insights() {
                   <img 
                     src={cert.image} 
                     alt={cert.title}
-                    className="w-full h-full object-contain rounded-lg drop-shadow-md bg-white"
+                    className="w-full h-full object-contain rounded-lg drop-shadow-md"
                     loading="lazy"
                   />
 
                   {/* Badge Overlay */}
                   <span 
-                    className="absolute top-4 right-4 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-md backdrop-blur-md"
+                    className="absolute top-3.5 right-3.5 text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-2xl z-10"
                     style={{ 
-                      backgroundColor: `${cert.accentColor}25`, 
-                      color: '#FFFFFF' 
+                      backgroundColor: cert.accentColor || '#B08D57', 
+                      color: cert.id === 'mmup-grade-a' || cert.id === 'iso-45001' ? '#121212' : '#FFFFFF' 
                     }}
                   >
                     {cert.badge}
@@ -383,7 +380,7 @@ function Insights() {
                     <button
                       type="button"
                       onClick={() => handleOpenCert(cert)}
-                      className="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs flex items-center justify-center gap-2 transition-all duration-300 shadow-sm cursor-pointer"
+                      className="w-full py-2.5 px-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs flex items-center justify-center gap-2 transition-all duration-300 border border-white/10 hover:border-[#B08D57] shadow-md cursor-pointer"
                     >
                       <FiEye className="text-sm" />
                       <span>View Certificate</span>
@@ -424,55 +421,25 @@ function Insights() {
                 </div>
               </div>
 
-              {/* View Switcher Tabs & View Only Indicator */}
-              <div className="flex items-center gap-2 shrink-0">
-                {!activeModalDoc.isPdfOnly && (
-                  <div className="bg-white/5 p-1 rounded-xl border border-white/10 flex items-center gap-1 text-xs font-semibold">
-                    <button
-                      type="button"
-                      onClick={() => setModalTab('image')}
-                      className={`px-3 py-1.5 rounded-lg transition-all ${
-                        modalTab === 'image' 
-                          ? 'bg-[#B08D57] text-[#151515] font-bold shadow' 
-                          : 'text-white/70 hover:text-white'
-                      }`}
-                    >
-                      Image
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setModalTab('pdf')}
-                      className={`px-3 py-1.5 rounded-lg transition-all ${
-                        modalTab === 'pdf' 
-                          ? 'bg-[#B08D57] text-[#151515] font-bold shadow' 
-                          : 'text-white/70 hover:text-white'
-                      }`}
-                    >
-                      PDF
-                    </button>
-                  </div>
-                )}
-
-
-                <button
-                  type="button"
-                  onClick={() => setActiveModalDoc(null)}
-                  className="w-9 h-9 rounded-xl bg-white/5 hover:bg-rose-500 hover:text-white text-white/70 flex items-center justify-center transition-colors cursor-pointer ml-1"
-                  aria-label="Close Viewer"
-                >
-                  <FiX className="text-lg" />
-                </button>
-              </div>
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={() => setActiveModalDoc(null)}
+                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-rose-500 hover:text-white text-white/70 flex items-center justify-center transition-colors cursor-pointer shrink-0"
+                aria-label="Close Viewer"
+              >
+                <FiX className="text-lg" />
+              </button>
             </div>
 
             {/* Modal Body: High-Res Image View or Embedded View-Only PDF */}
             <div className="flex-1 bg-[#0f0f0f] p-4 sm:p-6 overflow-auto flex items-center justify-center relative select-none">
-              {modalTab === 'image' && !activeModalDoc.isPdfOnly ? (
-                <div className="max-w-2xl w-full h-full flex items-center justify-center">
+              {activeModalDoc.image && !activeModalDoc.isPdfOnly ? (
+                <div className="max-w-4xl w-full h-full flex items-center justify-center">
                   <img 
                     src={activeModalDoc.image} 
                     alt={activeModalDoc.title}
-                    className="max-h-full max-w-full object-contain rounded-xl shadow-2xl drop-shadow-2xl border border-white/10 bg-white"
+                    className="max-h-full max-w-full object-contain rounded-xl shadow-2xl drop-shadow-2xl border border-white/10"
                   />
                 </div>
               ) : (

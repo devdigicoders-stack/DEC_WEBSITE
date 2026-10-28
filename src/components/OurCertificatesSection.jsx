@@ -15,8 +15,6 @@ export default function OurCertificatesSection() {
   const [activeModalPdf, setActiveModalPdf] = useState(null)
   const [isPaused, setIsPaused] = useState(false)
 
-  const [modalTab, setModalTab] = useState('image') // 'image' or 'pdf'
-
   // Widen card scroll step: 3 cards visible on desktop
   const scroll = (direction) => {
     if (scrollContainerRef.current) {
@@ -122,26 +120,23 @@ export default function OurCertificatesSection() {
             >
               {/* Framed Certificate Image Container (No dark overlay on hover) */}
               <div 
-                onClick={() => {
-                  setActiveModalPdf(cert)
-                  setModalTab('image')
-                }}
+                onClick={() => setActiveModalPdf(cert)}
                 className="relative m-4 sm:m-5 rounded-xl overflow-hidden bg-[#0c0c0c] cursor-pointer aspect-[1/1.32] flex items-center justify-center p-3 sm:p-4 transition-transform duration-300 group-hover:scale-[1.01]"
               >
                 {/* Real High-Resolution Certificate Document Image */}
                 <img 
                   src={cert.image} 
                   alt={cert.title}
-                  className="w-full h-full object-contain rounded-lg drop-shadow-md bg-white"
+                  className="w-full h-full object-contain rounded-lg drop-shadow-md"
                   loading="lazy"
                 />
 
                 {/* Top Badge Overlay */}
                 <span 
-                  className="absolute top-4 right-4 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-md backdrop-blur-md"
+                  className="absolute top-3.5 right-3.5 text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-2xl z-10"
                   style={{ 
-                    backgroundColor: `${cert.accentColor}25`, 
-                    color: '#FFFFFF' 
+                    backgroundColor: cert.accentColor || '#B08D57', 
+                    color: cert.id === 'mmup-grade-a' || cert.id === 'iso-45001' ? '#121212' : '#FFFFFF' 
                   }}
                 >
                   {cert.badge}
@@ -167,11 +162,8 @@ export default function OurCertificatesSection() {
                 {/* Action Button: View Certificate Only (No Download) */}
                 <div className="pt-3 border-t border-white/10">
                   <button
-                    onClick={() => {
-                      setActiveModalPdf(cert)
-                      setModalTab('image')
-                    }}
-                    className="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs flex items-center justify-center gap-2 transition-all duration-300 shadow-sm cursor-pointer"
+                    onClick={() => setActiveModalPdf(cert)}
+                    className="w-full py-2.5 px-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs flex items-center justify-center gap-2 transition-all duration-300 border border-white/10 hover:border-[#B08D57] shadow-md cursor-pointer"
                   >
                     <FiEye className="text-sm" />
                     <span>View Certificate</span>
@@ -208,56 +200,29 @@ export default function OurCertificatesSection() {
                 </div>
               </div>
 
-              {/* View Switcher Tabs & Actions */}
-              <div className="flex items-center gap-2 shrink-0">
-                {/* Tabs: Image vs PDF */}
-                <div className="bg-white/5 p-1 rounded-xl border border-white/10 flex items-center gap-1 text-xs font-semibold">
-                  <button
-                    onClick={() => setModalTab('image')}
-                    className={`px-3 py-1.5 rounded-lg transition-all ${
-                      modalTab === 'image' 
-                        ? 'bg-[#B08D57] text-[#151515] font-bold shadow' 
-                        : 'text-white/70 hover:text-white'
-                    }`}
-                  >
-                    Image
-                  </button>
-                  <button
-                    onClick={() => setModalTab('pdf')}
-                    className={`px-3 py-1.5 rounded-lg transition-all ${
-                      modalTab === 'pdf' 
-                        ? 'bg-[#B08D57] text-[#151515] font-bold shadow' 
-                        : 'text-white/70 hover:text-white'
-                    }`}
-                  >
-                    PDF
-                  </button>
-                </div>
-
-
-                <button
-                  onClick={() => setActiveModalPdf(null)}
-                  className="w-9 h-9 rounded-xl bg-white/5 hover:bg-rose-500 hover:text-white text-white/70 flex items-center justify-center transition-colors cursor-pointer ml-1"
-                  aria-label="Close Viewer"
-                >
-                  <FiX className="text-lg" />
-                </button>
-              </div>
+              {/* Close Action */}
+              <button
+                onClick={() => setActiveModalPdf(null)}
+                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-rose-500 hover:text-white text-white/70 flex items-center justify-center transition-colors cursor-pointer shrink-0"
+                aria-label="Close Viewer"
+              >
+                <FiX className="text-lg" />
+              </button>
             </div>
 
-            {/* Modal Body: High-Res Image View or Embedded PDF */}
-            <div className="flex-1 w-full bg-[#0D0D0D] relative overflow-auto p-4 flex items-center justify-center">
-              {modalTab === 'image' ? (
-                <div className="max-w-3xl w-full h-full flex items-center justify-center p-2">
+            {/* Modal Body: High-Res Certificate Document View */}
+            <div className="flex-1 w-full bg-[#0D0D0D] relative overflow-auto p-4 flex items-center justify-center select-none">
+              {activeModalPdf.image ? (
+                <div className="max-w-4xl w-full h-full flex items-center justify-center p-2">
                   <img 
                     src={activeModalPdf.image} 
                     alt={activeModalPdf.title}
-                    className="max-h-full max-w-full object-contain rounded-lg shadow-2xl bg-white border border-white/10"
+                    className="max-h-full max-w-full object-contain rounded-lg shadow-2xl border border-white/10"
                   />
                 </div>
               ) : (
                 <iframe
-                  src={`${activeModalPdf.file}#toolbar=1&navpanes=0`}
+                  src={`${activeModalPdf.file}#toolbar=0&navpanes=0`}
                   title={activeModalPdf.title}
                   className="w-full h-full border-0 rounded-lg"
                 />

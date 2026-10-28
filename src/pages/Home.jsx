@@ -9,11 +9,12 @@ import {
   FiShield, 
   FiCpu,
   FiAward,
-  FiUsers
+  FiUsers,
+  FiArrowUpRight
 } from 'react-icons/fi'
 import WhatWeDo from '../components/WhatWeDo.jsx'
 import ClientPartnersSection from '../components/ClientPartnersSection.jsx'
-import OurCertificatesSection from '../components/OurCertificatesSection.jsx'
+// OurCertificatesSection removed from Home page as per client request (kept in /insights)
 import { FaCompassDrafting } from 'react-icons/fa6'
 
 function Home() {
@@ -171,15 +172,17 @@ function Home() {
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <Link
                   to="/expertise"
-                  className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:scale-105 flex items-center gap-2.5"
+                  className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2.5 cursor-pointer"
                 >
-                  Explore Our Expertise <FiArrowRight className="text-base" />
+                  <span>Explore Our Expertise</span>
+                  <FiArrowRight className="text-base" />
                 </Link>
                 <Link
                   to="/projects"
-                  className="px-7 py-4 rounded-xl bg-transparent hover:bg-white/10 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] flex items-center gap-2.5"
+                  className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2.5 cursor-pointer group"
                 >
-                  View Our Projects <FiArrowRight className="text-base" />
+                  <span>View Our Projects</span>
+                  <FiArrowUpRight className="text-base text-[#B08D57] group-hover:text-[#151515] transition-colors" />
                 </Link>
               </div>
 
@@ -306,14 +309,12 @@ function Home() {
             
             {/* Big Headline from DEC PDF */}
             <div className="max-w-5xl">
-              <Link 
-                to="/about"
-                className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 hover:bg-[#B08D57] border border-[#B08D57]/40 hover:border-[#B08D57] text-[#B08D57] hover:text-[#151515] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-5 transition-all duration-300 group/pill cursor-pointer"
-                aria-label="About DEC - Who We Are"
+              <div 
+                className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-5 select-none"
               >
-                <FiAward className="text-sm shrink-0 transition-colors" />
+                <FiAward className="text-sm shrink-0" />
                 <span>ABOUT DEC · WHO WE ARE</span>
-              </Link>
+              </div>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#151515] leading-[1.15]">
                 Grade A Multidisciplinary Engineering Consultancy
               </h2>
@@ -323,7 +324,7 @@ function Home() {
             <div className="flex-shrink-0 pb-2">
               <Link 
                 to="/about"
-                className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:scale-105 flex items-center gap-2.5"
+                className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 flex items-center gap-2.5"
                 aria-label="Learn more about DEC"
               >
                 <span>About DEC</span>
@@ -366,7 +367,7 @@ function Home() {
 
             <Link
               to="/expertise"
-              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-lg shadow-[#B08D57]/20 hover:scale-105 flex items-center gap-2 self-start lg:self-auto shrink-0"
+              className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 flex items-center gap-2 self-start lg:self-auto shrink-0"
             >
               Explore Full Engineering Scope <FiArrowRight className="text-base" />
             </Link>
@@ -430,7 +431,7 @@ function Home() {
 
             <Link
               to="/team"
-              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-lg shadow-[#B08D57]/20 hover:scale-105 flex items-center gap-2 self-start lg:self-auto shrink-0"
+              className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 flex items-center gap-2 self-start lg:self-auto shrink-0"
             >
               <span>Get to know our team</span>
               <FiArrowRight className="text-base" />
@@ -469,9 +470,8 @@ function Home() {
       </section>
 
       {/* ============================================================ */}
-      {/* 08 · OFFICIAL ACCREDITATIONS & CERTIFICATES (4 SLIDING)      */}
+      {/* 08 · OFFICIAL ACCREDITATIONS (AVAILABLE ON /insights ONLY)    */}
       {/* ============================================================ */}
-      <OurCertificatesSection />
 
       {/* ============================================================ */}
       {/* 09 · CLIENT PARTNERS DIRECTORY (FROM CLIENTS COPY)           */}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { 
   FiChevronLeft, 
   FiChevronRight, 
@@ -7,27 +7,55 @@ import {
   FiCamera
 } from 'react-icons/fi'
 import { projectGalleryData } from '../data/projectGalleryData.js'
+import { fetchGallery, getImageUrl } from '../services/api'
 
 export default function ProjectGallerySection() {
   const [selectedIdx, setSelectedIdx] = useState(null)
   const [visibleCount, setVisibleCount] = useState(30)
 
+  // Live dynamic gallery items from Backend API, initialized with local records for instant render
+  const [galleryItems, setGalleryItems] = useState(projectGalleryData)
+  const [loadingGallery, setLoadingGallery] = useState(true)
+
+  useEffect(() => {
+    let isMounted = true
+
+    const loadGallery = async () => {
+      try {
+        const liveGallery = await fetchGallery({ limit: 150 })
+        if (isMounted && Array.isArray(liveGallery) && liveGallery.length > 0) {
+          const sorted = [...liveGallery].sort((a, b) => (a.order || 0) - (b.order || 0))
+          setGalleryItems(sorted)
+        }
+      } catch (err) {
+        console.error('Failed to load gallery dynamically from API:', err)
+      } finally {
+        if (isMounted) setLoadingGallery(false)
+      }
+    }
+
+    loadGallery()
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
   const isModalOpen = selectedIdx !== null
-  const currentProject = isModalOpen ? projectGalleryData[selectedIdx] : null
+  const currentProject = isModalOpen && galleryItems[selectedIdx] ? galleryItems[selectedIdx] : null
 
   // Next image handler
   const handleNext = useCallback(() => {
     setSelectedIdx((prev) => 
-      prev === null ? null : (prev + 1) % projectGalleryData.length
+      prev === null ? null : (prev + 1) % galleryItems.length
     )
-  }, [])
+  }, [galleryItems.length])
 
   // Previous image handler
   const handlePrev = useCallback(() => {
     setSelectedIdx((prev) => 
-      prev === null ? null : (prev - 1 + projectGalleryData.length) % projectGalleryData.length
+      prev === null ? null : (prev - 1 + galleryItems.length) % galleryItems.length
     )
-  }, [])
+  }, [galleryItems.length])
 
   // Close modal
   const handleClose = useCallback(() => {
@@ -73,8 +101,10 @@ export default function ProjectGallerySection() {
     return aspectRatios[id % aspectRatios.length]
   }
 
-  const displayedProjects = projectGalleryData.slice(0, visibleCount)
-  const hasMore = visibleCount < projectGalleryData.length
+  const displayedProjects = useMemo(() => {
+    return galleryItems.slice(0, visibleCount)
+  }, [galleryItems, visibleCount])
+  const hasMore = visibleCount < galleryItems.length
 
   return (
     <section 
@@ -89,7 +119,7 @@ export default function ProjectGallerySection() {
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#B08D57]/10 border border-[#B08D57]/40 text-[#B08D57] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm mb-4">
             <FiCamera className="text-sm shrink-0" />
-            <span>84 Executed Site & Project Photographs</span>
+            <span>Executed Site & Project Photographs</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#151515] tracking-tight leading-[1.15]">
             Visual Project Archives
@@ -104,20 +134,23 @@ export default function ProjectGallerySection() {
         {/* ============================================================ */}
         <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4 sm:gap-5">
           {displayedProjects.map((item, idx) => {
-            const aspect = getAspectClass(item.id)
+            const aspect = getAspectClass(item.order || item.id || idx)
             return (
               <div
-                key={item.id}
+                key={item._id || item.id || item.order || idx}
                 onClick={() => setSelectedIdx(idx)}
                 className="break-inside-avoid mb-4 sm:mb-5 relative rounded-2xl overflow-hidden group cursor-pointer bg-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1"
               >
                 {/* Image with Random / Dynamic Aspect Ratio */}
                 <div className={`w-full ${aspect} overflow-hidden bg-slate-200 relative`}>
                   <img
-                    src={item.src}
-                    alt={item.name || item.title || `DEC Project Photography #${item.id}`}
+                    src={getImageUrl(item.image || item.src)}
+                    alt={item.name || item.title || `DEC Project Photography #${item.order || item.id || idx + 1}`}
                     loading="lazy"
                     decoding="async"
+                    onError={(e) => {
+                      e.currentTarget.src = item.fileName ? `/projects-gallery/${item.fileName}` : '/projects-gallery/01.jpg'
+                    }}
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
                   />
 
@@ -146,23 +179,14 @@ export default function ProjectGallerySection() {
         {/* ============================================================ */}
         {/* LOAD MORE / EXPAND CONTROLS                                 */}
         {/* ============================================================ */}
-        <div className="mt-14 text-center space-y-3">
+        <div className="mt-14 flex items-center justify-center">
           {hasMore ? (
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <button
-                onClick={() => setVisibleCount((prev) => Math.min(prev + 30, projectGalleryData.length))}
-                className="px-8 py-3.5 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md hover:scale-105 active:scale-95 cursor-pointer"
-              >
-                Load More Photographs ({displayedProjects.length} of {projectGalleryData.length})
-              </button>
-
-              <button
-                onClick={() => setVisibleCount(projectGalleryData.length)}
-                className="px-8 py-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm uppercase tracking-wider border border-slate-300 transition-all hover:scale-105 active:scale-95 cursor-pointer"
-              >
-                View All {projectGalleryData.length} Photos
-              </button>
-            </div>
+            <button
+              onClick={() => setVisibleCount((prev) => Math.min(prev + 30, galleryItems.length))}
+              className="px-8 py-3.5 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              Load More Photographs ({displayedProjects.length} of {galleryItems.length})
+            </button>
           ) : (
             <button
               onClick={() => {
@@ -170,15 +194,11 @@ export default function ProjectGallerySection() {
                 const element = document.getElementById('project-gallery')
                 if (element) element.scrollIntoView({ behavior: 'smooth' })
               }}
-              className="px-6 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs uppercase tracking-wider border border-slate-300 transition-all cursor-pointer"
+              className="px-6 py-2.5 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs uppercase tracking-wider border border-white/20 hover:border-[#B08D57] transition-all cursor-pointer shadow-md"
             >
               Collapse Gallery to 30 Photos
             </button>
           )}
-
-          <p className="text-xs text-slate-500">
-            Showing authentic photographic records of DEC deliveries across Qatar and the GCC.
-          </p>
         </div>
 
       </div>
@@ -196,7 +216,7 @@ export default function ProjectGallerySection() {
           <div className="flex items-center justify-between z-20 pb-3 border-b border-white/10">
             <div className="flex items-center gap-3">
               <span className="px-3.5 py-1.5 rounded-lg bg-[#B08D57] text-[#151515] font-bold text-xs tracking-wider">
-                Photo {selectedIdx + 1} of {projectGalleryData.length}
+                Photo {selectedIdx + 1} of {galleryItems.length}
               </span>
               <span className="text-xs sm:text-sm font-bold text-white truncate max-w-[200px] sm:max-w-md">
                 {currentProject.name || currentProject.title}
@@ -232,9 +252,12 @@ export default function ProjectGallerySection() {
             {/* Main High-Resolution Photo */}
             <div className="max-h-[75vh] max-w-[88vw] flex items-center justify-center select-none">
               <img
-                src={currentProject.src}
-                alt={`Photo #${currentProject.id}`}
+                src={getImageUrl(currentProject.image || currentProject.src)}
+                alt={currentProject.name || currentProject.title || `Photo #${currentProject.order || currentProject.id}`}
                 decoding="async"
+                onError={(e) => {
+                  e.currentTarget.src = currentProject.fileName ? `/projects-gallery/${currentProject.fileName}` : '/projects-gallery/01.jpg'
+                }}
                 className="max-h-[75vh] max-w-[88vw] object-contain rounded-2xl shadow-[0_0_60px_rgba(0,0,0,0.9)] border border-white/15"
               />
 

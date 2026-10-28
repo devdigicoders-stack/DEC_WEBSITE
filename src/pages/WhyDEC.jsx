@@ -13,7 +13,7 @@ import {
 } from 'react-icons/fa6'
 
 function WhyDEC() {
-  const [activeStage, setActiveStage] = useState(1)
+  const [activeStage, setActiveStage] = useState(null)
 
   const corePillars = [
     {
@@ -207,7 +207,7 @@ function WhyDEC() {
           <div className="mt-10">
             <a 
               href="#strategic-pillars"
-              className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:scale-105 inline-flex items-center gap-2.5 cursor-pointer"
+              className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 inline-flex items-center gap-2.5 cursor-pointer"
             >
               <span>Explore Our Core Pillars</span>
               <FiArrowRight className="text-base" />
@@ -305,7 +305,7 @@ function WhyDEC() {
             {deliveryStages.map((st) => (
               <button
                 key={st.stage}
-                onClick={() => setActiveStage(st.stage)}
+                onClick={() => setActiveStage(activeStage === st.stage ? null : st.stage)}
                 className={`px-5 py-4 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-between border cursor-pointer hover:scale-105 ${
                   activeStage === st.stage
                     ? 'bg-[#B08D57] text-[#151515] border-[#B08D57] shadow-xl shadow-[#B08D57]/30 scale-105'
@@ -319,6 +319,12 @@ function WhyDEC() {
           </div>
 
           {/* Active Stage Details Card - Flush Aligned Right with Left Side */}
+          {!activeStage && (
+            <div className="text-center py-6 px-4 rounded-2xl bg-white/[0.02] border border-white/5 max-w-2xl mx-auto text-white/50 text-xs tracking-wider flex items-center justify-center gap-2.5">
+              <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />
+              <span>Click on any stage above to explore phase deliverables, milestones, and governance</span>
+            </div>
+          )}
           {deliveryStages.map((st) => {
             if (st.stage !== activeStage) return null
             return (
@@ -417,9 +423,9 @@ function WhyDEC() {
               <div className="pt-2">
                 <Link
                   to="/expertise"
-                  className="px-7 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C7A673] text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#B08D57]/25 hover:scale-105 hover:shadow-2xl hover:shadow-[#B08D57]/50 inline-flex items-center gap-2.5 cursor-pointer"
+                  className="px-7 py-4 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-105 inline-flex items-center gap-2.5 cursor-pointer"
                 >
-                  <span>Explore BIM & Digital Twins</span>
+                  <span>Digital Twin Delivery</span>
                   <FiArrowRight className="text-base" />
                 </Link>
               </div>
