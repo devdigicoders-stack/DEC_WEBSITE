@@ -592,7 +592,7 @@ function Contact() {
             </div>
 
             {/* Right Column: Actual Clean Form - Perfectly Aligned at Beginning and End */}
-            <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 sm:pb-6 lg:pb-6 border border-slate-200 shadow-xl shadow-slate-200/50 flex flex-col justify-between">
+            <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 pb-4 sm:pb-[17px] lg:pb-[17px] border border-slate-200 shadow-xl shadow-slate-200/50 flex flex-col justify-between">
               {isSubmitted ? (
                 <div className="py-16 text-center space-y-4 animate-fade-in my-auto">
                   <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
@@ -767,7 +767,7 @@ function Contact() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3.5 px-6 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-sm tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-[1.01] cursor-pointer disabled:opacity-60"
+                      className="w-full h-12 px-6 rounded-xl bg-[#151515] hover:bg-[#B08D57] text-white hover:text-[#151515] font-bold text-sm tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 border border-white/20 hover:border-[#B08D57] shadow-lg hover:scale-[1.01] cursor-pointer disabled:opacity-60"
                     >
                       {isSubmitting ? (
                         <>Processing Submission...</>
@@ -778,7 +778,7 @@ function Contact() {
                       )}
                     </button>
 
-                    <p className="text-center text-[11px] sm:text-xs text-slate-500 mt-2">
+                    <p className="text-center text-[11px] sm:text-xs text-slate-500 mt-1 leading-tight min-h-[28px] flex items-center justify-center">
                       🔒 All inquiries are securely routed to <a href="mailto:info@desentralqatar.com" className="text-slate-700 underline font-medium">info@desentralqatar.com</a> & <a href="mailto:bd@desentralqatar.com" className="text-slate-700 underline font-medium">bd@desentralqatar.com</a> under strict non-disclosure compliance.
                     </p>
                   </div>
