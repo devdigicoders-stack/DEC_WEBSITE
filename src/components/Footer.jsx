@@ -349,6 +349,17 @@ function Footer() {
                 Statutory Compliance
               </Link>
             </div>
+            <p className="mt-2 text-[11px] text-[#F5F0E7]/60">
+              Designed By{' '}
+              <a
+                href="https://www.worknestconnect.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#B08D57] hover:text-[#d4af37] hover:underline font-medium transition-colors"
+              >
+                Team Worknest Connect Consultants
+              </a>
+            </p>
           </div>
 
           {/* Social Icons */}
