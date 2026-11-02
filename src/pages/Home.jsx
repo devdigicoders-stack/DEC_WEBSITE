@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { 
   FiArrowRight, 
@@ -16,8 +16,34 @@ import WhatWeDo from '../components/WhatWeDo.jsx'
 import ClientPartnersSection from '../components/ClientPartnersSection.jsx'
 // OurCertificatesSection removed from Home page as per client request (kept in /insights)
 import { FaCompassDrafting } from 'react-icons/fa6'
+import { fetchHomeCms, getImageUrl } from '../services/api.js'
 
 function Home() {
+  const [deliveryContent, setDeliveryContent] = useState({
+    image: '/uploads/cms/dec_integrated_engineering.jpg',
+    altText: 'DEC Integrated Multi-Discipline Engineering and 3D BIM Delivery',
+    badge: 'Coordinated Engineering Leadership',
+    description: 'Delivering end-to-end design, authority approvals and site supervision across Qatar, Egypt, and Saudi Arabia.'
+  })
+
+  useEffect(() => {
+    let isMounted = true
+    const loadCms = async () => {
+      try {
+        const data = await fetchHomeCms()
+        if (isMounted && data?.integratedDelivery?.image) {
+          setDeliveryContent((prev) => ({
+            ...prev,
+            ...data.integratedDelivery
+          }))
+        }
+      } catch (err) {
+        console.warn('Home CMS fetch note (using fallback):', err)
+      }
+    }
+    loadCms()
+    return () => { isMounted = false }
+  }, [])
   const disciplines = [
     {
       id: 'architecture',
@@ -192,8 +218,8 @@ function Home() {
             <div className="lg:col-span-5 relative">
               <div className="relative rounded-3xl overflow-hidden border border-[#B08D57]/30 shadow-2xl shadow-black/80 group">
                 <img 
-                  src="/images/dec_integrated_engineering.jpg" 
-                  alt="DEC Integrated Multi-Discipline Engineering and 3D BIM Delivery"
+                  src={getImageUrl(deliveryContent.image || '/uploads/cms/dec_integrated_engineering.jpg')} 
+                  alt={deliveryContent.altText || 'DEC Integrated Multi-Discipline Engineering and 3D BIM Delivery'}
                   className="w-full h-[360px] sm:h-[420px] lg:h-[460px] object-cover transition-transform duration-700 group-hover:scale-105" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
@@ -201,10 +227,10 @@ function Home() {
                 {/* Floating Badge on Image */}
                 <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-black/75 backdrop-blur-md border border-white/15 text-white">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#B08D57] uppercase tracking-wider">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" /> Coordinated Engineering Leadership
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" /> {deliveryContent.badge || 'Coordinated Engineering Leadership'}
                   </div>
                   <p className="text-xs text-[#F5F0E7]/80 mt-1">
-                    Delivering end-to-end design, authority approvals and site supervision across Qatar, Egypt, and Saudi Arabia.
+                    {deliveryContent.description || 'Delivering end-to-end design, authority approvals and site supervision across Qatar, Egypt, and Saudi Arabia.'}
                   </p>
                 </div>
               </div>

@@ -173,6 +173,40 @@ export const submitInquiry = async (payload) => {
   }
 }
 
+/**
+ * Fetch Home Page CMS Content (Dynamic Images, Delivery Section, etc.)
+ */
+export const fetchHomeCms = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/cms/home`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch home CMS (HTTP ${response.status})`)
+    }
+    const json = await response.json()
+    return json?.data || null
+  } catch (error) {
+    console.warn('API fetchHomeCms note: using fallback static content', error)
+    return null
+  }
+}
+
+/**
+ * Fetch Why DEC Page CMS Content (BIM Coordination Image, Badges, etc.)
+ */
+export const fetchWhyDecCms = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/cms/why-dec`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch why-dec CMS (HTTP ${response.status})`)
+    }
+    const json = await response.json()
+    return json?.data || null
+  } catch (error) {
+    console.warn('API fetchWhyDecCms note: using fallback static content', error)
+    return null
+  }
+}
+
 export default {
   API_BASE_URL,
   getImageUrl,
@@ -182,5 +216,7 @@ export default {
   fetchGallery,
   fetchBlogPosts,
   fetchBlogPostBySlug,
+  fetchHomeCms,
+  fetchWhyDecCms,
   submitInquiry
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { 
   FiArrowRight,
@@ -11,9 +11,36 @@ import {
   FaFileCircleCheck, 
   FaUsersGear 
 } from 'react-icons/fa6'
+import { fetchWhyDecCms, getImageUrl } from '../services/api.js'
 
 function WhyDEC() {
   const [activeStage, setActiveStage] = useState(null)
+  const [bimContent, setBimContent] = useState({
+    image: '/uploads/cms/why_dec_bim_edge.jpg',
+    altText: 'DEC 3D BIM Level 2 Coordination and Clash Detection',
+    badge: 'Federated 3D Coordination',
+    statusTag: 'BIM LEVEL 2 ACTIVE',
+    description: 'Synchronized Revit & Navisworks models across Architecture, Structure, HVAC & Electrical ELV.'
+  })
+
+  useEffect(() => {
+    let isMounted = true
+    const loadCms = async () => {
+      try {
+        const data = await fetchWhyDecCms()
+        if (isMounted && data?.bimCoordination?.image) {
+          setBimContent((prev) => ({
+            ...prev,
+            ...data.bimCoordination
+          }))
+        }
+      } catch (err) {
+        console.warn('Why DEC CMS fetch note (using fallback):', err)
+      }
+    }
+    loadCms()
+    return () => { isMounted = false }
+  }, [])
 
   const corePillars = [
     {
@@ -435,8 +462,8 @@ function WhyDEC() {
             <div className="lg:col-span-6 relative">
               <div className="relative rounded-3xl overflow-hidden border border-[#B08D57]/40 shadow-2xl shadow-black/90 group">
                 <img 
-                  src="/images/why_dec_bim_edge.jpg" 
-                  alt="DEC 3D BIM Level 2 Coordination and Clash Detection"
+                  src={getImageUrl(bimContent.image || '/uploads/cms/why_dec_bim_edge.jpg')} 
+                  alt={bimContent.altText || 'DEC 3D BIM Level 2 Coordination and Clash Detection'}
                   className="w-full h-[360px] sm:h-[440px] lg:h-[480px] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
@@ -446,12 +473,12 @@ function WhyDEC() {
                   <div className="flex items-center justify-between text-xs font-bold text-[#B08D57] uppercase tracking-wider mb-1">
                     <span className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-[#B08D57] animate-pulse" />
-                      Federated 3D Coordination
+                      {bimContent.badge || 'Federated 3D Coordination'}
                     </span>
-                    <span className="text-emerald-400 font-mono text-[11px]">BIM LEVEL 2 ACTIVE</span>
+                    <span className="text-emerald-400 font-mono text-[11px]">{bimContent.statusTag || 'BIM LEVEL 2 ACTIVE'}</span>
                   </div>
                   <p className="text-xs text-[#F5F0E7]/80">
-                    Synchronized Revit & Navisworks models across Architecture, Structure, HVAC & Electrical ELV.
+                    {bimContent.description || 'Synchronized Revit & Navisworks models across Architecture, Structure, HVAC & Electrical ELV.'}
                   </p>
                 </div>
               </div>
