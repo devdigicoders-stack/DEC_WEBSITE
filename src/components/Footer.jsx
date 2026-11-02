@@ -160,11 +160,11 @@ function Footer() {
                   Corporate Credentials
                 </Link>
               </li>
-              <li>
+{/* <li>
                 <Link to="/blog" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5 font-medium">
                   Blog & Insights
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/careers" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
                   Careers
