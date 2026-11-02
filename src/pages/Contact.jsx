@@ -283,10 +283,15 @@ function Contact() {
               </div>
             </div>
 
-            <div className="mt-8 pt-5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
-              <span className="text-xs text-slate-500 flex items-center gap-1.5">
-                <FiClock className="text-[#B08D57]" /> Sun - Thu: 8:00 AM - 5:30 PM
-              </span>
+            <div className="mt-8 pt-5 border-t border-slate-100 flex flex-wrap items-end justify-between gap-3">
+              <div className="flex items-start gap-2 text-xs text-slate-500">
+                <FiClock className="text-[#B08D57] shrink-0 mt-0.5" />
+                <div className="space-y-0.5 font-medium">
+                  <div><span className="text-slate-700">Sun - Wed:</span> 8:00 AM - 6:00 PM</div>
+                  <div><span className="text-slate-700">Thu:</span> 8:00 AM - 2:00 PM</div>
+                  <div><span className="text-slate-700">Sat:</span> 12:00 PM - 6:00 PM</div>
+                </div>
+              </div>
               <div className="flex items-center gap-3">
                 <button 
                   type="button"
