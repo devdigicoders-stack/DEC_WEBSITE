@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import PageLoader from './components/PageLoader.jsx'
@@ -59,7 +59,8 @@ function AppLayout() {
           <Route path="/presence" element={<Presence />} />
           <Route path="/why-dec" element={<WhyDEC />} />
           <Route path="/why-deca" element={<WhyDEC />} />
-          <Route path="/insights" element={<Insights />} />
+          <Route path="/corporate_credentials" element={<Insights />} />
+          <Route path="/insights" element={<Navigate to="/corporate_credentials" replace />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<Blog />} />
           <Route path="/careers" element={<Careers />} />

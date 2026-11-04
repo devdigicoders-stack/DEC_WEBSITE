@@ -160,7 +160,7 @@ function Navbar() {
   // Other Top-Level Navigation Links
   const otherNavLinks = [
     { name: 'WHY DEC', path: '/why-dec' },
-    { name: 'CORPORATE CREDENTIALS', path: '/insights' },
+    { name: 'CORPORATE CREDENTIALS', path: '/corporate_credentials' },
     { name: 'CAREERS', path: '/careers' },
   ]
 
@@ -387,7 +387,7 @@ function Navbar() {
                         active ? 'text-[#B08D57]' : 'text-white hover:text-[#B08D57]'
                       }`}
                     >
-                      {item.path === '/insights' ? (
+                      {item.path === '/corporate_credentials' ? (
                         <span>
                           <span className="hidden xl:inline">CORPORATE </span>CREDENTIALS
                         </span>

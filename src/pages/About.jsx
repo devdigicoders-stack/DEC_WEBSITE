@@ -591,7 +591,7 @@ function About() {
                 <span className="inline-flex items-center gap-1.5 text-emerald-400 font-semibold text-[11px] sm:text-xs">
                   <FiCheckCircle className="text-sm shrink-0" /> MMUP / UPDA Grade A Licensed
                 </span>
-                <Link to="/insights" className="text-white hover:text-[#B08D57] font-bold inline-flex items-center gap-1 group/btn">
+                <Link to="/corporate_credentials" className="text-white hover:text-[#B08D57] font-bold inline-flex items-center gap-1 group/btn">
                   <span>View</span>
                   <FiArrowRight className="transition-transform group-hover/btn:translate-x-1" />
                 </Link>

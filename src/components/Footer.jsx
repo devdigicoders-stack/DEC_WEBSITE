@@ -156,7 +156,7 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/insights" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
+                <Link to="/corporate_credentials" className="text-[#F5F0E7]/75 hover:text-[#B08D57] transition-colors flex items-center justify-center lg:justify-start gap-1.5">
                   Corporate Credentials
                 </Link>
               </li>
